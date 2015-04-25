@@ -534,6 +534,56 @@ rule Check_UserNames
 }
 
 
+rule Check_OutputDebugStringA_iat
+{
 
+	meta:
+		Author = "http://twitter.com/j0sm1"
+		Description = "Detect in IAT OutputDebugstringA"
+		Date = "20/04/2015"
+
+	condition:
+		pe.imports("kernel32.dll","OutputDebugStringA")
+}
+
+rule Check_unhandledExceptionFiler_iat {
+
+	meta:
+		Author = "http://twitter.com/j0sm1"
+		Description = "it's checked if UnhandledExceptionFilter is imported" 
+		Date = "20/04/2015"
+		Reference = "http://www.codeproject.com/Articles/30815/An-Anti-Reverse-Engineering-Guide#UnhandledExceptionFilter"
+		
+	condition:
+		pe.imports("kernel32.dll","UnhandledExceptionFilter")	
+}
+
+rule check_RaiseException_iat {
+
+	meta:
+		Author = "http://twitter.com/j0sm1"
+		Description = "it's checked if RaiseException is imported" 
+		Date = "20/04/2015"
+		Reference = "http://waleedassar.blogspot.com.es/2012/11/ollydbg-raiseexception-bug.html"
+		
+	condition:
+		pe.imports("kernel32.dll","RaiseException")	
+}
+
+rule Check_FindWindowA_iat {
+
+	meta:
+		Author = "http://twitter.com/j0sm1"
+		Description = "it's checked if FindWindowA() is imported" 
+		Date = "20/04/2015"
+		Reference = "http://www.codeproject.com/Articles/30815/An-Anti-Reverse-Engineering-Guide#OllyFindWindow"
+		
+	strings:
+		$ollydbg = "OLLYDBG"
+		$windbg = "WinDbgFrameClass"
+		
+	condition:
+		pe.imports("user32.dll","FindWindowA") and ($ollydbg or $windbg)
+}
 
 
