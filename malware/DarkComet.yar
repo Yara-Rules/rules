@@ -1,0 +1,61 @@
+/*
+    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
+
+*/
+
+import "pe"
+
+rule DarkComet_2
+{
+    meta:
+        description = "DarkComet RAT"
+	author = "botherder https://github.com/botherder"
+
+    strings:
+        $bot1 = /(#)BOT#OpenUrl/ wide ascii
+        $bot2 = /(#)BOT#Ping/ wide ascii
+        $bot3 = /(#)BOT#RunPrompt/ wide ascii
+        $bot4 = /(#)BOT#SvrUninstall/ wide ascii
+        $bot5 = /(#)BOT#URLDownload/ wide ascii
+        $bot6 = /(#)BOT#URLUpdate/ wide ascii
+        $bot7 = /(#)BOT#VisitUrl/ wide ascii
+        $bot8 = /(#)BOT#CloseServer/ wide ascii
+
+        $ddos1 = /(D)DOSHTTPFLOOD/ wide ascii
+        $ddos2 = /(D)DOSSYNFLOOD/ wide ascii
+        $ddos3 = /(D)DOSUDPFLOOD/ wide ascii
+
+        $keylogger1 = /(A)ctiveOnlineKeylogger/ wide ascii
+        $keylogger2 = /(U)nActiveOnlineKeylogger/ wide ascii
+        $keylogger3 = /(A)ctiveOfflineKeylogger/ wide ascii
+        $keylogger4 = /(U)nActiveOfflineKeylogger/ wide ascii
+
+        $shell1 = /(A)CTIVEREMOTESHELL/ wide ascii
+        $shell2 = /(S)UBMREMOTESHELL/ wide ascii
+        $shell3 = /(K)ILLREMOTESHELL/ wide ascii
+
+    condition:
+        4 of ($bot*) or all of ($ddos*) or all of ($keylogger*) or all of ($shell*)
+}
+
+rule DarkComet : rat
+{
+	meta:
+		description = "DarkComet" 
+		author = "Jean-Philippe Teissier / @Jipe_"
+		date = "2013-01-12"
+		filetype = "memory"
+		version = "1.0" 
+
+	strings:
+		$a = "#BEGIN DARKCOMET DATA --"
+		$b = "#EOF DARKCOMET DATA --"
+		$c = "DC_MUTEX-"
+		$k1 = "#KCMDDC5#-890"
+		$k2 = "#KCMDDC51#-890"
+
+	condition:
+		any of them
+}
+
+
