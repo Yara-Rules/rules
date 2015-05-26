@@ -20165,3 +20165,33 @@ rule yoda_crypter_1_3 : Crypter
 	condition:
 		$signature1 at pe.entry_point
 }
+rule dotfuscator : packer
+{
+	meta:
+		author = "Jean-Philippe Teissier / @Jipe_"
+		description = "Dotfuscator"
+		date = "2013-02-01"
+		filetype = "memory"
+		version = "1.0" 
+
+	strings:
+		$a = "Obfuscated with Dotfuscator"
+
+	condition:
+		$a
+}
+rule AutoIt : packer
+{
+	meta:
+		author = "Jean-Philippe Teissier / @Jipe_"
+		description = "AutoIT packer"
+		date = "2013-02-01"
+		filetype = "memory"
+		version = "1.0" 
+
+	strings:	
+		$a = "This is a compiled AutoIt script. AV researchers please email avsupport@autoitscript.com for support."
+
+	condition:
+		$a
+}
