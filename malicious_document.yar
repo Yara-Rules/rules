@@ -216,7 +216,7 @@ rule office_document_vba
 		($officemagic at 0 and any of ($97str*)) or ($zipmagic at 0 and any of ($xmlstr*))
 }
 
-ule Office_AutoOpen_Macro {
+rule Office_AutoOpen_Macro {
 	meta:
 		description = "Detects an Microsoft Office file that contains the AutoOpen Macro function"
 		author = "Florian Roth"
