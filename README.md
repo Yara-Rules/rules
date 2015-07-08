@@ -44,6 +44,10 @@ In this section you will find Yara rules specialised on the indentification of w
 
 In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
 
+## Malware Mobile
+
+In this section you will find Yara rules specialised on the indentification of well-known mobile malware.
+
 # Contact 
 
 Webpage: http://yararules.com
