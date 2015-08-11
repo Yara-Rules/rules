@@ -48,6 +48,10 @@ In this section you will find Yara Rules aimed to detect well-known sofware pack
 
 In this section you will find Yara rules specialised on the indentification of well-known mobile malware.
 
+Many rules in this section use Androguard module developed by people at https://koodous.com/. 
+
+You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
+
 # Contact 
 
 Webpage: http://yararules.com
