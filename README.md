@@ -24,33 +24,47 @@ The available packages in Ubuntu 14.04 LTS default repositories are too old.  Yo
 
 # Categories
 
-## Antidebug/AntiVM
-
-In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analyisis.
-
-## Crypto
-
-In this section you will find Yara rules aimed to detect the existence of cryptographic algoritms.
-
-## Malicious Documents
-
-In this section you will find Yara Rules to be used with documents to find if they have been crafted to leverage malicious code.
-
-## Malware 
+## malware 
 
 In this section you will find Yara rules specialised on the indentification of well-known malware.
 
-## Packers
-
-In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
-
-## Malware Mobile
+## mobile
 
 In this section you will find Yara rules specialised on the indentification of well-known mobile malware.
 
 Many rules in this section use Androguard module developed by people at https://koodous.com/. 
 
 You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
+
+## hackingtools
+
+In this section you will find Yara rules specialised on the identification of
+well-known hackingtools like DuBrute, Wineggdrop Portscanner, etc.
+
+## rulesets
+
+the rulesets directory contains the following rulesets:
+
+### Antidebug/AntiVM
+
+In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analyisis.
+
+### Crypto
+
+In this section you will find Yara rules aimed to detect the existence of cryptographic algoritms.
+
+### Malicious Documents
+
+In this section you will find Yara Rules to be used with documents to find if they have been crafted to leverage malicious code.
+
+### Packers
+
+In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
+
+# ToDo
+
+* sorting malware [ELF/Windows/OS X/MIPS/...]
+* adding more categories [Possible unwanted Application (PUA)/..]
 
 # Contact 
 
