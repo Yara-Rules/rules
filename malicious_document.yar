@@ -14,6 +14,8 @@ rule maldoc_API_hashing
         any of them
 }
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule maldoc_function_prolog_signature
 {
     meta:
@@ -27,7 +29,10 @@ rule maldoc_function_prolog_signature
     condition:
         any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule maldoc_structured_exception_handling
 {
     meta:
@@ -38,6 +43,7 @@ rule maldoc_structured_exception_handling
     condition:
         any of them
 }
+*/
 
 rule maldoc_indirect_function_call_1
 {
@@ -131,6 +137,8 @@ rule maldoc_OLE_file_magic_number
         $a
 }
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule maldoc_suspicious_strings
 {
     meta:
@@ -155,6 +163,7 @@ rule maldoc_suspicious_strings
     condition:
         any of them
 }
+*/
 
 rule mwi_document : exploitdoc
 {

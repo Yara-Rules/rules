@@ -1,6 +1,5 @@
 /*
     This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
-
 */
 
 import "pe"
@@ -82,6 +81,8 @@ rule DebuggerHiding__Active : AntiDebug DebuggerHiding {
 		any of them
 }
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerTiming__PerformanceCounter : AntiDebug DebuggerTiming {
 	meta:
 		weight = 1
@@ -92,7 +93,10 @@ rule DebuggerTiming__PerformanceCounter : AntiDebug DebuggerTiming {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerTiming__Ticks : AntiDebug DebuggerTiming {
 	meta:
 		weight = 1
@@ -103,7 +107,10 @@ rule DebuggerTiming__Ticks : AntiDebug DebuggerTiming {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerOutput__String : AntiDebug DebuggerOutput {
 	meta:
 		weight = 1
@@ -114,7 +121,10 @@ rule DebuggerOutput__String : AntiDebug DebuggerOutput {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerException__UnhandledFilter : AntiDebug DebuggerException {
 	meta:
 		weight = 1
@@ -125,6 +135,7 @@ rule DebuggerException__UnhandledFilter : AntiDebug DebuggerException {
 	condition:
 		any of them
 }
+*/
 
 rule DebuggerException__ConsoleCtrl : AntiDebug DebuggerException {
 	meta:
@@ -219,7 +230,8 @@ rule SEH__vectored : AntiDebug SEH {
 		any of them
 }
 
-
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerPattern__RDTSC : AntiDebug DebuggerPattern {
 	meta:
 		weight = 1
@@ -230,7 +242,10 @@ rule DebuggerPattern__RDTSC : AntiDebug DebuggerPattern {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerPattern__CPUID : AntiDebug DebuggerPattern {
 	meta:
 		weight = 1
@@ -241,7 +256,10 @@ rule DebuggerPattern__CPUID : AntiDebug DebuggerPattern {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerPattern__SEH_Saves : AntiDebug DebuggerPattern {
 	meta:
 		weight = 1
@@ -252,7 +270,10 @@ rule DebuggerPattern__SEH_Saves : AntiDebug DebuggerPattern {
 	condition:
 		any of them
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule DebuggerPattern__SEH_Inits : AntiDebug DebuggerPattern {
 	meta:
 		weight = 1
@@ -263,6 +284,7 @@ rule DebuggerPattern__SEH_Inits : AntiDebug DebuggerPattern {
 	condition:
 		any of them
 }
+*/
 
 
 rule Check_Dlls
@@ -546,6 +568,8 @@ rule Check_OutputDebugStringA_iat
 		pe.imports("kernel32.dll","OutputDebugStringA")
 }
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule Check_unhandledExceptionFiler_iat {
 
 	meta:
@@ -557,7 +581,10 @@ rule Check_unhandledExceptionFiler_iat {
 	condition:
 		pe.imports("kernel32.dll","UnhandledExceptionFilter")	
 }
+*/
 
+// 20150909 - Issue #39 - Commented because of High FP rate
+/*
 rule check_RaiseException_iat {
 
 	meta:
@@ -569,6 +596,7 @@ rule check_RaiseException_iat {
 	condition:
 		pe.imports("kernel32.dll","RaiseException")	
 }
+*/
 
 rule Check_FindWindowA_iat {
 
