@@ -1,0 +1,14 @@
+rule Tedroo : Spammer
+{
+	meta:
+		author="Kevin Falcoz"
+		date="22/11/2015"
+		description="Tedroo Spammer"
+
+	strings:
+		$signature1={25 73 25 73 2E 65 78 65}
+		$signature2={5F 6C 6F 67 2E 74 78 74}
+
+	condition:
+		$signature1 and $signature2
+}
