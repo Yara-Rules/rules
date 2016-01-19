@@ -71,19 +71,6 @@ rule java
 		$patternjava
 }
 */
-
-rule NET 
-{
-      meta:
-		author="malware-lu"
-	strings:
-		
-		$patternnet = ".NET" wide ascii
-	condition:
-		$patternnet
-}
-
-
 rule MSLRHv032afakePCGuard4xxemadicius
 {
       meta:
