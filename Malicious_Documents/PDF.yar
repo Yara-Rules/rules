@@ -178,7 +178,7 @@ rule multiple_filtering : PDF
                 
         strings:
                 $magic = { 25 50 44 46 }
-                $attrib = /\/Filter.*?(\/ASCIIHexDecode\W+|\/LZWDecode\W+|\/ASCII85Decode\W+|\/FlateDecode\W+|\/RunLengthDecode){2}/           
+                $attrib = /\/Filter.*?(\/ASCIIHexDecode\W+|\/LZWDecode\W+|\/ASCII85Decode\W+|\/FlateDecode\W+|\/RunLengthDecode){2}/ 
 				// left out: /CCITTFaxDecode, JBIG2Decode, DCTDecode, JPXDecode, Crypt
 
         condition: 
@@ -403,6 +403,7 @@ rule invalid_xref_numbers : PDF
         condition:
                 $magic at 0 and not $reg0 and not $reg1
 }
+
 
 rule js_splitting : PDF
 {
