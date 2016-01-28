@@ -51,6 +51,22 @@ rule suspicious_creation : PDF
 		$magic at 0 and $header and 1 of ($create*)
 }
 
+rule multiple_filtering : PDF 
+{
+meta: 
+author = "Glenn Edwards (@hiddenillusion)"
+version = "0.2"
+weight = 3
+
+    strings:
+            $magic = { 25 50 44 46 }
+            $attrib = /\/Filter.*(\/ASCIIHexDecode\W+|\/LZWDecode\W+|\/ASCII85Decode\W+|\/FlateDecode\W+|\/RunLengthDecode){2}/ 
+            // left out: /CCITTFaxDecode, JBIG2Decode, DCTDecode, JPXDecode, Crypt
+
+    condition: 
+            $magic at 0 and $attrib
+}
+
 rule suspicious_title : PDF
 {
 	meta:
