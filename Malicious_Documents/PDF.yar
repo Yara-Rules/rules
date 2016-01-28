@@ -383,7 +383,7 @@ rule invalid_xref_numbers : PDF
         strings:
                 $magic = { 25 50 44 46 }
                 $reg0 = /xref\r?\n?.*\r?\n?.*65535\sf/
-                $reg1 = /.*?\r?\n?endstream.*?\r?\n?endobj.*?\r?\n?startxref.*?\r?\n?/
+                $reg1 = /endstream.*?\r?\n?endobj.*?\r?\n?startxref/
         condition:
                 $magic at 0 and not $reg0 and not $reg1
 }
