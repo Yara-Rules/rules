@@ -17,7 +17,7 @@ rule email_Ukraine_power_attack_content {
 		$body_string4 = "http://176.53.127.194/bWFpbF9rYW5jQG9lLmlmLnVh.png"
 		$body_string5 = "=C2=B3=E4=EF=EE=E2=B3=E4=ED=EE =E4=EE =D3=EA=E0=E7=F3 =CF=F0=E5=E7=E8=E4=E5="
 	condition:
-		all of them
+		3 of them
 }
 rule email_Ukraine_power_attack_attachment {
 	meta:
