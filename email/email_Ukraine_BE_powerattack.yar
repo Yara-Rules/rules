@@ -5,7 +5,7 @@
 
 rule email_Ukraine_power_attack_content {
 	meta:
-		author = "@yararules"
+		author = "@mmorenog,@yararules"
 		description = "Detects a possible .eml used in the Ukraine BE power attack"
 		ref1 = "https://twitter.com/lowcalspam/status/692625258394726400"
 		
