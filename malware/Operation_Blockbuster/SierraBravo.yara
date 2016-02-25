@@ -1,0 +1,113 @@
+// Brambul related signatures
+
+import "pe"
+
+rule SierraBravo_Two
+{
+	meta:
+		copyright = "2015 Novetta Solutions"
+		author = "Novetta Threat Research & Interdiction Group - trig@novetta.com"
+
+	strings:
+		/*
+		.text:00403D5A                 mov     word ptr [esi+0Eh], 0C807h
+		.text:00403D60                 mov     dword ptr [esi+39h], 800000D4h
+		.text:00403D67                 mov     byte ptr [edi], 0Ch							<---- ignored
+		.text:00403D6A                 mov     word ptr [esi+25h], 0FFh
+		.text:00403D70                 mov     word ptr [esi+27h], 0A4h
+		.text:00403D76                 mov     word ptr [esi+29h], 4104h
+		.text:00403D7C                 mov     word ptr [esi+2Bh], 32h
+		
+		or
+		
+		.text:100036F9                 mov     word ptr [ebx+0Eh], 0C807h
+														---- begin ignored -----
+		.text:100036FF                 rep movsd
+		.text:10003701                 lea     edi, [ebx+60h]
+		.text:10003704                 mov     ecx, 9
+		.text:10003709                 mov     esi, offset aWindows2000219 ; "windows 2000 2195"
+														---- end ignored -----
+		.text:1000370E                 mov     dword ptr [ebx+39h], 800000D4h
+		.text:10003715                 mov     word ptr [ebx+25h], 0FFh
+		.text:1000371B                 mov     word ptr [ebx+27h], 0A4h
+		.text:10003721                 mov     word ptr [ebx+29h], 4104h
+		.text:10003727                 mov     word ptr [ebx+2Bh], 32h
+		*/
+		$smbComNegotiationPacketGen = { 66 C7 ?? 0E 07 C8 
+																		[0-32]
+																		C7 ?? 39 D4 00 00 80 
+																		[0-32]
+																		66 C7 ?? 25 FF 00 
+																		[0-32]
+																		66 C7 ?? 27 A4 00 
+																		[0-32]
+																		66 C7 ?? 29 04 41 
+																		[0-32]
+																		66 C7 ?? 2B 32 00
+																	}
+
+		$lib = "!emCFgv7Xc8ItaVGN0bMf"
+		$api1 = "!ctRHFEX5m9JnZdDfpK"
+		$api2 = "!emCFgv7Xc8ItaVGN0bMf"
+		$api3 = "!VWBeBxYx1nzrCkBLGQO"		
+		$pwd = "iamsorry!@1234567"										
+
+		
+	condition:
+		$smbComNegotiationPacketGen in ((pe.sections[pe.section_index(".text")].raw_data_offset)..(pe.sections[pe.section_index(".text")].raw_data_offset + pe.sections[pe.section_index(".text")].raw_data_size))
+		or ($pwd in ((pe.sections[pe.section_index(".data")].raw_data_offset)..(pe.sections[pe.section_index(".data")].raw_data_offset + pe.sections[pe.section_index(".data")].raw_data_size))
+		 		and 
+		 		($lib in ((pe.sections[pe.section_index(".data")].raw_data_offset)..(pe.sections[pe.section_index(".data")].raw_data_offset + pe.sections[pe.section_index(".data")].raw_data_size))
+				or $api1 in ((pe.sections[pe.section_index(".data")].raw_data_offset)..(pe.sections[pe.section_index(".data")].raw_data_offset + pe.sections[pe.section_index(".data")].raw_data_size))
+				or $api2 in ((pe.sections[pe.section_index(".data")].raw_data_offset)..(pe.sections[pe.section_index(".data")].raw_data_offset + pe.sections[pe.section_index(".data")].raw_data_size))
+				or $api3 in ((pe.sections[pe.section_index(".data")].raw_data_offset)..(pe.sections[pe.section_index(".data")].raw_data_offset + pe.sections[pe.section_index(".data")].raw_data_size))
+		))
+
+}
+
+
+rule SierraBravo_One
+{
+	meta:
+		copyright = "2015 Novetta Solutions"
+		author = "Novetta Threat Research & Interdiction Group - trig@novetta.com"
+
+	strings:
+		/*
+			.text:00402A65                 push    8004667Eh       ; cmd
+			.text:00402A6A                 push    esi             ; s
+			.text:00402A6B                 call    ioctlsocket
+			.text:00402A70                 push    32h             ; dwMilliseconds
+			.text:00402A72                 mov     [esp+24Ch+writefds.fd_array], esi
+			.text:00402A79                 mov     [esp+24Ch+writefds.fd_count], 1
+			.text:00402A84                 mov     [esp+24Ch+timeout.tv_sec], 3
+			.text:00402A8C                 mov     [esp+24Ch+timeout.tv_usec], 0			
+		*/
+		$spreaderSetup = {68 7E 66 04 80 
+											5? 
+											E8 [4] 
+											6A 32 
+											89 B4 [5]
+											C7 84 [5] 01 00 00 00 
+											C7 44 [2] 03 00 00 00 
+											C7 44 [2] 00 00 00 00 }
+
+	condition:
+		$spreaderSetup in ((pe.sections[pe.section_index(".text")].raw_data_offset)..(pe.sections[pe.section_index(".text")].raw_data_offset + pe.sections[pe.section_index(".text")].raw_data_size))
+}
+
+rule SierraBravo_packed
+{
+	meta:
+		copyright = "2015 Novetta Solutions"
+		author = "Novetta Threat Research & Interdiction Group - trig@novetta.com"
+
+	strings:
+		$ = "cmd.exe /c \"net share admin$ /d\""
+		$ = "MAIL FROM:<"
+		$ = ".petite"
+		$ = "Subject: %s|%s|%s"
+	condition:
+		3 of them
+	
+}
