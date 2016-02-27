@@ -10,7 +10,7 @@
   Created in PhishMe's Triage on September 14, 2015 2:33 PM
 */
 
-rule CryptoWall_Resume_phish
+rule CryptoWall_Resume_phish : mail
 {
   meta:
 		Author = "http://phishme.com/"
@@ -41,7 +41,7 @@ rule CryptoWall_Resume_phish
   Created in PhishMe's Triage on September 14, 2015 2:35 PM
 */
 
-rule docx_macro
+rule docx_macro : mail
 {
   strings:
     $header="PK" 
