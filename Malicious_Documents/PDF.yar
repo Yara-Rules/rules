@@ -3,7 +3,7 @@
 
 */
 
-rule malicious_author : PDF
+rule malicious_author : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -20,7 +20,7 @@ rule malicious_author : PDF
 		$magic at 0 and all of ($reg*)
 }
 
-rule suspicious_version : PDF
+rule suspicious_version : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -34,7 +34,7 @@ rule suspicious_version : PDF
 		$magic at 0 and not $ver
 }
 
-rule suspicious_creation : PDF
+rule suspicious_creation : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -51,7 +51,7 @@ rule suspicious_creation : PDF
 		$magic at 0 and $header and 1 of ($create*)
 }
 
-rule multiple_filtering : PDF 
+rule multiple_filtering : PDF raw
 {
 meta: 
 author = "Glenn Edwards (@hiddenillusion)"
@@ -67,7 +67,7 @@ weight = 3
             $magic at 0 and $attrib
 }
 
-rule suspicious_title : PDF
+rule suspicious_title : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -85,7 +85,7 @@ rule suspicious_title : PDF
 		$magic at 0 and $header and 1 of ($title*)
 }
 
-rule suspicious_author : PDF
+rule suspicious_author : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -104,7 +104,7 @@ rule suspicious_author : PDF
 		$magic at 0 and $header and 1 of ($author*)
 }
 
-rule suspicious_producer : PDF
+rule suspicious_producer : PDF raw 
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -121,7 +121,7 @@ rule suspicious_producer : PDF
 		$magic at 0 and $header and 1 of ($producer*)
 }
 
-rule suspicious_creator : PDF
+rule suspicious_creator : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -139,7 +139,7 @@ rule suspicious_creator : PDF
 		$magic at 0 and $header and 1 of ($creator*)
 }
 
-rule possible_exploit : PDF
+rule possible_exploit : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -164,7 +164,7 @@ rule possible_exploit : PDF
 		$magic at 0 and (2 of ($attrib*)) or ($action0 and #shell > 10 and 1 of ($cond*)) or ($action1 and $cond0 and $nop)
 }
 
-rule shellcode_blob_metadata : PDF
+rule shellcode_blob_metadata : PDF raw
 {
         meta:
                 author = "Glenn Edwards (@hiddenillusion)"
@@ -185,7 +185,7 @@ rule shellcode_blob_metadata : PDF
                 $magic at 0 and 1 of ($reg*)
 }
 
-rule suspicious_js : PDF
+rule suspicious_js : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -206,7 +206,7 @@ rule suspicious_js : PDF
 		$magic at 0 and all of ($attrib*) and 2 of ($js*)
 }
 
-rule suspicious_launch_action : PDF
+rule suspicious_launch_action : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -225,7 +225,7 @@ rule suspicious_launch_action : PDF
 		$magic at 0 and 3 of ($attrib*)
 }
 
-rule suspicious_embed : PDF
+rule suspicious_embed : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -246,7 +246,7 @@ rule suspicious_embed : PDF
 		$magic at 0 and 1 of ($meth*) and 2 of ($attrib*)
 }
 
-rule suspicious_obfuscation : PDF
+rule suspicious_obfuscation : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -261,7 +261,7 @@ rule suspicious_obfuscation : PDF
 		$magic at 0 and #reg > 5
 }
 
-rule invalid_XObject_js : PDF
+rule invalid_XObject_js : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -281,7 +281,7 @@ rule invalid_XObject_js : PDF
 		$magic at 0 and not $ver and all of ($attrib*)
 }
 
-rule invalid_trailer_structure : PDF
+rule invalid_trailer_structure : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -298,7 +298,7 @@ rule invalid_trailer_structure : PDF
                 $magic at 0 and not $reg0 and not $reg1
 }
 
-rule multiple_versions : PDF
+rule multiple_versions : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -315,7 +315,7 @@ rule multiple_versions : PDF
                 $magic at 0 and #s0 > 1 and #s1 > 1
 }
 
-rule js_wrong_version : PDF
+rule js_wrong_version : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -333,7 +333,7 @@ rule js_wrong_version : PDF
                 $magic at 0 and $js and not $ver
 }
 
-rule JBIG2_wrong_version : PDF
+rule JBIG2_wrong_version : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -351,7 +351,7 @@ rule JBIG2_wrong_version : PDF
                 $magic at 0 and $js and not $ver
 }
 
-rule FlateDecode_wrong_version : PDF
+rule FlateDecode_wrong_version : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -369,7 +369,7 @@ rule FlateDecode_wrong_version : PDF
                 $magic at 0 and $js and not $ver
 }
 
-rule embed_wrong_version : PDF
+rule embed_wrong_version : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -387,7 +387,7 @@ rule embed_wrong_version : PDF
                 $magic at 0 and $embed and not $ver
 }
 
-rule invalid_xref_numbers : PDF
+rule invalid_xref_numbers : PDF raw
 {
         meta:
 			author = "Glenn Edwards (@hiddenillusion)"
@@ -404,7 +404,7 @@ rule invalid_xref_numbers : PDF
                 $magic at 0 and not $reg0 and not $reg1
 }
 
-rule js_splitting : PDF
+rule js_splitting : PDF raw
 {
         meta:
                 author = "Glenn Edwards (@hiddenillusion)"
@@ -424,7 +424,7 @@ rule js_splitting : PDF
                 $magic at 0 and $js and 1 of ($s*)
 }
 
-rule header_evasion : PDF
+rule header_evasion : PDF raw
 {
         meta:
                 author = "Glenn Edwards (@hiddenillusion)"
@@ -439,7 +439,7 @@ rule header_evasion : PDF
                 $magic in (5..1024) and #magic == 1
 }
 
-rule BlackHole_v2 : PDF
+rule BlackHole_v2 : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
@@ -456,7 +456,7 @@ rule BlackHole_v2 : PDF
 }
 
 
-rule XDP_embedded_PDF : PDF
+rule XDP_embedded_PDF : PDF raw
 {
 	meta:
 		author = "Glenn Edwards (@hiddenillusion)"
