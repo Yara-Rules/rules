@@ -165,7 +165,7 @@ rule maldoc_suspicious_strings : maldoc
 }
 */
 
-rule mwi_document : exploitdoc : maldoc
+rule mwi_document: exploitdoc maldoc
 {
     meta:
         description = "MWI generated document"
