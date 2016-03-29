@@ -3,7 +3,7 @@
     open to any user or organization, as long as you use it under this license.
 */
 
-rule with_urls {
+rule with_urls : mail {
 	meta:
 		author = "Antonio Sanchez <asanchez@hispasec.com>"
 		reference = "http://laboratorio.blogs.hispasec.com/"
@@ -14,7 +14,7 @@ rule with_urls {
 		all of them
 }
 
-rule without_urls {
+rule without_urls : mail {
 	meta:
 		author = "Antonio Sanchez <asanchez@hispasec.com>"
 		reference = "http://laboratorio.blogs.hispasec.com/"
