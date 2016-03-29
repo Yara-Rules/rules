@@ -3,7 +3,7 @@
 
 */
 
-rule BLOWFISH_Constants {
+rule BLOWFISH_Constants: crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for Blowfish constants"
@@ -26,7 +26,7 @@ rule BLOWFISH_Constants {
                 6 of them
 }
 
-rule MD5_Constants {
+rule MD5_Constants : crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for MD5 constants"
@@ -49,7 +49,7 @@ rule MD5_Constants {
                 5 of them
 }
 
-rule RC6_Constants {
+rule RC6_Constants : crypto {
         meta:
                 author = "chort (@chort0)"
                 description = "Look for RC6 magic constants in binary"
@@ -66,7 +66,7 @@ rule RC6_Constants {
                 2 of them
 }
 
-rule RIPEMD160_Constants {
+rule RIPEMD160_Constants : crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for RIPEMD-160 constants"
@@ -86,7 +86,7 @@ rule RIPEMD160_Constants {
 	condition:
 		5 of them
 }
-rule SHA1_Constants {
+rule SHA1_Constants : crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for SHA1 constants"
@@ -107,7 +107,7 @@ rule SHA1_Constants {
                 5 of them
 }
 
-rule SHA512_Constants {
+rule SHA512_Constants : crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for SHA384/SHA512 constants"
@@ -128,7 +128,7 @@ rule SHA512_Constants {
 		5 of them
 }
 
-rule WHIRLPOOL_Constants {
+rule WHIRLPOOL_Constants : crypto {
         meta:
                 author = "phoul (@phoul)"
                 description = "Look for WhirlPool constants"
@@ -143,7 +143,7 @@ rule WHIRLPOOL_Constants {
                 2 of them
 }
 
-rule DarkEYEv3_Cryptor {
+rule DarkEYEv3_Cryptor : crypto {
 	meta:
 		description = "Rule to detect DarkEYEv3 encrypted executables (often malware)"
 		author = "Florian Roth"
