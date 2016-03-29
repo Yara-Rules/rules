@@ -3,7 +3,7 @@
     long as you use it under this license.
 */
 
-rule email_Ukraine_power_attack_content {
+rule email_Ukraine_power_attack_content : mail {
 	meta:
 		author = "@mmorenog,@yararules"
 		description = "Detects a possible .eml used in the Ukraine BE power attack"
@@ -19,7 +19,7 @@ rule email_Ukraine_power_attack_content {
 	condition:
 		3 of them
 }
-rule email_Ukraine_power_attack_attachment {
+rule email_Ukraine_power_attack_attachment : mail {
 	meta:
 		author = " @yararules"
 		description = "Detects a possible .eml used in the Ukraine BE power attack"
