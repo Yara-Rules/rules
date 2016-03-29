@@ -3,7 +3,7 @@
     long as you use it under this license.
 */
 
-rule content {
+rule content : mail {
 	meta:
 		author = "A.Sanchez <asanchez@koodous.com>"
 		description = "Detects scam emails with phishing attachment."
@@ -17,7 +17,7 @@ rule content {
 		all of them
 }
 
-rule attachment {
+rule attachment : mail {
 	meta:
 		author = "A.Sanchez <asanchez@koodous.com>"
 		description = "Detects scam emails with phishing attachment."
