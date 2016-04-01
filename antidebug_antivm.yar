@@ -907,7 +907,8 @@ rule inject_thread {
     condition:
         $c1 and $c2 and ( $c3 or $c4 ) and ( $c5 or $c6 or $c7 )
 }
-
+// Issue #101 - Commented because of High FP rate
+/*
 rule create_process {
     meta:
         author = "x0r"
@@ -923,7 +924,10 @@ rule create_process {
     condition:
         ($f1 and $c1 ) or $f2 and ($c2 or $c3 or $c4)
 }
+*/
 
+// Issue #101 - Commented because of High FP rate
+/*
 rule persistence {
     meta:
         author = "x0r"
@@ -950,6 +954,7 @@ rule persistence {
     condition:
         any of them
 }
+*/
 
 rule hijack_network {
     meta:
