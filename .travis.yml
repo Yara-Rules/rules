@@ -1,0 +1,35 @@
+language: c
+sudo: required
+#dist: trusty
+before_install:
+# Yara
+  - wget https://github.com/plusvic/yara/archive/v3.4.0.tar.gz -O yara.tar.gz
+  - tar -xzvf yara.tar.gz
+# Androguard for Yara
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/androguard.c -O yara-3.4.0/libyara/modules/androguard.c
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.4.0/libyara/modules/module_list -O yara-3.4.0/libyara/modules/module_list
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.4.0/libyara/Makefile.am -O yara-3.4.0/libyara/Makefile.am
+# libjansson
+  - wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
+  - tar -xzvf jansson-2.7.tar.gz
+  - cd jansson-2.7
+  - ./configure
+  - make
+  - sudo make install
+  
+# Compile Yara
+  - cd ../yara-3.4.0
+  - ./bootstrap.sh
+  - ./configure --enable-cuckoo
+  - make
+  - sudo make install
+  - sudo ldconfig
+  - cd ../
+
+
+script:
+  - echo "test" > testfile
+  - echo "{}" > androguard_report.json
+  - FALLO=0
+  - for i in $(find . -type f -name "*.yara" ; find . -type f -name "*.yar"); do echo $i; yara -x androguard=androguard_report.json $i testfile; if [[ $? -ne 0 ]]; then FALLO=1; fi; done
+  - exit $FALLO
