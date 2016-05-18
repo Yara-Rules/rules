@@ -26,7 +26,6 @@ before_install:
   - sudo ldconfig
   - cd ../
 
-
 script:
   - echo "test" > testfile
   - echo "{}" > androguard_report.json
