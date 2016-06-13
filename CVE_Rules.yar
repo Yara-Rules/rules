@@ -6,7 +6,7 @@ rule HelpSupportCenter
       impact = 5 
       author = "@d3t0n4t0r"
    strings:
-      $cve20101885 = /hcp:\/\/.*?(%u?[A-F]{1,4}.*?){90}/
+      $cve20101885 = /hcp:\/\/.*?\(%u?[A-F]{1,4}.*?\){90}/
    condition:
        all of them
 }
