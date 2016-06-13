@@ -1,28 +1,3 @@
-rule HelpSupportCenter
-{
-   meta:  
-      ref = "CVE-2010-1885"
-      hide = true
-      impact = 5 
-      author = "@d3t0n4t0r"
-   strings:
-      $cve20101885 = /hcp:\/\/.*?\(%u?[A-F]{1,4}.*?\){90}/
-   condition:
-       all of them
-}
-rule SafariWindowParentClose
-{
-   meta:
-      ref = "Safari window.parent.close()"
-      impact = 7
-      author = "@d3t0n4t0r"
-   strings:
-      $SafariWindowParentClose_1 = /.*?.prompt\(alert\)/
-      $SafariWindowParentClose_2 = /.*?.prompt\(.*?\)/
-      $SafariWindowParentClose_3 = /.*?.close\(\)/
-   condition:
-      all of them
-}
 rule JavaDeploymentToolkit
 {
    meta:
