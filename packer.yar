@@ -20109,7 +20109,7 @@ rule rpx_1_xx : Packer
 	
 	strings:
 		$signature1= "RPX 1."
-		$signature2= "Copyright ©  20"
+		$signature2= "Copyright 20"
 		
 	condition:
 		$signature1 and $signature2
@@ -20191,7 +20191,7 @@ rule mumblehard_packer
 {
     meta:
         description = "Mumblehard i386 assembly code responsible for decrypting Perl code"
-        author = "Marc-Etienne M.Léveillé"
+        author = "Marc-Etienne M.Leveille"
         date = "2015-04-07"
         reference = "http://www.welivesecurity.com"
         version = "1"
