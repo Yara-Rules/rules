@@ -1,0 +1,21 @@
+rule CVE_2013_0422
+{
+        meta:
+                description = "Java Applet JMX Remote Code Execution"
+                cve = "CVE-2013-0422"
+                ref = "http://pastebin.com/JVedyrCe"
+                author = "adnan.shukor@gmail.com"
+                date = "12-Jan-2013"
+                version = "1"
+                impact = 4
+                hide = false
+        strings:
+                $0422_1 = "com/sun/jmx/mbeanserver/JmxMBeanServer" fullword
+                $0422_2 = "com/sun/jmx/mbeanserver/JmxMBeanServerBuilder" fullword
+                $0422_3 = "com/sun/jmx/mbeanserver/MBeanInstantiator" fullword
+                $0422_4 = "findClass" fullword
+                $0422_5 = "publicLookup" fullword
+                $class = /sun\.org\.mozilla\.javascript\.internal\.(Context|GeneratedClassLoader)/ fullword 
+        condition:
+                (all of ($0422_*)) or (all of them)
+}
