@@ -275,20 +275,19 @@ rule Embedded_EXE_Cloaking : maldoc {
 // This rule have beed improved by Javier Rascon
 rule RTF_Shellcode : maldoc
 {
-meta:
+    meta:
 
-                author = "RSA-IR – Jared Greenhill"
-                date = "01/21/13"
-                description = "identifies RTF's with potential shellcode"
-                filetype = "RTF"
+        author = "RSA-IR – Jared Greenhill"
+        date = "01/21/13"
+        description = "identifies RTF's with potential shellcode"
+            filetype = "RTF"
 
+    strings:
+        $rtfmagic={7B 5C 72 74 66}
+        /* $scregex=/[39 30]{2,20}/ */
+        $scregex=/(90){2,20}/
 
+    condition:
 
-strings:
-                $rtfmagic={7B 5C 72 74 66}
-                /* $scregex=/[39 30]{2,20}/ */
-                $scregex=/(39 30){2,20}/
-condition:
-
-                ($rtfmagic at 0) and ($scregex)
+        ($rtfmagic at 0) and ($scregex)
 }
