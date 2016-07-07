@@ -272,6 +272,7 @@ rule Embedded_EXE_Cloaking : maldoc {
         for any i in (1..#mz): ( @a1 < ( @mz[i] + 200 ) or @a2 < ( @mz[i] + 200 ) )
 }
 
+// This rule have beed improved by Javier Rascon
 rule RTF_Shellcode : maldoc
 {
 meta:
@@ -285,7 +286,8 @@ meta:
 
 strings:
                 $rtfmagic={7B 5C 72 74 66}
-                $scregex=/[39 30]{2,20}/
+                /* $scregex=/[39 30]{2,20}/ */
+                $scregex=/(39 30){2,20}/
 condition:
 
                 ($rtfmagic at 0) and ($scregex)
