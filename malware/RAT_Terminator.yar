@@ -6,7 +6,7 @@
 import "pe"
 
 
-rule TerminatorRat : rat 
+rule TerminatorRat : RAT 
 {
 	meta:
 		description = "Terminator RAT" 
@@ -26,7 +26,7 @@ rule TerminatorRat : rat
 
 
 
-rule TROJAN_Notepad_shell_crew {
+rule TROJAN_Notepad_shell_crew : Trojan {
         meta:
                 author = "RSA_IR"
                 Date     = "4Jun13"
