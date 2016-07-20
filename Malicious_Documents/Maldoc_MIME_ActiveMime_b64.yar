@@ -3,7 +3,7 @@
 
 */
 
-rule MIME_MSO_ActiveMime_base64
+rule MIME_MSO_ActiveMime_base64 : maldoc
 {
 	meta:
 		author = "Martin Willing (https://evild3ad.com)"
