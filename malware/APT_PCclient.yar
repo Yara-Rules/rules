@@ -5,7 +5,7 @@
 
 import "pe"
 
-rule backdoor_apt_pcclient
+rule backdoor_apt_pcclient : Backdoor Dropper
 {
 meta:
 	author = "@patrickrolsen"
