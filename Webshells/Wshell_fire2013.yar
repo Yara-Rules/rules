@@ -12,7 +12,7 @@
     info on "h4x4rwow@yahoo.com" as written in the "system32()"
     function.
 */
-rule fire2013
+rule fire2013 : webshell
 {
     meta:
         author      = "Vlad https://github.com/vlad-s"
