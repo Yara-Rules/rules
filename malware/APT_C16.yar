@@ -4,7 +4,7 @@
 
 import "pe"
 
-rule apt_c16_win_memory_pcclient 
+rule apt_c16_win_memory_pcclient : Memory APT 
 {
   meta:
     author = "@dragonthreatlab"
@@ -21,7 +21,7 @@ rule apt_c16_win_memory_pcclient
     all of them
 }
 
-rule apt_c16_win_disk_pcclient 
+rule apt_c16_win_disk_pcclient : Disk
 {
   meta:
     author = "@dragonthreatlab"
@@ -35,7 +35,7 @@ rule apt_c16_win_disk_pcclient
     $header at 0
 }
 
-rule apt_c16_win32_dropper 
+rule apt_c16_win32_dropper : Dropper
 {
   meta:
     author = "@dragonthreatlab"
@@ -54,7 +54,7 @@ rule apt_c16_win32_dropper
     $mz at 0 and all of ($str*)
 }
 
-rule apt_c16_win_swisyn 
+rule apt_c16_win_swisyn : Memory
 {
   meta:
     author = "@dragonthreatlab"
@@ -87,7 +87,7 @@ rule apt_c16_win_wateringhole
     any of ($str*)
 }
 
-rule apt_c16_win64_dropper
+rule apt_c16_win64_dropper : Dropper
 {
     meta:
         author      = "@dragonthreatlab"
