@@ -2,7 +2,7 @@
     This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
 */
-rule sakula_v1_0
+rule sakula_v1_0: RAT
 {
     meta:
         description = "Sakula v1.0"
@@ -21,7 +21,7 @@ rule sakula_v1_0
         $MZ at 0 and all of ($m*) and not $v1_1
 }
 
-rule sakula_v1_1
+rule sakula_v1_1: RAT
 {
     meta:
         description = "Sakula v1.1"
@@ -40,7 +40,7 @@ rule sakula_v1_1
         $MZ at 0 and all of them
 }
 
-rule sakula_v1_2
+rule sakula_v1_2: RAT
 {
     meta:
         description = "Sakula v1.2"
@@ -58,7 +58,7 @@ rule sakula_v1_2
         $MZ at 0 and $m1 and $m2 and $m3 and $v1_2 and not $v1_1
 }
 
-rule sakula_v1_3
+rule sakula_v1_3: RAT
 {
     meta:
         description = "Sakula v1.3"
@@ -76,7 +76,7 @@ rule sakula_v1_3
         $MZ at 0 and all of them
 }
 
-rule sakula_v1_4
+rule sakula_v1_4: RAT
 {
     meta:
         description = "Sakula v1.4"
