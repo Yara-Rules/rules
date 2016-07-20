@@ -5,7 +5,7 @@
     (echoers), file(s) which use file_get_contents()
     to get and echo the HTML (chinese blog/shop/???).
 */
-rule chinese_spam_spreader
+rule chinese_spam_spreader : webshell
 {
     meta:
         author      = "Vlad https://github.com/vlad-s"
@@ -19,7 +19,7 @@ rule chinese_spam_spreader
         all of them
 }
 
-rule chinese_spam_echoer
+rule chinese_spam_echoer : webshell
 {
     meta:
         author      = "Vlad https://github.com/vlad-s"
