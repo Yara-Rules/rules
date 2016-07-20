@@ -19,7 +19,7 @@
 
 */
 
-rule Weevely_Webshell {
+rule Weevely_Webshell : webshell {
 	meta:
 		description = "Weevely Webshell - Generic Rule - heavily scrambled tiny web shell"
 		author = "Florian Roth"
@@ -36,7 +36,7 @@ rule Weevely_Webshell {
 		$php at 0 and all of ($s*) and filesize > 570 and filesize < 800
 }
 
-rule webshell_h4ntu_shell_powered_by_tsoi_ {
+rule webshell_h4ntu_shell_powered_by_tsoi_  : webshell {
 	meta:
 		description = "Web Shell - file h4ntu shell [powered by tsoi].php"
 		author = "Florian Roth"
@@ -51,7 +51,7 @@ rule webshell_h4ntu_shell_powered_by_tsoi_ {
 	condition:
 		all of them
 }
-rule webshell_PHP_sql {
+rule webshell_PHP_sql  : webshell {
 	meta:
 		description = "Web Shell - file sql.php"
 		author = "Florian Roth"
@@ -64,7 +64,7 @@ rule webshell_PHP_sql {
 	condition:
 		all of them
 }
-rule webshell_PHP_a {
+rule webshell_PHP_a : webshell {
 	meta:
 		description = "Web Shell - file a.php"
 		author = "Florian Roth"
@@ -78,7 +78,7 @@ rule webshell_PHP_a {
 	condition:
 		2 of them
 }
-rule webshell_iMHaPFtp_2 {
+rule webshell_iMHaPFtp_2  : webshell{
 	meta:
 		description = "Web Shell - file iMHaPFtp.php"
 		author = "Florian Roth"
@@ -91,7 +91,7 @@ rule webshell_iMHaPFtp_2 {
 	condition:
 		1 of them
 }
-rule webshell_Jspspyweb {
+rule webshell_Jspspyweb  : webshell{
 	meta:
 		description = "Web Shell - file Jspspyweb.jsp"
 		author = "Florian Roth"
@@ -104,7 +104,7 @@ rule webshell_Jspspyweb {
 	condition:
 		all of them
 }
-rule webshell_Safe_Mode_Bypass_PHP_4_4_2_and_PHP_5_1_2 {
+rule webshell_Safe_Mode_Bypass_PHP_4_4_2_and_PHP_5_1_2  : webshell{
 	meta:
 		description = "Web Shell - file Safe_Mode Bypass PHP 4.4.2 and PHP 5.1.2.php"
 		author = "Florian Roth"
@@ -117,7 +117,7 @@ rule webshell_Safe_Mode_Bypass_PHP_4_4_2_and_PHP_5_1_2 {
 	condition:
 		1 of them
 }
-rule webshell_SimAttacker_Vrsion_1_0_0_priv8_4_My_friend {
+rule webshell_SimAttacker_Vrsion_1_0_0_priv8_4_My_friend  : webshell{
 	meta:
 		description = "Web Shell - file SimAttacker - Vrsion 1.0.0 - priv8 4 My friend.php"
 		author = "Florian Roth"
@@ -130,7 +130,7 @@ rule webshell_SimAttacker_Vrsion_1_0_0_priv8_4_My_friend {
 	condition:
 		1 of them
 }
-rule webshell_phpshell_2_1_pwhash {
+rule webshell_phpshell_2_1_pwhash  : webshell{
 	meta:
 		description = "Web Shell - file pwhash.php"
 		author = "Florian Roth"
@@ -143,7 +143,7 @@ rule webshell_phpshell_2_1_pwhash {
 	condition:
 		1 of them
 }
-rule webshell_PHPRemoteView {
+rule webshell_PHPRemoteView  : webshell{
 	meta:
 		description = "Web Shell - file PHPRemoteView.php"
 		author = "Florian Roth"
@@ -156,7 +156,7 @@ rule webshell_PHPRemoteView {
 	condition:
 		1 of them
 }
-rule webshell_jsp_12302 {
+rule webshell_jsp_12302  : webshell{
 	meta:
 		description = "Web Shell - file 12302.jsp"
 		author = "Florian Roth"
@@ -170,7 +170,7 @@ rule webshell_jsp_12302 {
 	condition:
 		all of them
 }
-rule webshell_caidao_shell_guo {
+rule webshell_caidao_shell_guo  : webshell{
 	meta:
 		description = "Web Shell - file guo.php"
 		author = "Florian Roth"
@@ -183,7 +183,7 @@ rule webshell_caidao_shell_guo {
 	condition:
 		1 of them
 }
-rule webshell_PHP_redcod {
+rule webshell_PHP_redcod  : webshell{
 	meta:
 		description = "Web Shell - file redcod.php"
 		author = "Florian Roth"
@@ -196,7 +196,7 @@ rule webshell_PHP_redcod {
 	condition:
 		all of them
 }
-rule webshell_remview_fix {
+rule webshell_remview_fix  : webshell{
 	meta:
 		description = "Web Shell - file remview_fix.php"
 		author = "Florian Roth"
@@ -209,7 +209,7 @@ rule webshell_remview_fix {
 	condition:
 		1 of them
 }
-rule webshell_asp_cmd {
+rule webshell_asp_cmd : webshell {
 	meta:
 		description = "Web Shell - file cmd.asp"
 		author = "Florian Roth"
@@ -223,7 +223,7 @@ rule webshell_asp_cmd {
 	condition:
 		1 of them
 }
-rule webshell_php_sh_server {
+rule webshell_php_sh_server : webshell {
 	meta:
 		description = "Web Shell - file server.php"
 		author = "Florian Roth"
@@ -235,7 +235,7 @@ rule webshell_php_sh_server {
 	condition:
 		all of them
 }
-rule webshell_PH_Vayv_PH_Vayv {
+rule webshell_PH_Vayv_PH_Vayv : webshell {
 	meta:
 		description = "Web Shell - file PH Vayv.php"
 		author = "Florian Roth"
@@ -248,7 +248,7 @@ rule webshell_PH_Vayv_PH_Vayv {
 	condition:
 		1 of them
 }
-rule webshell_caidao_shell_ice {
+rule webshell_caidao_shell_ice  : webshell{
 	meta:
 		description = "Web Shell - file ice.asp"
 		author = "Florian Roth"
@@ -260,7 +260,7 @@ rule webshell_caidao_shell_ice {
 	condition:
 		all of them
 }
-rule webshell_cihshell_fix {
+rule webshell_cihshell_fix : webshell {
 	meta:
 		description = "Web Shell - file cihshell_fix.php"
 		author = "Florian Roth"
@@ -273,7 +273,7 @@ rule webshell_cihshell_fix {
 	condition:
 		1 of them
 }
-rule webshell_asp_shell {
+rule webshell_asp_shell : webshell {
 	meta:
 		description = "Web Shell - file shell.asp"
 		author = "Florian Roth"
@@ -286,7 +286,7 @@ rule webshell_asp_shell {
 	condition:
 		all of them
 }
-rule webshell_Private_i3lue {
+rule webshell_Private_i3lue  : webshell{
 	meta:
 		description = "Web Shell - file Private-i3lue.php"
 		author = "Florian Roth"
@@ -298,7 +298,7 @@ rule webshell_Private_i3lue {
 	condition:
 		all of them
 }
-rule webshell_php_up {
+rule webshell_php_up : webshell {
 	meta:
 		description = "Web Shell - file up.php"
 		author = "Florian Roth"
