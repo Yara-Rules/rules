@@ -15,7 +15,7 @@
     2016/03/21: start
 */
 
-rule Contains_VBE_File
+rule Contains_VBE_File : maldoc
 {
     meta:
         author = "Didier Stevens (https://DidierStevens.com)"
