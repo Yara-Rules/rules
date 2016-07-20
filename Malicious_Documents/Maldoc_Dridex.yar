@@ -5,7 +5,7 @@
 
 import "pe"
 
-rule Dridex_Trojan_XML {
+rule Dridex_Trojan_XML : maldoc {
 	meta:
 		description = "Dridex Malware in XML Document"
 		author = "Florian Roth @4nc4p"
