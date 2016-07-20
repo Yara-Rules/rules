@@ -1,0 +1,17 @@
+/*
+    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as
+    long as you use it under this license.
+*/
+rule glassrat: RAT
+{
+   meta:
+        author = "Brian Wallace @botnet_hunter"
+   strings:
+    	$a = "PostQuitMessage"
+        $b = "pwlfnn10,gzg"
+        $c = "update.dll"
+        $d = "_winver"
+   condition:
+    	all of them
+
+}

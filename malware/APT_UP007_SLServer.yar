@@ -30,7 +30,7 @@ rule dubseven_file_set
         3 of ($file*)
 }
 
-rule dubseven_dropper_registry_checks
+rule dubseven_dropper_registry_checks : Dropper
 {
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
@@ -55,7 +55,7 @@ rule dubseven_dropper_registry_checks
         all of ($reg*)
 }
 
-rule dubseven_dropper_dialog_remains
+rule dubseven_dropper_dialog_remains : Dropper
 {
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
@@ -76,7 +76,7 @@ rule dubseven_dropper_dialog_remains
 }
         
 
-rule maindll_mutex
+rule maindll_mutex : Mutex
 {
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
@@ -117,7 +117,7 @@ rule SLServer_dialog_remains
         $slserver
 }
 
-rule SLServer_mutex
+rule SLServer_mutex : Mutex
 {
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
@@ -137,7 +137,7 @@ rule SLServer_mutex
         $mutex
 }
 
-rule SLServer_command_and_control
+rule SLServer_command_and_control : C2
 {
     meta:
         author = "Matt Brooks, @cmatthewbrooks"

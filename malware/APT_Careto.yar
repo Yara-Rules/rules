@@ -4,7 +4,7 @@
 
 import "pe"
 
-rule Careto_SGH {
+rule Careto_SGH : APT Careto  {
 	meta:
 		author = "AlienVault (Alberto Ortega)"
 		description = "TheMask / Careto SGH component signature"
@@ -19,7 +19,7 @@ rule Careto_SGH {
 		2 of them
 }
 
-rule Careto_OSX_SBD {
+rule Careto_OSX_SBD : APT Careto {
 	meta:
 		author = "AlienVault (Alberto Ortega)"
 		description = "TheMask / Careto OSX component signature"
@@ -32,7 +32,7 @@ rule Careto_OSX_SBD {
 		all of them
 }
 
-rule Careto_CnC {
+rule Careto_CnC : APT Careto {
 	meta:
 		author = "AlienVault (Alberto Ortega)"
 		description = "TheMask / Careto CnC communication signature"
@@ -47,7 +47,7 @@ rule Careto_CnC {
 		all of them
 }
 
-rule Careto_CnC_domains {
+rule Careto_CnC_domains : APT Careto {
 	meta:
 		author = "AlienVault (Alberto Ortega)"
 		description = "TheMask / Careto known command and control domains"

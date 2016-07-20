@@ -3,7 +3,7 @@
 
 */
 
-rule Contains_hidden_PE_File_inside_a_sequence_of_numbers
+rule Contains_hidden_PE_File_inside_a_sequence_of_numbers : maldoc
 {
 	meta:
 		author = "Martin Willing (https://evild3ad.com)"
