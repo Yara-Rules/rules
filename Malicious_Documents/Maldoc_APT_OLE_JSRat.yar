@@ -3,7 +3,7 @@
 
 */
 
-rule APT_OLE_JSRat
+rule APT_OLE_JSRat : maldoc APT
 {
 meta:
 	author = "Rahul Mohandas"
