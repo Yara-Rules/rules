@@ -2,7 +2,7 @@
     This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
 */
-rule asp_file {
+rule asp_file : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file file.asp"
 		author = "Florian Roth"
@@ -20,7 +20,7 @@ rule asp_file {
 		uint16(0) == 0x253c and filesize < 30KB and 5 of them
 }
 
-rule php_killnc {
+rule php_killnc : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file killnc.php"
 		author = "Florian Roth"
@@ -37,7 +37,7 @@ rule php_killnc {
 		filesize < 15KB and 4 of them
 }
 
-rule asp_shell {
+rule asp_shell : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file shell.asp"
 		author = "Florian Roth"
@@ -56,7 +56,7 @@ rule asp_shell {
 		filesize < 15KB and 4 of them
 }
 
-rule settings {
+rule settings : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file settings.php"
 		author = "Florian Roth"
@@ -71,7 +71,7 @@ rule settings {
 		filesize < 13KB and all of them
 }
 
-rule asp_proxy {
+rule asp_proxy : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file proxy.asp"
 		author = "Florian Roth"
@@ -89,7 +89,7 @@ rule asp_proxy {
 		filesize < 50KB and all of them
 }
 
-rule cfm_shell {
+rule cfm_shell : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file shell.cfm"
 		author = "Florian Roth"
@@ -104,7 +104,7 @@ rule cfm_shell {
 		filesize < 20KB and 2 of them
 }
 
-rule aspx_shell {
+rule aspx_shell  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file shell.aspx"
 		author = "Florian Roth"
@@ -120,7 +120,7 @@ rule aspx_shell {
 		filesize < 20KB and all of them
 }
 
-rule php_shell {
+rule php_shell  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file shell.php"
 		author = "Florian Roth"
@@ -136,7 +136,7 @@ rule php_shell {
 		filesize < 40KB and all of them
 }
 
-rule php_reverse_shell {
+rule php_reverse_shell : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file php-reverse-shell.php"
 		author = "Florian Roth"
@@ -151,7 +151,7 @@ rule php_reverse_shell {
 		filesize < 15KB and all of them
 }
 
-rule php_dns {
+rule php_dns  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file dns.php"
 		author = "Florian Roth"
@@ -167,7 +167,7 @@ rule php_dns {
 		filesize < 15KB and all of them
 }
 
-rule WEB_INF_web {
+rule WEB_INF_web  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file web.xml"
 		author = "Florian Roth"
@@ -181,7 +181,7 @@ rule WEB_INF_web {
 		filesize < 1KB and all of them
 }
 
-rule jsp_cmd {
+rule jsp_cmd : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file cmd.war"
 		author = "Florian Roth"
@@ -198,7 +198,7 @@ rule jsp_cmd {
 		uint16(0) == 0x4b50 and filesize < 2KB and all of them
 }
 
-rule laudanum {
+rule laudanum : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file laudanum.php"
 		author = "Florian Roth"
@@ -212,7 +212,7 @@ rule laudanum {
 		filesize < 5KB and all of them
 }
 
-rule php_file {
+rule php_file  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file file.php"
 		author = "Florian Roth"
@@ -228,7 +228,7 @@ rule php_file {
 		filesize < 10KB and all of them
 }
 
-rule warfiles_cmd {
+rule warfiles_cmd : webshell {
 	meta:
 		description = "Laudanum Injector Tools - file cmd.jsp"
 		author = "Florian Roth"
@@ -244,7 +244,7 @@ rule warfiles_cmd {
 		filesize < 2KB and all of them
 }
 
-rule asp_dns {
+rule asp_dns  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file dns.asp"
 		author = "Florian Roth"
@@ -260,7 +260,7 @@ rule asp_dns {
 		filesize < 21KB and all of them
 }
 
-rule php_reverse_shell_2 {
+rule php_reverse_shell_2  : webshell{
 	meta:
 		description = "Laudanum Injector Tools - file php-reverse-shell.php"
 		author = "Florian Roth"
@@ -274,7 +274,7 @@ rule php_reverse_shell_2 {
 		filesize < 10KB and all of them
 }
 
-rule Laudanum_Tools_Generic {
+rule Laudanum_Tools_Generic  : webshell Toolkit{
 	meta:
 		description = "Laudanum Injector Tools"
 		author = "Florian Roth"
