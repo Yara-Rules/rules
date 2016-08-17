@@ -30,5 +30,6 @@ script:
   - echo "test" > testfile
   - echo "{}" > androguard_report.json
   - FALLO=0
-  - for i in $(find . -type f -name "*.yara" ; find . -type f -name "*.yar"); do echo $i; yara -x androguard=androguard_report.json $i testfile; if [[ $? -ne 0 ]]; then FALLO=1; fi; done
+#  - for i in $(find . -type f -name "*.yara" ; find . -type f -name "*.yar"); do echo $i; yara -x androguard=androguard_report.json $i testfile; if [[ $? -ne 0 ]]; then FALLO=1; fi; done
+  - for j in $(ls -d */); do for i in $(find $j -type f -name "*.yara" ; find $j -type f -name "*.yar"); do echo $i; yara -x androguard=androguard_report.json $i testfile; if [[ $? -ne 0 ]]; then FALLO=1; fi; done; done
   - exit $FALLO
