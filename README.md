@@ -30,9 +30,18 @@ The available packages in Ubuntu 14.04 LTS default repositories are too old.  Yo
 
 In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analyisis.
 
+## Antidebug/AntiVM
+
+In this section you will find Yara Rules specialised on the identification of specifics CVE
+
 ## Crypto
 
 In this section you will find Yara rules aimed to detect the existence of cryptographic algoritms.
+
+## Exploit Kits
+
+In this section you will find Yara rules aimed to detect the existence of Exploit Kits.
+
 
 ## Malicious Documents
 
@@ -40,11 +49,19 @@ In this section you will find Yara Rules to be used with documents to find if th
 
 ## Malware 
 
-In this section you will find Yara rules specialised on the indentification of well-known malware.
+In this section you will find Yara rules specialised on the identification of well-known malware.
 
 ## Packers
 
 In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
+
+## Webshells
+
+In this section you will find Yara rules specialised on the identification of well-known webshells.
+
+## Email
+
+In this section you will find Yara rules specialised on the identification of malicious e-mails.
 
 ## Malware Mobile
 
