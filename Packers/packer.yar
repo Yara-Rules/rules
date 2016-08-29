@@ -10,8 +10,8 @@ rule silent_banker : banker
 {
       meta:
 		author="malware-lu"
-    strings: 
-        $a = {6A 40 68 00 30 00 00 6A 14 8D 91}  
+    strings:
+        $a = {6A 40 68 00 30 00 00 6A 14 8D 91}
         $b = {8D 4D B0 2B C1 83 C0 27 99 6A 4E 59 F7 F9}
         $c = "UVODFRYSIHLNWPEJXQZAKCBGMT"
 
@@ -23,7 +23,7 @@ rule zbot : banker
 {
       meta:
 		author="malware-lu"
-     strings: 
+     strings:
         $a = "__SYSTEM__" wide
         $b = "*tanentry*"
         $c = "*<option"
@@ -38,30 +38,30 @@ rule banbra : banker
 {
       meta:
 		author="malware-lu"
-    strings: 
+    strings:
         $a = "senha" fullword nocase
         $b = "cartao" fullword nocase
-        $c = "caixa" 
+        $c = "caixa"
         $d = "login" fullword nocase
         $e = ".com.br"
 
      condition:
-        #a > 3 and #b > 3 and #c > 3 and #d > 3 and #e > 3              
+        #a > 3 and #b > 3 and #c > 3 and #d > 3 and #e > 3
 }
 
-rule Borland 
+rule Borland
 {
       meta:
 		author="malware-lu"
 	strings:
 		$patternBorland = "Borland" wide ascii
 	condition:
-		$patternBorland 
+		$patternBorland
 }
 
 // 20150909 - Issue #39 - Commented because of High FP rate
 /*
-rule java 
+rule java
 {
       meta:
 		author="malware-lu"
@@ -81,8 +81,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EnigmaProtector1XSukhovVladimirSergeNMarkin
 {
       meta:
@@ -93,8 +93,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SPLayerv008
 {
       meta:
@@ -105,8 +105,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DxPackV086Dxd
 {
       meta:
@@ -117,8 +117,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC60
 {
       meta:
@@ -138,8 +138,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point or $a3 at pe.entry_point or $a4 at pe.entry_point or $a5 at pe.entry_point or $a6 at pe.entry_point or $a7 at pe.entry_point or $a8 at pe.entry_point or $a9 at pe.entry_point
 }
-	
-	
+
+
 rule TPPpackclane
 {
       meta:
@@ -150,8 +150,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC6070
 {
       meta:
@@ -166,8 +166,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point or $a3 at pe.entry_point or $a4 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstall24x25xJititSoftware
 {
       meta:
@@ -178,8 +178,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LocklessIntroPack
 {
       meta:
@@ -190,8 +190,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03faketElock061FEUERRADER
 {
       meta:
@@ -202,8 +202,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeStealth275aWebtoolMaster
 {
       meta:
@@ -214,8 +214,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmor046Hying
 {
       meta:
@@ -227,8 +227,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorv13CGSoftLabs
 {
       meta:
@@ -240,8 +240,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv032BetaDwing
 {
       meta:
@@ -253,8 +253,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule MSLRHV031emadicius
 {
       meta:
@@ -265,8 +265,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv184
 {
       meta:
@@ -277,8 +277,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCGuardforWin32v500SofProBlagojeCeklic
 {
       meta:
@@ -289,8 +289,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WiseInstallerStub
 {
       meta:
@@ -303,8 +303,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2
 }
-	
-	
+
+
 rule AnskyaNTPackerGeneratorAnskya
 {
       meta:
@@ -315,8 +315,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThinstallVirtualizationSuite30493080ThinstallCompany
 {
       meta:
@@ -328,8 +328,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule NsPack14byNorthStarLiuXingPing
 {
       meta:
@@ -340,8 +340,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FSGv110EngbartxtWatcomCCEXE
 {
       meta:
@@ -352,9 +352,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule AcidCrypt
+
+
+rule AcidCrypt: Packer
 {
       meta:
 		author="malware-lu"
@@ -365,8 +365,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorv1451CGSoftLabs
 {
       meta:
@@ -378,8 +378,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoEXEPackerv100LZMABeRoFarbrausch
 {
       meta:
@@ -390,8 +390,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PackanoidArkanoid
 {
       meta:
@@ -402,8 +402,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DAEMONProtectv067
 {
       meta:
@@ -414,8 +414,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EmbedPEV100V124cyclotron
 {
       meta:
@@ -426,8 +426,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VProtectorV10Avcasm
 {
       meta:
@@ -438,8 +438,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPE2200481022005314WFS
 {
       meta:
@@ -450,8 +450,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02JDPack1xJDProtect09Anorganix
 {
       meta:
@@ -462,8 +462,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EmbedPEV1Xcyclotron
 {
       meta:
@@ -474,8 +474,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPEV220070411WFS
 {
       meta:
@@ -486,8 +486,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualBasic60DLLAnorganix
 {
       meta:
@@ -498,8 +498,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPack14Liuxingping
 {
       meta:
@@ -510,8 +510,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxTrivial46
 {
       meta:
@@ -522,8 +522,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule STUDRC410JamieEditionScanTimeUnDetectablebyMarjinZ
 {
       meta:
@@ -534,8 +534,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxSonikYouth
 {
       meta:
@@ -546,8 +546,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01Anorganix
 {
       meta:
@@ -558,8 +558,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXShit006
 {
       meta:
@@ -570,8 +570,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SetupFactoryv6003SetupLauncher
 {
       meta:
@@ -582,8 +582,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CrypKeyV61XDLLCrypKeyCanadaInc
 {
       meta:
@@ -594,8 +594,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcAsmProtectorVcAsm
 {
       meta:
@@ -606,8 +606,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompact2xxSlimLoaderBitSumTechnologies
 {
       meta:
@@ -618,8 +618,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ENIGMAProtectorV11V12SukhovVladimir
 {
       meta:
@@ -630,8 +630,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorv10bAshkbizDanehkar
 {
       meta:
@@ -642,8 +642,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEDiminisherv01
 {
       meta:
@@ -655,8 +655,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule SOFTWrapperforWin9xNTEvaluationVersion
 {
       meta:
@@ -667,8 +667,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov200
 {
       meta:
@@ -679,8 +679,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov201
 {
       meta:
@@ -691,8 +691,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild014021024027GlOFF
 {
       meta:
@@ -703,8 +703,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtector1xRandyLi
 {
       meta:
@@ -715,8 +715,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NSISInstallerNullSoft
 {
       meta:
@@ -727,8 +727,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEXv099
 {
       meta:
@@ -739,8 +739,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule IMPPacker10MahdiHezavehiIMPOSTER
 {
       meta:
@@ -751,8 +751,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PEProtectv09
 {
       meta:
@@ -764,8 +764,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule nbuildv10soft
 {
       meta:
@@ -776,8 +776,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01StelthPE101Anorganix
 {
       meta:
@@ -788,8 +788,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule IProtect10FxSubdllmodebyFuXdas
 {
       meta:
@@ -800,8 +800,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSVisualCv8DLLhsmallsig2
 {
       meta:
@@ -812,8 +812,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSVisualCv8DLLhsmallsig1
 {
       meta:
@@ -824,8 +824,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv16xVaska
 {
       meta:
@@ -836,8 +836,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXv20MarkusLaszloReiser
 {
       meta:
@@ -848,8 +848,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule BladeJoinerv15
 {
       meta:
@@ -860,8 +860,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv133Engdulekxt
 {
       meta:
@@ -873,8 +873,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv13
 {
       meta:
@@ -885,8 +885,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv12
 {
       meta:
@@ -897,8 +897,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv11
 {
       meta:
@@ -909,8 +909,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv10
 {
       meta:
@@ -921,8 +921,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv120EngdulekxtMicrosoftVisualC6070
 {
       meta:
@@ -933,9 +933,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule SuperDAT
+
+
+rule SuperDAT: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -945,8 +945,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv200alpha38
 {
       meta:
@@ -957,8 +957,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule RCryptor16cVaska
 {
       meta:
@@ -969,8 +969,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TheGuardLibrary
 {
       meta:
@@ -981,8 +981,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeCryptor01build001GlOFF
 {
       meta:
@@ -993,8 +993,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02BJFNT12Anorganix
 {
       meta:
@@ -1005,8 +1005,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DingBoysPElockPhantasmv08
 {
       meta:
@@ -1017,8 +1017,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstall2736Jitit
 {
       meta:
@@ -1029,8 +1029,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler11Cp0ke
 {
       meta:
@@ -1041,8 +1041,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule y0dasCrypterv1xModified
 {
       meta:
@@ -1053,8 +1053,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov252b2
 {
       meta:
@@ -1065,8 +1065,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv036betaDwing
 {
       meta:
@@ -1078,8 +1078,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VxNecropolis
 {
       meta:
@@ -1090,8 +1090,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinUpackv039finalrelocatedimagebaseByDwingc2005h2
 {
       meta:
@@ -1102,8 +1102,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv1061bAlexeySolodovnikov
 {
       meta:
@@ -1114,8 +1114,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule aPackv062
 {
       meta:
@@ -1126,8 +1126,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv071
 {
       meta:
@@ -1138,8 +1138,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv070
 {
       meta:
@@ -1150,8 +1150,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Ningishzida10CyberDoom
 {
       meta:
@@ -1162,8 +1162,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectSKE21xdllAlexeySolodovnikov
 {
       meta:
@@ -1174,8 +1174,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PAVCryptorPawningAntiVirusCryptormasha_dev
 {
       meta:
@@ -1186,8 +1186,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ExeShieldCryptor13RCTomCommander
 {
       meta:
@@ -1198,8 +1198,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrinklerV01V02RuneLHStubbeandAskeSimonChristensen
 {
       meta:
@@ -1210,8 +1210,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxGRUNT4Family
 {
       meta:
@@ -1222,8 +1222,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nPackV112002006BetaNEOxuinC
 {
       meta:
@@ -1234,8 +1234,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddie1800
 {
       meta:
@@ -1246,8 +1246,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPEV22006115WFS
 {
       meta:
@@ -1258,8 +1258,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PrincessSandyv10eMiNENCEProcessPatcherPatch
 {
       meta:
@@ -1270,8 +1270,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule aPackv082
 {
       meta:
@@ -1282,8 +1282,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NJoiner01AsmVersionNEX
 {
       meta:
@@ -1294,8 +1294,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsiduim1304ObsiduimSoftware
 {
       meta:
@@ -1306,8 +1306,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02FSG131Anorganix
 {
       meta:
@@ -1318,8 +1318,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01CodeSafe20Anorganix
 {
       meta:
@@ -1330,8 +1330,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01NorthStarPEShrinker13Anorganix
 {
       meta:
@@ -1342,8 +1342,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ocBat2Exe10OC
 {
       meta:
@@ -1354,8 +1354,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASDPack20asd
 {
       meta:
@@ -1368,8 +1368,8 @@ strings:
 condition:
 		$a0 or $a1 or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2021protectedIAT
 {
       meta:
@@ -1380,8 +1380,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ShrinkWrapv14
 {
       meta:
@@ -1392,8 +1392,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnknownbySMT
 {
       meta:
@@ -1404,8 +1404,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01VOBProtectCD5Anorganix
 {
       meta:
@@ -1416,8 +1416,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack10Xbagie
 {
       meta:
@@ -1428,8 +1428,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThemidaWinLicenseV18XV19XOreansTechnologies
 {
       meta:
@@ -1440,8 +1440,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEjoinerAmok
 {
       meta:
@@ -1452,8 +1452,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EmbedPEv124cyclotron
 {
       meta:
@@ -1464,8 +1464,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv04xv05x
 {
       meta:
@@ -1476,8 +1476,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov301v305
 {
       meta:
@@ -1488,8 +1488,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DingBoysPElockv007
 {
       meta:
@@ -1500,8 +1500,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule mPack003DeltaAziz
 {
       meta:
@@ -1512,8 +1512,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SixtoFourv10
 {
       meta:
@@ -1524,8 +1524,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild029GlOFF
 {
       meta:
@@ -1536,8 +1536,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThemidaWinLicenseV1XNoCompressionSecureEngineOreansTechnologies
 {
       meta:
@@ -1548,8 +1548,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule WinUpackv030betaByDwing
 {
       meta:
@@ -1561,8 +1561,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule Armadillov260b2
 {
       meta:
@@ -1573,8 +1573,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov260b1
 {
       meta:
@@ -1585,8 +1585,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeLockerv10IonIce
 {
       meta:
@@ -1597,8 +1597,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV10betaap0x
 {
       meta:
@@ -1609,8 +1609,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC300400450EXEX86CRTDLL
 {
       meta:
@@ -1621,8 +1621,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoEXEPackerv100LZBRRBeRoFarbrausch
 {
       meta:
@@ -1633,8 +1633,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190a
 {
       meta:
@@ -1645,8 +1645,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4Modified
 {
       meta:
@@ -1657,8 +1657,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule APatchGUIv11
 {
       meta:
@@ -1669,8 +1669,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeSafeguardv10simonzh
 {
       meta:
@@ -1681,8 +1681,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01CDCopsIIAnorganix
 {
       meta:
@@ -1693,8 +1693,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeVIRUSIWormHybrisFEUERRADER
 {
       meta:
@@ -1705,8 +1705,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1322ObsidiumSoftware
 {
       meta:
@@ -1717,8 +1717,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateEXEProtector20SetiSoft
 {
       meta:
@@ -1729,8 +1729,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NTkrnlSecureSuite01015DLLNTkrnlSoftware
 {
       meta:
@@ -1741,8 +1741,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UPXHiTv001DJSiba
 {
       meta:
@@ -1753,8 +1753,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Vpackerttui
 {
       meta:
@@ -1765,8 +1765,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule IProtect10FxlibdllmodebyFuXdas
 {
       meta:
@@ -1777,8 +1777,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02DxPack10Anorganix
 {
       meta:
@@ -1789,8 +1789,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SecureEXE30ZipWorx
 {
       meta:
@@ -1801,8 +1801,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorv12CGSoftLabs
 {
       meta:
@@ -1815,8 +1815,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftPIMPInstallSystemv13x
 {
       meta:
@@ -1827,8 +1827,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Enigmaprotector110111VladimirSukhov
 {
       meta:
@@ -1840,8 +1840,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule PECompactv140b5v140b6
 {
       meta:
@@ -1852,8 +1852,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxExplosion1000
 {
       meta:
@@ -1864,8 +1864,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKZIPSFXv11198990
 {
       meta:
@@ -1876,8 +1876,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEBundlev20b5v23
 {
       meta:
@@ -1888,8 +1888,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PUNiSHERV15DemoFEUERRADER
 {
       meta:
@@ -1900,8 +1900,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv110v111
 {
       meta:
@@ -1912,8 +1912,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1336ObsidiumSoftware
 {
       meta:
@@ -1924,8 +1924,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DualseXeEncryptor10bDual
 {
       meta:
@@ -1936,8 +1936,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MarjinZEXEScramblerSEbyMarjinZ
 {
       meta:
@@ -1948,8 +1948,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule nPack111502006BetaNEOx
 {
       meta:
@@ -1960,8 +1960,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DingBoysPElockPhantasmv15b3
 {
       meta:
@@ -1972,8 +1972,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ShellModify01pll621
 {
       meta:
@@ -1984,8 +1984,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MacromediaFlashProjector60Anorganix
 {
       meta:
@@ -1996,8 +1996,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Packman0001Bubbasoft
 {
       meta:
@@ -2008,8 +2008,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule aPackv098bDSESnotsaved
 {
       meta:
@@ -2020,8 +2020,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASProtectvIfyouknowthisversionpostonPEiDboardh2
 {
       meta:
@@ -2032,8 +2032,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Aluwainv809
 {
       meta:
@@ -2044,8 +2044,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote12DLLDemoSISTeam
 {
       meta:
@@ -2056,8 +2056,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MSLRHv032afakeMicrosoftVisualCemadicius
 {
       meta:
@@ -2068,8 +2068,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftwareCompressV12BGSoftwareProtectTechnologies
 {
       meta:
@@ -2080,8 +2080,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Themida1201OreansTechnologies
 {
       meta:
@@ -2092,8 +2092,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECompactv126b1v126b2
 {
       meta:
@@ -2104,8 +2104,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Cruncherv10
 {
       meta:
@@ -2116,8 +2116,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote1214SEDLLSISTeam
 {
       meta:
@@ -2128,8 +2128,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectSKE21xexeAlexeySolodovnikov
 {
       meta:
@@ -2140,8 +2140,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DBPEv210DingBoy
 {
       meta:
@@ -2152,8 +2152,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV37LiuXingPing
 {
       meta:
@@ -2164,8 +2164,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock099tE
 {
       meta:
@@ -2176,8 +2176,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinZipSelfExtractor22personaleditionWinZipComputing
 {
       meta:
@@ -2188,7 +2188,7 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
+
 rule ZipWorxSecureEXEv25ZipWORXTechnologiesLLC
 {
       meta:
@@ -2199,8 +2199,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117iBoxaPLibAp0x
 {
       meta:
@@ -2211,8 +2211,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Alloyv1x2000
 {
       meta:
@@ -2223,8 +2223,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoiner153Stubengine171GlOFF
 {
       meta:
@@ -2235,8 +2235,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02MicrosoftVisualC70DLLAnorganix
 {
       meta:
@@ -2247,8 +2247,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EYouDiDaiYueHeiFengGao
 {
       meta:
@@ -2259,8 +2259,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorV21Xsoftcompletecom
 {
       meta:
@@ -2272,8 +2272,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrinkerv045
 {
       meta:
@@ -2284,8 +2284,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorV1033AshkbizDanehkar
 {
       meta:
@@ -2296,8 +2296,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftSentryv211
 {
       meta:
@@ -2308,8 +2308,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv120EngdulekxtBorlandDelphiBorlandC
 {
       meta:
@@ -2320,8 +2320,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeStonesPEEncryptor20FEUERRADER
 {
       meta:
@@ -2332,8 +2332,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov300
 {
       meta:
@@ -2344,8 +2344,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv11Vaska
 {
       meta:
@@ -2357,8 +2357,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule Fusion10jaNooNi
 {
       meta:
@@ -2369,8 +2369,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UpxLock1012CyberDoomTeamXBoBBobSoft
 {
       meta:
@@ -2381,8 +2381,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCPEEncryptorAlphapreview
 {
       meta:
@@ -2393,8 +2393,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxKeypress1212
 {
       meta:
@@ -2405,8 +2405,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftwareCompressv12BGSoftwareProtectTechnologies
 {
       meta:
@@ -2417,8 +2417,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackV14LiuXingPing
 {
       meta:
@@ -2429,8 +2429,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtectorV11Avcasm
 {
       meta:
@@ -2441,8 +2441,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1300ObsidiumSoftware
 {
       meta:
@@ -2453,8 +2453,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XXPack01bagie
 {
       meta:
@@ -2465,8 +2465,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeLocker10IonIce
 {
       meta:
@@ -2477,8 +2477,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorV101AshkbizDanehkar
 {
       meta:
@@ -2489,8 +2489,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv2001AlexeySolodovnikov
 {
       meta:
@@ -2501,8 +2501,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule USERNAMEv300
 {
       meta:
@@ -2513,8 +2513,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nSpackV2xLiuXingPing
 {
       meta:
@@ -2525,8 +2525,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule GameGuardv20065xxdllsignbyhot_UNP
 {
       meta:
@@ -2537,8 +2537,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack_PatchoranyVersionDwing
 {
       meta:
@@ -2549,8 +2549,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCPECalpha
 {
       meta:
@@ -2561,8 +2561,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4Unextractable
 {
       meta:
@@ -2573,8 +2573,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Escargot01finalMeat
 {
       meta:
@@ -2585,8 +2585,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MetrowerksCodeWarriorv20GUI
 {
       meta:
@@ -2597,8 +2597,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UnnamedScrambler21Beta211p0ke
 {
       meta:
@@ -2609,8 +2609,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NoodleCryptv20
 {
       meta:
@@ -2622,8 +2622,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule PoPa001PackeronPascalbagie
 {
       meta:
@@ -2634,8 +2634,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BlindSpot10s134k
 {
       meta:
@@ -2646,8 +2646,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule GamehouseMediaProtectorVersionUnknown
 {
       meta:
@@ -2658,8 +2658,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv042
 {
       meta:
@@ -2670,8 +2670,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv274WebToolMaster
 {
       meta:
@@ -2682,8 +2682,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEManagerVersion301994cSolarDesigner
 {
       meta:
@@ -2694,8 +2694,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv02BetaDwing
 {
       meta:
@@ -2706,8 +2706,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DEFv100Engbartxt
 {
       meta:
@@ -2718,8 +2718,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AnslymCrypter
 {
       meta:
@@ -2730,8 +2730,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ARMProtectorv02SMoKE
 {
       meta:
@@ -2742,8 +2742,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrypKeyV56XDLLKenonicControlsLtd
 {
       meta:
@@ -2754,8 +2754,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev102v104BoBBobSoft
 {
       meta:
@@ -2766,8 +2766,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxHeloween1172
 {
       meta:
@@ -2778,8 +2778,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PackedwithPKLITEv150withCRCcheck1
 {
       meta:
@@ -2790,8 +2790,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pe123v2006412
 {
       meta:
@@ -2802,8 +2802,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DropperCreatorV01Conflict
 {
       meta:
@@ -2814,8 +2814,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule XCRv013
 {
       meta:
@@ -2826,8 +2826,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XCRv012
 {
       meta:
@@ -2838,8 +2838,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InnoSetupModulev129
 {
       meta:
@@ -2850,8 +2850,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov3xx
 {
       meta:
@@ -2862,8 +2862,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule dUP2xPatcherwwwdiablo2oo2cjbnet
 {
       meta:
@@ -2874,8 +2874,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02PEProtect09Anorganix
 {
       meta:
@@ -2886,8 +2886,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule pscrambler12byp0ke
 {
       meta:
@@ -2898,8 +2898,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2223compressedcodewwwstrongbitcom
 {
       meta:
@@ -2911,8 +2911,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule Armadillov265b1
 {
       meta:
@@ -2923,8 +2923,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117aPLibAp0x
 {
       meta:
@@ -2935,8 +2935,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PolyCryptPE214b215JLabSoftwareCreationshoep
 {
       meta:
@@ -2947,8 +2947,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule yodasProtector10xAshkbizDanehkar
 {
       meta:
@@ -2959,8 +2959,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack_UnknownDLLDwing
 {
       meta:
@@ -2971,8 +2971,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AINEXEv21
 {
       meta:
@@ -2983,8 +2983,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AppProtectorSilentTeam
 {
       meta:
@@ -2995,8 +2995,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RODHighTECHAyman
 {
       meta:
@@ -3007,8 +3007,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ICrypt10byBuGGz
 {
       meta:
@@ -3019,8 +3019,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEPackv099
 {
       meta:
@@ -3031,8 +3031,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV115V117LZMA430ap0x
 {
       meta:
@@ -3043,8 +3043,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxQuake518
 {
       meta:
@@ -3055,8 +3055,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4UnextractableVirusShield
 {
       meta:
@@ -3067,8 +3067,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium13013ObsidiumSoftware
 {
       meta:
@@ -3079,8 +3079,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV130XObsidiumSoftware
 {
       meta:
@@ -3091,8 +3091,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MetrowerksCodeWarriorv20Console
 {
       meta:
@@ -3103,8 +3103,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PESpinv07Cyberbob
 {
       meta:
@@ -3115,8 +3115,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimpleUPXCryptorV3042005MANtiCORE
 {
       meta:
@@ -3127,8 +3127,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinRAR32bitSFXModule
 {
       meta:
@@ -3139,8 +3139,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule iPBProtect013017forgot
 {
       meta:
@@ -3151,8 +3151,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeASPack211demadicius
 {
       meta:
@@ -3163,8 +3163,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv036alphaDwing
 {
       meta:
@@ -3175,8 +3175,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CrinklerV03V04RuneLHStubbeandAskeSimonChristensen
 {
       meta:
@@ -3187,8 +3187,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DingBoysPElockPhantasmv10v11
 {
       meta:
@@ -3199,8 +3199,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactV2XBitsumTechnologies
 {
       meta:
@@ -3211,8 +3211,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CRYPTVersion17cDismember
 {
       meta:
@@ -3223,8 +3223,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxXPEH4768
 {
       meta:
@@ -3235,8 +3235,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECrypt32v102
 {
       meta:
@@ -3247,8 +3247,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PESHiELD025Anorganix
 {
       meta:
@@ -3259,8 +3259,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NETDLLMicrosoft
 {
       meta:
@@ -3271,20 +3271,23 @@ strings:
 condition:
 		$a0
 }
-	
-	
-rule MSLRH
+
+
+rule MSLRH: Packer PEiD
 {
       meta:
 		author="malware-lu"
+        note="Added some checks"
 strings:
 		$a0 = { 60 EB 05 E8 EB 04 40 00 EB FA E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 }
+        $b = { EB 05 E8 EB 04 40 00 EB FA E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 50 E8 02 00 00 00 29 5A 58 6B C0 03 E8 02 00 00 00 29 5A 83 C4 04 58 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 74 04 75 02 EB 02 EB 01 81 74 04 75 02 EB 02 EB 01 81 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 }
+        $c = { 60 EB 05 E8 EB 04 40 00 EB FA E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 2B 04 24 74 04 75 02 EB 02 EB 01 81 83 C4 04 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 3D FF 0F 00 00 EB 01 68 EB 02 CD 20 EB 01 E8 76 1B EB 01 68 EB 02 CD 20 EB 01 E8 CC 66 B8 FE 00 74 04 75 02 EB 02 EB 01 81 66 E7 64 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 74 04 75 02 EB 02 EB 01 81 0F 31 50 0F 31 E8 0A 00 00 00 E8 EB 0C 00 00 E8 F6 FF FF FF E8 F2 FF FF FF 83 C4 08 }
 
 condition:
-		$a0 at pe.entry_point
+		for any of ($*) : ( $ at pe.entry_point )
 }
-	
-	
+
+
 rule BeRoEXEPackerv100DLLLZMABeRoFarbrausch
 {
       meta:
@@ -3295,8 +3298,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02ExeSmasherAnorganix
 {
       meta:
@@ -3307,8 +3310,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV125ObsidiumSoftware
 {
       meta:
@@ -3319,8 +3322,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv107bDLLAlexeySolodovnikov
 {
       meta:
@@ -3331,8 +3334,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MicroJoiner17coban2k
 {
       meta:
@@ -3343,8 +3346,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeVOBProtectCDFEUERRADER
 {
       meta:
@@ -3355,8 +3358,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CelsiusCrypt21Z3r0
 {
       meta:
@@ -3368,8 +3371,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule Armadillov260
 {
       meta:
@@ -3380,8 +3383,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov261
 {
       meta:
@@ -3392,8 +3395,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeASPack212emadicius
 {
       meta:
@@ -3404,8 +3407,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RatPackerGluestub
 {
       meta:
@@ -3416,8 +3419,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CreateInstallv200335
 {
       meta:
@@ -3428,8 +3431,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SPECb3
 {
       meta:
@@ -3440,8 +3443,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SPECb2
 {
       meta:
@@ -3452,8 +3455,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXV200V290MarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -3464,8 +3467,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualBasic5060Anorganix
 {
       meta:
@@ -3476,8 +3479,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXModifiedStubbFarbrauschConsumerConsulting
 {
       meta:
@@ -3488,8 +3491,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule E2CbyDoP
 {
       meta:
@@ -3500,8 +3503,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SVKProtectorv111
 {
       meta:
@@ -3512,8 +3515,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrinkerv071
 {
       meta:
@@ -3524,8 +3527,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite21
 {
       meta:
@@ -3536,8 +3539,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule BeRoEXEPackerv100DLLLZBRRBeRoFarbrausch
 {
       meta:
@@ -3548,8 +3551,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule hmimysPackerV12hmimys
 {
       meta:
@@ -3560,8 +3563,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EnigmaProtector131Build20070615DllSukhovVladimirSergeNMarkin
 {
       meta:
@@ -3572,8 +3575,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PureBasicDLLNeilHodgson
 {
       meta:
@@ -3584,8 +3587,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HPA
 {
       meta:
@@ -3596,8 +3599,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov310
 {
       meta:
@@ -3608,8 +3611,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack012betaDwing
 {
       meta:
@@ -3620,8 +3623,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxNcuLi1688
 {
       meta:
@@ -3632,8 +3635,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtectorvcasm
 {
       meta:
@@ -3646,8 +3649,8 @@ strings:
 condition:
 		$a0 or $a1 or $a2
 }
-	
-	
+
+
 rule XPackv142
 {
       meta:
@@ -3658,8 +3661,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule W32JeefoPEFileInfector
 {
       meta:
@@ -3670,8 +3673,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeSplitter13SplitCryptMethodBillPrisonerTPOC
 {
       meta:
@@ -3683,8 +3686,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote12BetaDemoSISTeam
 {
       meta:
@@ -3695,8 +3698,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv211bAlexeySolodovnikov
 {
       meta:
@@ -3707,8 +3710,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor224StrongbitSoftCompleteDevelopmenth1
 {
       meta:
@@ -3719,8 +3722,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor224StrongbitSoftCompleteDevelopmenth2
 {
       meta:
@@ -3731,8 +3734,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor224StrongbitSoftCompleteDevelopmenth3
 {
       meta:
@@ -3743,8 +3746,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ProActivateV10XTurboPowerSoftwareCompany
 {
       meta:
@@ -3755,8 +3758,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PackMasterv10
 {
       meta:
@@ -3768,8 +3771,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule DBPEv153
 {
       meta:
@@ -3780,8 +3783,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoiner152Stubengine16GlOFF
 {
       meta:
@@ -3792,8 +3795,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv12AlexeySolodovnikovh1
 {
       meta:
@@ -3804,8 +3807,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandDelphiMicrosoftVisualCx
 {
       meta:
@@ -3816,8 +3819,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PENightMare2Beta
 {
       meta:
@@ -3828,8 +3831,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MinGWGCC3x
 {
       meta:
@@ -3840,8 +3843,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PIRITv15
 {
       meta:
@@ -3852,8 +3855,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Reg2Exe224byJanVorel
 {
       meta:
@@ -3864,8 +3867,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SVKProtectorv13xEngPavolCerven
 {
       meta:
@@ -3876,8 +3879,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded2609Jitit
 {
       meta:
@@ -3888,8 +3891,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXcrypterarchphaseNWC
 {
       meta:
@@ -3900,8 +3903,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule StarForceProtectionDriverProtectionTechnology
 {
       meta:
@@ -3912,8 +3915,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FishPEV10Xhellfish
 {
       meta:
@@ -3924,8 +3927,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECrypter
 {
       meta:
@@ -3936,8 +3939,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv051
 {
       meta:
@@ -3948,8 +3951,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LY_WGKXwwwszleyucom
 {
       meta:
@@ -3960,8 +3963,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASProtect13321RegisteredAlexeySolodovnikov
 {
       meta:
@@ -3972,8 +3975,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV111ap0x
 {
       meta:
@@ -3984,8 +3987,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC4xLCCWin321x
 {
       meta:
@@ -3996,8 +3999,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule dePACKdeNULL
 {
       meta:
@@ -4009,8 +4012,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorv1401
 {
       meta:
@@ -4021,8 +4024,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePELockNT204emadicius
 {
       meta:
@@ -4033,8 +4036,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELockNTv203
 {
       meta:
@@ -4045,8 +4048,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Reg2Exe220221byJanVorel
 {
       meta:
@@ -4057,8 +4060,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELockNTv201
 {
       meta:
@@ -4069,8 +4072,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELockNTv204
 {
       meta:
@@ -4081,8 +4084,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXFreakv01BorlandDelphiHMX0101
 {
       meta:
@@ -4094,8 +4097,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium13017Obsidiumsoftware
 {
       meta:
@@ -4106,8 +4109,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite22c199899IanLuck
 {
       meta:
@@ -4118,8 +4121,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PluginToExev101BoBBobSoft
 {
       meta:
@@ -4130,8 +4133,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Enigmaprotector110unregistered
 {
       meta:
@@ -4143,8 +4146,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule Obsidium1341ObsidiumSoftware
 {
       meta:
@@ -4155,8 +4158,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WebCopsDLLLINKDataSecurity
 {
       meta:
@@ -4167,8 +4170,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PackMaster10PEXCloneAnorganix
 {
       meta:
@@ -4179,8 +4182,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv037v038BetaStripbaserelocationtableOptionDwing
 {
       meta:
@@ -4191,8 +4194,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeSVKP13xFEUERRADER
 {
       meta:
@@ -4203,8 +4206,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InstallShieldCustom
 {
       meta:
@@ -4215,8 +4218,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petitevafterv14
 {
       meta:
@@ -4227,8 +4230,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeToolsv21EncruptorbyDISMEMBER
 {
       meta:
@@ -4239,8 +4242,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NTkrnlSecureSuiteNTkrnlteam
 {
       meta:
@@ -4251,8 +4254,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PESpinv0b
 {
       meta:
@@ -4263,8 +4266,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VXTibsZhelatinStormWormvariant
 {
       meta:
@@ -4275,8 +4278,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePEX099emadicius
 {
       meta:
@@ -4287,8 +4290,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NSPack3xLiuXingPing
 {
       meta:
@@ -4299,8 +4302,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv25RetailBitsumTechnologies
 {
       meta:
@@ -4311,8 +4314,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WARNINGTROJANXiaoHui
 {
       meta:
@@ -4323,8 +4326,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NFOv10
 {
       meta:
@@ -4335,8 +4338,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PMODEWv112116121133DOSextender
 {
       meta:
@@ -4347,8 +4350,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AaseCrypterbysantasdad
 {
       meta:
@@ -4359,8 +4362,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule aPackv098bJibz
 {
       meta:
@@ -4371,8 +4374,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UPackv011Dwing
 {
       meta:
@@ -4383,8 +4386,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NsPacKNetLiuXingPing
 {
       meta:
@@ -4395,8 +4398,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02PENightMare2BetaAnorganix
 {
       meta:
@@ -4407,8 +4410,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualC60DebugVersionAnorganix
 {
       meta:
@@ -4419,8 +4422,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DJoinv07publicRC4encryptiondrmist
 {
       meta:
@@ -4431,8 +4434,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXv103v104
 {
       meta:
@@ -4443,8 +4446,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEDiminisherV01Teraphy
 {
       meta:
@@ -4455,8 +4458,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4ExtrPasswcheckVirshield
 {
       meta:
@@ -4467,8 +4470,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeGuarderv18Exeiconcom
 {
       meta:
@@ -4479,8 +4482,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule codeCrypter031Tibbar
 {
       meta:
@@ -4491,8 +4494,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPv073betaap0x
 {
       meta:
@@ -4503,8 +4506,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PEnguinCryptv10
 {
       meta:
@@ -4515,8 +4518,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MetrowerksCodeWarriorDLLv20
 {
       meta:
@@ -4527,8 +4530,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECrc32088ZhouJinYu
 {
       meta:
@@ -4539,8 +4542,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv123b3v1241
 {
       meta:
@@ -4551,8 +4554,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Noodlecrypt2rsc
 {
       meta:
@@ -4563,8 +4566,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack120BasicEditionLZMAAp0x
 {
       meta:
@@ -4575,8 +4578,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PENightMare2BetaAnorganix
 {
       meta:
@@ -4587,8 +4590,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeXtremeProtector105FEUERRADER
 {
       meta:
@@ -4599,8 +4602,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackv118BasicDLLLZMAAp0x
 {
       meta:
@@ -4611,8 +4614,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrypKeyv5v6
 {
       meta:
@@ -4623,8 +4626,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InnoSetupModulev109a
 {
       meta:
@@ -4635,8 +4638,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV1300ObsidiumSoftware
 {
       meta:
@@ -4648,8 +4651,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PCryptv351
 {
       meta:
@@ -4660,8 +4663,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded2312Jitit
 {
       meta:
@@ -4672,8 +4675,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4Extractable
 {
       meta:
@@ -4684,8 +4687,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackAp0x
 {
       meta:
@@ -4701,8 +4704,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point or $a3 at pe.entry_point or $a4 at pe.entry_point or $a5 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02VOBProtectCD5Anorganix
 {
       meta:
@@ -4713,8 +4716,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv04x
 {
       meta:
@@ -4725,8 +4728,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02WatcomCCDLLAnorganix
 {
       meta:
@@ -4737,8 +4740,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasCrypter13AshkbizDanehkar
 {
       meta:
@@ -4749,8 +4752,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule D1NS1GD1N
 {
       meta:
@@ -4761,8 +4764,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC6070ASM
 {
       meta:
@@ -4773,8 +4776,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv102aAlexeySolodovnikov
 {
       meta:
@@ -4785,8 +4788,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MinGWGCC2xAnorganix
 {
       meta:
@@ -4797,8 +4800,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov253
 {
       meta:
@@ -4810,8 +4813,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov252
 {
       meta:
@@ -4823,8 +4826,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov251
 {
       meta:
@@ -4835,8 +4838,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov250
 {
       meta:
@@ -4847,8 +4850,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1331ObsidiumSoftware
 {
       meta:
@@ -4859,8 +4862,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CExev10a
 {
       meta:
@@ -4871,8 +4874,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DIETv144v145f
 {
       meta:
@@ -4883,8 +4886,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv098
 {
       meta:
@@ -4895,8 +4898,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv099
 {
       meta:
@@ -4907,8 +4910,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV30LiuXingPing
 {
       meta:
@@ -4919,8 +4922,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualBasic5060
 {
       meta:
@@ -4931,8 +4934,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv090
 {
       meta:
@@ -4943,8 +4946,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv092
 {
       meta:
@@ -4955,8 +4958,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv094
 {
       meta:
@@ -4967,8 +4970,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PeX099bartCrackPl
 {
       meta:
@@ -4979,8 +4982,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV1304ObsidiumSoftware
 {
       meta:
@@ -4991,8 +4994,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftwareCompressv14LITEBGSoftwareProtectTechnologies
 {
       meta:
@@ -5004,8 +5007,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule FixupPakv120
 {
       meta:
@@ -5016,8 +5019,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ARCSFXArchive
 {
       meta:
@@ -5028,8 +5031,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MoleBoxv230Teggo
 {
       meta:
@@ -5040,8 +5043,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxIgor
 {
       meta:
@@ -5052,8 +5055,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FACRYPTv10
 {
       meta:
@@ -5064,8 +5067,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01WATCOMCCEXEAnorganix
 {
       meta:
@@ -5076,8 +5079,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV115V117aPlib043ap0x
 {
       meta:
@@ -5088,8 +5091,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EmbedPEv113cyclotron
 {
       meta:
@@ -5100,8 +5103,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXcaliburv103forgotus
 {
       meta:
@@ -5112,8 +5115,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite14
 {
       meta:
@@ -5124,8 +5127,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Petite12
 {
       meta:
@@ -5136,8 +5139,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite13
 {
       meta:
@@ -5148,8 +5151,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upack021betaDwing
 {
       meta:
@@ -5160,8 +5163,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WebCopsEXELINKDataSecurity
 {
       meta:
@@ -5172,8 +5175,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02FSG10Anorganix
 {
       meta:
@@ -5184,8 +5187,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThemidaOreansTechnologies2004
 {
       meta:
@@ -5196,8 +5199,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxNumberOne
 {
       meta:
@@ -5208,8 +5211,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinKriptv10MrCrimson
 {
       meta:
@@ -5220,8 +5223,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv085f
 {
       meta:
@@ -5232,8 +5235,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RosAsm2050aBetov
 {
       meta:
@@ -5244,8 +5247,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Obsidium13021ObsidiumSoftware
 {
       meta:
@@ -5256,8 +5259,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv211dAlexeySolodovnikov
 {
       meta:
@@ -5268,8 +5271,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv211cAlexeySolodovnikov
 {
       meta:
@@ -5280,8 +5283,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtect14xRISCOsoft
 {
       meta:
@@ -5292,8 +5295,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SplashBitmapv100BoBBobsoft
 {
       meta:
@@ -5304,8 +5307,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEZipv10byBaGIE
 {
       meta:
@@ -5316,8 +5319,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule LamerStopv10ccStefanEsser
 {
       meta:
@@ -5328,8 +5331,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtectV14Xrisco
 {
       meta:
@@ -5340,8 +5343,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxGRUNT2Family
 {
       meta:
@@ -5352,8 +5355,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeMicrosoftVisualC70FEUERRADER
 {
       meta:
@@ -5364,8 +5367,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InstallStub32bit
 {
       meta:
@@ -5376,8 +5379,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcasmProtector10evcasm
 {
       meta:
@@ -5388,8 +5391,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePEBundle20x24xemadicius
 {
       meta:
@@ -5400,8 +5403,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190b4
 {
       meta:
@@ -5412,8 +5415,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXv103v104Modified
 {
       meta:
@@ -5424,8 +5427,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackV2XLiuXingPing
 {
       meta:
@@ -5436,8 +5439,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThemidaWinLicenseV1000V1800OreansTechnologies
 {
       meta:
@@ -5448,8 +5451,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PACKWINv101p
 {
       meta:
@@ -5460,8 +5463,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b1
 {
       meta:
@@ -5472,8 +5475,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MicroJoiner15coban2k
 {
       meta:
@@ -5484,8 +5487,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ANDpakk2018byDmitryANDAndreev
 {
       meta:
@@ -5496,8 +5499,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b2
 {
       meta:
@@ -5508,8 +5511,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b5
 {
       meta:
@@ -5520,8 +5523,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NJoy10NEX
 {
       meta:
@@ -5532,8 +5535,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b7
 {
       meta:
@@ -5544,8 +5547,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b6
 {
       meta:
@@ -5556,8 +5559,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule KBysPacker028BetaShoooo
 {
       meta:
@@ -5568,8 +5571,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule nPack113002006BetaNEOx
 {
       meta:
@@ -5580,8 +5583,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02BorlandC1999Anorganix
 {
       meta:
@@ -5592,8 +5595,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv100bAlexeySolodovnikov
 {
       meta:
@@ -5604,8 +5607,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SEAAXEv22
 {
       meta:
@@ -5616,8 +5619,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PureBasic4xDLLNeilHodgson
 {
       meta:
@@ -5628,8 +5631,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEPackerv70byTurboPowerSoftware
 {
       meta:
@@ -5640,8 +5643,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxSYP
 {
       meta:
@@ -5652,9 +5655,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule DSHIELD
+
+
+rule DSHIELD: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -5664,8 +5667,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kkrunchy023alphaRyd
 {
       meta:
@@ -5676,8 +5679,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NJoy12NEX
 {
       meta:
@@ -5688,8 +5691,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote12DemoSISTeam
 {
       meta:
@@ -5700,8 +5703,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EXE32Packv137
 {
       meta:
@@ -5712,8 +5715,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXE32Packv136
 {
       meta:
@@ -5724,8 +5727,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AINEXEv230
 {
       meta:
@@ -5736,8 +5739,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded20XJitit
 {
       meta:
@@ -5748,8 +5751,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorv151x
 {
       meta:
@@ -5760,8 +5763,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidiumv1304ObsidiumSoftware
 {
       meta:
@@ -5773,8 +5776,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule CopyProtectorv20
 {
       meta:
@@ -5785,8 +5788,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXE32Packv139
 {
       meta:
@@ -5797,8 +5800,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXE32Packv138
 {
       meta:
@@ -5809,8 +5812,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandC1999
 {
       meta:
@@ -5821,8 +5824,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded2547V2600Jitit
 {
       meta:
@@ -5833,8 +5836,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv131Engdulekxt
 {
       meta:
@@ -5845,8 +5848,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtectorBasicProEdition110RandyLi
 {
       meta:
@@ -5857,8 +5860,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite12c1998IanLuck
 {
       meta:
@@ -5869,8 +5872,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PcSharev40
 {
       meta:
@@ -5881,8 +5884,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtector0X12Xvcasm
 {
       meta:
@@ -5893,8 +5896,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule STNPEE113
 {
       meta:
@@ -5905,8 +5908,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftDefenderV11xRandyLi
 {
       meta:
@@ -5917,8 +5920,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CDCopsII
 {
       meta:
@@ -5929,8 +5932,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack11BasicEditionap0x
 {
       meta:
@@ -5941,8 +5944,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXE32Packv13x
 {
       meta:
@@ -5953,8 +5956,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxInvoluntary1349
 {
       meta:
@@ -5965,8 +5968,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinZip32bit6x
 {
       meta:
@@ -5977,8 +5980,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV36LiuXingPing
 {
       meta:
@@ -5989,8 +5992,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02LCCWin321xAnorganix
 {
       meta:
@@ -6001,8 +6004,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECrypt10ReBirth
 {
       meta:
@@ -6013,8 +6016,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NJoy11NEX
 {
       meta:
@@ -6025,8 +6028,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEcryptbyarchphase
 {
       meta:
@@ -6037,8 +6040,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrunchPEv30xx
 {
       meta:
@@ -6049,8 +6052,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LameCryptLaZaRus
 {
       meta:
@@ -6061,8 +6064,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPack29NorthStar
 {
       meta:
@@ -6073,8 +6076,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoEXEPackerv100LZBRSBeRoFarbrausch
 {
       meta:
@@ -6085,8 +6088,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandC
 {
       meta:
@@ -6098,8 +6101,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VIRUSIWormKLEZ
 {
       meta:
@@ -6110,8 +6113,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule YZPack12UsAr
 {
       meta:
@@ -6122,8 +6125,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02LocklessIntroPackAnorganix
 {
       meta:
@@ -6134,8 +6137,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITE3211
 {
       meta:
@@ -6146,8 +6149,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv20bartxt
 {
       meta:
@@ -6158,8 +6161,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeSVKP111emadicius
 {
       meta:
@@ -6170,8 +6173,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMASM32TASM32MicrosoftVisualBasic
 {
       meta:
@@ -6182,8 +6185,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor239DLLminimumprotection
 {
       meta:
@@ -6194,8 +6197,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Frusionbiff
 {
       meta:
@@ -6206,8 +6209,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule OpenSourceCodeCrypterp0ke
 {
       meta:
@@ -6218,8 +6221,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule QrYPt0rbyNuTraL
 {
       meta:
@@ -6232,8 +6235,8 @@ strings:
 condition:
 		$a0 or $a1 or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2xxmaxcompressedresources
 {
       meta:
@@ -6244,8 +6247,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upackv024v028AlphaDwing
 {
       meta:
@@ -6256,8 +6259,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded24222428Jitit
 {
       meta:
@@ -6268,8 +6271,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SVKProtectorv1051
 {
       meta:
@@ -6280,8 +6283,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeZCode101FEUERRADER
 {
       meta:
@@ -6292,8 +6295,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEPacker
 {
       meta:
@@ -6304,8 +6307,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ProgramProtectorXPv10
 {
       meta:
@@ -6316,8 +6319,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack111Method2NTbagieTMX
 {
       meta:
@@ -6328,8 +6331,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032aemadicius
 {
       meta:
@@ -6342,8 +6345,8 @@ strings:
 condition:
 		$a0 or $a1 or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule VxHafen1641
 {
       meta:
@@ -6354,8 +6357,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NativeUDPacker11ModdedPoisonIvyShellcodeokkixot
 {
       meta:
@@ -6366,8 +6369,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2xxcompressedresources
 {
       meta:
@@ -6378,8 +6381,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NXPEPackerv10
 {
       meta:
@@ -6390,8 +6393,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PolyBoxCAnskya
 {
       meta:
@@ -6402,8 +6405,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UPolyXv05
 {
       meta:
@@ -6419,8 +6422,8 @@ strings:
 condition:
 		$a0 or $a1 or $a2 or $a3 or $a4 or $a5
 }
-	
-	
+
+
 rule beriav007publicWIPsymbiont
 {
       meta:
@@ -6431,8 +6434,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCGuardv405dv410dv415d
 {
       meta:
@@ -6443,8 +6446,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule asscrypterbysantasdad
 {
       meta:
@@ -6455,8 +6458,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CopyControlv303
 {
       meta:
@@ -6467,8 +6470,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110Engbartxt
 {
       meta:
@@ -6479,8 +6482,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Elanguage
 {
       meta:
@@ -6491,8 +6494,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXELOCK66615
 {
       meta:
@@ -6503,8 +6506,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AdysGluev010
 {
       meta:
@@ -6515,8 +6518,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SVKProtectorv132
 {
       meta:
@@ -6527,8 +6530,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv114v115v1203
 {
       meta:
@@ -6539,8 +6542,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SafeGuardV10Xsimonzh2000
 {
       meta:
@@ -6551,8 +6554,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev102v103DLLBoBBobSoft
 {
       meta:
@@ -6563,8 +6566,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild023GlOFF
 {
       meta:
@@ -6575,8 +6578,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivatePersonalPackerPPP102ConquestOfTroycom
 {
       meta:
@@ -6587,8 +6590,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DIETv102bv110av120
 {
       meta:
@@ -6599,8 +6602,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXECLiPSElayer
 {
       meta:
@@ -6611,8 +6614,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1334ObsidiumSoftware
 {
       meta:
@@ -6624,8 +6627,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv150Devicedrivercompression
 {
       meta:
@@ -6636,8 +6639,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxGrazie883
 {
       meta:
@@ -6648,8 +6651,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PROTECTEXECOMv60
 {
       meta:
@@ -6660,8 +6663,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ENIGMAProtectorSukhovVladimir
 {
       meta:
@@ -6672,8 +6675,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CRYPToCRACksPEProtectorV093LukasFleischer
 {
       meta:
@@ -6684,8 +6687,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv147v150
 {
       meta:
@@ -6696,8 +6699,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PocketPCMIB
 {
       meta:
@@ -6708,8 +6711,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4ExtractableVirusShield
 {
       meta:
@@ -6720,8 +6723,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxNoon1163
 {
       meta:
@@ -6732,8 +6735,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PuNkMoD1xPuNkDuDe
 {
       meta:
@@ -6744,8 +6747,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECrypt32Consolev10v101v102
 {
       meta:
@@ -6756,8 +6759,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InnoSetupModulev2018
 {
       meta:
@@ -6768,8 +6771,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Nakedbind10nakedcrew
 {
       meta:
@@ -6780,8 +6783,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV31LiuXingPing
 {
       meta:
@@ -6792,8 +6795,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiVirusVaccinev103
 {
       meta:
@@ -6804,8 +6807,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxKuku448
 {
       meta:
@@ -6816,8 +6819,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv12xNewStrain
 {
       meta:
@@ -6828,8 +6831,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimpleUPXCryptorv3042005OnelayerencryptionMANtiCORE
 {
       meta:
@@ -6840,8 +6843,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote10Demo12SISTeam
 {
       meta:
@@ -6852,8 +6855,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FSGv110EngbartxtWinRARSFX
 {
       meta:
@@ -6865,8 +6868,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule BJFntv11b
 {
       meta:
@@ -6877,8 +6880,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded26202623Jitit
 {
       meta:
@@ -6889,8 +6892,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SLVc0deProtector11xSLVICU
 {
       meta:
@@ -6901,8 +6904,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RJoinerbyVaskaSignfrompinch250320071700
 {
       meta:
@@ -6913,8 +6916,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AverCryptor10os1r1s
 {
       meta:
@@ -6925,8 +6928,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nSpackV23LiuXingPing
 {
       meta:
@@ -6937,8 +6940,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SENDebugProtector
 {
       meta:
@@ -6949,8 +6952,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule xPEP03xxIkUg
 {
       meta:
@@ -6961,8 +6964,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote14SESISTeam
 {
       meta:
@@ -6973,8 +6976,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPack30NorthStar
 {
       meta:
@@ -6985,8 +6988,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ORiENV212FisunAV
 {
       meta:
@@ -6997,8 +7000,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackv23NorthStar
 {
       meta:
@@ -7010,8 +7013,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule ObsidiumV1342ObsidiumSoftware
 {
       meta:
@@ -7022,8 +7025,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SplashBitmapv100WithUnpackCodeBoBBobsoft
 {
       meta:
@@ -7034,8 +7037,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule KBySV028shoooo
 {
       meta:
@@ -7046,8 +7049,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV12XObsidiumSoftware
 {
       meta:
@@ -7058,8 +7061,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackV13LiuXingPing
 {
       meta:
@@ -7070,8 +7073,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PENinja131Anorganix
 {
       meta:
@@ -7082,8 +7085,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidiumv1300ObsidiumSoftware
 {
       meta:
@@ -7095,8 +7098,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Feokt
 {
       meta:
@@ -7107,8 +7110,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NTkrnlSecureSuite01015NTkrnlSoftware
 {
       meta:
@@ -7119,8 +7122,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PEPROTECT09
 {
       meta:
@@ -7131,8 +7134,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXERefactorV01random
 {
       meta:
@@ -7143,8 +7146,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrunchPEv40
 {
       meta:
@@ -7155,8 +7158,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NullsoftPIMPInstallSystemv1x
 {
       meta:
@@ -7167,8 +7170,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pohernah100byKas
 {
       meta:
@@ -7179,8 +7182,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule dUP2diablo2oo2
 {
       meta:
@@ -7191,8 +7194,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01ASPack2xxHeuristicAnorganix
 {
       meta:
@@ -7203,8 +7206,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXpressorv145CGSoftLabs
 {
       meta:
@@ -7215,8 +7218,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule hmimysProtectv10
 {
       meta:
@@ -7228,8 +7231,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule VProtectorV10Evcasm
 {
       meta:
@@ -7240,8 +7243,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01LCCWin32DLLAnorganix
 {
       meta:
@@ -7252,8 +7255,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CodeCryptv014b
 {
       meta:
@@ -7264,8 +7267,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC450DLLX86CRTLIB
 {
       meta:
@@ -7276,8 +7279,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EEXEVersion112
 {
       meta:
@@ -7288,8 +7291,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv120EngdulekxtMASM32TASM32
 {
       meta:
@@ -7300,8 +7303,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEDiminisherv01Teraphy
 {
       meta:
@@ -7312,8 +7315,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02VBOX43MTEAnorganix
 {
       meta:
@@ -7324,8 +7327,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SEAAXE
 {
       meta:
@@ -7336,8 +7339,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UpackV010V011Dwing
 {
       meta:
@@ -7348,8 +7351,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakePCGuard403415FEUERRADER
 {
       meta:
@@ -7360,8 +7363,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack111Method1bagieTMX
 {
       meta:
@@ -7373,9 +7376,9 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
-rule MASM32
+
+
+rule MASM32: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -7385,8 +7388,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftDefenderv10v11
 {
       meta:
@@ -7397,8 +7400,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XtremeProtectorv106
 {
       meta:
@@ -7409,8 +7412,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcasmProtector1112vcasm
 {
       meta:
@@ -7421,8 +7424,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidiumv1111
 {
       meta:
@@ -7433,8 +7436,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddie1530
 {
       meta:
@@ -7445,8 +7448,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule KBySV028DLLshoooo
 {
       meta:
@@ -7457,8 +7460,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEncrypt10JunkCode
 {
       meta:
@@ -7469,8 +7472,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEPasswordv02SMTSMF
 {
       meta:
@@ -7481,8 +7484,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPE22006710220061025WFS
 {
       meta:
@@ -7493,8 +7496,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv16Vaska
 {
       meta:
@@ -7506,8 +7509,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PEPaCKv10CCopyright1998byANAKiN
 {
       meta:
@@ -7518,8 +7521,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule YodasProtectorv1032Beta2AshkbizDanehkar
 {
       meta:
@@ -7530,8 +7533,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxMTEnonencrypted
 {
       meta:
@@ -7542,8 +7545,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01FSG131Anorganix
 {
       meta:
@@ -7554,8 +7557,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv212AlexeySolodovnikov
 {
       meta:
@@ -7567,8 +7570,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Upack022023betaDwing
 {
       meta:
@@ -7581,8 +7584,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01CodeLockAnorganix
 {
       meta:
@@ -7593,8 +7596,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv100c1
 {
       meta:
@@ -7605,8 +7608,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakenSPack13emadicius
 {
       meta:
@@ -7617,8 +7620,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv100c2
 {
       meta:
@@ -7629,8 +7632,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kkrunchyv017FGiesen
 {
       meta:
@@ -7641,8 +7644,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ACProtectv190gRiscosoftwareInc
 {
       meta:
@@ -7653,8 +7656,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPX293300LZMAMarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -7665,8 +7668,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium133720070623ObsidiumSoftware
 {
       meta:
@@ -7677,8 +7680,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv2000AlexeySolodovnikov
 {
       meta:
@@ -7689,8 +7692,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov4000053SiliconRealmsToolworks
 {
       meta:
@@ -7701,8 +7704,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov160a
 {
       meta:
@@ -7713,8 +7716,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtectUltraProtect10X20XRiSco
 {
       meta:
@@ -7725,8 +7728,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Thinstall3035Jtit
 {
       meta:
@@ -7738,8 +7741,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PENinjav10DzAkRAkerTNT
 {
       meta:
@@ -7750,8 +7753,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded19XJitit
 {
       meta:
@@ -7762,8 +7765,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorv13045
 {
       meta:
@@ -7775,8 +7778,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1338ObsidiumSoftware
 {
       meta:
@@ -7787,8 +7790,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPV073betaap0x
 {
       meta:
@@ -7799,8 +7802,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule yCv13byAshkbizDanehkar
 {
       meta:
@@ -7811,8 +7814,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PCPECalphapreview
 {
       meta:
@@ -7823,8 +7826,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AlexProtectorv10Alex
 {
       meta:
@@ -7835,8 +7838,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinkv10
 {
       meta:
@@ -7847,8 +7850,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHPack01FEUERRADER
 {
       meta:
@@ -7859,8 +7862,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SentinelSuperProAutomaticProtectionv640Safenet
 {
       meta:
@@ -7871,8 +7874,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DxPack10
 {
       meta:
@@ -7883,8 +7886,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pohernah103byKas
 {
       meta:
@@ -7895,8 +7898,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV1258ObsidiumSoftware
 {
       meta:
@@ -7907,8 +7910,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nPackv11150200BetaNEOx
 {
       meta:
@@ -7919,8 +7922,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PerlApp602ActiveState
 {
       meta:
@@ -7932,8 +7935,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule UPXProtectorv10x2
 {
       meta:
@@ -7944,8 +7947,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThinstallEmbedded2501Jitit
 {
       meta:
@@ -7956,8 +7959,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CodeVirtualizer1310OreansTechnologies
 {
       meta:
@@ -7968,8 +7971,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VProtector13Xvcasm
 {
       meta:
@@ -7981,8 +7984,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Packman0001bubba
 {
       meta:
@@ -7993,8 +7996,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePackV11XV12XMethod1bagie
 {
       meta:
@@ -8005,8 +8008,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEEncryptv40bJunkCode
 {
       meta:
@@ -8017,8 +8020,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEQuake006forgat
 {
       meta:
@@ -8029,8 +8032,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Kryptonv02
 {
       meta:
@@ -8041,8 +8044,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakePELockNT204FEUERRADER
 {
       meta:
@@ -8053,8 +8056,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorPacK150XCGSoftLabs
 {
       meta:
@@ -8065,8 +8068,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule D1S1Gv11BetaScrambledEXED1N
 {
       meta:
@@ -8077,8 +8080,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ReversingLabsProtector074betaAp0x
 {
       meta:
@@ -8089,8 +8092,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtect109gRiscosoftwareInc
 {
       meta:
@@ -8101,8 +8104,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NorthStarPEShrinker13Liuxingping
 {
       meta:
@@ -8113,8 +8116,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorV13CGSoftLabs
 {
       meta:
@@ -8125,8 +8128,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild035GlOFF
 {
       meta:
@@ -8137,8 +8140,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack020betaDwing
 {
       meta:
@@ -8149,8 +8152,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPX20030XMarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -8161,8 +8164,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule WinUpackv039finalByDwingc2005h1
 {
       meta:
@@ -8173,8 +8176,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler12Bp0ke
 {
       meta:
@@ -8185,8 +8188,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upack010012betaDwing
 {
       meta:
@@ -8197,8 +8200,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmorV07Xhying
 {
       meta:
@@ -8209,8 +8212,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LauncherGeneratorv103
 {
       meta:
@@ -8221,8 +8224,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule yodasProtector102103AshkbizDanehkar
 {
       meta:
@@ -8233,8 +8236,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NakedPacker10byBigBoote
 {
       meta:
@@ -8245,8 +8248,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule tElockv080
 {
       meta:
@@ -8257,8 +8260,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01YodasProtector102Anorganix
 {
       meta:
@@ -8269,8 +8272,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtector11Xvcasm
 {
       meta:
@@ -8281,8 +8284,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMASM32
 {
       meta:
@@ -8293,8 +8296,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pohernah102byKas
 {
       meta:
@@ -8305,8 +8308,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ActiveMARK5xTrymediaSystemsInc
 {
       meta:
@@ -8317,8 +8320,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule RCryptorv20HideEPVaska
 {
       meta:
@@ -8329,8 +8332,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov172v173
 {
       meta:
@@ -8341,8 +8344,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AsCryptv01SToRM2
 {
       meta:
@@ -8353,8 +8356,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AsCryptv01SToRM3
 {
       meta:
@@ -8365,8 +8368,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASProtectV2XDLLAlexeySolodovnikov
 {
       meta:
@@ -8377,8 +8380,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AsCryptv01SToRM4
 {
       meta:
@@ -8389,8 +8392,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule yzpack20UsAr
 {
       meta:
@@ -8401,8 +8404,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PasswordprotectormySMT
 {
       meta:
@@ -8413,8 +8416,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV1258V133XObsidiumSoftware
 {
       meta:
@@ -8425,8 +8428,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ReflexiveArcadeWrapper
 {
       meta:
@@ -8437,8 +8440,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxTrojanTelefoon
 {
       meta:
@@ -8449,8 +8452,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv030betaDwing
 {
       meta:
@@ -8461,8 +8464,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxACMEClonewarMutant
 {
       meta:
@@ -8473,8 +8476,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov2xxCopyMemII
 {
       meta:
@@ -8485,8 +8488,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TPACKv05cm1
 {
       meta:
@@ -8497,8 +8500,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv271
 {
       meta:
@@ -8509,8 +8512,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TPACKv05cm2
 {
       meta:
@@ -8521,8 +8524,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeJoiner10Yodaf2f
 {
       meta:
@@ -8533,8 +8536,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv101bAlexeySolodovnikov
 {
       meta:
@@ -8545,8 +8548,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MacromediaWindowsFlashProjectorPlayerv30
 {
       meta:
@@ -8557,8 +8560,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinV11cyberbob
 {
       meta:
@@ -8569,8 +8572,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack118aPlib043ap0x
 {
       meta:
@@ -8581,8 +8584,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DotFixNiceProtectvna
 {
       meta:
@@ -8593,8 +8596,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv032betaDwing
 {
       meta:
@@ -8605,8 +8608,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PackItBitch10archphase
 {
       meta:
@@ -8617,8 +8620,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule JDPack2xJDPack
 {
       meta:
@@ -8629,8 +8632,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RPolyCryptv10personalpolycryptorsignfrompinch
 {
       meta:
@@ -8641,8 +8644,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv031betaDwing
 {
       meta:
@@ -8653,8 +8656,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Packmanv0001
 {
       meta:
@@ -8665,8 +8668,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PEPack099Anorganix
 {
       meta:
@@ -8677,8 +8680,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor239minimumprotection
 {
       meta:
@@ -8689,8 +8692,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC60ASM
 {
       meta:
@@ -8701,8 +8704,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HaspdongleAlladin
 {
       meta:
@@ -8713,8 +8716,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SafeDiscv4
 {
       meta:
@@ -8725,8 +8728,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PKLITEv112v115v1201
 {
       meta:
@@ -8737,8 +8740,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv112v115v1202
 {
       meta:
@@ -8749,8 +8752,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorv153
 {
       meta:
@@ -8761,8 +8764,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MSLRHv032afakeEXE32Pack13xemadicius
 {
       meta:
@@ -8773,8 +8776,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXpressorv11CGSoftLabs
 {
       meta:
@@ -8785,8 +8788,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackV11LiuXingPing
 {
       meta:
@@ -8797,8 +8800,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivatePersonalPackerPPPv102ConquestOfTroycom
 {
       meta:
@@ -8809,8 +8812,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxHorse1776
 {
       meta:
@@ -8821,9 +8824,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule PEShit
+
+
+rule PEShit: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -8833,8 +8836,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DrWebVirusFindingEngineInSoftEDVSysteme
 {
       meta:
@@ -8845,8 +8848,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PluginToExev100BoBBobSoft
 {
       meta:
@@ -8857,8 +8860,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv15PrivateVaska
 {
       meta:
@@ -8869,8 +8872,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NeoLitev200
 {
       meta:
@@ -8881,8 +8884,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv200bextra
 {
       meta:
@@ -8893,8 +8896,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Crunch5Fusion4
 {
       meta:
@@ -8905,8 +8908,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MSLRHv032afakePEBundle023xemadicius
 {
       meta:
@@ -8917,8 +8920,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEMangle
 {
       meta:
@@ -8929,8 +8932,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv302v302av304Relocationspack
 {
       meta:
@@ -8941,8 +8944,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXProtectorv10x
 {
       meta:
@@ -8953,8 +8956,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NorthStarPEShrinkerv13byLiuxingping
 {
       meta:
@@ -8965,8 +8968,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CodeCryptv015b
 {
       meta:
@@ -8977,8 +8980,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117Ap0x
 {
       meta:
@@ -8989,8 +8992,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv100
 {
       meta:
@@ -9001,8 +9004,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeASProtect10FEUERRADER
 {
       meta:
@@ -9013,8 +9016,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule KGCryptvxx
 {
       meta:
@@ -9025,8 +9028,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxKBDflags1024
 {
       meta:
@@ -9037,8 +9040,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorV102AshkbizDanehkar
 {
       meta:
@@ -9049,8 +9052,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1311ObsidiumSoftware
 {
       meta:
@@ -9061,8 +9064,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualC620Anorganix
 {
       meta:
@@ -9073,8 +9076,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MEGALITEv120a
 {
       meta:
@@ -9085,8 +9088,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule GoatsMutilatorV16Goat_e0f
 {
       meta:
@@ -9097,8 +9100,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo430aSiliconRealmsToolworks
 {
       meta:
@@ -9109,8 +9112,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upackv038betaDwing
 {
       meta:
@@ -9122,8 +9125,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule DCryptPrivate09bdrmist
 {
       meta:
@@ -9134,8 +9137,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kkrunchyV02XRyd
 {
       meta:
@@ -9146,8 +9149,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SkDUndetectabler3NoFSG2MethodSkD
 {
       meta:
@@ -9158,8 +9161,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NTPacker10ErazerZ
 {
       meta:
@@ -9170,8 +9173,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SexeCrypter11bysantasdad
 {
       meta:
@@ -9182,8 +9185,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxGotcha879
 {
       meta:
@@ -9194,8 +9197,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MZ0oPE106bTaskFall
 {
       meta:
@@ -9207,8 +9210,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule SoftDefenderv11xRandyLi
 {
       meta:
@@ -9219,8 +9222,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv010v012BetaDwing
 {
       meta:
@@ -9231,8 +9234,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeBorlandDelphi6070FEUERRADER
 {
       meta:
@@ -9243,8 +9246,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule STProtectorV15SilentSoftware
 {
       meta:
@@ -9255,8 +9258,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASPackv105bAlexeySolodovnikov
 {
       meta:
@@ -9267,8 +9270,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor226minimumprotection
 {
       meta:
@@ -9279,8 +9282,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEProtector093CRYPToCRACk
 {
       meta:
@@ -9291,8 +9294,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC300400450EXEX86CRTLIB
 {
       meta:
@@ -9303,8 +9306,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackv118BasicaPLibAp0x
 {
       meta:
@@ -9315,8 +9318,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule vfpexeNcV500WangJianGuo
 {
       meta:
@@ -9327,8 +9330,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoiner153Stubengine17GlOFF
 {
       meta:
@@ -9339,8 +9342,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TheHypersprotectorTheHyper
 {
       meta:
@@ -9351,8 +9354,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ANDpakk2006DmitryAndreev
 {
       meta:
@@ -9363,8 +9366,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Thinstall2628Jtit
 {
       meta:
@@ -9376,8 +9379,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule UPXModifierv01x
 {
       meta:
@@ -9388,8 +9391,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1333ObsidiumSoftware
 {
       meta:
@@ -9401,8 +9404,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PureBasic4xNeilHodgson
 {
       meta:
@@ -9413,8 +9416,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxAugust16thIronMaiden
 {
       meta:
@@ -9425,8 +9428,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtector10Xvcasm
 {
       meta:
@@ -9437,8 +9440,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEPACK099
 {
       meta:
@@ -9449,8 +9452,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Freshbindv20gFresh
 {
       meta:
@@ -9461,8 +9464,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXSCRAMBLER306OnToL
 {
       meta:
@@ -9473,8 +9476,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompact2xxBitSumTechnologies
 {
       meta:
@@ -9485,8 +9488,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv01Cyberbob
 {
       meta:
@@ -9498,8 +9501,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddie2100
 {
       meta:
@@ -9510,8 +9513,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NETexecutableMicrosoft
 {
       meta:
@@ -9522,8 +9525,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule tElockv098
 {
       meta:
@@ -9534,8 +9537,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AZProtect0001byAlexZakaAZCRC
 {
       meta:
@@ -9547,8 +9550,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule UPX290LZMAMarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -9560,8 +9563,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule MEW510Northfox
 {
       meta:
@@ -9572,8 +9575,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv090
 {
       meta:
@@ -9584,8 +9587,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1258ObsidiumSoftware
 {
       meta:
@@ -9596,8 +9599,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SVKProtectorv132EngPavolCerven
 {
       meta:
@@ -9608,8 +9611,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeSplitter12BillPrisonerTPOC
 {
       meta:
@@ -9620,8 +9623,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule COPv10c1988
 {
       meta:
@@ -9632,8 +9635,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv25RetailSlimLoaderBitsumTechnologies
 {
       meta:
@@ -9644,8 +9647,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Morphinev27Holy_FatherRatter29A
 {
       meta:
@@ -9657,8 +9660,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule diPackerV1XdiProtectorSoftware
 {
       meta:
@@ -9669,8 +9672,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01REALBasicAnorganix
 {
       meta:
@@ -9681,8 +9684,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PPCPROTECT11XAlexeyGorchakov
 {
       meta:
@@ -9693,8 +9696,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nPackV111502006BetaNEOxuinC
 {
       meta:
@@ -9705,8 +9708,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EnigmaProtector11X13XSukhovVladimirSergeNMarkin
 {
       meta:
@@ -9717,8 +9720,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule HardlockdongleAlladin
 {
       meta:
@@ -9729,8 +9732,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190c
 {
       meta:
@@ -9741,8 +9744,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack_PatchDwing
 {
       meta:
@@ -9753,8 +9756,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeJoinerV10Yodaf2f
 {
       meta:
@@ -9765,8 +9768,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrink071beta
 {
       meta:
@@ -9777,8 +9780,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMASM32TASM32
 {
       meta:
@@ -9790,8 +9793,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev101BoBBobSoft
 {
       meta:
@@ -9802,8 +9805,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPX072
 {
       meta:
@@ -9814,9 +9817,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule AdFlt2
+
+
+rule AdFlt2: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -9826,8 +9829,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack120BasicEditionaPLibAp0x
 {
       meta:
@@ -9838,8 +9841,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AsCryptv01SToRM1
 {
       meta:
@@ -9850,8 +9853,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SmartEMicrosoft
 {
       meta:
@@ -9862,8 +9865,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PE_Admin10EncryptPE12003518SoldFlyingCat
 {
       meta:
@@ -9875,8 +9878,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule MacromediaWindowsFlashProjectorPlayerv40
 {
       meta:
@@ -9887,8 +9890,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPack32v100v111v112v120
 {
       meta:
@@ -9899,8 +9902,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtectorV11vcasm
 {
       meta:
@@ -9911,8 +9914,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MaskPE16yzkzero
 {
       meta:
@@ -9923,8 +9926,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule bambam001bedrock
 {
       meta:
@@ -9935,8 +9938,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MEW11SE10Anorganix
 {
       meta:
@@ -9947,8 +9950,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv20
 {
       meta:
@@ -9959,8 +9962,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01BorlandDelphi6070Anorganix
 {
       meta:
@@ -9971,8 +9974,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV12ObsidiumSoftware
 {
       meta:
@@ -9983,8 +9986,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PEProtect09Anorganix
 {
       meta:
@@ -9995,8 +9998,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPack32v1x
 {
       meta:
@@ -10007,8 +10010,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ChSfxsmallv11
 {
       meta:
@@ -10019,8 +10022,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXModifiedStubcFarbrauschConsumerConsulting
 {
       meta:
@@ -10031,8 +10034,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02NorthStarPEShrinker13Anorganix
 {
       meta:
@@ -10043,8 +10046,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv098tE
 {
       meta:
@@ -10055,8 +10058,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualBasicMASM32
 {
       meta:
@@ -10067,8 +10070,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv022v023BetaDwing
 {
       meta:
@@ -10079,8 +10082,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxVirusConstructorbased
 {
       meta:
@@ -10092,8 +10095,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PESHiELD02
 {
       meta:
@@ -10104,8 +10107,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02Gleam100Anorganix
 {
       meta:
@@ -10116,8 +10119,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DBPEv233DingBoy
 {
       meta:
@@ -10128,8 +10131,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PEtite2xlevel0Anorganix
 {
       meta:
@@ -10140,8 +10143,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EPack14litefinalby6aHguT
 {
       meta:
@@ -10152,8 +10155,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock098tE
 {
       meta:
@@ -10164,8 +10167,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler10p0ke
 {
       meta:
@@ -10176,8 +10179,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule WARNINGTROJANADinjector
 {
       meta:
@@ -10188,8 +10191,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TopSpeedv3011989
 {
       meta:
@@ -10200,8 +10203,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CodeCryptv0164
 {
       meta:
@@ -10212,8 +10215,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXHiT001DJSiba
 {
       meta:
@@ -10224,8 +10227,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01ASProtectAnorganix
 {
       meta:
@@ -10236,8 +10239,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PocketPCARM
 {
       meta:
@@ -10248,8 +10251,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AnskyaBinderv11Anskya
 {
       meta:
@@ -10260,8 +10263,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtectorV10Bvcasm
 {
       meta:
@@ -10272,8 +10275,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SecurePE1Xwwwdeepzoneorg
 {
       meta:
@@ -10284,8 +10287,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yPv10bbyAshkbizDanehkar
 {
       meta:
@@ -10296,8 +10299,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MSLRHv031a
 {
       meta:
@@ -10309,8 +10312,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv039finalDwing
 {
       meta:
@@ -10322,8 +10325,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule vprotector12vcasm
 {
       meta:
@@ -10335,8 +10338,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule FakeNinjav28Spirit
 {
       meta:
@@ -10347,8 +10350,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECompactv133
 {
       meta:
@@ -10359,8 +10362,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DragonArmorOrient
 {
       meta:
@@ -10371,8 +10374,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThemidaWinLicenseV1802OreansTechnologies
 {
       meta:
@@ -10383,8 +10386,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftDefender1xRandyLi
 {
       meta:
@@ -10395,8 +10398,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC2x4xDLLPelleOrinius
 {
       meta:
@@ -10407,8 +10410,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPX290LZMADelphistubMarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -10419,8 +10422,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV119aPlib043ap0x
 {
       meta:
@@ -10431,8 +10434,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VirogensPEShrinkerv014
 {
       meta:
@@ -10443,8 +10446,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandDelphiBorlandC
 {
       meta:
@@ -10457,8 +10460,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01ACProtect109Anorganix
 {
       meta:
@@ -10469,8 +10472,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorV16dVaska
 {
       meta:
@@ -10481,8 +10484,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv032BetaPatchDwing
 {
       meta:
@@ -10493,8 +10496,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Apex30alpha500mhz
 {
       meta:
@@ -10505,8 +10508,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SimbiOZPoly21Extranger
 {
       meta:
@@ -10517,8 +10520,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov184
 {
       meta:
@@ -10529,8 +10532,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov183
 {
       meta:
@@ -10541,8 +10544,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov182
 {
       meta:
@@ -10553,8 +10556,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov180
 {
       meta:
@@ -10565,8 +10568,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeSplitter13SplitMethodBillPrisonerTPOC
 {
       meta:
@@ -10578,8 +10581,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule RJoiner12aVaska
 {
       meta:
@@ -10590,8 +10593,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxVirusConstructorIVPbased
 {
       meta:
@@ -10602,8 +10605,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPE12003518WFS
 {
       meta:
@@ -10614,8 +10617,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv168v184
 {
       meta:
@@ -10626,8 +10629,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtectorProEdition116RandyLi
 {
       meta:
@@ -10639,8 +10642,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Reg2Exe222223byJanVorel
 {
       meta:
@@ -10651,8 +10654,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv120EngdulekxtBorlandDelphiMicrosoftVisualC
 {
       meta:
@@ -10663,20 +10666,22 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule CrunchPE
+
+
+rule CrunchPE: Packer PEiD
 {
       meta:
 		author="malware-lu"
+        note="Added extra checks"
 strings:
 		$a0 = { 55 E8 ?? ?? ?? ?? 5D 83 ED 06 8B C5 55 60 89 AD ?? ?? ?? ?? 2B 85 }
+        $b = { EB 10 ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? ?? 55 E8 ?? ?? ?? ?? 5D 81 ED 18 ?? ?? ?? 8B C5 55 60 9C 2B 85 E9 06 ?? ?? 89 85 E1 06 ?? ?? FF 74 24 2C E8 BB 01 00 00 0F 82 92 05 00 00 E8 F1 03 00 00 49 0F 88 86 05 00 00 68 6C D9 B2 96 33 C0 50 E8 24 03 00 00 89 85 D9 41 00 00 68 EC 49 7B 79 33 C0 50 E8 11 03 00 00 89 85 D1 41 00 00 E8 67 05 00 00 E9 56 05 00 00 51 52 53 33 C9 49 8B D1 33 C0 33 DB AC 32 C1 8A CD 8A EA 8A D6 B6 08 66 D1 EB 66 D1 D8 73 09 66 35 20 83 66 81 F3 B8 ED FE CE 75 EB 33 C8 33 D3 4F 75 D5 F7 D2 F7 D1 5B 8B C2 C1 C0 10 66 8B C1 5A 59 C3 68 03 02 00 00 E8 80 04 00 00 0F 82 A8 02 00 00 96 8B 44 24 04 0F C8 8B D0 25 0F 0F 0F 0F 33 D0 C1 C0 08 0B C2 8B D0 25 33 33 33 33 33 D0 C1 C0 04 0B C2 8B D0 25 55 55 55 55 33 D0 C1 C0 02 0B C2 }
 
 condition:
-		$a0 at pe.entry_point
+		for any of ($*) : ( $ at pe.entry_point )
 }
-	
-	
+
+
 rule CICompressv10
 {
       meta:
@@ -10687,8 +10692,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShieldv27b
 {
       meta:
@@ -10699,8 +10704,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXInlinerv10byGPcH
 {
       meta:
@@ -10711,8 +10716,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PKLITEv114v120
 {
       meta:
@@ -10723,8 +10728,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeToolsCOM2EXE
 {
       meta:
@@ -10735,8 +10740,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallEmbedded2545Jitit
 {
       meta:
@@ -10747,8 +10752,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxARCV4
 {
       meta:
@@ -10759,8 +10764,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo3X5XSiliconRealmsToolworks
 {
       meta:
@@ -10771,8 +10776,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePESHiELD025emadicius
 {
       meta:
@@ -10783,8 +10788,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov252beta2
 {
       meta:
@@ -10795,8 +10800,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CipherWallSelfExtratorDecryptorConsolev15
 {
       meta:
@@ -10807,8 +10812,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrinkerv029
 {
       meta:
@@ -10819,8 +10824,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV33LiuXingPing
 {
       meta:
@@ -10831,8 +10836,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CopyMinderMicrocosmLtd
 {
       meta:
@@ -10843,8 +10848,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Crunchv5BitArts
 {
       meta:
@@ -10855,8 +10860,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrinkerv020
 {
       meta:
@@ -10867,8 +10872,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo500SiliconRealmsToolworks
 {
       meta:
@@ -10879,8 +10884,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SLVc0deProtector060SLVICU
 {
       meta:
@@ -10891,8 +10896,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Kryptonv03
 {
       meta:
@@ -10903,8 +10908,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrackStopv101cStefanEsser1997
 {
       meta:
@@ -10915,8 +10920,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Kryptonv05
 {
       meta:
@@ -10927,8 +10932,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Kryptonv04
 {
       meta:
@@ -10939,8 +10944,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PassLock2000v10EngMoonlightSoftware
 {
       meta:
@@ -10951,8 +10956,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv029Betav031BetaDwing
 {
       meta:
@@ -10963,8 +10968,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AlexProtector10beta2byAlex
 {
       meta:
@@ -10975,8 +10980,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MoleBoxv254Teggo
 {
       meta:
@@ -10987,8 +10992,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule InstallShield2000
 {
       meta:
@@ -10999,8 +11004,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1337ObsidiumSoftware
 {
       meta:
@@ -11011,8 +11016,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv03Engcyberbob
 {
       meta:
@@ -11024,8 +11029,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02PEPack099Anorganix
 {
       meta:
@@ -11036,8 +11041,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxVCL
 {
       meta:
@@ -11048,8 +11053,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VterminalV10XLeiPeng
 {
       meta:
@@ -11060,8 +11065,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEEncrypt10Liwuyue
 {
       meta:
@@ -11072,8 +11077,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InstallAnywhere61ZeroGSoftwareInc
 {
       meta:
@@ -11085,8 +11090,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule iLUCRYPTv4018exe
 {
       meta:
@@ -11097,8 +11102,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02ASProtectAnorganix
 {
       meta:
@@ -11109,8 +11114,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPEV22006710WFS
 {
       meta:
@@ -11122,8 +11127,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Themida10xx18xxnocompressionOreansTechnologies
 {
       meta:
@@ -11135,8 +11140,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule StonesPEEncryptorv10
 {
       meta:
@@ -11147,8 +11152,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PolyBoxDAnskya
 {
       meta:
@@ -11159,8 +11164,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Mew10execoder10NorthfoxHCC
 {
       meta:
@@ -11171,8 +11176,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECrypt102
 {
       meta:
@@ -11183,8 +11188,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DIETv100d
 {
       meta:
@@ -11195,8 +11200,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV119LZMA430ap0x
 {
       meta:
@@ -11207,8 +11212,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ENIGMAProtectorV112SukhovVladimir
 {
       meta:
@@ -11219,8 +11224,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeASPack212FEUERRADER
 {
       meta:
@@ -11231,8 +11236,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MacromediaWindowsFlashProjectorPlayerv50
 {
       meta:
@@ -11243,8 +11248,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule IDApplicationProtector12IDSecuritySuite
 {
       meta:
@@ -11255,8 +11260,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4ExtractablePasswordchecking
 {
       meta:
@@ -11267,8 +11272,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HASPHLProtectionV1XAladdin
 {
       meta:
@@ -11280,8 +11285,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv10
 {
       meta:
@@ -11292,8 +11297,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv11
 {
       meta:
@@ -11304,8 +11309,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov275a
 {
       meta:
@@ -11316,8 +11321,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner0132Lite003Anorganix
 {
       meta:
@@ -11328,8 +11333,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxDoom666
 {
       meta:
@@ -11340,8 +11345,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxSpanz
 {
       meta:
@@ -11352,8 +11357,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoEXEPackerv100DLLLZBRSBeRoFarbrausch
 {
       meta:
@@ -11364,8 +11369,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pksmart10b
 {
       meta:
@@ -11376,8 +11381,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELockv106
 {
       meta:
@@ -11388,8 +11393,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LaunchAnywherev4001
 {
       meta:
@@ -11400,8 +11405,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv033v034BetaDwing
 {
       meta:
@@ -11412,8 +11417,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule GameGuardnProtect
 {
       meta:
@@ -11424,8 +11429,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorV1032AshkbizDanehkar
 {
       meta:
@@ -11436,8 +11441,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule nBinderv40
 {
       meta:
@@ -11448,8 +11453,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AnslymFUDCrypter
 {
       meta:
@@ -11460,8 +11465,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EPExEPackV10EliteCodingGroup
 {
       meta:
@@ -11472,8 +11477,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack12build3009Method2bagie
 {
       meta:
@@ -11484,8 +11489,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule WinZip32bitSFXv6xmodule
 {
       meta:
@@ -11496,8 +11501,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEinstein
 {
       meta:
@@ -11508,8 +11513,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VideoLanClient
 {
       meta:
@@ -11520,8 +11525,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrunchPEv10xx
 {
       meta:
@@ -11532,8 +11537,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxTravJack883
 {
       meta:
@@ -11544,8 +11549,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RSCsProcessPatcherv151
 {
       meta:
@@ -11556,8 +11561,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule kryptor9
 {
       meta:
@@ -11568,8 +11573,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SecuPackv15
 {
       meta:
@@ -11580,8 +11585,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kryptor5
 {
       meta:
@@ -11592,8 +11597,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kryptor6
 {
       meta:
@@ -11604,8 +11609,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtectV13Xrisco
 {
       meta:
@@ -11616,8 +11621,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELockNTv202c
 {
       meta:
@@ -11628,8 +11633,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02MinGWGCC2xAnorganix
 {
       meta:
@@ -11640,8 +11645,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeBASIC016b
 {
       meta:
@@ -11652,8 +11657,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv16bv16cVaska
 {
       meta:
@@ -11665,9 +11670,9 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
-rule FileShield
+
+
+rule FileShield: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -11677,8 +11682,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDC12SelfDecryptingBinaryGeneratorbyClaesMNyberg
 {
       meta:
@@ -11689,8 +11694,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv1501
 {
       meta:
@@ -11701,8 +11706,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Inbuildv10hard
 {
       meta:
@@ -11713,8 +11718,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShieldvxx
 {
       meta:
@@ -11725,8 +11730,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv20Vaska
 {
       meta:
@@ -11737,8 +11742,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv125
 {
       meta:
@@ -11749,8 +11754,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv1Vaska
 {
       meta:
@@ -11762,8 +11767,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv122
 {
       meta:
@@ -11774,8 +11779,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Packmanv10BrandonLaCombe
 {
       meta:
@@ -11786,8 +11791,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SpecialEXEPaswordProtectorV101EngPavolCerven
 {
       meta:
@@ -11798,8 +11803,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeSmashervxx
 {
       meta:
@@ -11810,8 +11815,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmor046ChinaCrackingGroup
 {
       meta:
@@ -11822,8 +11827,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VMProtect106107PolyTech
 {
       meta:
@@ -11834,8 +11839,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule USSR031bySpirit
 {
       meta:
@@ -11846,8 +11851,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PeCompact253DLLSlimLoaderBitSumTechnologies
 {
       meta:
@@ -11858,8 +11863,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LameCryptv10
 {
       meta:
@@ -11870,9 +11875,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule Cygwin32
+
+
+rule Cygwin32: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -11882,8 +11887,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv123RC4build0807exeAlexeySolodovnikov
 {
       meta:
@@ -11894,8 +11899,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Armadillov210b2
 {
       meta:
@@ -11906,8 +11911,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190
 {
       meta:
@@ -11918,8 +11923,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorProtection150XCGSoftLabs
 {
       meta:
@@ -11930,8 +11935,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxNecropolis1963
 {
       meta:
@@ -11942,8 +11947,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinkv20
 {
       meta:
@@ -11954,8 +11959,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02UPX06Anorganix
 {
       meta:
@@ -11966,8 +11971,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinV071cyberbob
 {
       meta:
@@ -11978,8 +11983,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XHider10GlobaL
 {
       meta:
@@ -11991,8 +11996,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualC70DLLAnorganix
 {
       meta:
@@ -12003,8 +12008,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEShieldV05Smoke
 {
       meta:
@@ -12016,8 +12021,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler25Ap0ke
 {
       meta:
@@ -12028,8 +12033,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Armadillov177
 {
       meta:
@@ -12040,8 +12045,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxTrivial25
 {
       meta:
@@ -12052,7 +12057,7 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
+
 // 20150909 - Issue #39 - Commented because of High FP rate
 /*
 rule Armadillov171
@@ -12066,7 +12071,7 @@ condition:
 		$a0 at pe.entry_point
 }
 */
-	
+
 rule KBySV022shoooo
 {
       meta:
@@ -12077,8 +12082,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InnoSetupModule
 {
       meta:
@@ -12090,8 +12095,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule piritv15
 {
       meta:
@@ -12102,8 +12107,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftSentryv30
 {
       meta:
@@ -12114,8 +12119,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPEV22007411WFS
 {
       meta:
@@ -12126,8 +12131,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov19x
 {
       meta:
@@ -12138,8 +12143,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov285
 {
       meta:
@@ -12150,8 +12155,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectvxx
 {
       meta:
@@ -12162,8 +12167,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShieldv17
 {
       meta:
@@ -12174,8 +12179,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Splasherv10v30
 {
       meta:
@@ -12186,8 +12191,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeCryptor01build002GlOFF
 {
       meta:
@@ -12198,8 +12203,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EXEShieldV06SMoKE
 {
       meta:
@@ -12211,8 +12216,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02MicrosoftVisualBasic5060Anorganix
 {
       meta:
@@ -12223,8 +12228,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack118DllLZMA430ap0x
 {
       meta:
@@ -12235,8 +12240,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv100v103
 {
       meta:
@@ -12247,8 +12252,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinkerv34
 {
       meta:
@@ -12260,8 +12265,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinkerv32
 {
       meta:
@@ -12272,8 +12277,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinkerv33
 {
       meta:
@@ -12284,8 +12289,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01JDPack1xJDProtect09Anorganix
 {
       meta:
@@ -12296,8 +12301,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upack024027beta028alphaDwing
 {
       meta:
@@ -12308,8 +12313,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01LocklessIntroPackAnorganix
 {
       meta:
@@ -12320,8 +12325,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov250b3
 {
       meta:
@@ -12332,8 +12337,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEBundlev02v20x
 {
       meta:
@@ -12344,8 +12349,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftProtectwwwsoftprotectbyru
 {
       meta:
@@ -12356,8 +12361,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NTPackerV2XErazerZ
 {
       meta:
@@ -12368,8 +12373,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SiliconRealmsInstallStub
 {
       meta:
@@ -12380,8 +12385,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Armadillov430v440SiliconRealmsToolworks
 {
       meta:
@@ -12393,8 +12398,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule MoleBoxv20
 {
       meta:
@@ -12405,8 +12410,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FucknJoyv10cUsAr
 {
       meta:
@@ -12418,8 +12423,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02VideoLanClientAnorganix
 {
       meta:
@@ -12430,8 +12435,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftWrap
 {
       meta:
@@ -12442,8 +12447,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AI1Creator1Beta2byMZ
 {
       meta:
@@ -12454,8 +12459,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule JAMv211
 {
       meta:
@@ -12466,8 +12471,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv0978
 {
       meta:
@@ -12478,8 +12483,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Setup2GoInstallerStub
 {
       meta:
@@ -12490,8 +12495,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule themida1005httpwwworeanscom
 {
       meta:
@@ -12502,8 +12507,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorv1033exescrcomAshkbizDanehkar
 {
       meta:
@@ -12514,8 +12519,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ORiENv211DEMO
 {
       meta:
@@ -12526,8 +12531,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv0977
 {
       meta:
@@ -12538,8 +12543,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv13betaCyberbob
 {
       meta:
@@ -12550,8 +12555,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv13bVaska
 {
       meta:
@@ -12563,8 +12568,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule mkfpackllydd
 {
       meta:
@@ -12575,8 +12580,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PESpinV03cyberbob
 {
       meta:
@@ -12587,8 +12592,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02BorlandDelphiSetupModuleAnorganix
 {
       meta:
@@ -12599,8 +12604,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PELOCKnt204
 {
       meta:
@@ -12611,8 +12616,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MacromediaWindowsFlashProjectorPlayerv60
 {
       meta:
@@ -12623,8 +12628,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule IMPostorPack10MahdiHezavehi
 {
       meta:
@@ -12635,8 +12640,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PluginToExev102BoBBobSoft
 {
       meta:
@@ -12647,8 +12652,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv120
 {
       meta:
@@ -12659,8 +12664,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateexeProtectorV18SetiSoftTeam
 {
       meta:
@@ -12671,8 +12676,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PENinjamodified
 {
       meta:
@@ -12683,8 +12688,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DotFixNiceProtect21GPcHSoft
 {
       meta:
@@ -12695,8 +12700,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EXEStealthv276WebToolMaster
 {
       meta:
@@ -12707,8 +12712,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor239DLLcompressedresources
 {
       meta:
@@ -12719,8 +12724,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnoPiX103110BaGiE
 {
       meta:
@@ -12731,8 +12736,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b3
 {
       meta:
@@ -12743,8 +12748,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule IonicWindSoftware
 {
       meta:
@@ -12755,8 +12760,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePackV11XMethod2bagie
 {
       meta:
@@ -12768,8 +12773,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule PCGuardv500d
 {
       meta:
@@ -12780,8 +12785,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESHiELDv0251
 {
       meta:
@@ -12792,8 +12797,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117DLLaPLibAp0x
 {
       meta:
@@ -12804,8 +12809,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv110b4
 {
       meta:
@@ -12816,8 +12821,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02PEX099Anorganix
 {
       meta:
@@ -12828,8 +12833,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallVirtualizationSuite30XThinstallCompany
 {
       meta:
@@ -12841,8 +12846,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv20
 {
       meta:
@@ -12853,8 +12858,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SLVc0deProtectorv11SLV
 {
       meta:
@@ -12866,8 +12871,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild031032GlOFF
 {
       meta:
@@ -12878,8 +12883,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SLVc0deProtectorv06SLV
 {
       meta:
@@ -12890,8 +12895,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmor04600759hying
 {
       meta:
@@ -12902,8 +12907,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule RpolycryptbyVaska2003071841
 {
       meta:
@@ -12914,8 +12919,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DBPEvxxxDingBoy
 {
       meta:
@@ -12926,8 +12931,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftwareCompressBGSoftware
 {
       meta:
@@ -12938,8 +12943,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4UnextrPasswcheckVirshield
 {
       meta:
@@ -12950,8 +12955,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv0399Dwing
 {
       meta:
@@ -12964,8 +12969,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule UPXModifiedstub
 {
       meta:
@@ -12976,8 +12981,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Cryptic20Tughack
 {
       meta:
@@ -12988,8 +12993,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule KGBSFX
 {
       meta:
@@ -13000,8 +13005,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv20betaJeremyCollake
 {
       meta:
@@ -13012,8 +13017,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DevCv4
 {
       meta:
@@ -13024,8 +13029,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule DevCv5
 {
       meta:
@@ -13036,8 +13041,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CRYPToCRACksPEProtectorV092LukasFleischer
 {
       meta:
@@ -13048,8 +13053,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UpackV037Dwing
 {
       meta:
@@ -13062,8 +13067,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidiumv13037ObsidiumSoftware
 {
       meta:
@@ -13074,8 +13079,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxCompiler
 {
       meta:
@@ -13086,8 +13091,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BJFntv13
 {
       meta:
@@ -13098,8 +13103,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePEtite21emadicius
 {
       meta:
@@ -13110,8 +13115,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXShitv01500mhz
 {
       meta:
@@ -13124,8 +13129,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule PackmanV0001Bubbasoft
 {
       meta:
@@ -13136,8 +13141,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DJoinv07publicxorencryptiondrmist
 {
       meta:
@@ -13148,8 +13153,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoinerSmallbuild033GlOFF
 {
       meta:
@@ -13160,8 +13165,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AnticrackSoftwareProtectorv109ACProtect
 {
       meta:
@@ -13172,8 +13177,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnderGroundCrypterbyBooster2000
 {
       meta:
@@ -13184,8 +13189,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MicroJoiner16coban2k
 {
       meta:
@@ -13196,8 +13201,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WiseInstallerStubv11010291
 {
       meta:
@@ -13208,8 +13213,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateEXEProtector18
 {
       meta:
@@ -13220,8 +13225,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SimpleUPXCryptorv3042005multilayerencryptionMANtiCORE
 {
       meta:
@@ -13233,8 +13238,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Themida1201compressedOreansTechnologies
 {
       meta:
@@ -13245,8 +13250,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv155
 {
       meta:
@@ -13257,8 +13262,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PolyCryptPE214b215JLabSoftwareCreationshsigned
 {
       meta:
@@ -13269,8 +13274,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECompactv156
 {
       meta:
@@ -13281,8 +13286,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PGMPACKv013
 {
       meta:
@@ -13293,8 +13298,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PGMPACKv014
 {
       meta:
@@ -13305,8 +13310,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner0232Lite003Anorganix
 {
       meta:
@@ -13317,8 +13322,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakePEtite22FEUERRADER
 {
       meta:
@@ -13329,8 +13334,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MEW10byNorthfox
 {
       meta:
@@ -13341,8 +13346,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule theWRAPbyTronDoc
 {
       meta:
@@ -13353,8 +13358,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petitev211
 {
       meta:
@@ -13365,8 +13370,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petitev212
 {
       meta:
@@ -13377,8 +13382,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MaskPEV20yzkzero
 {
       meta:
@@ -13389,8 +13394,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01Morphine12Anorganix
 {
       meta:
@@ -13401,8 +13406,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EZIPv10
 {
       meta:
@@ -13413,8 +13418,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule y0dasCrypterv12
 {
       meta:
@@ -13425,8 +13430,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ChinaProtectdummy
 {
       meta:
@@ -13437,8 +13442,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule BopCryptv10
 {
       meta:
@@ -13449,8 +13454,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MinkeV101Codius
 {
       meta:
@@ -13461,8 +13466,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02BorlandDelphiDLLAnorganix
 {
       meta:
@@ -13473,8 +13478,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule bambam004bedrock
 {
       meta:
@@ -13485,8 +13490,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117DLLLZMAAp0x
 {
       meta:
@@ -13497,8 +13502,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitev22
 {
       meta:
@@ -13509,8 +13514,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitev20
 {
       meta:
@@ -13521,8 +13526,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitev21
 {
       meta:
@@ -13533,8 +13538,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ElicenseSystemV4000ViaTechInc
 {
       meta:
@@ -13545,8 +13550,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VProtectorV10Build20041213testvcasm
 {
       meta:
@@ -13557,8 +13562,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Themida18xxOreansTechnologies
 {
       meta:
@@ -13570,8 +13575,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule EXEJoinerv10
 {
       meta:
@@ -13582,8 +13587,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MicroJoiner11coban2k
 {
       meta:
@@ -13594,8 +13599,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01FSG10Anorganix
 {
       meta:
@@ -13606,8 +13611,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov200b2200b3
 {
       meta:
@@ -13618,8 +13623,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RAZOR1911encruptor
 {
       meta:
@@ -13630,8 +13635,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock051tE
 {
       meta:
@@ -13642,8 +13647,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtectorBasicProEdition112RandyLi
 {
       meta:
@@ -13654,8 +13659,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxFaxFreeTopo
 {
       meta:
@@ -13666,8 +13671,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02MEW11SE10Anorganix
 {
       meta:
@@ -13678,8 +13683,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Joinersignfrompinch250320072010
 {
       meta:
@@ -13690,8 +13695,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxSK
 {
       meta:
@@ -13702,8 +13707,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEStubOEPv1x
 {
       meta:
@@ -13714,8 +13719,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MoleBoxV23XMoleStudiocom
 {
       meta:
@@ -13726,8 +13731,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxHymn1865
 {
       meta:
@@ -13738,8 +13743,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kkrunchyRyd
 {
       meta:
@@ -13750,8 +13755,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECryptv100v101
 {
       meta:
@@ -13762,8 +13767,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CERBERUSv20
 {
       meta:
@@ -13774,8 +13779,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2117StrongbitSoftCompleteDevelopment
 {
       meta:
@@ -13786,8 +13791,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule WWPACKv303
 {
       meta:
@@ -13798,8 +13803,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule GHFProtectorpackonlyGPcH
 {
       meta:
@@ -13811,8 +13816,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule yzpackV11UsAr
 {
       meta:
@@ -13823,8 +13828,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxDanishtiny
 {
       meta:
@@ -13835,8 +13840,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXV194MarkusOberhumerLaszloMolnarJohnReiser
 {
       meta:
@@ -13847,8 +13852,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule yzpack112UsAr
 {
       meta:
@@ -13859,8 +13864,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02YodasProtector102Anorganix
 {
       meta:
@@ -13871,8 +13876,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02PESHiELD025Anorganix
 {
       meta:
@@ -13883,8 +13888,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPacKV34V35LiuXingPing
 {
       meta:
@@ -13895,8 +13900,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DualseXe10
 {
       meta:
@@ -13907,8 +13912,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NoodleCryptv200EngNoodleSpa
 {
       meta:
@@ -13919,8 +13924,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SoftComp1xBGSoftPT
 {
       meta:
@@ -13931,8 +13936,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Petite13c1998IanLuck
 {
       meta:
@@ -13943,8 +13948,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PENightMarev13
 {
       meta:
@@ -13955,8 +13960,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo50DllSiliconRealmsToolworks
 {
       meta:
@@ -13967,8 +13972,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ObsidiumV1350ObsidiumSoftware
 {
       meta:
@@ -13979,8 +13984,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv123RC1
 {
       meta:
@@ -13991,8 +13996,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PUNiSHERv15DEMOFEUERRADERAHTeam
 {
       meta:
@@ -14004,8 +14009,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv140b2v140b4
 {
       meta:
@@ -14016,8 +14021,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv198
 {
       meta:
@@ -14028,8 +14033,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CryptoLockv202EngRyanThian
 {
       meta:
@@ -14042,8 +14047,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule vfpexeNcv600WangJianGuo
 {
       meta:
@@ -14054,8 +14059,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XPEORv099b
 {
       meta:
@@ -14067,8 +14072,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev100BoBBobSoft
 {
       meta:
@@ -14079,8 +14084,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PeCompact2253276BitSumTechnologies
 {
       meta:
@@ -14091,8 +14096,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02CodeLockAnorganix
 {
       meta:
@@ -14103,8 +14108,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv100Engdulekxt
 {
       meta:
@@ -14115,8 +14120,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01BorlandDelphi50KOLMCKAnorganix
 {
       meta:
@@ -14127,8 +14132,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FlyCrypter10ut1lz
 {
       meta:
@@ -14140,8 +14145,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePECompact14xemadicius
 {
       meta:
@@ -14152,8 +14157,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule muckisprotectorIImucki
 {
       meta:
@@ -14164,8 +14169,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcasmProtector10
 {
       meta:
@@ -14176,8 +14181,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv20b2v20b3
 {
       meta:
@@ -14188,8 +14193,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtectorV10Dvcasm
 {
       meta:
@@ -14200,8 +14205,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule GardianAngel10
 {
       meta:
@@ -14212,8 +14217,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXpressorv12CGSoftLabs
 {
       meta:
@@ -14224,8 +14229,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RSCsProcessPatcherv14
 {
       meta:
@@ -14236,8 +14241,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Armadillov190b1
 {
       meta:
@@ -14248,8 +14253,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190b2
 {
       meta:
@@ -14260,8 +14265,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov190b3
 {
       meta:
@@ -14272,8 +14277,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandDelphiMicrosoftVisualCASM
 {
       meta:
@@ -14284,8 +14289,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstall25xxJtit
 {
       meta:
@@ -14297,8 +14302,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule hmimysPacker10hmimys
 {
       meta:
@@ -14309,8 +14314,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ACProtectV20risco
 {
       meta:
@@ -14321,8 +14326,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV112V114LZMA430ap0x
 {
       meta:
@@ -14333,9 +14338,9 @@ strings:
 condition:
 		$a0
 }
-	
-	
-rule JDPack
+
+
+rule JDPack: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -14345,8 +14350,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv1304Cyberbob
 {
       meta:
@@ -14357,8 +14362,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ScObfuscatorSuperCRacker
 {
       meta:
@@ -14369,8 +14374,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock098SpecialBuildforgotheXer
 {
       meta:
@@ -14381,8 +14386,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01DEF10Anorganix
 {
       meta:
@@ -14393,8 +14398,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02REALBasicAnorganix
 {
       meta:
@@ -14405,8 +14410,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov260c
 {
       meta:
@@ -14417,8 +14422,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov260a
 {
       meta:
@@ -14429,8 +14434,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThemidaWinLicenseV10XV17XDLLOreansTechnologies
 {
       meta:
@@ -14441,8 +14446,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressor12CGSoftLabs
 {
       meta:
@@ -14453,8 +14458,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NeoLitev10
 {
       meta:
@@ -14465,8 +14470,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeBundlev30standardloader
 {
       meta:
@@ -14477,8 +14482,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ProtectionPlusvxx
 {
       meta:
@@ -14489,8 +14494,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorV22Xsoftcompletecom
 {
       meta:
@@ -14501,8 +14506,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThinstallVirtualizationSuite30353043ThinstallCompany
 {
       meta:
@@ -14513,8 +14518,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01CrunchPEHeuristicAnorganix
 {
       meta:
@@ -14525,8 +14530,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv120EngdulekxtBorlandC
 {
       meta:
@@ -14537,8 +14542,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEPACKv405v406
 {
       meta:
@@ -14549,8 +14554,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PeStubOEPv1x
 {
       meta:
@@ -14562,8 +14567,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule EXEShieldv01bv03bv03SMoKE
 {
       meta:
@@ -14574,8 +14579,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmor049Hying
 {
       meta:
@@ -14586,8 +14591,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv14x
 {
       meta:
@@ -14598,8 +14603,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PocketPCSHA
 {
       meta:
@@ -14610,8 +14615,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorV1451CGSoftLabs
 {
       meta:
@@ -14622,8 +14627,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstall25
 {
       meta:
@@ -14634,8 +14639,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SuckStopv111
 {
       meta:
@@ -14646,8 +14651,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DEFv10
 {
       meta:
@@ -14659,8 +14664,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule UnnamedScrambler251Beta2252p0ke
 {
       meta:
@@ -14671,8 +14676,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Crunchv40
 {
       meta:
@@ -14683,8 +14688,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateEXEProtector18SetiSoft
 {
       meta:
@@ -14695,8 +14700,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02Armadillo300Anorganix
 {
       meta:
@@ -14707,8 +14712,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule hmimyssPEPack01hmimys
 {
       meta:
@@ -14719,8 +14724,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv146
 {
       meta:
@@ -14731,8 +14736,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02XCR011Anorganix
 {
       meta:
@@ -14743,8 +14748,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEPACKLINKv360v364v365or50121
 {
       meta:
@@ -14755,8 +14760,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SpecialEXEPasswordProtectorv10
 {
       meta:
@@ -14767,8 +14772,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptor15Vaska
 {
       meta:
@@ -14779,8 +14784,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeJoiner10Yoda
 {
       meta:
@@ -14791,8 +14796,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV119DllaPlib043ap0x
 {
       meta:
@@ -14803,8 +14808,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrypKeyV56XKenonicControlsLtd
 {
       meta:
@@ -14815,8 +14820,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Safe20
 {
       meta:
@@ -14827,8 +14832,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MicrosoftVisualCV80
 {
       meta:
@@ -14839,8 +14844,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MZ_Crypt10byBrainSt0rm
 {
       meta:
@@ -14851,8 +14856,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EPWv130
 {
       meta:
@@ -14863,8 +14868,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WindofCrypt10byDarkPressure
 {
       meta:
@@ -14875,8 +14880,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NTKrnlPackerAshkbizDanehkar
 {
       meta:
@@ -14887,8 +14892,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01LCCWin321xAnorganix
 {
       meta:
@@ -14899,8 +14904,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NME11Publicbyredlime
 {
       meta:
@@ -14911,8 +14916,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PEtitev13
 {
       meta:
@@ -14923,8 +14928,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitev12
 {
       meta:
@@ -14935,8 +14940,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv134v140b1
 {
       meta:
@@ -14947,8 +14952,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeMSVC70DLLMethod3emadicius
 {
       meta:
@@ -14959,8 +14964,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitev14
 {
       meta:
@@ -14972,8 +14977,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule SoftProtectSoftProtectbyru
 {
       meta:
@@ -14984,8 +14989,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02CDCopsIIAnorganix
 {
       meta:
@@ -14996,8 +15001,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack118LZMA430ap0x
 {
       meta:
@@ -15008,8 +15013,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv108xAlexeySolodovnikov
 {
       meta:
@@ -15020,8 +15025,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02BorlandCDLLMethod2Anorganix
 {
       meta:
@@ -15032,8 +15037,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ARMProtector01bySMoKE
 {
       meta:
@@ -15044,8 +15049,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock099cPrivateECLIPSEtE
 {
       meta:
@@ -15056,8 +15061,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XPack152164
 {
       meta:
@@ -15068,8 +15073,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv123RC4build0807dllAlexeySolodovnikov
 {
       meta:
@@ -15080,8 +15085,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov253b3
 {
       meta:
@@ -15092,8 +15097,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Imploderv104BoBBobSoft
 {
       meta:
@@ -15104,8 +15109,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev100v101BoBBobSoft
 {
       meta:
@@ -15116,8 +15121,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule JExeCompressor10byArashVeyskarami
 {
       meta:
@@ -15128,8 +15133,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Alloy4xPGWareLLC
 {
       meta:
@@ -15140,8 +15145,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallV2403Jitit
 {
       meta:
@@ -15153,8 +15158,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule FakeNinjav28AntiDebugSpirit
 {
       meta:
@@ -15165,8 +15170,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ExeLockv100
 {
       meta:
@@ -15177,8 +15182,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEtitevxx
 {
       meta:
@@ -15189,8 +15194,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EnigmaProtector10XSukhovVladimir
 {
       meta:
@@ -15201,8 +15206,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThinstallEmbedded27172719Jitit
 {
       meta:
@@ -15213,8 +15218,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv102bAlexeySolodovnikov
 {
       meta:
@@ -15226,8 +15231,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PEProtect09byCristophGabler1998
 {
       meta:
@@ -15238,8 +15243,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxPredator2448
 {
       meta:
@@ -15250,8 +15255,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeMSVC60DLLemadicius
 {
       meta:
@@ -15262,8 +15267,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv16dVaska
 {
       meta:
@@ -15275,8 +15280,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule Enigmaprotector112VladimirSukhov
 {
       meta:
@@ -15287,8 +15292,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule hyingsPEArmorV076hying
 {
       meta:
@@ -15299,8 +15304,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule JDPackV200JDPack
 {
       meta:
@@ -15311,8 +15316,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv01xv02xDwing
 {
       meta:
@@ -15323,8 +15328,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcasmProtectorV1Xvcasm
 {
       meta:
@@ -15335,8 +15340,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule kkrunchy023alpha2Ryd
 {
       meta:
@@ -15348,8 +15353,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PolyEnEV001LennartHedlund
 {
       meta:
@@ -15360,8 +15365,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Winkriptv10
 {
       meta:
@@ -15372,8 +15377,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TrainerCreationKitv5Trainer
 {
       meta:
@@ -15384,8 +15389,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EXEStealthv272
 {
       meta:
@@ -15396,8 +15401,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv273
 {
       meta:
@@ -15408,8 +15413,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02DEF10Anorganix
 {
       meta:
@@ -15420,8 +15425,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHpack01FEUERRADER
 {
       meta:
@@ -15432,8 +15437,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv274
 {
       meta:
@@ -15444,8 +15449,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ThinstallEmbedded22X2308Jitit
 {
       meta:
@@ -15456,8 +15461,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PolyCryptorbySMTVersionv3v4
 {
       meta:
@@ -15468,8 +15473,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ProtectSharewareV11eCompservCMS
 {
       meta:
@@ -15480,8 +15485,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upackv035alphaDwing
 {
       meta:
@@ -15492,8 +15497,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASPackv10801AlexeySolodovnikov
 {
       meta:
@@ -15506,8 +15511,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule ENIGMAProtectorV11SukhovVladimir
 {
       meta:
@@ -15518,8 +15523,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEncrypt20junkcode
 {
       meta:
@@ -15530,8 +15535,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimbiOZExtranger
 {
       meta:
@@ -15542,8 +15547,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule InnoSetupModulev304betav306v307
 {
       meta:
@@ -15554,8 +15559,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASPackv107bAlexeySolodovnikov
 {
       meta:
@@ -15566,8 +15571,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PROPACKv208emphasisonpackedsizelocked
 {
       meta:
@@ -15578,8 +15583,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv110p1
 {
       meta:
@@ -15590,8 +15595,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AdysGlue110
 {
       meta:
@@ -15602,8 +15607,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddiebased1745
 {
       meta:
@@ -15614,8 +15619,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASDPackv10asd
 {
       meta:
@@ -15626,8 +15631,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ORiENV1XV2XFisunAV
 {
       meta:
@@ -15638,8 +15643,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule StonesPEEncryptorv113
 {
       meta:
@@ -15650,8 +15655,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv302v302aExtractable
 {
       meta:
@@ -15662,8 +15667,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ARMProtector03bySMoKE
 {
       meta:
@@ -15674,8 +15679,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxSlowload
 {
       meta:
@@ -15686,8 +15691,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AntiDote10BetaSISTeam
 {
       meta:
@@ -15698,8 +15703,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DzAPatcherv13Loader
 {
       meta:
@@ -15710,8 +15715,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule CDSSS10beta1CyberDoom
 {
       meta:
@@ -15722,8 +15727,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule y0dasCrypterv10
 {
       meta:
@@ -15734,8 +15739,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule y0dasCrypterv11
 {
       meta:
@@ -15746,8 +15751,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftPiMPInstallSystemv1x
 {
       meta:
@@ -15758,8 +15763,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ExeBundlev30smallloader
 {
       meta:
@@ -15770,8 +15775,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXAlternativestub
 {
       meta:
@@ -15782,8 +15787,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EmbedPE113cyclotron
 {
       meta:
@@ -15794,8 +15799,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor2223protectedIAT
 {
       meta:
@@ -15806,8 +15811,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01Armadillo300Anorganix
 {
       meta:
@@ -15818,8 +15823,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptorvxxxx
 {
       meta:
@@ -15830,8 +15835,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Morphinev33SilentSoftwareSilentShieldc2005
 {
       meta:
@@ -15843,8 +15848,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule DEF10bartxt
 {
       meta:
@@ -15855,8 +15860,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv0971v0976
 {
       meta:
@@ -15867,8 +15872,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCShrinkv040b
 {
       meta:
@@ -15879,8 +15884,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakePECrypt102emadicius
 {
       meta:
@@ -15891,8 +15896,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ORiENv211212FisunAlexander
 {
       meta:
@@ -15903,8 +15908,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule StonesPEEncruptorv113
 {
       meta:
@@ -15915,8 +15920,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv11MTEc
 {
       meta:
@@ -15927,8 +15932,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CreateInstallStubvxx
 {
       meta:
@@ -15939,8 +15944,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WinZip32bitSFXv8xmodule
 {
       meta:
@@ -15951,8 +15956,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upxv12MarcusLazlo
 {
       meta:
@@ -15963,8 +15968,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEPACKv10byANAKiN1998
 {
       meta:
@@ -15975,8 +15980,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NeoLitev20
 {
       meta:
@@ -15987,8 +15992,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakeSpalsher1x3xFEUERRADER
 {
       meta:
@@ -15999,8 +16004,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv10803AlexeySolodovnikov
 {
       meta:
@@ -16014,8 +16019,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point or $a3 at pe.entry_point
 }
-	
-	
+
+
 rule VMProtect07x08PolyTech
 {
       meta:
@@ -16026,8 +16031,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ExeShieldProtectorV36wwwexeshieldcom
 {
       meta:
@@ -16038,8 +16043,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WerusCrypter10Kas
 {
       meta:
@@ -16050,8 +16055,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Themida10xx1800compressedengineOreansTechnologies
 {
       meta:
@@ -16063,8 +16068,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule CHECKPRGc1992
 {
       meta:
@@ -16075,8 +16080,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressor11CGSoftLabs
 {
       meta:
@@ -16087,8 +16092,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddie1028
 {
       meta:
@@ -16099,8 +16104,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEQuakev006byfORGAT
 {
       meta:
@@ -16111,8 +16116,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule LTCv13
 {
       meta:
@@ -16123,8 +16128,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv071b7
 {
       meta:
@@ -16135,8 +16140,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv071b2
 {
       meta:
@@ -16147,8 +16152,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnknownJoinersignfrompinch260320070212
 {
       meta:
@@ -16159,8 +16164,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DIETv100v100d
 {
       meta:
@@ -16171,8 +16176,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule APEX_CBLTApex40500mhz
 {
       meta:
@@ -16183,8 +16188,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule StealthPEv11
 {
       meta:
@@ -16195,8 +16200,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117DLLAp0x
 {
       meta:
@@ -16207,8 +16212,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Anti007V26LiuXingPing
 {
       meta:
@@ -16219,8 +16224,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AppEncryptorSilentTeam
 {
       meta:
@@ -16231,8 +16236,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VirogenCryptv075
 {
       meta:
@@ -16243,8 +16248,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov300a
 {
       meta:
@@ -16255,8 +16260,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv300v301Extractable
 {
       meta:
@@ -16267,8 +16272,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxUddy2617
 {
       meta:
@@ -16279,8 +16284,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PLINK8619841985
 {
       meta:
@@ -16291,8 +16296,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv10804AlexeySolodovnikov
 {
       meta:
@@ -16303,8 +16308,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule aPackv098m
 {
       meta:
@@ -16315,8 +16320,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule BamBamv001Bedrock
 {
       meta:
@@ -16327,8 +16332,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PESHiELDv02v02bv02b2
 {
       meta:
@@ -16339,8 +16344,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv27
 {
       meta:
@@ -16351,8 +16356,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv25
 {
       meta:
@@ -16363,8 +16368,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule VxHaryanto
 {
       meta:
@@ -16375,8 +16380,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPRStripperv2xunpacked
 {
       meta:
@@ -16387,8 +16392,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01UPX06Anorganix
 {
       meta:
@@ -16399,8 +16404,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Shrinker33
 {
       meta:
@@ -16411,8 +16416,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Shrinker32
 {
       meta:
@@ -16423,8 +16428,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Shrinker34
 {
       meta:
@@ -16435,8 +16440,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PESPinv13Cyberbob
 {
       meta:
@@ -16447,8 +16452,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv160v165
 {
       meta:
@@ -16459,8 +16464,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorv120b
 {
       meta:
@@ -16471,8 +16476,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EPWv12
 {
       meta:
@@ -16483,8 +16488,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv12x
 {
       meta:
@@ -16495,8 +16500,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Packanoidv1Arkanoid
 {
       meta:
@@ -16507,8 +16512,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EscargotV01Meat
 {
       meta:
@@ -16519,8 +16524,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SCObfuscatorSuperCRacker
 {
       meta:
@@ -16531,8 +16536,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EXEStealth275WebtoolMaster
 {
       meta:
@@ -16543,8 +16548,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PasswordProtectorcMiniSoft1992
 {
       meta:
@@ -16555,8 +16560,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxEddie2000
 {
       meta:
@@ -16567,8 +16572,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VideoLanClientUnknownCompiler
 {
       meta:
@@ -16579,8 +16584,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorv14CGSoftLabs
 {
       meta:
@@ -16592,8 +16597,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule SkDUndetectablerPro20NoUPXMethodSkD
 {
       meta:
@@ -16604,8 +16609,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RJcrushv100
 {
       meta:
@@ -16616,8 +16621,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShieldv27
 {
       meta:
@@ -16628,8 +16633,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShieldv29
 {
       meta:
@@ -16640,8 +16645,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEiDBundlev102v103BoBBobSoft
 {
       meta:
@@ -16652,8 +16657,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtMicrosoftVisualC5060
 {
       meta:
@@ -16664,8 +16669,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PUNiSHERV15FEUERRADER
 {
       meta:
@@ -16676,8 +16681,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ExcaliburV103forgot
 {
       meta:
@@ -16688,8 +16693,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack10betaap0x
 {
       meta:
@@ -16701,8 +16706,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule nMacrorecorder10
 {
       meta:
@@ -16713,8 +16718,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PrivateEXEv20a
 {
       meta:
@@ -16727,8 +16732,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule PackmanV10BrandonLaCombe
 {
       meta:
@@ -16739,8 +16744,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PEX099Anorganix
 {
       meta:
@@ -16751,8 +16756,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PAKSFXArchive
 {
       meta:
@@ -16763,8 +16768,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv2xxAlexeySolodovnikov
 {
       meta:
@@ -16776,8 +16781,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule SimbiOZ13Extranger
 {
       meta:
@@ -16788,8 +16793,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule muckisprotectorImucki
 {
       meta:
@@ -16800,8 +16805,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1339ObsidiumSoftware
 {
       meta:
@@ -16812,8 +16817,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule LOCK98V10028keenvim
 {
       meta:
@@ -16824,8 +16829,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule iPBProtectv013
 {
       meta:
@@ -16836,8 +16841,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PrivateEXEProtector197SetiSoft
 {
       meta:
@@ -16848,8 +16853,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASPackv21AlexeySolodovnikov
 {
       meta:
@@ -16860,8 +16865,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv103bAlexeySolodovnikov
 {
       meta:
@@ -16872,8 +16877,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv20
 {
       meta:
@@ -16884,8 +16889,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01PEIntro10Anorganix
 {
       meta:
@@ -16896,8 +16901,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv099SpecialBuildheXerforgot
 {
       meta:
@@ -16909,8 +16914,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VxBackfont900
 {
       meta:
@@ -16921,8 +16926,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrunchPEv20xx
 {
       meta:
@@ -16933,8 +16938,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Litev003a
 {
       meta:
@@ -16945,8 +16950,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack1XMethod2bagie
 {
       meta:
@@ -16957,8 +16962,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PEncryptv10
 {
       meta:
@@ -16969,8 +16974,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BJFntv12RC
 {
       meta:
@@ -16981,8 +16986,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FishPEShield112116HellFish
 {
       meta:
@@ -16994,8 +16999,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule CodeCryptv016bv0163b
 {
       meta:
@@ -17006,8 +17011,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VOBProtectCD
 {
       meta:
@@ -17018,8 +17023,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule diProtectorV1XdiProtectorSoftware
 {
       meta:
@@ -17030,8 +17035,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateexeProtector20SetiSoftTeam
 {
       meta:
@@ -17042,8 +17047,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakekkryptor9kryptoraFEUERRADER
 {
       meta:
@@ -17054,8 +17059,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEBundlev310
 {
       meta:
@@ -17066,8 +17071,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule NsPack34NorthStar
 {
       meta:
@@ -17078,8 +17083,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC280290EXEX86CRTLIB
 {
       meta:
@@ -17090,8 +17095,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV115V117Dllap0x
 {
       meta:
@@ -17102,8 +17107,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC28x45xPelleOrinius
 {
       meta:
@@ -17114,8 +17119,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstallv2460Jitit
 {
       meta:
@@ -17126,8 +17131,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110Engdulekxt
 {
       meta:
@@ -17140,8 +17145,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv2xx
 {
       meta:
@@ -17152,8 +17157,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule ASPackv10802AlexeySolodovnikov
 {
       meta:
@@ -17164,8 +17169,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo440SiliconRealmsToolworks
 {
       meta:
@@ -17176,8 +17181,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Armadillov1xxv2xx
 {
       meta:
@@ -17188,8 +17193,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv111c
 {
       meta:
@@ -17200,8 +17205,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealth276UnregisteredWebtoolMaster
 {
       meta:
@@ -17212,8 +17217,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02LCCWin32DLLAnorganix
 {
       meta:
@@ -17224,8 +17229,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CDSSSv10Beta1CyberDoomTeamX
 {
       meta:
@@ -17236,8 +17241,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv041x
 {
       meta:
@@ -17248,8 +17253,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ZCodeWin32PEProtectorv101
 {
       meta:
@@ -17260,8 +17265,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ABCCryptor10byZloY
 {
       meta:
@@ -17272,8 +17277,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule FSGv120EngdulekxtMicrosoftVisualC60
 {
       meta:
@@ -17284,8 +17289,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SLVc0deProtectorv061SLV
 {
       meta:
@@ -17297,8 +17302,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule FSG131dulekxt
 {
       meta:
@@ -17309,8 +17314,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV112V114aPlib043ap0x
 {
       meta:
@@ -17321,8 +17326,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Crypter31SLESH
 {
       meta:
@@ -17333,8 +17338,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner01VBOX43MTEAnorganix
 {
       meta:
@@ -17345,8 +17350,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeBJFNT13emadicius
 {
       meta:
@@ -17357,8 +17362,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeCryptor02build002GlOFF
 {
       meta:
@@ -17369,8 +17374,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PackItBitchV10archphase
 {
       meta:
@@ -17381,8 +17386,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule nPackv11250BetaNEOx
 {
       meta:
@@ -17393,8 +17398,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnpackedBSSFXArchivev19
 {
       meta:
@@ -17405,8 +17410,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01VideoLanClientAnorganix
 {
       meta:
@@ -17417,8 +17422,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01PECompact14Anorganix
 {
       meta:
@@ -17429,8 +17434,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01DxPack10Anorganix
 {
       meta:
@@ -17441,8 +17446,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Splice11byTw1stedL0gic
 {
       meta:
@@ -17453,8 +17458,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv140v145
 {
       meta:
@@ -17465,8 +17470,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillo300aSiliconRealmsToolworks
 {
       meta:
@@ -17477,8 +17482,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv20b4
 {
       meta:
@@ -17490,8 +17495,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule PESHiELDv01bMTE
 {
       meta:
@@ -17502,8 +17507,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoEXEPackerV100BeRo
 {
       meta:
@@ -17514,8 +17519,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MSLRHv32aemadicius
 {
       meta:
@@ -17526,8 +17531,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SpecialEXEPaswordProtectorv101EngPavolCerven
 {
       meta:
@@ -17538,8 +17543,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv166
 {
       meta:
@@ -17550,8 +17555,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv167
 {
       meta:
@@ -17562,8 +17567,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VIRUSIWormHybris
 {
       meta:
@@ -17574,8 +17579,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule GPInstallv50332
 {
       meta:
@@ -17586,8 +17591,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PseudoSigner02PEIntro10Anorganix
 {
       meta:
@@ -17598,8 +17603,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov410SiliconRealmsToolworks
 {
       meta:
@@ -17610,8 +17615,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AverCryptor102betaos1r1s
 {
       meta:
@@ -17622,8 +17627,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv131
 {
       meta:
@@ -17634,8 +17639,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv133
 {
       meta:
@@ -17646,8 +17651,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HidePE101BGCorp
 {
       meta:
@@ -17658,8 +17663,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXEStealthv11
 {
       meta:
@@ -17670,8 +17675,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Thinstallvxx
 {
       meta:
@@ -17682,8 +17687,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidium1200ObsidiumSoftware
 {
       meta:
@@ -17694,8 +17699,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivatePersonalPackerPPP103ConquestOfTroycom
 {
       meta:
@@ -17706,8 +17711,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VIRUSIWormBagle
 {
       meta:
@@ -17718,8 +17723,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule RLPackv118BasicLZMAAp0x
 {
       meta:
@@ -17730,8 +17735,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule StonesPEEncryptorv20
 {
       meta:
@@ -17742,8 +17747,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv029betaDwing
 {
       meta:
@@ -17754,8 +17759,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02BJFNT11bAnorganix
 {
       meta:
@@ -17766,8 +17771,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXScramblerRCv1x
 {
       meta:
@@ -17778,8 +17783,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECrypt15BitShapeSoftware
 {
       meta:
@@ -17790,8 +17795,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Upackv021BetaDwing
 {
       meta:
@@ -17802,8 +17807,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPXFreakV01HMX0101
 {
       meta:
@@ -17814,8 +17819,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler20p0ke
 {
       meta:
@@ -17826,8 +17831,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule HACKSTOPv100
 {
       meta:
@@ -17838,8 +17843,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ExeShield36wwwexeshieldcom
 {
       meta:
@@ -17850,8 +17855,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pe123v200644
 {
       meta:
@@ -17862,8 +17867,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtectorV11xRandyLi
 {
       meta:
@@ -17874,8 +17879,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BobPackv100BoBBobSoft
 {
       meta:
@@ -17886,8 +17891,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DBPEv210
 {
       meta:
@@ -17898,8 +17903,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NsPackv31NorthStar
 {
       meta:
@@ -17911,8 +17916,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1
 }
-	
-	
+
+
 rule SVKProtectorV13XPavolCerven
 {
       meta:
@@ -17923,8 +17928,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakePECrypt102FEUERRADER
 {
       meta:
@@ -17935,8 +17940,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02WATCOMCCEXEAnorganix
 {
       meta:
@@ -17947,9 +17952,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule PENinja
+
+
+rule PENinja: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -17959,8 +17964,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UpackV036Dwing
 {
       meta:
@@ -17972,8 +17977,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorv101AshkbizDanehkar
 {
       meta:
@@ -17984,8 +17989,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPX050070
 {
       meta:
@@ -17996,8 +18001,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxVCLencrypted
 {
       meta:
@@ -18009,8 +18014,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VxXRCV1015
 {
       meta:
@@ -18021,8 +18026,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackv118BasicDLLaPLibAp0x
 {
       meta:
@@ -18033,8 +18038,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PellesC290300400DLLX86CRTLIB
 {
       meta:
@@ -18045,8 +18050,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler13Bp0ke
 {
       meta:
@@ -18057,8 +18062,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HyingsPEArmor075exeHyingCCG
 {
       meta:
@@ -18069,8 +18074,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule SimbiOZPolyCryptorvxxExtranger
 {
       meta:
@@ -18081,8 +18086,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AVPACKv120
 {
       meta:
@@ -18093,8 +18098,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov220
 {
       meta:
@@ -18105,8 +18110,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XPack167
 {
       meta:
@@ -18117,8 +18122,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv1xx
 {
       meta:
@@ -18130,8 +18135,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule BobSoftMiniDelphiBoBBobSoft
 {
       meta:
@@ -18144,8 +18149,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point or $a2 at pe.entry_point
 }
-	
-	
+
+
 rule UltraProV10SafeNet
 {
       meta:
@@ -18156,8 +18161,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv1242v1243
 {
       meta:
@@ -18168,8 +18173,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SimplePack121build0909Method2bagie
 {
       meta:
@@ -18180,8 +18185,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Obsidium13037ObsidiumSoftware
 {
       meta:
@@ -18192,8 +18197,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxPhoenix927
 {
       meta:
@@ -18204,8 +18209,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petite14c199899IanLuck
 {
       meta:
@@ -18216,8 +18221,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressorV10CGSoftLabs
 {
       meta:
@@ -18228,8 +18233,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RECryptv07xCruddRETh2
 {
       meta:
@@ -18240,8 +18245,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PassEXEv20
 {
       meta:
@@ -18252,8 +18257,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RECryptv07xCruddRETh1
 {
       meta:
@@ -18264,8 +18269,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WIBUKeyV410Ahttpwibucomus
 {
       meta:
@@ -18276,8 +18281,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Mew501NorthFoxHCC
 {
       meta:
@@ -18288,8 +18293,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01ExeSmasherAnorganix
 {
       meta:
@@ -18300,8 +18305,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UnnamedScrambler12C12Dp0ke
 {
       meta:
@@ -18312,8 +18317,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule AlexProtectorv04beta1byAlex
 {
       meta:
@@ -18324,8 +18329,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UG2002Cruncherv03b3
 {
       meta:
@@ -18336,8 +18341,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FishPEShield101HellFish
 {
       meta:
@@ -18349,8 +18354,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01Neolite20Anorganix
 {
       meta:
@@ -18361,8 +18366,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEIntrov10
 {
       meta:
@@ -18373,8 +18378,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Obsidiumv1250ObsidiumSoftware
 {
       meta:
@@ -18385,8 +18390,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DevC4992BloodshedSoftware
 {
       meta:
@@ -18397,8 +18402,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackV119DllLZMA430ap0x
 {
       meta:
@@ -18409,8 +18414,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule XJXPALLiNSoN
 {
       meta:
@@ -18421,8 +18426,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov220b1
 {
       meta:
@@ -18433,8 +18438,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptor20Vaska
 {
       meta:
@@ -18445,8 +18450,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SentinelSuperProAutomaticProtectionv641Safenet
 {
       meta:
@@ -18457,8 +18462,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule TMTPascalv040
 {
       meta:
@@ -18469,8 +18474,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02CrunchPEHeuristicAnorganix
 {
       meta:
@@ -18481,8 +18486,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeMSVCDLLMethod4emadicius
 {
       meta:
@@ -18493,8 +18498,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VcAsmProtectorV10XVcAsm
 {
       meta:
@@ -18505,8 +18510,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VBOXv42MTE
 {
       meta:
@@ -18517,8 +18522,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeUPX0896102105124emadicius
 {
       meta:
@@ -18529,8 +18534,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandDelphiMicrosoftVisualC
 {
       meta:
@@ -18542,8 +18547,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule VxHafen809
 {
       meta:
@@ -18554,8 +18559,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117LZMAAp0x
 {
       meta:
@@ -18566,8 +18571,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01LTC13Anorganix
 {
       meta:
@@ -18578,8 +18583,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtectv141
 {
       meta:
@@ -18590,8 +18595,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtectorV1031AshkbizDanehkar
 {
       meta:
@@ -18602,8 +18607,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElock096tE
 {
       meta:
@@ -18614,8 +18619,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WerusCrypter10byKas
 {
       meta:
@@ -18626,8 +18631,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HEALTHv51byMuslimMPolyak
 {
       meta:
@@ -18638,8 +18643,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PCGuardv303dv305d
 {
       meta:
@@ -18650,8 +18655,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxNovember17768
 {
       meta:
@@ -18662,8 +18667,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BeRoTinyPascalBeRo
 {
       meta:
@@ -18674,8 +18679,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateexeProtector21522XSetiSoftTeam
 {
       meta:
@@ -18686,8 +18691,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Protectorv1111DDeMPEEnginev09DDeMCIv092
 {
       meta:
@@ -18698,8 +18703,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01XCR011Anorganix
 {
       meta:
@@ -18710,8 +18715,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Trivial173bySMTSMF
 {
       meta:
@@ -18722,8 +18727,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASProtectv11MTE
 {
       meta:
@@ -18734,8 +18739,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WARNINGTROJANRobinPE
 {
       meta:
@@ -18746,8 +18751,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PiCryptor10byScofield
 {
       meta:
@@ -18760,8 +18765,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point or $a2
 }
-	
-	
+
+
 rule PseudoSigner02MacromediaFlashProjector60Anorganix
 {
       meta:
@@ -18772,8 +18777,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeWWPack321xemadicius
 {
       meta:
@@ -18784,8 +18789,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEArmor07600765hying
 {
       meta:
@@ -18796,8 +18801,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PECryptv102
 {
       meta:
@@ -18808,8 +18813,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ILUCRYPTv4015exe
 {
       meta:
@@ -18820,8 +18825,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NJoy13NEX
 {
       meta:
@@ -18832,8 +18837,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VBOXv43v46
 {
       meta:
@@ -18845,8 +18850,8 @@ strings:
 condition:
 		$a0 or $a1
 }
-	
-	
+
+
 rule CodeLockvxx
 {
       meta:
@@ -18857,8 +18862,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CipherWallSelfExtratorDecryptorGUIv15
 {
       meta:
@@ -18869,8 +18874,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ARMProtectorv01bySMoKE
 {
       meta:
@@ -18881,8 +18886,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Upackv037betaDwing
 {
       meta:
@@ -18894,8 +18899,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule PrivateExeProtector1xsetisoft
 {
       meta:
@@ -18906,8 +18911,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Petitev14
 {
       meta:
@@ -18918,8 +18923,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv20a0
 {
       meta:
@@ -18930,8 +18935,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Obsidium1332ObsidiumSoftware
 {
       meta:
@@ -18942,8 +18947,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule modifiedHACKSTOPv111f
 {
       meta:
@@ -18954,8 +18959,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxKuku886
 {
       meta:
@@ -18966,8 +18971,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxCIHVersion12TTITWIN95CIH
 {
       meta:
@@ -18978,8 +18983,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ShegerdDongleV478MSCo
 {
       meta:
@@ -18990,8 +18995,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SDProtectRandyLi
 {
       meta:
@@ -19002,8 +19007,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule SmokesCryptv12
 {
       meta:
@@ -19014,8 +19019,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEncryptv31
 {
       meta:
@@ -19026,8 +19031,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEncryptv30
 {
       meta:
@@ -19038,8 +19043,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RJoiner12byVaska250320071658
 {
       meta:
@@ -19050,8 +19055,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Minke101byCodius
 {
       meta:
@@ -19062,8 +19067,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule CrypWrapvxx
 {
       meta:
@@ -19074,8 +19079,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WarningmaybeSimbyOZpolycryptorby3xpl01tver2xx250320072200
 {
       meta:
@@ -19086,8 +19091,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WARNINGTROJANHuiGeZi
 {
       meta:
@@ -19098,8 +19103,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeyodascryptor12emadicius
 {
       meta:
@@ -19110,8 +19115,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EPv10
 {
       meta:
@@ -19122,8 +19127,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule D1S1Gv11betaD1N
 {
       meta:
@@ -19134,8 +19139,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PROPACKv208
 {
       meta:
@@ -19146,8 +19151,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule BlackEnergyDDoSBotCrypter
 {
       meta:
@@ -19158,8 +19163,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv113
 {
       meta:
@@ -19170,8 +19175,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FreeJoiner151GlOFF
 {
       meta:
@@ -19182,8 +19187,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PeXv099EngbartCrackPl
 {
       meta:
@@ -19194,8 +19199,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv119
 {
       meta:
@@ -19206,8 +19211,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule HACKSTOPv118
 {
       meta:
@@ -19218,8 +19223,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv200b
 {
       meta:
@@ -19230,8 +19235,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PKLITEv200c
 {
       meta:
@@ -19242,8 +19247,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv032afakeNeolite20emadicius
 {
       meta:
@@ -19254,8 +19259,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv300v301Relocationspack
 {
       meta:
@@ -19266,8 +19271,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02CodeSafe20Anorganix
 {
       meta:
@@ -19278,8 +19283,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner02ZCode101Anorganix
 {
       meta:
@@ -19290,8 +19295,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxCaz1204
 {
       meta:
@@ -19302,8 +19307,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ZealPack10Zeal
 {
       meta:
@@ -19314,9 +19319,9 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
-rule CPAV
+
+
+rule CPAV: Packer PEiD
 {
       meta:
 		author="malware-lu"
@@ -19326,8 +19331,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEdition117iBoxLZMAAp0x
 {
       meta:
@@ -19338,8 +19343,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule INCrypter03INinYbyz3e_NiFe
 {
       meta:
@@ -19350,8 +19355,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MorphineV27Holy_FatherRatter29A
 {
       meta:
@@ -19362,8 +19367,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule nBinderv361
 {
       meta:
@@ -19374,8 +19379,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule MatrixDongleTDiGmbH
 {
       meta:
@@ -19387,8 +19392,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule NullsoftInstallSystemv20RC2
 {
       meta:
@@ -19399,8 +19404,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule UnoPiX075BaGiE
 {
       meta:
@@ -19411,8 +19416,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule WWPACKv305c4UnextractablePasswordchecking
 {
       meta:
@@ -19423,8 +19428,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule FSGv110EngdulekxtBorlandDelphi20
 {
       meta:
@@ -19435,8 +19440,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Reg2Exe225byJanVorel
 {
       meta:
@@ -19447,8 +19452,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov420SiliconRealmsToolworks
 {
       meta:
@@ -19459,8 +19464,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule DalKrypt10byDalKiT
 {
       meta:
@@ -19471,8 +19476,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv15Vaska
 {
       meta:
@@ -19483,8 +19488,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor239compressedresources
 {
       meta:
@@ -19495,8 +19500,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule GameGuardv20065xxexesignbyhot_UNP
 {
       meta:
@@ -19507,8 +19512,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EnigmaProtectorv112LITE
 {
       meta:
@@ -19519,8 +19524,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MSLRHv01emadicius
 {
       meta:
@@ -19532,8 +19537,8 @@ strings:
 condition:
 		$a0 or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule Apex_cbeta500mhz
 {
       meta:
@@ -19544,8 +19549,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VProtector11A12vcasm
 {
       meta:
@@ -19556,8 +19561,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule codeCrypter031
 {
       meta:
@@ -19568,8 +19573,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule PKTINYv10withTINYPROGv38
 {
       meta:
@@ -19580,8 +19585,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule AHTeamEPProtector03fakePESHiELD2xFEUERRADER
 {
       meta:
@@ -19592,8 +19597,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPackFullEditionV11Xap0x
 {
       meta:
@@ -19604,8 +19609,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule Excalibur103forgot
 {
       meta:
@@ -19616,8 +19621,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RLPack118DllaPlib043ap0x
 {
       meta:
@@ -19628,8 +19633,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01MicrosoftVisualC50MFCAnorganix
 {
       meta:
@@ -19640,8 +19645,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Pohernah101byKas
 {
       meta:
@@ -19652,8 +19657,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Armadillov25xv26x
 {
       meta:
@@ -19664,8 +19669,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PESpinv11Cyberbob
 {
       meta:
@@ -19676,8 +19681,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Escargot01byueMeat
 {
       meta:
@@ -19688,8 +19693,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule EncryptPE2200461622006630WFS
 {
       meta:
@@ -19700,8 +19705,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule tElockv060
 {
       meta:
@@ -19712,8 +19717,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01BorlandDelphi30Anorganix
 {
       meta:
@@ -19724,8 +19729,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ActiveMARKTMR5311140Trymedia
 {
       meta:
@@ -19736,8 +19741,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PEBundlev244
 {
       meta:
@@ -19748,8 +19753,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv120v1201
 {
       meta:
@@ -19760,8 +19765,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ASPackv104bAlexeySolodovnikov
 {
       meta:
@@ -19772,8 +19777,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule MESSv120
 {
       meta:
@@ -19784,8 +19789,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule RCryptorv13v14Vaska
 {
       meta:
@@ -19797,8 +19802,8 @@ strings:
 condition:
 		$a0 at pe.entry_point or $a1 at pe.entry_point
 }
-	
-	
+
+
 rule ThinstallV27XJitit
 {
       meta:
@@ -19809,8 +19814,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule eXPressor120BetaPEPacker
 {
       meta:
@@ -19821,8 +19826,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule Packanoid10ackanoid
 {
       meta:
@@ -19833,8 +19838,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EncryptPE1200331812003518WFS
 {
       meta:
@@ -19845,8 +19850,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv09781
 {
       meta:
@@ -19857,8 +19862,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PECompactv09782
 {
       meta:
@@ -19869,8 +19874,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule PseudoSigner01Gleam100Anorganix
 {
       meta:
@@ -19881,8 +19886,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule UPackAltStubDwing
 {
       meta:
@@ -19893,8 +19898,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule VxModificationofHi924
 {
       meta:
@@ -19905,8 +19910,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule EXECryptor226DLLminimumprotection
 {
       meta:
@@ -19917,8 +19922,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule yodasProtector102AshkibizDanehlar
 {
       meta:
@@ -19929,8 +19934,8 @@ strings:
 condition:
 		$a0 at pe.entry_point
 }
-	
-	
+
+
 rule ACProtectv135riscosoftwareIncAnticrackSoftware
 {
       meta:
@@ -19941,8 +19946,8 @@ strings:
 condition:
 		$a0
 }
-	
-	
+
+
 rule upx_0_80_to_1_24 : Packer
 {
 	meta:
@@ -19952,7 +19957,7 @@ rule upx_0_80_to_1_24 : Packer
 
 	strings:
 		$str1={6A 60 68 60 02 4B 00 E8 8B 04 00 00 83 65 FC 00 8D 45 90 50 FF 15 8C F1 48 00 C7 45 FC FE FF FF FF BF 94 00 00 00 57}
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -19966,7 +19971,7 @@ rule upx_1_00_to_1_07 : Packer
 
 	strings:
 		$str1={60 BE 00 ?0 4? 00 8D BE 00 B0 F? FF ?7 8? [3] ?0 9? [0-9] 90 90 90 90 [0-2] 8A 06 46 88 07 47 01 DB 75 07 8B 1E 83 EE FC 11 DB 72 ED B8 01 00 00 00 01 DB 75 07 8B 1E 83 EE FC 11 DB 11 C0}
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -19980,7 +19985,7 @@ rule upx_3 : Packer
 
 	strings:
 		$str1={60 BE 00 [2] 00 8D BE 00 [2] FF [1-12] EB 1? 90 90 90 90 90 [1-3] 8A 06 46 88 07 47 01 DB 75 07 8B 1E 83 EE FC 11 DB 72 ED B8 01}
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -19995,7 +20000,7 @@ rule obsidium : Packer
 
 	strings:
 		$str1={EB 02 [2] E8 25 00 00 00 EB 04 [4] EB 01 ?? 8B 54 24 0C EB 01 ?? 83 82 B8 00 00 00 23 EB 01 ?? 33 C0 EB 02 [2] C3 EB 02 [2] EB 04} /*EntryPoint*/
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -20009,7 +20014,7 @@ rule pecompact2 : Packer
 
 	strings:
 		$str1={B8 [3] 00 50 64 FF 35 00 00 00 00 64 89 25 00 00 00 00 33 C0 89 08 50 45 43} /*EntryPoint*/
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -20023,7 +20028,7 @@ rule aspack : Packer
 
 	strings:
 		$str1={60 E8 00 00 00 00 5D 81 ED 5D 3B 40 00 64 A1 30 00 00 00 0F B6 40 02 0A C0 74 04 33 C0 87 00 B9 ?? ?? 00 00 8D BD B7 3B 40 00 8B F7 AC} /*EntryPoint*/
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -20037,7 +20042,7 @@ rule execryptor : Protector
 
 	strings:
 		$str1={E8 24 00 00 00 8B 4C 24 0C C7 01 17 00 01 00 C7 81 B8 00 00 00 00 00 00 00 31 C0 89 41 14 89 41 18 80 A1 C1 00 00 00 FE C3 31 C0 64 FF 30 64 89 20 64 8F 05 00 00 00 00} /*EntryPoint*/
-		
+
 	condition:
 		$str1 at pe.entry_point
 }
@@ -20048,10 +20053,10 @@ rule winrar_sfx : Packer
 		author="Kevin Falcoz"
 		date_create="18/03/2013"
 		description="Winrar SFX Archive"
-	
+
 	strings:
-		$signature1={00 00 53 6F 66 74 77 61 72 65 5C 57 69 6E 52 41 52 20 53 46 58 00} 
-		
+		$signature1={00 00 53 6F 66 74 77 61 72 65 5C 57 69 6E 52 41 52 20 53 46 58 00}
+
 	condition:
 		$signature1
 }
@@ -20063,10 +20068,10 @@ rule mpress_2_xx_x86 : Packer
 		date_create="19/03/2013"
 		last_edit="24/03/2013"
 		description="MPRESS v2.XX x86  - no .NET"
-	
+
 	strings:
 		$signature1={60 E8 00 00 00 00 58 05 [2] 00 00 8B 30 03 F0 2B C0 8B FE 66 AD C1 E0 0C 8B C8 50 AD 2B C8 03 F1 8B C8 57 51 49 8A 44 39 06 88 04 31 75 F6}
-		
+
 	condition:
 		$signature1 at pe.entry_point
 }
@@ -20078,10 +20083,10 @@ rule mpress_2_xx_x64 : Packer
 		date_create="19/03/2013"
 		last_edit="24/03/2013"
 		description="MPRESS v2.XX x64  - no .NET"
-	
+
 	strings:
-		$signature1={57 56 53 51 52 41 50 48 8D 05 DE 0A 00 00 48 8B 30 48 03 F0 48 2B C0 48 8B FE 66 AD C1 E0 0C 48 8B C8 50 AD 2B C8 48 03 F1 8B C8 57 44 8B C1 FF C9 8A 44 39 06 88 04 31} 
-		
+		$signature1={57 56 53 51 52 41 50 48 8D 05 DE 0A 00 00 48 8B 30 48 03 F0 48 2B C0 48 8B FE 66 AD C1 E0 0C 48 8B C8 50 AD 2B C8 48 03 F1 8B C8 57 44 8B C1 FF C9 8A 44 39 06 88 04 31}
+
 	condition:
 		$signature1 at pe.entry_point
 }
@@ -20092,10 +20097,10 @@ rule mpress_2_xx_net : Packer
 		author="Kevin Falcoz"
 		date_create="24/03/2013"
 		description="MPRESS v2.XX .NET"
-	
+
 	strings:
 		$signature1={21 46 00 69 00 6C 00 65 00 20 00 69 00 73 00 20 00 69 00 6E 00 76 00 61 00 6C 00 69 00 64 00 2E 00 00 0D 4D 00 50 00 52 00 45 00 53 00 53 00 00 00 00 00 2D 2D 93 6B 35 04 2E 43 85 EF}
-		
+
 	condition:
 		$signature1
 }
@@ -20106,11 +20111,11 @@ rule rpx_1_xx : Packer
 		author="Kevin Falcoz"
 		date_create="24/03/2013"
 		description="RPX v1.XX"
-	
+
 	strings:
 		$signature1= "RPX 1."
 		$signature2= "Copyright 20"
-		
+
 	condition:
 		$signature1 and $signature2
 }
@@ -20121,11 +20126,11 @@ rule mew_11_xx : Packer
 		author="Kevin Falcoz"
 		date_create="25/03/2013"
 		description="MEW 11"
-	
+
 	strings:
 		$signature1={50 72 6F 63 41 64 64 72 65 73 73 00 E9 [6-7] 00 00 00 00 00 00 00 00 00 [7] 00}
 		$signature2="MEW"
-		
+
 	condition:
 		$signature1 and $signature2
 }
@@ -20136,10 +20141,10 @@ rule yoda_crypter_1_2 : Crypter
 		author="Kevin Falcoz"
 		date_create="15/04/2013"
 		description="Yoda Crypter 1.2"
-	
+
 	strings:
 		$signature1={60 E8 00 00 00 00 5D 81 ED F3 1D 40 00 B9 7B 09 00 00 8D BD 3B 1E 40 00 8B F7 AC [19] EB 01 [27] AA E2 CC}
-		
+
 	condition:
 		$signature1 at pe.entry_point
 }
@@ -20150,10 +20155,10 @@ rule yoda_crypter_1_3 : Crypter
 		author="Kevin Falcoz"
 		date_create="15/04/2013"
 		description="Yoda Crypter 1.3"
-	
+
 	strings:
 		$signature1={55 8B EC 53 56 57 60 E8 00 00 00 00 5D 81 ED 6C 28 40 00 B9 5D 34 40 00 81 E9 C6 28 40 00 8B D5 81 C2 C6 28 40 00 8D 3A 8B F7 33 C0 EB 04 90 EB 01 C2 AC}
-		
+
 	condition:
 		$signature1 at pe.entry_point
 }
@@ -20164,7 +20169,7 @@ rule dotfuscator : packer
 		description = "Dotfuscator"
 		date = "2013-02-01"
 		filetype = "memory"
-		version = "1.0" 
+		version = "1.0"
 
 	strings:
 		$a = "Obfuscated with Dotfuscator"
@@ -20179,9 +20184,9 @@ rule AutoIt : packer
 		description = "AutoIT packer"
 		date = "2013-02-01"
 		filetype = "memory"
-		version = "1.0" 
+		version = "1.0"
 
-	strings:	
+	strings:
 		$a = "This is a compiled AutoIt script. AV researchers please email avsupport@autoitscript.com for support."
 
 	condition:
