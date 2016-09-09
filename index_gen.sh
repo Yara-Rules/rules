@@ -2,7 +2,7 @@
 
 function get_folders {
     local INDECES=()
-    for folder in $(ls -F | grep -E ".*/"); do
+    for folder in $(ls -d */); do
         INDECES+="$folder "
     done
     INDECES+=". "
@@ -16,10 +16,21 @@ function gen_index {
     if [ x"$3" != x ]; then
         echo -e "/*$3*/" > $IDX_NAME
     fi
+    OS=$(uname)
     if [ x"$BASE" == x"." ]; then
-        find -E $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
+        if [ $OS == "Darwin" ]; then
+            find -E $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
+        else
+            # Linux version and potentialy Cygwin
+            find $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
+        fi
     else
-        find -E $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
+        if [ $OS == "Darwin" ]; then
+            find -E $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
+        else
+            # Linux version and potentialy Cygwin
+            find $BASE -regex ".*\.yara?" | grep -vE "_?index.yara?" | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
+        fi
     fi
 }
 
