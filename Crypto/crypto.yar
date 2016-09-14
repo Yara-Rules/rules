@@ -143,7 +143,7 @@ rule WHIRLPOOL_Constants : crypto {
                 2 of them
 }
 
-rule DarkEYEv3_Cryptor : crypto {
+rule DarkEYEv3_Cryptor_1 : crypto {
 	meta:
 		description = "Rule to detect DarkEYEv3 encrypted executables (often malware)"
 		author = "Florian Roth"
