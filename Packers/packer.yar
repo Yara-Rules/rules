@@ -20177,7 +20177,7 @@ rule dotfuscator : packer
 	condition:
 		$a
 }
-rule AutoIt : packer
+rule AutoIt_2 : packer
 {
 	meta:
 		author = "Jean-Philippe Teissier / @Jipe_"
