@@ -495,7 +495,7 @@ rule Cygwin : Red Hat
 		($a0 and (any of ($aa*) ))
 }
 
-rule MinGW
+rule MinGW_1
 {
 	meta:
 		author = "_pusher_"
