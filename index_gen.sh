@@ -2,7 +2,7 @@
 
 function get_folders {
     local INDECES=()
-    for folder in $(ls -d */); do
+    for folder in $(ls -d */ | grep -v utils); do
         INDECES+="$folder "
     done
     INDECES+=". "
