@@ -4709,7 +4709,7 @@ rule multiple_webshells_0014 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0014 {
+rule multiple_webshells_0015 {
 	meta:
 		description = "Semi-Auto-generated  - from files wacking.php.php.txt, 1.txt, SpecialShell_99.php.php.txt, c100.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4726,7 +4726,7 @@ rule multiple_webshells_0014 {
 	condition:
 		1 of them
 }
-rule multiple_webshells_0015 {
+rule multiple_webshells_0016 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, r57.php.php.txt, r57 Shell.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4744,7 +4744,7 @@ rule multiple_webshells_0015 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0016 {
+rule multiple_webshells_0017 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, wacking.php.php.txt, SsEs.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4761,7 +4761,7 @@ rule multiple_webshells_0016 {
 	condition:
 		1 of them
 }
-rule multiple_webshells_0017 {
+rule multiple_webshells_0018 {
 	meta:
 		description = "Semi-Auto-generated  - from files webadmin.php.php.txt, iMHaPFtp.php.php.txt, Private-i3lue.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4797,7 +4797,7 @@ rule multiple_php_webshells {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0018 {
+rule multiple_webshells_0019 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4813,7 +4813,7 @@ rule multiple_webshells_0018 {
 	condition:
 		1 of them
 }
-rule multiple_webshells_0019 {
+rule multiple_webshells_0020 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4831,7 +4831,7 @@ rule multiple_webshells_0019 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0020 {
+rule multiple_webshells_0021 {
 	meta:
 		description = "Semi-Auto-generated  - from files GFS web-shell ver 3.1.7 - PRiV8.php.txt, nshell.php.php.txt, gfs_sh.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4847,7 +4847,7 @@ rule multiple_webshells_0020 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0021 {
+rule multiple_webshells_0022 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4866,7 +4866,7 @@ rule multiple_webshells_0021 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0022 {
+rule multiple_webshells_0023 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4883,7 +4883,7 @@ rule multiple_webshells_0022 {
 	condition:
 		all of them
 }
-rule multiple_webshells_0023 {
+rule multiple_webshells_0024 {
 	meta:
 		description = "Semi-Auto-generated  - from files antichat.php.php.txt, Fatalshell.php.php.txt, a_gedit.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4900,7 +4900,7 @@ rule multiple_webshells_0023 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0024 {
+rule multiple_webshells_0025 {
 	meta:
 		description = "Semi-Auto-generated  - from files c99shell_v1.0.php.php.txt, c99php.txt, SsEs.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4914,7 +4914,7 @@ rule multiple_webshells_0024 {
 	condition:
 		1 of them
 }
-rule multiple_webshells_0025 {
+rule multiple_webshells_0026 {
 	meta:
 		description = "Semi-Auto-generated  - from files Crystal.php.txt, nshell.php.php.txt, load_shell.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4930,7 +4930,7 @@ rule multiple_webshells_0025 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0026 {
+rule multiple_webshells_0027 {
 	meta:
 		description = "Semi-Auto-generated  - from files nst.php.php.txt, cybershell.php.php.txt, img.php.php.txt, nstview.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4947,7 +4947,7 @@ rule multiple_webshells_0026 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0027 {
+rule multiple_webshells_0028 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, dC3 Security Crew Shell PRiV.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -4964,7 +4964,7 @@ rule multiple_webshells_0027 {
 	condition:
 		all of them
 }
-rule multiple_webshells_0028 {
+rule multiple_webshells_0029 {
 	meta:
 		description = "Semi-Auto-generated  - from files c99shell_v1.0.php.php.txt, c99php.txt, 1.txt, c2007.php.php.txt, c100.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -5000,7 +5000,7 @@ rule multiple_php_webshells_2 {
 	condition:
 		all of them
 }
-rule multiple_webshells_0029 {
+rule multiple_webshells_0030 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, 1.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -5019,7 +5019,7 @@ rule multiple_webshells_0029 {
 	condition:
 		2 of them
 }
-rule multiple_webshells_0030 {
+rule multiple_webshells_0031 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, r57.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
@@ -5036,7 +5036,7 @@ rule multiple_webshells_0030 {
 	condition:
 		1 of them
 }
-rule multiple_webshells_0031 {
+rule multiple_webshells_0032 {
 	meta:
 		description = "Semi-Auto-generated  - from files nixrem.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, NIX REMOTE WEB-SHELL v.0.5 alpha Lite Public Version.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
