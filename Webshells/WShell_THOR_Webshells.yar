@@ -4476,11 +4476,12 @@ rule simple_cmd_html {
 	condition:
 		all of them
 }
-rule _1_c2007_php_php_c100_php {
+rule multiple_webshells_0001 {
 	meta:
 		description = "Semi-Auto-generated  - from files 1.txt, c2007.php.php.txt, c100.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_1_c2007_php_php_c100_php"
 		hash0 = "44542e5c3e9790815c49d5f9beffbbf2"
 		hash1 = "d089e7168373a0634e1ac18c0ee00085"
 		hash2 = "38fd7e45f9c11a37463c3ded1c76af4c"
@@ -4490,11 +4491,12 @@ rule _1_c2007_php_php_c100_php {
 	condition:
 		1 of them
 }
-rule _nst_php_php_img_php_php_nstview_php_php {
+rule multiple_webshells_0002 {
 	meta:
 		description = "Semi-Auto-generated  - from files nst.php.php.txt, img.php.php.txt, nstview.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_nst_php_php_img_php_php_nstview_php_php"
 		hash0 = "ddaf9f1986d17284de83a17fe5f9fd94"
 		hash1 = "17a07bb84e137b8aa60f87cd6bfab748"
 		hash2 = "4745d510fed4378e4b1730f56f25e569"
@@ -4505,11 +4507,12 @@ rule _nst_php_php_img_php_php_nstview_php_php {
 	condition:
 		1 of them
 }
-rule _network_php_php_xinfo_php_php_nfm_php_php {
+rule multiple_webshells_0003 {
 	meta:
 		description = "Semi-Auto-generated  - from files network.php.php.txt, xinfo.php.php.txt, nfm.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_network_php_php_xinfo_php_php_nfm_php_php"
 		hash0 = "acdbba993a5a4186fd864c5e4ea0ba4f"
 		hash1 = "2601b6fc1579f263d2f3960ce775df70"
 		hash2 = "401fbae5f10283051c39e640b77e4c26"
@@ -4519,11 +4522,12 @@ rule _network_php_php_xinfo_php_php_nfm_php_php {
 	condition:
 		all of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SpecialShell_99_php_php {
+rule multiple_webshells_0004 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4534,11 +4538,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SpecialShell_99_php_php
 	condition:
 		1 of them
 }
-rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_r57_Shell_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0005 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, SnIpEr_SA Shell.php.txt, r57.php.php.txt, r57 Shell.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_r57_Shell_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "911195a9b7c010f61b66439d9048f400"
 		hash2 = "eddf7a8fde1e50a7f2a817ef7cece24f"
@@ -4551,11 +4556,12 @@ rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_r57_Shell_php_php_spy_php_php
 	condition:
 		1 of them
 }
-rule _c99shell_v1_0_php_php_c99php_SsEs_php_php_ctt_sh_php_php {
+rule multiple_webshells_0006 {
 	meta:
 		description = "Semi-Auto-generated  - from files c99shell_v1.0.php.php.txt, c99php.txt, SsEs.php.php.txt, ctt_sh.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_c99shell_v1_0_php_php_c99php_SsEs_php_php_ctt_sh_php_php"
 		hash0 = "d8ae5819a0a2349ec552cbcf3a62c975"
 		hash1 = "9e9ae0332ada9c3797d6cee92c2ede62"
 		hash2 = "6cd50a14ea0da0df6a246a60c8f6f9c9"
@@ -4567,11 +4573,12 @@ rule _c99shell_v1_0_php_php_c99php_SsEs_php_php_ctt_sh_php_php {
 	condition:
 		2 of them
 }
-rule _r577_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0007 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "eed14de3907c9aa2550d95550d1a2d5f"
 		hash2 = "817671e1bdc85e04cc3440bbd9288800"
@@ -4581,11 +4588,12 @@ rule _r577_php_php_spy_php_php_s_php_php {
 	condition:
 		1 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php_ctt_sh_php_php {
+rule multiple_webshells_0008 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, SpecialShell_99.php.php.txt, ctt_sh.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php_ctt_sh_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4601,11 +4609,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c
 	condition:
 		all of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php {
+rule multiple_webshells_0009 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4618,11 +4627,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c
 	condition:
 		1 of them
 }
-rule _w_php_php_wacking_php_php_SpecialShell_99_php_php {
+rule multiple_webshells_0010 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, wacking.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_wacking_php_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "9c5bb5e3a46ec28039e8986324e42792"
 		hash2 = "09609851caa129e40b0d56e90dfc476c"
@@ -4632,11 +4642,12 @@ rule _w_php_php_wacking_php_php_SpecialShell_99_php_php {
 	condition:
 		1 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SsEs_php_php_SpecialShell_99_php_php {
+rule multiple_webshells_0011 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, SsEs.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SsEs_php_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4648,11 +4659,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_SsEs_php_php_SpecialShe
 	condition:
 		1 of them
 }
-rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0012 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, SnIpEr_SA Shell.php.txt, r57.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "911195a9b7c010f61b66439d9048f400"
 		hash2 = "eddf7a8fde1e50a7f2a817ef7cece24f"
@@ -4664,11 +4676,12 @@ rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php_spy_php_php_s_php_php {
 	condition:
 		2 of them
 }
-rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php {
+rule multiple_webshells_0013 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, SnIpEr_SA Shell.php.txt, r57.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_SnIpEr_SA_Shell_php_r57_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "911195a9b7c010f61b66439d9048f400"
 		hash2 = "eddf7a8fde1e50a7f2a817ef7cece24f"
@@ -4679,11 +4692,12 @@ rule _r577_php_php_SnIpEr_SA_Shell_php_r57_php_php {
 	condition:
 		3 of them
 }
-rule _r577_php_php_r57_Shell_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0014 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, r57 Shell.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_r57_Shell_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "8023394542cddf8aee5dec6072ed02b5"
 		hash2 = "eed14de3907c9aa2550d95550d1a2d5f"
@@ -4695,11 +4709,12 @@ rule _r577_php_php_r57_Shell_php_php_spy_php_php_s_php_php {
 	condition:
 		2 of them
 }
-rule _wacking_php_php_1_SpecialShell_99_php_php_c100_php {
+rule multiple_webshells_0014 {
 	meta:
 		description = "Semi-Auto-generated  - from files wacking.php.php.txt, 1.txt, SpecialShell_99.php.php.txt, c100.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_wacking_php_php_1_SpecialShell_99_php_php_c100_php"
 		hash0 = "9c5bb5e3a46ec28039e8986324e42792"
 		hash1 = "44542e5c3e9790815c49d5f9beffbbf2"
 		hash2 = "09609851caa129e40b0d56e90dfc476c"
@@ -4711,11 +4726,12 @@ rule _wacking_php_php_1_SpecialShell_99_php_php_c100_php {
 	condition:
 		1 of them
 }
-rule _r577_php_php_r57_php_php_r57_Shell_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0015 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, r57.php.php.txt, r57 Shell.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_r57_php_php_r57_Shell_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "eddf7a8fde1e50a7f2a817ef7cece24f"
 		hash2 = "8023394542cddf8aee5dec6072ed02b5"
@@ -4728,11 +4744,12 @@ rule _r577_php_php_r57_php_php_r57_Shell_php_php_spy_php_php_s_php_php {
 	condition:
 		2 of them
 }
-rule _w_php_php_wacking_php_php_SsEs_php_php_SpecialShell_99_php_php {
+rule multiple_webshells_0016 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, wacking.php.php.txt, SsEs.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_wacking_php_php_SsEs_php_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "9c5bb5e3a46ec28039e8986324e42792"
 		hash2 = "6cd50a14ea0da0df6a246a60c8f6f9c9"
@@ -4744,11 +4761,12 @@ rule _w_php_php_wacking_php_php_SsEs_php_php_SpecialShell_99_php_php {
 	condition:
 		1 of them
 }
-rule _webadmin_php_php_iMHaPFtp_php_php_Private_i3lue_php {
+rule multiple_webshells_0017 {
 	meta:
 		description = "Semi-Auto-generated  - from files webadmin.php.php.txt, iMHaPFtp.php.php.txt, Private-i3lue.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_webadmin_php_php_iMHaPFtp_php_php_Private_i3lue_php"
 		hash0 = "b268e6fa3bf3fe496cffb4ea574ec4c7"
 		hash1 = "12911b73bc6a5d313b494102abcf5c57"
 		hash2 = "13f5c7a035ecce5f9f380967cf9d4e92"
@@ -4779,11 +4797,12 @@ rule multiple_php_webshells {
 	condition:
 		2 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php {
+rule multiple_webshells_0018 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4794,11 +4813,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php {
 	condition:
 		1 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php {
+rule multiple_webshells_0019 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4811,11 +4831,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_c
 	condition:
 		2 of them
 }
-rule _GFS_web_shell_ver_3_1_7___PRiV8_php_nshell_php_php_gfs_sh_php_php {
+rule multiple_webshells_0020 {
 	meta:
 		description = "Semi-Auto-generated  - from files GFS web-shell ver 3.1.7 - PRiV8.php.txt, nshell.php.php.txt, gfs_sh.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_GFS_web_shell_ver_3_1_7___PRiV8_php_nshell_php_php_gfs_sh_php_php"
 		hash0 = "be0f67f3e995517d18859ed57b4b4389"
 		hash1 = "4a44d82da21438e32d4f514ab35c26b6"
 		hash2 = "f618f41f7ebeb5e5076986a66593afd1"
@@ -4826,11 +4847,12 @@ rule _GFS_web_shell_ver_3_1_7___PRiV8_php_nshell_php_php_gfs_sh_php_php {
 	condition:
 		2 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_SpecialShell_99_php_php {
+rule multiple_webshells_0021 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4844,11 +4866,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_c99shell_v1_0_php_php_S
 	condition:
 		2 of them
 }
-rule _w_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php {
+rule multiple_webshells_0022 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, wacking.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "9c5bb5e3a46ec28039e8986324e42792"
 		hash2 = "d8ae5819a0a2349ec552cbcf3a62c975"
@@ -4860,11 +4883,12 @@ rule _w_php_php_wacking_php_php_c99shell_v1_0_php_php_c99php_SpecialShell_99_php
 	condition:
 		all of them
 }
-rule _antichat_php_php_Fatalshell_php_php_a_gedit_php_php {
+rule multiple_webshells_0023 {
 	meta:
 		description = "Semi-Auto-generated  - from files antichat.php.php.txt, Fatalshell.php.php.txt, a_gedit.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_antichat_php_php_Fatalshell_php_php_a_gedit_php_php"
 		hash0 = "128e90b5e2df97e21e96d8e268cde7e3"
 		hash1 = "b15583f4eaad10a25ef53ab451a4a26d"
 		hash2 = "ab9c6b24ca15f4a1b7086cad78ff0f78"
@@ -4876,11 +4900,12 @@ rule _antichat_php_php_Fatalshell_php_php_a_gedit_php_php {
 	condition:
 		2 of them
 }
-rule _c99shell_v1_0_php_php_c99php_SsEs_php_php {
+rule multiple_webshells_0024 {
 	meta:
 		description = "Semi-Auto-generated  - from files c99shell_v1.0.php.php.txt, c99php.txt, SsEs.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_c99shell_v1_0_php_php_c99php_SsEs_php_php"
 		hash0 = "d8ae5819a0a2349ec552cbcf3a62c975"
 		hash1 = "9e9ae0332ada9c3797d6cee92c2ede62"
 		hash2 = "6cd50a14ea0da0df6a246a60c8f6f9c9"
@@ -4889,11 +4914,12 @@ rule _c99shell_v1_0_php_php_c99php_SsEs_php_php {
 	condition:
 		1 of them
 }
-rule _Crystal_php_nshell_php_php_load_shell_php_php {
+rule multiple_webshells_0025 {
 	meta:
 		description = "Semi-Auto-generated  - from files Crystal.php.txt, nshell.php.php.txt, load_shell.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_Crystal_php_nshell_php_php_load_shell_php_php"
 		hash0 = "fdbf54d5bf3264eb1c4bff1fac548879"
 		hash1 = "4a44d82da21438e32d4f514ab35c26b6"
 		hash2 = "0c5d227f4aa76785e4760cdcff78a661"
@@ -4904,11 +4930,12 @@ rule _Crystal_php_nshell_php_php_load_shell_php_php {
 	condition:
 		2 of them
 }
-rule _nst_php_php_cybershell_php_php_img_php_php_nstview_php_php {
+rule multiple_webshells_0026 {
 	meta:
 		description = "Semi-Auto-generated  - from files nst.php.php.txt, cybershell.php.php.txt, img.php.php.txt, nstview.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_nst_php_php_cybershell_php_php_img_php_php_nstview_php_php"
 		hash0 = "ddaf9f1986d17284de83a17fe5f9fd94"
 		hash1 = "ef8828e0bc0641a655de3932199c0527"
 		hash2 = "17a07bb84e137b8aa60f87cd6bfab748"
@@ -4920,11 +4947,12 @@ rule _nst_php_php_cybershell_php_php_img_php_php_nstview_php_php {
 	condition:
 		2 of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_dC3_Security_Crew_Shell_PRiV_php_SpecialShell_99_php_php {
+rule multiple_webshells_0027 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, dC3 Security Crew Shell PRiV.php.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_dC3_Security_Crew_Shell_PRiV_php_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4936,11 +4964,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_dC3_Security_Crew_Shell
 	condition:
 		all of them
 }
-rule _c99shell_v1_0_php_php_c99php_1_c2007_php_php_c100_php {
+rule multiple_webshells_0028 {
 	meta:
 		description = "Semi-Auto-generated  - from files c99shell_v1.0.php.php.txt, c99php.txt, 1.txt, c2007.php.php.txt, c100.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_c99shell_v1_0_php_php_c99php_1_c2007_php_php_c100_php"
 		hash0 = "d8ae5819a0a2349ec552cbcf3a62c975"
 		hash1 = "9e9ae0332ada9c3797d6cee92c2ede62"
 		hash2 = "44542e5c3e9790815c49d5f9beffbbf2"
@@ -4971,11 +5000,12 @@ rule multiple_php_webshells_2 {
 	condition:
 		all of them
 }
-rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_1_SpecialShell_99_php_php {
+rule multiple_webshells_0029 {
 	meta:
 		description = "Semi-Auto-generated  - from files w.php.php.txt, c99madshell_v2.1.php.php.txt, wacking.php.php.txt, 1.txt, SpecialShell_99.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_w_php_php_c99madshell_v2_1_php_php_wacking_php_php_1_SpecialShell_99_php_php"
 		hash0 = "38a3f9f2aa47c2e940695f3dba6a7bb2"
 		hash1 = "3ca5886cd54d495dc95793579611f59a"
 		hash2 = "9c5bb5e3a46ec28039e8986324e42792"
@@ -4989,11 +5019,12 @@ rule _w_php_php_c99madshell_v2_1_php_php_wacking_php_php_1_SpecialShell_99_php_p
 	condition:
 		2 of them
 }
-rule _r577_php_php_r57_php_php_spy_php_php_s_php_php {
+rule multiple_webshells_0030 {
 	meta:
 		description = "Semi-Auto-generated  - from files r577.php.php.txt, r57.php.php.txt, spy.php.php.txt, s.php.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_r577_php_php_r57_php_php_spy_php_php_s_php_php"
 		hash0 = "0714f80f35c1fddef1f8938b8d42a4c8"
 		hash1 = "eddf7a8fde1e50a7f2a817ef7cece24f"
 		hash2 = "eed14de3907c9aa2550d95550d1a2d5f"
@@ -5005,11 +5036,12 @@ rule _r577_php_php_r57_php_php_spy_php_php_s_php_php {
 	condition:
 		1 of them
 }
-rule _nixrem_php_php_c99shell_v1_0_php_php_c99php_NIX_REMOTE_WEB_SHELL_v_0_5_alpha_Lite_Public_Version_php {
+rule multiple_webshells_0031 {
 	meta:
 		description = "Semi-Auto-generated  - from files nixrem.php.php.txt, c99shell_v1.0.php.php.txt, c99php.txt, NIX REMOTE WEB-SHELL v.0.5 alpha Lite Public Version.php.txt"
 		author = "Neo23x0 Yara BRG + customization by Stefan -dfate- Molls"
 		super_rule = 1
+		was = "_nixrem_php_php_c99shell_v1_0_php_php_c99php_NIX_REMOTE_WEB_SHELL_v_0_5_alpha_Lite_Public_Version_php"
 		hash0 = "40a3e86a63d3d7f063a86aab5b5f92c6"
 		hash1 = "d8ae5819a0a2349ec552cbcf3a62c975"
 		hash2 = "9e9ae0332ada9c3797d6cee92c2ede62"
