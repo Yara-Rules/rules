@@ -21,7 +21,7 @@ function gen_index {
     AVOID="_?index.yara?|utils"
     if [ x"$BASE" == x"." ]; then
         if [ $INC_MOBILE == false ]; then
-            AVOID="_?index.yara?|utils|Mobile"
+            AVOID+="|Mobile"
         fi
         if [ $OS == "Darwin" ]; then
             find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
