@@ -21,19 +21,13 @@ function gen_index {
     AVOID="_?index.yara?|utils"
     if [ x"$BASE" == x"." ]; then
         if [ $INC_MOBILE == false ]; then
-            if [ $OS == "Darwin" ]; then
-                find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID|Mobile" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
-            else
-                # Linux version and potentialy Cygwin
-                find $BASE -regex ".*\.yara?" | grep -vE "$AVOID|Mobile" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
-            fi
+            AVOID="_?index.yara?|utils|Mobile"
+        fi
+        if [ $OS == "Darwin" ]; then
+            find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
         else
-            if [ $OS == "Darwin" ]; then
-                find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
-            else
-                # Linux version and potentialy Cygwin
-                find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
-            fi
+            # Linux version and potentialy Cygwin
+            find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
         fi
     else
         if [ $OS == "Darwin" ]; then
