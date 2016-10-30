@@ -18,7 +18,7 @@ function gen_index {
         echo -e "/*$4*/" > $IDX_NAME
     fi
     OS=$(uname)
-    AVOID="_?index.yara?|utils"
+    AVOID="_?index.yara?|index_|utils"
     if [ x"$BASE" == x"." ]; then
         if [ $INC_MOBILE == false ]; then
             AVOID+="|Mobile"
