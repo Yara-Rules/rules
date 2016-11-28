@@ -3,7 +3,7 @@ sudo: required
 #dist: trusty
 before_install:
 # Yara
-  - wget https://github.com/plusvic/yara/archive/v3.5.0.tar.gz -O yara.tar.gz
+  - wget https://github.com/VirusTotal/yara/archive/v3.5.0.tar.gz -O yara.tar.gz
   - tar -xzvf yara.tar.gz
 # Androguard for Yara
   - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/androguard.c -O yara-3.5.0/libyara/modules/androguard.c
@@ -19,6 +19,7 @@ before_install:
   
 # Compile Yara
   - cd ../yara-3.5.0
+  # Update per issue 176
   - sed -i 's/#define RE_MAX_SPLIT_ID     128/#define RE_MAX_SPLIT_ID     255/g' libyara/re.c
   - ./bootstrap.sh
   - ./configure --enable-cuckoo
