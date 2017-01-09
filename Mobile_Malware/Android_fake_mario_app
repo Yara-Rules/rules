@@ -1,0 +1,32 @@
+/*
+    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
+*/
+
+/*
+	Androguard module used in this rule file is under development by people at https://koodous.com/.
+
+	You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
+*/
+
+import "androguard"
+rule Andr_fake_mario
+{
+	meta:
+		description = "Yara rule for detection of Fake Android Super Mario variants"
+		sample = "d8d7207c19c5cfce2069573f6cd556722e17be4e3f5c40042747d5ec12e35049"
+		source = "http://blog.trendmicro.com/trendlabs-security-intelligence/fake-apps-take-advantage-mario-run-release/"
+    source2 = "https://koodous.com/rulesets/2098"
+		
+	strings:
+		$str_1 = "lastGame"
+		$str_2 = "file:///android_asset/"
+		$str_3 = "enableCheats"
+
+	condition:
+		androguard.certificate.sha1("9AD4E60648B116006E76542BD701F14D8E2C385F") or 
+		androguard.package_name("com.ms.cjml") or
+		(androguard.permission(/android.permission.INTERNET/) and
+		androguard.permission(/android.permission.RECEIVE_BOOT_COMPLETED/) and
+		all of ($str_*))
+		
+}
