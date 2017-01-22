@@ -3,10 +3,9 @@
 
 */
 
-import "pe"
-
 rule Molerats_certs
 {
+    
     meta:
         Author      = "FireEye Labs"
         Date        = "2013/08/23"
