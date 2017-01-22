@@ -5,7 +5,7 @@
 
 import "pe"
 
-rule MirageStrings : Mirage Family
+rule MirageStrings
 {
     meta:
         description = "Mirage Identifying Strings"
@@ -20,7 +20,7 @@ rule MirageStrings : Mirage Family
        any of them
 }
 
-rule Mirage : Family
+rule Mirage
 {
     meta:
         description = "Mirage"
@@ -31,7 +31,7 @@ rule Mirage : Family
         MirageStrings
 }
 
-rule Mirage_APT : APT Backdoor Rat
+rule Mirage_APT
 {
     meta:
         Author      = "Silas Cutler"
@@ -48,3 +48,4 @@ rule Mirage_APT : APT Backdoor Rat
     condition: 
         (($a1 or $a2) or $b) and $c
 }
+
