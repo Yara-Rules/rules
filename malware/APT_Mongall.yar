@@ -7,23 +7,26 @@ import "pe"
 
 rule Backdoor_APT_Mongal
 {
-meta:
-	author = "@patrickrolsen"
-	maltype = "Backdoor.APT.Mongall"
-	version = "0.1"
-	reference = "fd69a799e21ccb308531ce6056944842" 
-	date = "01/04/2014"
-strings:
-	$author  = "author user"
-	$title   = "title Vjkygdjdtyuj" nocase
-	$comp    = "company ooo"
-	$cretime = "creatim\\yr2012\\mo4\\dy19\\hr15\\min10"
-	$passwd  = "password 00000000"
-condition:
+
+    meta:
+        author = "@patrickrolsen"
+        maltype = "Backdoor.APT.Mongall"
+        version = "0.1"
+        reference = "fd69a799e21ccb308531ce6056944842" 
+        date = "01/04/2014"
+    
+    strings:
+        $author  = "author user"
+        $title   = "title Vjkygdjdtyuj" nocase
+        $comp    = "company ooo"
+        $cretime = "creatim\\yr2012\\mo4\\dy19\\hr15\\min10"
+        $passwd  = "password 00000000"
+    
+    condition:
         all of them
 }
 
-rule MongalCode : Mongal Family 
+rule MongalCode
 {
     meta:
         description = "Mongal code features"
@@ -38,8 +41,9 @@ rule MongalCode : Mongal Family
         any of them
 }
 
-rule MongalStrings : Mongal Family
+rule MongalStrings
 {
+    
     meta:
         description = "Mongal Identifying Strings"
         author = "Seth Hardy"
@@ -54,8 +58,9 @@ rule MongalStrings : Mongal Family
         any of them
 }
 
-rule Mongal : Family
+rule Mongal 
 {
+    
     meta:
         description = "Mongal"
         author = "Seth Hardy"
