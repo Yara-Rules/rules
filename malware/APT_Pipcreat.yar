@@ -3,7 +3,9 @@
 
 */
 
-rule APT_Win_Pipcreat : pe dll backdoor { 
+rule APT_Win_Pipcreat 
+{ 
+
   meta: 
     author = "chort (@chort0)"
     description = "APT backdoor Pipcreat"
@@ -12,6 +14,7 @@ rule APT_Win_Pipcreat : pe dll backdoor {
     MD5 = "f09d832bea93cf320986b53fce4b8397" // (incorrectly?) identified as Hupigon by many AV on VT 
     Reference = "http://www.cyberengineeringservices.com/login-exe-analysis-trojan-pipcreat/"
     version = "1.0"
+
   strings: 
     $strA = "pip creat failed" wide fullword 
     $strB = "CraatePipe" ascii fullword 
