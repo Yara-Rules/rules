@@ -5,6 +5,7 @@
 
 rule dubseven_file_set
 {
+    
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for service files loading UP007"
@@ -20,18 +21,14 @@ rule dubseven_file_set
         $file8 = "\\Microsoft\\Internet Explorer\\runas.exe"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        //Just a few of these as they differ
-        3 of ($file*)
+        //MZ header //PE signature //Just a few of these as they differ
+
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and 3 of ($file*)
 }
 
-rule dubseven_dropper_registry_checks : Dropper
+rule dubseven_dropper_registry_checks
 {
+    
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for registry keys checked for by the dropper"
@@ -46,17 +43,13 @@ rule dubseven_dropper_registry_checks : Dropper
         $reg7 = "SOFTWARE\\Micropoint\\Anti-Attack"
 
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        all of ($reg*)
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and all of ($reg*)
 }
 
-rule dubseven_dropper_dialog_remains : Dropper
+rule dubseven_dropper_dialog_remains
 {
+   
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for related dialog remnants. How rude."
@@ -66,18 +59,13 @@ rule dubseven_dropper_dialog_remains : Dropper
         $dia2 = "Rundll 1.0" wide
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        any of them
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and any of them
 }
         
-
-rule maindll_mutex : Mutex
+rule maindll_mutex
 {
+   
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Matches on the maindll mutex"
@@ -87,18 +75,13 @@ rule maindll_mutex : Mutex
         $mutex = "h31415927tttt"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $mutex
+        //MZ header  //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $mutex
 }
-
 
 rule SLServer_dialog_remains
 {
+    
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for related dialog remnants."
@@ -108,17 +91,13 @@ rule SLServer_dialog_remains
         $slserver = "SLServer" wide
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $slserver
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $slserver
 }
 
-rule SLServer_mutex : Mutex
+rule SLServer_mutex
 {
+    
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for the mutex."
@@ -128,17 +107,13 @@ rule SLServer_mutex : Mutex
         $mutex = "M&GX^DSF&DA@F"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $mutex
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $mutex
 }
 
-rule SLServer_command_and_control : C2
+rule SLServer_command_and_control
 {
+   
     meta:
         author = "Matt Brooks, @cmatthewbrooks"
         desc = "Searches for the C2 server."
@@ -148,13 +123,8 @@ rule SLServer_command_and_control : C2
         $c2 = "safetyssl.security-centers.com"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $c2
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $c2
 }
 
 rule SLServer_campaign_code
@@ -168,13 +138,8 @@ rule SLServer_campaign_code
         $campaign = "wthkdoc0106"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $campaign
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $campaign
 }
 
 rule SLServer_unknown_string
@@ -188,12 +153,8 @@ rule SLServer_unknown_string
         $string = "test-b7fa835a39"
         
     condition:
-        //MZ header
-        uint16(0) == 0x5A4D and
-        
-        //PE signature
-        uint32(uint32(0x3C)) == 0x00004550 and
-        
-        $string
+        //MZ header //PE signature
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550 and $string
 }
+
 
