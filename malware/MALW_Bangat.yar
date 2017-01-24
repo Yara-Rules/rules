@@ -3,10 +3,9 @@
 
 */
 
-import "pe"
-
-rule BangatCode : Bangat Family 
+rule BangatCode
 {
+    
     meta:
         description = "Bangat code features"
         author = "Seth Hardy"
@@ -20,8 +19,9 @@ rule BangatCode : Bangat Family
         any of them
 }
 
-rule BangatStrings : Bangat Family
+rule BangatStrings
 {
+    
     meta:
         description = "Bangat Identifying Strings"
         author = "Seth Hardy"
@@ -40,7 +40,7 @@ rule BangatStrings : Bangat Family
        all of ($lib*) or $file or $mc
 }
 
-rule Bangat : Family
+rule Bangat
 {
     meta:
         description = "Bangat"
