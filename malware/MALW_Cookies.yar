@@ -5,7 +5,7 @@
 
 import "pe"
 
-rule CookiesStrings : Cookies Family
+rule CookiesStrings
 {
     meta:
         description = "Cookies Identifying Strings"
@@ -33,7 +33,7 @@ rule CookiesStrings : Cookies Family
       (2 of ($zip*)) or (2 of ($exe*))
 }
 
-rule Cookies : Family
+rule Cookies
 {
     meta:
         description = "Cookies"
@@ -43,4 +43,3 @@ rule Cookies : Family
     condition:
         CookiesStrings
 }
-
