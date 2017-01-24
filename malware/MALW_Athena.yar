@@ -2,13 +2,16 @@
     This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as
     long as you use it under this license.
 */
+
 rule AthenaHTTP
 {
+    
     meta:
         author = "Brian Wallace @botnet_hunter"
         author_email = "bwall@ballastsecurity.net"
         date = "2014-08-09"
         description = "Identify Athena HTTP"
+    
     strings:
         $s1 = "%s(%s)"
         $s2 = "type:on_exec"
@@ -19,16 +22,20 @@ rule AthenaHTTP
         $s7 = "cores:%i"
         $s8 = "ver:%s"
         $s9 = "net:%s"
+    
     condition:
         all of them
 }
 
 
-rule AthenaHTTP_v2 {
+rule AthenaHTTP_v2 
+{
+    
     meta:
         author = "Jason Jones <jasonjones@arbor.net>"
         description = "Athena HTTP identification"
         source = "https://github.com/arbor/yara/blob/master/athena.yara"
+
     strings:
         $fmt_str1="|type:on_exec|uid:%s|priv:%s|arch:x%s|gend:%s|cores:%i|os:%s|ver:%s|net:%s|"
         $fmt_str2="|type:repeat|uid:%s|ram:%ld|bk_killed:%i|bk_files:%i|bk_keys:%i|busy:%s|"
@@ -37,15 +44,19 @@ rule AthenaHTTP_v2 {
         $cmd3 = "layer4."
         $cmd4 = "slowloris"
         $cmd5 = "rudy"
+   
     condition:
         all of ($fmt_str*) and 3 of ($cmd*)
 }
 
-rule AthenaIRC {
+rule AthenaIRC 
+{
+
     meta:
         author = "Jason Jones <jasonjones@arbor.net>"
         description = "Athena IRC v1.8.x, 2.x identification"
         source = "https://github.com/arbor/yara/blob/master/athena.yara"
+
     strings:
         $cmd1 = "ddos." fullword
         $cmd2 = "layer4." fullword
@@ -79,6 +90,7 @@ rule AthenaIRC {
         $acmd5 = ":!urlblock"
         $acmd6 = ":!udp"
         $acmd7 = ":!btcwallet"
+   
     condition:
         (all of ($cmd*) and 3 of ($msg*)) or (5 of ($amsg*) and 5 of ($acmd*))
 }
