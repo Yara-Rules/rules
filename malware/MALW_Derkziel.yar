@@ -2,8 +2,10 @@
     This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as    long as you use it under this license.
 
 */
-rule Derkziel : pe
+
+rule Derkziel
 {
+    
     meta:
         description = "Derkziel info stealer (Steam, Opera, Yandex, ...)"
         author = "The Malware Hunter"
@@ -12,12 +14,14 @@ rule Derkziel : pe
         md5 = "f5956953b7a4acab2e6fa478c0015972"
         site = "https://zoo.mlw.re/samples/f5956953b7a4acab2e6fa478c0015972"
         reference = "https://bhf.su/threads/137898/"
+    
     strings:
         $drz = "{!}DRZ{!}"
         $ua = "User-Agent: Uploador"
         $steam = "SteamAppData.vdf"
         $login = "loginusers.vdf"
         $config = "config.vdf"
+    
     condition:
         all of them
 }
