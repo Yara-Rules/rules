@@ -5,11 +5,13 @@
 
 rule DirtJumper_drive
 {
+   
     meta:
         author = "Jason Jones <jasonjones@arbor.net>"
         date = "2013-08-26"
         description = "Identify first version of drive DDoS malware"
         source = "https://github.com/arbor/yara/blob/master/drive.yara"
+   
     strings:
         $cmd1 = "-get" fullword
         $cmd2 = "-ip" fullword
@@ -24,6 +26,7 @@ rule DirtJumper_drive
         $str5 = "Mozilla/4.0 (compatible; MSIE 8.0; Windows NT"
         $newver1 = "-icmp"
         $newver2 = "<xmp>"
+   
     condition:
         4 of ($cmd*) and all of ($str*) and not any of ($newver*)
 }
@@ -31,11 +34,13 @@ rule DirtJumper_drive
 
 rule DirtJumper_drive2
 {
+   
     meta:
         author = "Jason Jones <jasonjones@arbor.net>"
         date = "2013-08-26"
         description = "Identify newer version of drive DDoS malware"
         source = "https://github.com/arbor/yara/blob/master/drive2.yara"
+   
     strings:
         $cmd1 = "-get" fullword
         $cmd2 = "-ip" fullword
@@ -52,6 +57,7 @@ rule DirtJumper_drive2
         $newver2 = "-byte"
         $newver3 = "-long"
         $newver4 = "<xmp>"
+  
     condition:
         4 of ($cmd*) and all of ($str*) and all of ($newver*)
 }
@@ -59,11 +65,13 @@ rule DirtJumper_drive2
 
 rule DirtJumper_drive3
 {
+  
     meta:
         author = "Jason Jones <jasonjones@arbor.net>"
         date = "2014-03-17"
         description = "Identify version of Drive DDoS malware using compromised sites"
         source = "https://github.com/arbor/yara/blob/master/drive3.yara"
+  
     strings:
         $cmd1 = "-get" fullword
         $cmd2 = "-ip" fullword
@@ -80,6 +88,7 @@ rule DirtJumper_drive3
         $newver2 = "-byte"
         $newver3 = "-long"
         $drive3 = "99=1"
+  
     condition:
         4 of ($cmd*) and all of ($str*) and all of ($newver*) and $drive3
 }
