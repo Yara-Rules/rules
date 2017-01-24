@@ -5,7 +5,7 @@
 
 import "pe"
 
-rule cxpidStrings : cxpid Family
+rule cxpidStrings
 {
     meta:
         description = "cxpid Identifying Strings"
@@ -23,7 +23,7 @@ rule cxpidStrings : cxpid Family
        any of them
 }
 
-rule cxpidCode : cxpid Family 
+rule cxpidCode
 {
     meta:
         description = "cxpid code features"
@@ -35,15 +35,4 @@ rule cxpidCode : cxpid Family
     
     condition:
         any of them
-}
-
-rule cxpid : Family
-{
-    meta:
-        description = "cxpid"
-        author = "Seth Hardy"
-        last_modified = "2014-06-23"
-        
-    condition:
-        cxpidCode or cxpidStrings
 }
