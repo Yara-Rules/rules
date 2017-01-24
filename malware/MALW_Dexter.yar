@@ -5,33 +5,41 @@
 
 import "pe"
 
-rule Dexter_Malware {
-	meta:
-		description = "Detects the Dexter Trojan/Agent http://goo.gl/oBvy8b"
-		author = "Florian Roth"
-		reference = "http://goo.gl/oBvy8b"
-		date = "2015/02/10"
-		score = 70
-	strings:
-		$s0 = "Java Security Plugin" fullword wide
-		$s1 = "%s\\%s\\%s.exe" fullword wide
-		$s2 = "Sun Java Security Plugin" fullword wide
-		$s3 = "\\Internet Explorer\\iexplore.exe" fullword wide
-	condition:
-		all of them
+rule Dexter_Malware 
+{
+
+    meta:
+        description = "Detects the Dexter Trojan/Agent http://goo.gl/oBvy8b"
+        author = "Florian Roth"
+        reference = "http://goo.gl/oBvy8b"
+        date = "2015/02/10"
+        score = 70
+
+    strings:
+        $s0 = "Java Security Plugin" fullword wide
+        $s1 = "%s\\%s\\%s.exe" fullword wide
+        $s2 = "Sun Java Security Plugin" fullword wide
+        $s3 = "\\Internet Explorer\\iexplore.exe" fullword wide
+
+    condition:
+        all of them
 }
+
 rule dexter_strings
 {
+   
     meta:
         author = "Brian Wallace @botnet_hunter"
         author_email = "bwall@ballastsecurity.net"
         date = "2014-09-10"
         description = "Identify Dexter POSGrabber"
+   
     strings:
         $s1 = "UpdateMutex:"
         $s2 = "response="
         $s3 = "page="
         $s4 = "scanin:"
+   
     condition:
         all of them
 }
