@@ -5,8 +5,9 @@
 
 import "pe"
 
-rule BoousetCode : Boouset Family 
+rule BoousetCode
 {
+    
     meta:
         description = "Boouset code tricks"
         author = "Seth Hardy"
