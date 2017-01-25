@@ -32,7 +32,7 @@ Also, you will need [Androguard Module](https://github.com/Koodous/androguard-ya
 
 In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analyisis.
 
-## Antidebug/AntiVM
+## CVE_Rules
 
 In this section you will find Yara Rules specialised on the identification of specifics CVE
 
