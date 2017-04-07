@@ -331,7 +331,7 @@ rule Check_VBox_Description
 	strings:
 		$key = "HARDWARE\\Description\\System" nocase wide ascii
 		$value = "SystemBiosVersion" nocase wide ascii
-		$data = "VBOX" nocase wide ascii		
+		$data = "VBOX" nocase wide ascii
 	condition:
 		all of them
 }
@@ -357,7 +357,7 @@ rule Check_VBox_Guest_Additions
 	strings:
 		$key = "SOFTWARE\\Oracle\\VirtualBox Guest Additions" wide ascii nocase
 	condition:
-		any of them	
+		any of them
 }
 rule Check_VBox_VideoDrivers
 {
@@ -494,7 +494,7 @@ rule Check_Debugger
 		Description = "Looks for both isDebuggerPresent and CheckRemoteDebuggerPresent"
 		Sample = "de1af0e97e94859d372be7fcf3a5daa5"
 	condition:
-		pe.imports("kernel32.dll","CheckRemoteDebuggerPresent") and 
+		pe.imports("kernel32.dll","CheckRemoteDebuggerPresent") and
 		pe.imports("kernel32.dll","IsDebuggerPresent")
 }
 
@@ -507,10 +507,10 @@ rule Check_DriveSize
 
 	strings:
 		$physicaldrive = "\\\\.\\PhysicalDrive0" wide ascii nocase
-		$dwIoControlCode = {68 5c 40 07 00 [0-5] FF 15} //push 7405ch ; push esi (handle) then call deviceoiocontrol IOCTL_DISK_GET_LENGTH_INFO	
+		$dwIoControlCode = {68 5c 40 07 00 [0-5] FF 15} //push 7405ch ; push esi (handle) then call deviceoiocontrol IOCTL_DISK_GET_LENGTH_INFO
 	condition:
-		pe.imports("kernel32.dll","CreateFileA") and 	
-		pe.imports("kernel32.dll","DeviceIoControl") and 
+		pe.imports("kernel32.dll","CreateFileA") and
+		pe.imports("kernel32.dll","DeviceIoControl") and
 		$dwIoControlCode and
 		$physicaldrive
 }
@@ -520,7 +520,7 @@ rule Check_FilePaths
 		Author = "Nick Hoffman"
 		Description = "Checks for filepaths containing popular sandbox names"
 		Sample = "de1af0e97e94859d372be7fcf3a5daa5"
-	strings: 
+	strings:
 		$path1 = "SANDBOX" wide ascii
 		$path2 = "\\SAMPLE" wide ascii
 		$path3 = "\\VIRUS" wide ascii
@@ -563,12 +563,12 @@ rule Check_unhandledExceptionFiler_iat {
 
 	meta:
 		Author = "http://twitter.com/j0sm1"
-		Description = "it's checked if UnhandledExceptionFilter is imported" 
+		Description = "it's checked if UnhandledExceptionFilter is imported"
 		Date = "20/04/2015"
 		Reference = "http://www.codeproject.com/Articles/30815/An-Anti-Reverse-Engineering-Guide#UnhandledExceptionFilter"
-		
+
 	condition:
-		pe.imports("kernel32.dll","UnhandledExceptionFilter")	
+		pe.imports("kernel32.dll","UnhandledExceptionFilter")
 }
 */
 
@@ -578,12 +578,12 @@ rule check_RaiseException_iat {
 
 	meta:
 		Author = "http://twitter.com/j0sm1"
-		Description = "it's checked if RaiseException is imported" 
+		Description = "it's checked if RaiseException is imported"
 		Date = "20/04/2015"
 		Reference = "http://waleedassar.blogspot.com.es/2012/11/ollydbg-raiseexception-bug.html"
-		
+
 	condition:
-		pe.imports("kernel32.dll","RaiseException")	
+		pe.imports("kernel32.dll","RaiseException")
 }
 */
 
@@ -591,14 +591,14 @@ rule Check_FindWindowA_iat {
 
 	meta:
 		Author = "http://twitter.com/j0sm1"
-		Description = "it's checked if FindWindowA() is imported" 
+		Description = "it's checked if FindWindowA() is imported"
 		Date = "20/04/2015"
 		Reference = "http://www.codeproject.com/Articles/30815/An-Anti-Reverse-Engineering-Guide#OllyFindWindow"
-		
+
 	strings:
 		$ollydbg = "OLLYDBG"
 		$windbg = "WinDbgFrameClass"
-		
+
 	condition:
 		pe.imports("user32.dll","FindWindowA") and ($ollydbg or $windbg)
 }
@@ -618,14 +618,14 @@ rule DebuggerCheck__MemoryWorkingSet : AntiDebug DebuggerCheck {
 rule WMI_VM_Detect : WMI_VM_Detect
 {
     meta:
-        
+
         version = 2
         threat = "Using WMI to detect virtual machines via querying video card information"
         behaviour_class = "Evasion"
         author = "Joe Giron"
         date = "2015-09-25"
         description = "Detection of Virtual Appliances through the use of WMI for use of evasion."
-		
+
 		strings:
 
 		$selstr 	= "SELECT Description FROM Win32_VideoController" nocase ascii wide
@@ -637,7 +637,7 @@ rule WMI_VM_Detect : WMI_VM_Detect
 		$vm5 		= "remotefx" nocase ascii wide
 		$vm6 		= "cirrus logic" nocase ascii wide
 		$vm7 		= "matrox" nocase ascii wide
-		
+
 		condition:
 		any of ($selstr*) and any of ($vm*)
 
@@ -651,11 +651,11 @@ rule anti_dbg {
 	version = "0.2"
     strings:
     	$d1 = "Kernel32.dll" nocase
-        $c1 = "CheckRemoteDebuggerPresent" 
-        $c2 = "IsDebuggerPresent" 
-        $c3 = "OutputDebugString" 
-        $c4 = "ContinueDebugEvent" 
-        $c5 = "DebugActiveProcess" 
+        $c1 = "CheckRemoteDebuggerPresent"
+        $c2 = "IsDebuggerPresent"
+        $c3 = "OutputDebugString"
+        $c4 = "ContinueDebugEvent"
+        $c5 = "DebugActiveProcess"
     condition:
         $d1 and 1 of ($c*)
 }
@@ -673,14 +673,14 @@ rule anti_dbgtools {
         $f5 = "fiddler.exe" nocase
         $f6 = "windbg.exe" nocase
         $f7 = "ollydbg.exe" nocase
-        $f8 = "winhex.exe" nocase       
+        $f8 = "winhex.exe" nocase
         $f9 = "processhacker.exe" nocase
         $f10 = "hiew32.exe" nocase
-        $c11 = "\\\\.\\NTICE" 
-        $c12 = "\\\\.\\SICE" 
-        $c13 = "\\\\.\\Syser" 
-        $c14 = "\\\\.\\SyserBoot" 
-        $c15 = "\\\\.\\SyserDbgMsg" 
+        $c11 = "\\\\.\\NTICE"
+        $c12 = "\\\\.\\SICE"
+        $c13 = "\\\\.\\Syser"
+        $c14 = "\\\\.\\SyserBoot"
+        $c15 = "\\\\.\\SyserDbgMsg"
     condition:
         any of them
 }
@@ -692,8 +692,8 @@ rule antisb_joesanbox {
 	version = "0.1"
     strings:
 	$p1 = "Software\\Microsoft\\Windows\\CurrentVersion" nocase
-	$c1 = "RegQueryValue" 
-	$s1 = "55274-640-2673064-23950" 
+	$c1 = "RegQueryValue"
+	$s1 = "55274-640-2673064-23950"
     condition:
         all of them
 }
@@ -705,9 +705,9 @@ rule antisb_anubis {
 	version = "0.1"
     strings:
         $p1 = "Software\\Microsoft\\Windows\\CurrentVersion" nocase
-        $c1 = "RegQueryValue" 
-        $s1 = "76487-337-8429955-22614" 
-        $s2 = "76487-640-1457236-23837" 
+        $c1 = "RegQueryValue"
+        $s1 = "76487-337-8429955-22614"
+        $s2 = "76487-640-1457236-23837"
     condition:
         $p1 and $c1 and 1 of ($s*)
 }
@@ -718,7 +718,7 @@ rule antisb_threatExpert {
         description = "Anti-Sandbox checks for ThreatExpert"
 	version = "0.1"
     strings:
-        $f1 = "dbghelp.dll" nocase 
+        $f1 = "dbghelp.dll" nocase
     condition:
         all of them
 }
@@ -729,7 +729,7 @@ rule antisb_sandboxie {
         description = "Anti-Sandbox checks for Sandboxie"
 	version = "0.1"
     strings:
-        $f1 = "SbieDLL.dll" nocase 
+        $f1 = "SbieDLL.dll" nocase
     condition:
         all of them
 }
@@ -741,7 +741,7 @@ rule antisb_cwsandbox {
 	version = "0.1"
     strings:
         $p1 = "Software\\Microsoft\\Windows\\CurrentVersion" nocase
-        $s1 = "76487-644-3177037-23510" 
+        $s1 = "76487-644-3177037-23510"
     condition:
         all of them
 }
@@ -783,10 +783,10 @@ rule antivm_bios {
     strings:
         $p1 = "HARDWARE\\DESCRIPTION\\System" nocase
         $p2 = "HARDWARE\\DESCRIPTION\\System\\BIOS" nocase
-        $c1 = "RegQueryValue" 
-        $r1 = "SystemBiosVersion" 
-        $r2 = "VideoBiosVersion" 
-        $r3 = "SystemManufacturer" 
+        $c1 = "RegQueryValue"
+        $r1 = "SystemBiosVersion"
+        $r2 = "VideoBiosVersion"
+        $r3 = "SystemManufacturer"
     condition:
         1 of ($p*) and 1 of ($c*) and 1 of ($r*)
 }
@@ -800,13 +800,13 @@ rule disable_antivirus {
         $p1 = "Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun" nocase
         $p2 = "Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" nocase
         $p3 = "SOFTWARE\\Policies\\Microsoft\\Windows Defender" nocase
-        $c1 = "RegSetValue" 
-        $r1 = "AntiVirusDisableNotify" 
-        $r2 = "DontReportInfectionInformation" 
-        $r3 = "DisableAntiSpyware" 
-        $r4 = "RunInvalidSignatures" 
-        $r5 = "AntiVirusOverride" 
-        $r6 = "CheckExeSignatures" 
+        $c1 = "RegSetValue"
+        $r1 = "AntiVirusDisableNotify"
+        $r2 = "DontReportInfectionInformation"
+        $r3 = "DisableAntiSpyware"
+        $r4 = "RunInvalidSignatures"
+        $r5 = "AntiVirusOverride"
+        $r6 = "CheckExeSignatures"
         $f1 = "blackd.exe" nocase
         $f2 = "blackice.exe" nocase
         $f3 = "lockdown.exe" nocase
@@ -841,10 +841,10 @@ rule disable_firewall {
 	version = "0.1"
     strings:
         $p1 = "SYSTEM\\CurrentControlSet\\Services\\SharedAccess\\Parameters\\FirewallPolicy" nocase
-        $c1 = "RegSetValue" 
-        $r1 = "FirewallPolicy" 
-        $r2 = "EnableFirewall" 
-        $r3 = "FirewallDisableNotify" 
+        $c1 = "RegSetValue"
+        $r1 = "FirewallPolicy"
+        $r2 = "EnableFirewall"
+        $r3 = "FirewallDisableNotify"
         $s1 = "netsh firewall add allowedprogram"
     condition:
         (1 of ($p*) and $c1 and 1 of ($r*)) or $s1
@@ -857,9 +857,9 @@ rule disable_registry {
 	version = "0.1"
     strings:
         $p1 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" nocase
-        $c1 = "RegSetValue" 
-        $r1 = "DisableRegistryTools" 
-        $r2 = "DisableRegedit" 
+        $c1 = "RegSetValue"
+        $r1 = "DisableRegistryTools"
+        $r2 = "DisableRegedit"
     condition:
         1 of ($p*) and $c1 and 1 of ($r*)
 }
@@ -870,11 +870,11 @@ rule disable_dep {
         description = "Bypass DEP"
 	version = "0.1"
     strings:
-        $c1 = "EnableExecuteProtectionSupport" 
-        $c2 = "NtSetInformationProcess" 
-        $c3 = "VirtualProctectEx" 
-        $c4 = "SetProcessDEPPolicy" 
-        $c5 = "ZwProtectVirtualMemory" 
+        $c1 = "EnableExecuteProtectionSupport"
+        $c2 = "NtSetInformationProcess"
+        $c3 = "VirtualProctectEx"
+        $c4 = "SetProcessDEPPolicy"
+        $c5 = "ZwProtectVirtualMemory"
     condition:
         any of them
 }
@@ -886,7 +886,7 @@ rule disable_taskmanager {
 	version = "0.1"
     strings:
         $p1 = "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System" nocase
-        $r1 = "DisableTaskMgr" 
+        $r1 = "DisableTaskMgr"
     condition:
         1 of ($p*) and 1 of ($r*)
 }
@@ -897,13 +897,13 @@ rule inject_thread {
         description = "Code injection with CreateRemoteThread in a remote process"
 	version = "0.1"
     strings:
-        $c1 = "OpenProcess" 
-        $c2 = "VirtualAllocEx" 
-        $c3 = "NtWriteVirtualMemory" 
-        $c4 = "WriteProcessMemory" 
+        $c1 = "OpenProcess"
+        $c2 = "VirtualAllocEx"
+        $c3 = "NtWriteVirtualMemory"
+        $c4 = "WriteProcessMemory"
         $c5 = "CreateRemoteThread"
         $c6 = "CreateThread"
-        $c7 = "OpenProcess" 
+        $c7 = "OpenProcess"
     condition:
         $c1 and $c2 and ( $c3 or $c4 ) and ( $c5 or $c6 or $c7 )
 }
@@ -917,8 +917,8 @@ rule create_process {
     strings:
         $f1 = "Shell32.dll" nocase
         $f2 = "Kernel32.dll" nocase
-        $c1 = "ShellExecute" 
-        $c2 = "WinExec" 
+        $c1 = "ShellExecute"
+        $c2 = "WinExec"
         $c3 = "CreateProcess"
         $c4 = "CreateThread"
     condition:
@@ -978,10 +978,10 @@ rule create_service {
 	version = "0.2"
     strings:
 	$f1 = "Advapi32.dll" nocase
-        $c1 = "CreateService" 
-        $c2 = "ControlService" 
-        $c3 = "StartService" 
-        $c4 = "QueryServiceStatus" 
+        $c1 = "CreateService"
+        $c2 = "ControlService"
+        $c3 = "StartService"
+        $c4 = "QueryServiceStatus"
     condition:
         all of them
 }
@@ -993,10 +993,10 @@ rule create_com_service {
 	version = "0.1"
     strings:
         $c1 = "DllCanUnloadNow" nocase
-        $c2 = "DllGetClassObject" 
-        $c3 = "DllInstall" 
-        $c4 = "DllRegisterServer" 
-        $c5 = "DllUnregisterServer" 
+        $c2 = "DllGetClassObject"
+        $c3 = "DllInstall"
+        $c4 = "DllRegisterServer"
+        $c5 = "DllUnregisterServer"
     condition:
         all of them
 }
@@ -1010,12 +1010,12 @@ rule network_udp_sock {
         $f1 = "Ws2_32.dll" nocase
 	$f2 = "System.Net" nocase
         $f3 = "wsock32.dll" nocase
-        $c0 = "WSAStartup" 
-        $c1 = "sendto" 
-        $c2 = "recvfrom" 
-        $c3 = "WSASendTo" 
-        $c4 = "WSARecvFrom" 
-        $c5 = "UdpClient" 
+        $c0 = "WSAStartup"
+        $c1 = "sendto"
+        $c2 = "recvfrom"
+        $c3 = "WSASendTo"
+        $c4 = "WSARecvFrom"
+        $c5 = "UdpClient"
     condition:
         (($f1 or $f3) and 2 of ($c*)) or ($f2 and $c5)
 }
@@ -1030,14 +1030,14 @@ rule network_tcp_listen {
         $f2 = "Mswsock.dll" nocase
 	    $f3 = "System.Net" nocase
         $f4 = "wsock32.dll" nocase
-        $c1 = "bind" 
-        $c2 = "accept" 
+        $c1 = "bind"
+        $c2 = "accept"
         $c3 = "GetAcceptExSockaddrs"
-        $c4 = "AcceptEx" 
-        $c5 = "WSAStartup" 
-        $c6 = "WSAAccept" 
-        $c7 = "WSASocket" 
-        $c8 = "TcpListener" 
+        $c4 = "AcceptEx"
+        $c5 = "WSAStartup"
+        $c6 = "WSAAccept"
+        $c7 = "WSASocket"
+        $c8 = "TcpListener"
         $c9 = "AcceptTcpClient"
         $c10 = "listen"
     condition:
@@ -1049,7 +1049,7 @@ rule network_dyndns {
         author = "x0r"
         description = "Communications dyndns network"
 	version = "0.1"
-    strings:	
+    strings:
 	$s1 =".no-ip.org"
         $s2 =".publicvm.com"
         $s3 =".linkpc.net"
@@ -1092,7 +1092,7 @@ rule network_toredo {
         author = "x0r"
         description = "Communications over Toredo network"
 	version = "0.1"
-    strings:	
+    strings:
 	$f1 = "FirewallAPI.dll" nocase
         $p1 = "\\CurrentControlSet\\Services\\Tcpip6\\Parameters\\Interfaces\\" nocase
     condition:
@@ -1104,7 +1104,7 @@ rule network_smtp_dotNet {
         author = "x0r"
         description = "Communications smtp"
 	version = "0.1"
-    strings:	
+    strings:
 	$f1 = "System.Net.Mail" nocase
         $p1 = "SmtpClient" nocase
     condition:
@@ -1116,7 +1116,7 @@ rule network_smtp_raw {
         author = "x0r"
         description = "Communications smtp"
 	version = "0.1"
-    strings:	
+    strings:
 	$s1 = "MAIL FROM:" nocase
         $s2 = "RCPT TO:" nocase
     condition:
@@ -1128,7 +1128,7 @@ rule network_smtp_vb {
         author = "x0r"
         description = "Communications smtp"
 	version = "0.1"
-    strings:	
+    strings:
 	$c1 = "CDO.Message" nocase
         $c2 = "cdoSMTPServer" nocase
         $c3 = "cdoSendUsingMethod" nocase
@@ -1143,7 +1143,7 @@ rule network_p2p_win {
         author = "x0r"
         description = "Communications over P2P network"
 	version = "0.1"
-    strings:	
+    strings:
      	$c1 = "PeerCollabExportContact"
      	$c2 = "PeerCollabGetApplicationRegistrationInfo"
      	$c3 = "PeerCollabGetEndpointName"
@@ -1187,11 +1187,11 @@ rule network_irc {
         description = "Communications over IRC network"
 	version = "0.1"
     strings:
-        $s1 = "NICK" 
-        $s2 = "PING" 
-        $s3 = "JOIN" 
-        $s4 = "USER" 
-        $s5 = "PRIVMSG" 
+        $s1 = "NICK"
+        $s2 = "PING"
+        $s3 = "JOIN"
+        $s4 = "USER"
+        $s5 = "PRIVMSG"
     condition:
         all of them
 }
@@ -1203,14 +1203,14 @@ rule network_http {
 	version = "0.1"
     strings:
         $f1 = "wininet.dll" nocase
-        $c1 = "InternetConnect" 
-        $c2 = "InternetOpen" 
-        $c3 = "InternetOpenUrl" 
-        $c4 = "InternetReadFile" 
-        $c5 = "InternetWriteFile" 
-        $c6 = "HttpOpenRequest" 
-        $c7 = "HttpSendRequest" 
-        $c8 = "IdHTTPHeaderInfo" 
+        $c1 = "InternetConnect"
+        $c2 = "InternetOpen"
+        $c3 = "InternetOpenUrl"
+        $c4 = "InternetReadFile"
+        $c5 = "InternetWriteFile"
+        $c6 = "HttpOpenRequest"
+        $c7 = "HttpSendRequest"
+        $c8 = "IdHTTPHeaderInfo"
     condition:
         $f1 and $c1 and ($c2 or $c3) and ($c4 or $c5 or $c6 or $c7 or $c8)
 }
@@ -1218,14 +1218,14 @@ rule network_http {
 rule network_dropper {
     meta:
         author = "x0r"
-        description = "File downloader/dropper" 
+        description = "File downloader/dropper"
 	version = "0.1"
     strings:
         $f1 = "urlmon.dll" nocase
-        $c1 = "URLDownloadToFile" 
-        $c2 = "URLDownloadToCacheFile" 
-        $c3 = "URLOpenStream" 
-        $c4 = "URLOpenPullStream" 
+        $c1 = "URLDownloadToFile"
+        $c2 = "URLDownloadToCacheFile"
+        $c3 = "URLOpenStream"
+        $c4 = "URLOpenPullStream"
     condition:
         $f1 and 1 of ($c*)
 }
@@ -1233,23 +1233,23 @@ rule network_dropper {
 rule network_ftp {
     meta:
         author = "x0r"
-        description = "Communications over FTP" 
+        description = "Communications over FTP"
 	version = "0.1"
     strings:
 	   $f1 = "Wininet.dll" nocase
-        $c1 = "FtpGetCurrentDirectory" 
-        $c2 = "FtpGetFile" 
-        $c3 = "FtpPutFile" 
-        $c4 = "FtpSetCurrentDirectory" 
-        $c5 = "FtpOpenFile" 
-        $c6 = "FtpGetFileSize" 
-        $c7 = "FtpDeleteFile" 
-        $c8 = "FtpCreateDirectory" 
-        $c9 = "FtpRemoveDirectory" 
-        $c10 = "FtpRenameFile" 
-        $c11 = "FtpDownload" 
-        $c12 = "FtpUpload" 
-        $c13 = "FtpGetDirectory" 
+        $c1 = "FtpGetCurrentDirectory"
+        $c2 = "FtpGetFile"
+        $c3 = "FtpPutFile"
+        $c4 = "FtpSetCurrentDirectory"
+        $c5 = "FtpOpenFile"
+        $c6 = "FtpGetFileSize"
+        $c7 = "FtpDeleteFile"
+        $c8 = "FtpCreateDirectory"
+        $c9 = "FtpRemoveDirectory"
+        $c10 = "FtpRenameFile"
+        $c11 = "FtpDownload"
+        $c12 = "FtpUpload"
+        $c13 = "FtpGetDirectory"
     condition:
         $f1 and (4 of ($c*))
 }
@@ -1262,10 +1262,10 @@ rule network_tcp_socket {
     strings:
 	$f1 = "Ws2_32.dll" nocase
         $f2 = "wsock32.dll" nocase
-        $c1 = "WSASocket" 
-        $c2 = "socket" 
-        $c3 = "send" 
-        $c4 = "WSASend" 
+        $c1 = "WSASocket"
+        $c2 = "socket"
+        $c3 = "send"
+        $c4 = "WSASend"
         $c5 = "WSAConnect"
         $c6 = "connect"
         $c7 = "WSAStartup"
@@ -1281,17 +1281,17 @@ rule network_dns {
         description = "Communications use DNS"
 	version = "0.1"
     strings:
-        $f1 = "System.Net" 
+        $f1 = "System.Net"
         $f2 = "Ws2_32.dll" nocase
         $f3 = "Dnsapi.dll" nocase
-        $f4 = "wsock32.dll" nocase        
-        $c2 = "GetHostEntry" 
+        $f4 = "wsock32.dll" nocase
+        $c2 = "GetHostEntry"
 	    $c3 = "getaddrinfo"
 	    $c4 = "gethostbyname"
 	    $c5 = "WSAAsyncGetHostByName"
 	    $c6 = "DnsQuery"
     condition:
-        1 of ($f*) and  1 of ($c*) 
+        1 of ($f*) and  1 of ($c*)
 }
 
 rule network_ssl {
@@ -1313,22 +1313,22 @@ rule network_dga {
         author = "x0r"
         description = "Communication using dga"
 	version = "0.1"
-    strings: 
+    strings:
         $dll1 = "Advapi32.dll" nocase
         $dll2 = "wininet.dll" nocase
 	    $dll3 = "Crypt32.dll" nocase
-        $time1 = "SystemTimeToFileTime"  
-        $time2 = "GetSystemTime"  
-        $time3 = "GetSystemTimeAsFileTime"  
-        $hash1 = "CryptCreateHash" 
-        $hash2 = "CryptAcquireContext" 
-        $hash3 = "CryptHashData" 
-        $net1 = "InternetOpen"  
-        $net2 = "InternetOpenUrl"  
-        $net3 = "gethostbyname"  
-        $net4 = "getaddrinfo"  
+        $time1 = "SystemTimeToFileTime"
+        $time2 = "GetSystemTime"
+        $time3 = "GetSystemTimeAsFileTime"
+        $hash1 = "CryptCreateHash"
+        $hash2 = "CryptAcquireContext"
+        $hash3 = "CryptHashData"
+        $net1 = "InternetOpen"
+        $net2 = "InternetOpenUrl"
+        $net3 = "gethostbyname"
+        $net4 = "getaddrinfo"
     condition:
-        all of ($dll*) and 1 of ($time*) and 1 of ($hash*) and 1 of ($net*)	
+        all of ($dll*) and 1 of ($time*) and 1 of ($hash*) and 1 of ($net*)
 }
 
 
@@ -1358,7 +1358,7 @@ rule certificate {
     strings:
         $f1 = "Crypt32.dll" nocase
         $r1 = "software\\microsoft\\systemcertificates\\spc\\certificates" nocase
-        $c1 = "CertOpenSystemStore" 
+        $c1 = "CertOpenSystemStore"
     condition:
 	all of them
 }
@@ -1370,8 +1370,8 @@ rule escalate_priv {
 	version = "0.1"
     strings:
         $d1 = "Advapi32.dll" nocase
-        $c1 = "SeDebugPrivilege" 
-        $c2 = "AdjustTokenPrivileges" 
+        $c1 = "SeDebugPrivilege"
+        $c2 = "AdjustTokenPrivileges"
     condition:
         1 of ($d*) and 1 of ($c*)
 }
@@ -1384,8 +1384,8 @@ rule screenshot {
     strings:
         $d1 = "Gdi32.dll" nocase
         $d2 = "User32.dll" nocase
-        $c1 = "BitBlt" 
-        $c2 = "GetDC" 
+        $c1 = "BitBlt"
+        $c2 = "GetDC"
     condition:
         1 of ($d*) and 1 of ($c*)
 }
@@ -1434,9 +1434,9 @@ rule keylogger {
 	version = "0.1"
     strings:
 	    $f1 = "User32.dll" nocase
-        $c1 = "GetAsyncKeyState" 
-        $c2 = "GetKeyState" 
-        $c3 = "MapVirtualKey" 
+        $c1 = "GetAsyncKeyState"
+        $c2 = "GetKeyState"
+        $c3 = "MapVirtualKey"
         $c4 = "GetKeyboardType"
     condition:
         $f1 and 1 of ($c*)
@@ -1511,7 +1511,7 @@ rule cred_ie7 {
 	version = "0.1"
     strings:
         $f1 = "Crypt32.dll" nocase
-        $c1 = "CryptUnprotectData" 
+        $c1 = "CryptUnprotectData"
         $s1 = "abe2869f-9b47-4cd9-a358-c22904dba7f7" nocase
     condition:
         all of them
@@ -1537,8 +1537,8 @@ rule migrate_apc {
         description = "APC queue tasks migration"
 	version = "0.1"
     strings:
-        $c1 = "OpenThread" 
-        $c2 = "QueueUserAPC" 
+        $c1 = "OpenThread"
+        $c2 = "QueueUserAPC"
     condition:
         all of them
 }
@@ -1563,8 +1563,8 @@ rule spreading_share {
         version = "0.1"
     strings:
         $f1 = "netapi32.dll" nocase
-        $c1 = "NetShareGetInfo" 
-        $c2 = "NetShareEnum" 
+        $c1 = "NetShareGetInfo"
+        $c2 = "NetShareEnum"
     condition:
         $f1 and 1 of ($c*)
 }
@@ -1576,8 +1576,8 @@ rule rat_vnc {
 	version = "0.1"
     strings:
         $f1 = "ultravnc.ini" nocase
-        $c2 = "StartVNC" 
-        $c3 = "StopVNC" 
+        $c2 = "StartVNC"
+        $c3 = "StopVNC"
     condition:
         any of them
 }
@@ -1639,7 +1639,7 @@ rule win_mutex {
         description = "Create or check mutex"
     version = "0.1"
     strings:
-        $c1 = "CreateMutex" 
+        $c1 = "CreateMutex"
     condition:
         1 of ($c*)
 }
@@ -1656,7 +1656,7 @@ rule win_registry {
         $c3 = "RegCloseKey"
         $c4 = "RegSetValueExA"
         $c5 = "RegCreateKeyA"
-        $c6 = "RegCloseKey"                  
+        $c6 = "RegCloseKey"
     condition:
         $f1 and 1 of ($c*)
 }
@@ -1671,7 +1671,7 @@ rule win_token {
         $c1 = "DuplicateTokenEx"
         $c2 = "AdjustTokenPrivileges"
         $c3 = "OpenProcessToken"
-        $c4 = "LookupPrivilegeValueA"            
+        $c4 = "LookupPrivilegeValueA"
     condition:
         $f1 and 1 of ($c*)
 }
@@ -1685,7 +1685,7 @@ rule win_private_profile {
         $f1 = "kernel32.dll" nocase
         $c1 = "GetPrivateProfileIntA"
         $c2 = "GetPrivateProfileStringA"
-        $c3 = "WritePrivateProfileStringA"         
+        $c3 = "WritePrivateProfileStringA"
     condition:
         $f1 and 1 of ($c*)
 }
@@ -1723,7 +1723,7 @@ rule win_hook {
         $f1 = "user32.dll" nocase
         $c1 = "UnhookWindowsHookEx"
         $c2 = "SetWindowsHookExA"
-        $c3 = "CallNextHookEx"         
+        $c3 = "CallNextHookEx"
     condition:
         $f1 and 1 of ($c*)
 }
