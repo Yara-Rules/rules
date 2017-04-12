@@ -1,0 +1,77 @@
+rule PolishBankRAT_srservice_xorloop 
+{
+	meta:
+	
+		author = "Booz Allen Hamilton Dark Labs"
+		description = "Finds the custom xor decode loop for <PolishBankRAT_srservice>"
+	
+	strings:
+
+		$loop = { 48 8B CD E8 60 FF FF FF 48 FF C3 32 44 1E FF 48 FF CF 88 43 FF }
+
+	condition:
+
+		(uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550) and $loop
+}
+
+rule PolishBankRAT_fdsvc_xor_loop 
+{
+	meta:
+
+		author = "Booz Allen Hamilton Dark Labs"
+		description = "Finds the custom xor decode loop for <PolishBankRAT_fdsvc>"
+
+	strings:
+
+		$loop = {0F B6 42 FF 48 8D 52 FF 30 42 01 FF CF 75 F1}
+
+	condition:
+
+		(uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550) and $loop
+}
+
+rule PolishBankRAT_fdsvc_decode2 
+{
+	meta:
+		
+		author = "Booz Allen Hamilton Dark Labs"
+		description = "Find a constant used as part of a payload decoding function in PolishBankRAT_fdsvc"
+
+	strings:
+		
+		$part1 = {A6 EB 96}
+		$part2 = {61 B2 E2 EF}
+		$part3 = {0D CB E8 C4}
+		$part4 = {5A F1 66 9C}
+		$part5 = {A4 80 CD 9A}
+		$part6 = {F1 2F 46 25}
+		$part7 = {2F DB 16 26}
+		$part8 = {4B C4 3F 3C}
+		$str1 = "This program cannot be run in DOS mode"
+
+	condition:
+
+		(uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550) and all of them
+}
+
+rule decoded_PolishBankRAT_fdsvc_strings 
+{
+	meta:
+
+		author = "Booz Allen Hamilton Dark Labs"
+		description = "Finds hard coded strings in PolishBankRAT_fdsvc"
+
+	strings:
+
+		$str1 = "ssylka" wide ascii
+		$str2 = "ustanavlivat" wide ascii
+		$str3 = "poluchit" wide ascii
+		$str4 = "pereslat" wide ascii
+		$str5 = "derzhat" wide ascii
+		$str6 = "vykhodit" wide ascii
+		$str7 = "Nachalo" wide ascii
+
+	condition:
+		
+		(uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550) and 4 of ($str*)
+}
