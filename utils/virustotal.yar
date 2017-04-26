@@ -1,6 +1,6 @@
 //Rule to Catch Intelligence files in the meta of files uploaded. Current rule looks for NSA and MOSAD in meta of samples.
 
-rule catch_intelligence_files
+/* rule catch_intelligence_files
 {
 meta:
 	author = "@abhinavbom"
@@ -87,3 +87,4 @@ strings:
 condition:
 	$magic at 0 and tags contains "exploit-kit" and positives >3
 }
+*/
