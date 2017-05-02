@@ -1,0 +1,3 @@
+[submodule "utils/yara-forensics"]
+	path = utils/yara-forensics
+	url = https://github.com/Xumeiquer/yara-forensics.git
