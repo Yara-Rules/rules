@@ -21,7 +21,14 @@ rule without_attachments : mail {
 		reference = "http://laboratorio.blogs.hispasec.com/"
 		description = "Rule to detect the no presence of any attachment"
 	strings:
+                $eml_01 = "From:"
+                $eml_02 = "To:"
+                $eml_03 = "Subject:"
 		$attachment_id = "X-Attachment-Id"
+                $mime_type = "Content-Type: multipart/mixed"
 	condition:
-		not $attachment_id
+                all of ( $eml_* ) and
+		not $attachment_id and 
+                not $mime_type
 }
+
