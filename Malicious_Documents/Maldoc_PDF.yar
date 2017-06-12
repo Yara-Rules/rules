@@ -219,7 +219,8 @@ rule suspicious_launch_action : PDF raw
 		$attrib0 = /\/Launch/
 		$attrib1 = /\/URL /
 		$attrib2 = /\/Action/
-		$attrib3 = /\/F /
+		$attrib3 = /\/OpenAction/
+		$attrib4 = /\/F /
 
 	condition:
 		$magic in (0..1024) and 3 of ($attrib*)
