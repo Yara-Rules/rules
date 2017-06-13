@@ -15,7 +15,6 @@ rule with_urls : mail {
 
 		$url_regex = /https?:\/\/([\w\.-]+)([\/\w \.-]*)/
 	condition:
-                all of ( $eml_* ) and
 		all of them
 }
 
