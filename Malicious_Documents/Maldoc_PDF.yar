@@ -17,7 +17,7 @@ rule malicious_author : PDF raw
 		$reg1 = /Title.?\(who cis\)/
 		$reg2 = /Author.?\(ser pes\)/
 	condition:
-		$magic at 0 and all of ($reg*)
+		$magic in (0..1024) and all of ($reg*)
 }
 
 rule suspicious_version : PDF raw
@@ -31,7 +31,7 @@ rule suspicious_version : PDF raw
 		$magic = { 25 50 44 46 }
 		$ver = /%PDF-1.\d{1}/
 	condition:
-		$magic at 0 and not $ver
+		$magic in (0..1024) and not $ver
 }
 
 rule suspicious_creation : PDF raw
@@ -48,7 +48,7 @@ rule suspicious_creation : PDF raw
 		$create0 = /CreationDate \(D:20101015142358\)/
 		$create1 = /CreationDate \(2008312053854\)/
 	condition:
-		$magic at 0 and $header and 1 of ($create*)
+		$magic in (0..1024) and $header and 1 of ($create*)
 }
 
 rule multiple_filtering : PDF raw
@@ -64,7 +64,7 @@ weight = 3
             // left out: /CCITTFaxDecode, JBIG2Decode, DCTDecode, JPXDecode, Crypt
 
     condition: 
-            $magic at 0 and $attrib
+            $magic in (0..1024) and $attrib
 }
 
 rule suspicious_title : PDF raw
@@ -82,7 +82,7 @@ rule suspicious_title : PDF raw
 		$title1 = "P66N7FF"
 		$title2 = "Fohcirya"
 	condition:
-		$magic at 0 and $header and 1 of ($title*)
+		$magic in (0..1024) and $header and 1 of ($title*)
 }
 
 rule suspicious_author : PDF raw
@@ -101,7 +101,7 @@ rule suspicious_author : PDF raw
 		$author2 = "Miekiemoes"
 		$author3 = "Nsarkolke"
 	condition:
-		$magic at 0 and $header and 1 of ($author*)
+		$magic in (0..1024) and $header and 1 of ($author*)
 }
 
 rule suspicious_producer : PDF raw 
@@ -118,7 +118,7 @@ rule suspicious_producer : PDF raw
 		$producer0 = /Producer \(Scribus PDF Library/
 		$producer1 = "Notepad"
 	condition:
-		$magic at 0 and $header and 1 of ($producer*)
+		$magic in (0..1024) and $header and 1 of ($producer*)
 }
 
 rule suspicious_creator : PDF raw
@@ -136,7 +136,7 @@ rule suspicious_creator : PDF raw
 		$creator1 = "Scribus"
 		$creator2 = "Viraciregavi"
 	condition:
-		$magic at 0 and $header and 1 of ($creator*)
+		$magic in (0..1024) and $header and 1 of ($creator*)
 }
 
 rule possible_exploit : PDF raw
@@ -161,7 +161,7 @@ rule possible_exploit : PDF raw
 		
 		$nop = "%u9090%u9090"
 	condition:
-		$magic at 0 and (2 of ($attrib*)) or ($action0 and #shell > 10 and 1 of ($cond*)) or ($action1 and $cond0 and $nop)
+		$magic in (0..1024) and (2 of ($attrib*)) or ($action0 and #shell > 10 and 1 of ($cond*)) or ($action1 and $cond0 and $nop)
 }
 
 rule shellcode_blob_metadata : PDF raw
@@ -182,7 +182,7 @@ rule shellcode_blob_metadata : PDF raw
                 $reg_create = /\/CreationDate.?\(([a-zA-Z0-9]{200,})/
 
         condition:
-                $magic at 0 and 1 of ($reg*)
+                $magic in (0..1024) and 1 of ($reg*)
 }
 
 rule suspicious_js : PDF raw
@@ -203,7 +203,7 @@ rule suspicious_js : PDF raw
 		$js2 = "String.fromCharCode"
 		
 	condition:
-		$magic at 0 and all of ($attrib*) and 2 of ($js*)
+		$magic in (0..1024) and all of ($attrib*) and 2 of ($js*)
 }
 
 rule suspicious_launch_action : PDF raw
@@ -219,10 +219,11 @@ rule suspicious_launch_action : PDF raw
 		$attrib0 = /\/Launch/
 		$attrib1 = /\/URL /
 		$attrib2 = /\/Action/
-		$attrib3 = /\/F /
+		$attrib3 = /\/OpenAction/
+		$attrib4 = /\/F /
 
 	condition:
-		$magic at 0 and 3 of ($attrib*)
+		$magic in (0..1024) and 3 of ($attrib*)
 }
 
 rule suspicious_embed : PDF raw
@@ -243,7 +244,7 @@ rule suspicious_embed : PDF raw
 		$attrib2 = /\/Filespec/
 		
 	condition:
-		$magic at 0 and 1 of ($meth*) and 2 of ($attrib*)
+		$magic in (0..1024) and 1 of ($meth*) and 2 of ($attrib*)
 }
 
 rule suspicious_obfuscation : PDF raw
@@ -258,7 +259,7 @@ rule suspicious_obfuscation : PDF raw
 		$reg = /\/\w#[a-zA-Z0-9]{2}#[a-zA-Z0-9]{2}/
 		
 	condition:
-		$magic at 0 and #reg > 5
+		$magic in (0..1024) and #reg > 5
 }
 
 rule invalid_XObject_js : PDF raw
@@ -278,7 +279,7 @@ rule invalid_XObject_js : PDF raw
 		$attrib1 = /\/JavaScript/
 		
 	condition:
-		$magic at 0 and not $ver and all of ($attrib*)
+		$magic in (0..1024) and not $ver and all of ($attrib*)
 }
 
 rule invalid_trailer_structure : PDF raw
@@ -295,7 +296,7 @@ rule invalid_trailer_structure : PDF raw
                 $reg1 = /\/Root.*\r?\n?.*startxref\r?\n?.*\r?\n?%%EOF/
 
         condition:
-                $magic at 0 and not $reg0 and not $reg1
+                $magic in (0..1024) and not $reg0 and not $reg1
 }
 
 rule multiple_versions : PDF raw
@@ -312,7 +313,7 @@ rule multiple_versions : PDF raw
                 $s1 = "%%EOF"
 
         condition:
-                $magic at 0 and #s0 > 1 and #s1 > 1
+                $magic in (0..1024) and #s0 > 1 and #s1 > 1
 }
 
 rule js_wrong_version : PDF raw
@@ -330,7 +331,7 @@ rule js_wrong_version : PDF raw
 				$ver = /%PDF-1\.[3-9]/
 
         condition:
-                $magic at 0 and $js and not $ver
+                $magic in (0..1024) and $js and not $ver
 }
 
 rule JBIG2_wrong_version : PDF raw
@@ -348,7 +349,7 @@ rule JBIG2_wrong_version : PDF raw
 				$ver = /%PDF-1\.[4-9]/
 
         condition:
-                $magic at 0 and $js and not $ver
+                $magic in (0..1024) and $js and not $ver
 }
 
 rule FlateDecode_wrong_version : PDF raw
@@ -366,7 +367,7 @@ rule FlateDecode_wrong_version : PDF raw
 				$ver = /%PDF-1\.[2-9]/
 
         condition:
-                $magic at 0 and $js and not $ver
+                $magic in (0..1024) and $js and not $ver
 }
 
 rule embed_wrong_version : PDF raw
@@ -384,7 +385,7 @@ rule embed_wrong_version : PDF raw
 				$ver = /%PDF-1\.[3-9]/
 
         condition:
-                $magic at 0 and $embed and not $ver
+                $magic in (0..1024) and $embed and not $ver
 }
 
 rule invalid_xref_numbers : PDF raw
@@ -401,7 +402,7 @@ rule invalid_xref_numbers : PDF raw
                 $reg0 = /xref\r?\n?.*\r?\n?.*65535\sf/
                 $reg1 = /endstream.*\r?\n?endobj.*\r?\n?startxref/
         condition:
-                $magic at 0 and not $reg0 and not $reg1
+                $magic in (0..1024) and not $reg0 and not $reg1
 }
 
 rule js_splitting : PDF raw
@@ -421,7 +422,7 @@ rule js_splitting : PDF raw
                 $s3 = "this.info"
                                 
         condition:
-                $magic at 0 and $js and 1 of ($s*)
+                $magic in (0..1024) and $js and 1 of ($s*)
 }
 
 rule header_evasion : PDF raw
@@ -452,7 +453,7 @@ rule BlackHole_v2 : PDF raw
 		$content = "Index[5 1 7 1 9 4 23 4 50"
 		
 	condition:
-		$magic at 0 and $content
+		$magic in (0..1024) and $content
 }
 
 
