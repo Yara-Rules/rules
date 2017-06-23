@@ -15,24 +15,24 @@ rule Email_Generic_Phishing : email
     $eml_2="To:"
     $eml_3="Subject:"
 
-    $greeting1="Hello sir/madam" nocase
-    $greeting2="Attention" nocase
-    $greeting3="Dear user" nocase
-    $greeting$"Account holder" nocase
+    $greeting_1="Hello sir/madam" nocase
+    $greeting_2="Attention" nocase
+    $greeting_3="Dear user" nocase
+    $greeting_4"Account holder" nocase
 
-    $url1="Click" nocase
-    $url2="Confirm" nocase
-    $url3="Verify" nocase
-    $url4="Here" nocase
-    $url5="Now" nocase
-    $url6="Change password" nocase 
+    $url_1="Click" nocase
+    $url_2="Confirm" nocase
+    $url_3="Verify" nocase
+    $url_4="Here" nocase
+    $url_5="Now" nocase
+    $url_6="Change password" nocase 
 
-    $lie1="Unauthorized" nocase
-    $lie2="Expired" nocase
-    $lie3="Deleted" nocase
-    $lie4="Suspended" nocase
-    $lie5="Revoked" nocase
-    $lie6="Unable" nocase
+    $lie_1="Unauthorized" nocase
+    $lie_2="Expired" nocase
+    $lie_3="Deleted" nocase
+    $lie_4="Suspended" nocase
+    $lie_5="Revoked" nocase
+    $lie_6="Unable" nocase
 
   condition:
     all of ($eml*) and
