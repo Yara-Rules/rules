@@ -1,0 +1,41 @@
+/*
+    This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) 
+    and open to any user or organization, as long as you use it under this license.
+
+*/
+
+rule Email_Generic_Phishing : email
+{
+  meta:
+		Author = "Tyler <@InfoSecTyler>"
+		Description ="Generic rule to identify phishing emails"
+
+  strings:
+    $eml_1="From:"
+    $eml_2="To:"
+    $eml_3="Subject:"
+
+    $greeting1="Hello sir/madam" nocase
+    $greeting2="Attention" nocase
+    $greeting3="Dear user" nocase
+    $greeting$"Account holder" nocase
+
+    $url1="Click" nocase
+    $url2="Confirm" nocase
+    $url3="Verify" nocase
+    $url4="Here" nocase
+    $url5="Now" nocase
+    $url6="Change password" nocase 
+
+    $lie1="Unauthorized" nocase
+    $lie2="Expired" nocase
+    $lie3="Deleted" nocase
+    $lie4="Suspended" nocase
+    $lie5="Revoked" nocase
+    $lie6="Unable" nocase
+
+  condition:
+    all of ($eml*) and
+    any of ($greeting*) and 
+    any of ($url*)
+}
