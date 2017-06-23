@@ -37,5 +37,5 @@ rule Email_Generic_Phishing : email
   condition:
     all of ($eml*) and
     any of ($greeting*) and 
-    any of ($url*)
+    any of ($lie*)
 }
