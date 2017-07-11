@@ -127,16 +127,6 @@ rule maldoc_getEIP_method_4 : maldoc
         any of them
 }
 
-rule maldoc_OLE_file_magic_number : maldoc
-{
-    meta:
-        author = "Didier Stevens (https://DidierStevens.com)"
-    strings:
-        $a = {D0 CF 11 E0}
-    condition:
-        $a
-}
-
 // 20150909 - Issue #39 - Commented because of High FP rate
 /*
 rule maldoc_suspicious_strings : maldoc
