@@ -70,7 +70,6 @@ rule WildNeutron_Sample_3
     strings:
         $x1 = "178.162.197.9" fullword ascii /* score: '9.00' */
         $x2 = "\"http://fw.ddosprotected.eu:80 /opts resolv=drfx.chickenkiller.com\"" fullword wide /* PEStudio Blacklist: strings */ /* score: '33.00' */
-        $x3 = ".chickenkiller.com" ascii /* PEStudio Blacklist: strings */ /* score: '28.00' */     
         $s1 = "LiveUpdater.exe" fullword wide /* PEStudio Blacklist: strings */ /* score: '25.00' */
         $s2 = "id-at-postalAddress" fullword ascii /* PEStudio Blacklist: strings */ /* score: '18.00' */
         $s3 = "%d -> %d (default)" fullword wide /* PEStudio Blacklist: strings */ /* score: '17.00' */
