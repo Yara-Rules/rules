@@ -18,7 +18,7 @@ rule Email_Generic_Phishing : email
     $greeting_1="Hello sir/madam" nocase
     $greeting_2="Attention" nocase
     $greeting_3="Dear user" nocase
-    $greeting_4"Account holder" nocase
+    $greeting_4="Account holder" nocase
 
     $url_1="Click" nocase
     $url_2="Confirm" nocase
