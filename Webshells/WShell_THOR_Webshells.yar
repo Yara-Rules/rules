@@ -6342,6 +6342,7 @@ rule WebShell_Generic_PHP_4 {
 	condition:
 		all of them
 }
+/*
 rule WebShell_Generic_PHP_5 {
 	meta:
 		description = "PHP Webshells Github Archive - from files ex0shell.php, megabor.php, GRP WebShell 2.0 release build 2018 (C)2006,Great.php"
@@ -6360,6 +6361,7 @@ rule WebShell_Generic_PHP_5 {
 	condition:
 		all of them
 }
+*/
 rule WebShell_GFS {
 	meta:
 		description = "PHP Webshells Github Archive - from files GFS web-shell ver 3.1.7 - PRiV8.php, Predator.php, GFS_web-shell_ver_3.1.7_-_PRiV8.php"
