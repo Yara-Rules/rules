@@ -82,5 +82,5 @@ rule suspicious_packer_section : packer PE {
         $s63 = "UPX!" wide ascii
 
     condition:
-        1 of them
+        (uint16(0) == 0x457f and 1 of them)
 }
