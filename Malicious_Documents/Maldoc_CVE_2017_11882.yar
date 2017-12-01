@@ -1,4 +1,4 @@
-;)rule Maldoc_CVE_2017_11882 : Exploit {
+rule Maldoc_CVE_2017_11882 : Exploit {
     meta:
         description = "Detects maldoc With exploit for CVE_2017_11882"
         author = "Marc Salinas (@Bondey_m)"
