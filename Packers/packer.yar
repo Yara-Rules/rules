@@ -20,10 +20,11 @@ rule emotet_packer {
 	  reference = "e31028282c38cb13dd4ede7e9c8aa62d45ddae5ebaa0fe3afb3256601dbf5de7"
       date = "2017-12-12"
     strings:
-		$pdb = "123EErrrtools.pdb"
+		$pdb1 = "123EErrrtools.pdb"
+		$pdb2=  "gGEW\\F???/.pdb"
 
     condition:
-       $pdb
+       $pdb1 or $pdb2
 }
 
 rule silent_banker : banker
