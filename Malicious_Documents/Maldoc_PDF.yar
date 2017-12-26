@@ -305,7 +305,7 @@ rule multiple_versions : PDF raw
 		author = "Glenn Edwards (@hiddenillusion)"
 		version = "0.1"
         description = "Written very generically and doesn't hold any weight - just something that might be useful to know about to help show incremental updates to the file being analyzed"		
-		weight = 0
+		weight = 1
 		
         strings:
                 $magic = { 25 50 44 46 }
