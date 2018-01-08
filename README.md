@@ -18,7 +18,7 @@ Mail list : http://list.yararules.com/mailman/listinfo/yararules.com.signatures
 
 # Requirements
 
-Yara **version 3.0** or higher is required for most of the rules to work. This is mainly due to the use of the "pe" module introduced in that version. 
+Yara **version 3.0** or higher is required for most of the rules to work. This is mainly due to the use of the "pe" module introduced in that version.
 
 You can check your installed version with `yara -v`
 
@@ -30,7 +30,7 @@ Also, you will need [Androguard Module](https://github.com/Koodous/androguard-ya
 
 ## Antidebug/AntiVM
 
-In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analyisis.
+In this section you will find Yara Rules aimed to detect anti debug and anti virtualization techniques used by malware to evade automated analysis.
 
 ## CVE_Rules
 
@@ -38,7 +38,7 @@ In this section you will find Yara Rules specialised on the identification of sp
 
 ## Crypto
 
-In this section you will find Yara rules aimed to detect the existence of cryptographic algoritms.
+In this section you will find Yara rules aimed to detect the existence of cryptographic algorithms.
 
 ## Exploit Kits
 
@@ -49,17 +49,17 @@ In this section you will find Yara rules aimed to detect the existence of Exploi
 
 In this section you will find Yara Rules to be used with documents to find if they have been crafted to leverage malicious code.
 
-## Malware 
+## Malware
 
 In this section you will find Yara rules specialised on the identification of well-known malware.
 
 ## Packers
 
-In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
+In this section you will find Yara Rules aimed to detect well-known software packers, that can be used by malware to hide itself.
 
-## Webshells
+## WebShells
 
-In this section you will find Yara rules specialised on the identification of well-known webshells.
+In this section you will find Yara rules specialised on the identification of well-known WebShells.
 
 ## Email
 
@@ -67,13 +67,13 @@ In this section you will find Yara rules specialised on the identification of ma
 
 ## Malware Mobile
 
-In this section you will find Yara rules specialised on the indentification of well-known mobile malware.
+In this section you will find Yara rules specialised on the identification of well-known mobile malware.
 
-Many rules in this section use Androguard module developed by people at https://koodous.com/. 
+Many rules in this section use Androguard module developed by people at https://koodous.com/.
 
 You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
 
-# Contact 
+# Contact
 
 Webpage: http://yararules.com
 
