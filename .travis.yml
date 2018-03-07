@@ -10,8 +10,8 @@ before_install:
   - tar -C yara -xzvf yara.tar.gz --strip-components 1
 # Androguard for Yara
   - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/androguard.c -O yara/libyara/modules/androguard.c
-  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.5.0/libyara/modules/module_list -O yara/libyara/modules/module_list
-  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.5.0/libyara/Makefile.am -O yara/libyara/Makefile.am
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.7.0/libyara/modules/module_list -O yara/libyara/modules/module_list
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.7.0/libyara/Makefile.am -O yara/libyara/Makefile.am
 # libjansson
   - wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
   - tar -xzvf jansson-2.7.tar.gz
