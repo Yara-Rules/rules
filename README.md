@@ -30,7 +30,7 @@ Also, you will need [Androguard Module](https://github.com/Koodous/androguard-ya
 
 ## Anti-debug/Anti-VM
 
-In this section you will find Yara Rules aimed to detect anti-debug and anti-virtualization techniques used by malware to evade automated analysis.
+In this section you will find Yara Rules aimed toward the detection of anti-debug and anti-virtualization techniques used by malware to evade automated analysis.
 
 ## CVE_Rules
 
@@ -38,11 +38,11 @@ In this section you will find Yara Rules specialised toward the identification o
 
 ## Crypto
 
-In this section you will find Yara rules aimed to detect the existence of cryptographic algorithims.
+In this section you will find Yara rules aimed toward the detection and existence of cryptographic algorithims.
 
 ## Exploit Kits
 
-In this section you will find Yara rules aimed to detect the existence of Exploit Kits.
+In this section you will find Yara rules aimed toward the detection and existence of Exploit Kits.
 
 ## Malicious Documents
 
@@ -68,7 +68,7 @@ In this section you will find Yara rules specialised toward the identification o
 
 In this section you will find Yara rules specialised toward the indentification of well-known mobile malware.
 
-Many rules in this section use Androguard module developed by the people over at https://koodous.com/. 
+Many rules in this section use the Androguard module developed by the people over at https://koodous.com/. 
 
 You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
 
