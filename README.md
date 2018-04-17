@@ -34,7 +34,7 @@ In this section you will find Yara Rules aimed toward the detection of anti-debu
 
 ## CVE_Rules
 
-In this section you will find Yara Rules specialised toward the identification of specific Common Vulnerabilities and Exposures (CVE)
+In this section you will find Yara Rules specialised toward the identification of specific Common Vulnerabilities and Exposures (CVEs)
 
 ## Crypto
 
