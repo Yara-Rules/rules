@@ -1,0 +1,86 @@
+/* Yara rule to detect ELF Linux malware Rebirth Vulcan (Torlus next-gen) generic 
+   This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) 
+   and  open to any user or organization, as long as you use it under this license.
+*/
+
+private rule is__str_Rebirth_gen3 {
+	meta:
+		description = "Generic detection for Vulcan branch Rebirth or Katrina from Torlus nextgen"
+		reference = "https://imgur.com/a/SSKmu"
+		reference = "https://www.reddit.com/r/LinuxMalware/comments/7rprnx/vulcan_aka_linuxrebirth_or_katrina_variant_of/"
+		author = "unixfreaxjp"
+		org = "MalwareMustDie"
+		date = "2018-01-21"
+	strings:
+        	$str01 = "/usr/bin/python" fullword nocase wide ascii
+        	$str02 = "nameserver 8.8.8.8\nnameserver 8.8.4.4\n" fullword nocase wide ascii
+        	$str03 = "Telnet Range %d->%d" fullword nocase wide ascii
+        	$str04 = "Mirai Range %d->%d" fullword nocase wide ascii
+        	$str05 = "[Updating] [%s:%s]" fullword nocase wide ascii
+        	$str06 = "rm -rf /tmp/* /var/* /var/run/* /var/tmp/*" fullword nocase wide ascii
+		$str07 = "\x1B[96m[DEVICE] \x1B[97mConnected" fullword nocase wide ascii
+	condition:
+        	4 of them
+}
+
+private rule is__hex_Rebirth_gen3 {
+	meta:
+		author = "unixfreaxjp"
+		date = "2018-01-21"
+	strings:
+		$hex01 = { 0D C0 A0 E1 00 D8 2D E9 }
+		$hex02 = { 3C 1C 00 06 27 9C 97 98 }
+		$hex03 = { 94 21 EF 80 7C 08 02 A6 }
+		$hex04 = { E6 2F 22 4F 76 91 18 3F }
+		$hex05 = { 06 00 1C 3C 20 98 9C 27 }
+		$hex06 = { 55 89 E5 81 EC ?? 10 00 }
+		$hex07 = { 55 48 89 E5 48 81 EC 90 }
+		$hex08 = { 6F 67 69 6E 00 }
+	condition:
+        	2 of them 
+}
+
+private rule is__bot_Rebirth_gen3 {
+	meta:
+		author = "unixfreaxjp"
+		date = "2018-01-21"
+	strings:
+        	$bot01 = "MIRAITEST" fullword nocase wide ascii
+        	$bot02 = "TELNETTEST" fullword nocase wide ascii
+        	$bot03 = "UPDATE" fullword nocase wide ascii
+        	$bot04 = "PHONE" fullword nocase wide ascii
+        	$bot05 = "RANGE" fullword nocase wide ascii
+		$bot06 = "KILLATTK" fullword nocase wide ascii
+		$bot07 = "STD" fullword nocase wide ascii
+        	$bot08 = "BCM" fullword nocase wide ascii
+		$bot09 = "NETIS" fullword nocase wide ascii
+		$bot10 = "FASTLOAD" fullword nocase wide ascii
+	condition:
+        	6 of them
+}
+
+private rule is__elf {
+	meta:
+		author = "@mmorenog,@yararules"
+	strings:
+		$header = { 7F 45 4C 46 }
+	condition:
+		$header at 0
+}
+
+rule MALW_Rebirth_Vulcan_ELF {
+	meta:
+		description = "Detects Rebirth Vulcan variant a torlus NextGen MALW"
+		description = "Just adjust or omit below two strings for next version they code :) @unixfreaxjp"
+		date = "2018-01-21"
+	strings:
+                $spec01 = "vulcan.sh" fullword nocase wide ascii
+		$spec02 = "Vulcan" fullword nocase wide ascii
+	condition:
+                all of them
+		and is__elf
+		and is__str_Rebirth_gen3
+		and is__hex_Rebirth_gen3
+		and is__bot_Rebirth_gen3
+		and filesize < 300KB 
+}
