@@ -38,7 +38,7 @@ In this section you will find Yara Rules specialised toward the identification o
 
 ## Crypto
 
-In this section you will find Yara rules aimed toward the detection and existence of cryptographic algorithims.
+In this section you will find Yara rules aimed toward the detection and existence of cryptographic algorithms.
 
 ## Exploit Kits
 
@@ -66,7 +66,7 @@ In this section you will find Yara rules specialised toward the identification o
 
 ## Malware Mobile
 
-In this section you will find Yara rules specialised toward the indentification of well-known mobile malware.
+In this section you will find Yara rules specialised toward the identification of well-known mobile malware.
 
 Many rules in this section use the Androguard module developed by the people over at https://koodous.com/.
 
