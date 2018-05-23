@@ -18,7 +18,7 @@ Mailing list : http://list.yararules.com/mailman/listinfo/yararules.com.signatur
 
 # Requirements
 
-Yara **version 3.0** or higher is required for most of our rules to work. This is mainly due to the use of the "pe" module introduced in that version. 
+Yara **version 3.0** or higher is required for most of our rules to work. This is mainly due to the use of the "pe" module introduced in that version.
 
 You can check your installed version with `yara -v`
 
@@ -38,7 +38,7 @@ In this section you will find Yara Rules specialised toward the identification o
 
 ## Crypto
 
-In this section you will find Yara rules aimed toward the detection and existence of cryptographic algorithims.
+In this section you will find Yara rules aimed toward the detection and existence of cryptographic algorithms.
 
 ## Exploit Kits
 
@@ -48,15 +48,15 @@ In this section you will find Yara rules aimed toward the detection and existenc
 
 In this section you will find Yara Rules to be used with documents to find if they have been crafted to leverage malicious code.
 
-## Malware 
+## Malware
 
 In this section you will find Yara rules specialised toward the identification of well-known malware.
 
 ## Packers
 
-In this section you will find Yara Rules aimed to detect well-known sofware packers, that can be used by malware to hide itself.
+In this section you will find Yara Rules aimed to detect well-known software packers, that can be used by malware to hide itself.
 
-## Webshells
+## WebShells
 
 In this section you will find Yara rules specialised toward the identification of well-known webshells.
 
@@ -66,13 +66,13 @@ In this section you will find Yara rules specialised toward the identification o
 
 ## Malware Mobile
 
-In this section you will find Yara rules specialised toward the indentification of well-known mobile malware.
+In this section you will find Yara rules specialised toward the identification of well-known mobile malware.
 
-Many rules in this section use the Androguard module developed by the people over at https://koodous.com/. 
+Many rules in this section use the Androguard module developed by the people over at https://koodous.com/.
 
 You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
 
-# Contact 
+# Contact
 
 Webpage: http://yararules.com
 
