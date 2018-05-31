@@ -1,0 +1,19 @@
+
+rule Agenttesla
+{
+    meta:
+        description = "Detecting HTML strings used by Agent Tesla malware"
+        author = "Stormshield"
+        reference = "https://thisissecurity.stormshield.com/2018/01/12/agent-tesla-campaign/"
+        version = "1.0"
+
+    strings:
+        $html_username    = "<br>UserName&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " wide ascii
+        $html_pc_name     = "<br>PC&nbsp;Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: " wide ascii
+        $html_os_name     = "<br>OS&nbsp;Full&nbsp;Name&nbsp;&nbsp;: " wide ascii
+        $html_os_platform = "<br>OS&nbsp;Platform&nbsp;&nbsp;&nbsp;: " wide ascii
+        $html_clipboard   = "<br><span style=font-style:normal;text-decoration:none;text-transform:none;color:#FF0000;><strong>[clipboard]</strong></span>" wide ascii
+
+    condition:
+        3 of them
+}

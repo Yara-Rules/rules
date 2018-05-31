@@ -2,13 +2,16 @@ language: c
 sudo: required
 #dist: trusty
 before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install jq
 # Yara
-  - wget https://github.com/VirusTotal/yara/archive/v3.5.0.tar.gz -O yara.tar.gz
-  - tar -xzvf yara.tar.gz
+  - wget $(curl -s https://api.github.com/repos/VirusTotal/yara/releases/latest | jq -r ".tarball_url") -O yara.tar.gz
+  - mkdir yara
+  - tar -C yara -xzvf yara.tar.gz --strip-components 1
 # Androguard for Yara
-  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/androguard.c -O yara-3.5.0/libyara/modules/androguard.c
-  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.5.0/libyara/modules/module_list -O yara-3.5.0/libyara/modules/module_list
-  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.5.0/libyara/Makefile.am -O yara-3.5.0/libyara/Makefile.am
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/androguard.c -O yara/libyara/modules/androguard.c
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.7.0/libyara/modules/module_list -O yara/libyara/modules/module_list
+  - wget https://raw.githubusercontent.com/Koodous/androguard-yara/master/dist/yara-3.7.0/libyara/Makefile.am -O yara/libyara/Makefile.am
 # libjansson
   - wget http://www.digip.org/jansson/releases/jansson-2.7.tar.gz
   - tar -xzvf jansson-2.7.tar.gz
@@ -16,9 +19,9 @@ before_install:
   - ./configure
   - make
   - sudo make install
-  
+
 # Compile Yara
-  - cd ../yara-3.5.0
+  - cd ../yara
   # Update per issue 176
   - sed -i 's/#define RE_MAX_SPLIT_ID     128/#define RE_MAX_SPLIT_ID     255/g' libyara/re.c
   - ./bootstrap.sh
