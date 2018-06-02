@@ -24,17 +24,17 @@ function gen_index {
             AVOID+="|Mobile"
         fi
         if [ $OS == "Darwin" ]; then
-            find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
+            find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | sort | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
         else
             # Linux version and potentialy Cygwin
-            find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
+            find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | sort | awk '{print "include \"" $0 "\""}' >> $IDX_NAME
         fi
     else
         if [ $OS == "Darwin" ]; then
-            find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
+            find -E $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | sort | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
         else
             # Linux version and potentialy Cygwin
-            find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
+            find $BASE -regex ".*\.yara?" | grep -vE "$AVOID" | sort | awk '{print "include \"./" $0 "\""}' >> $IDX_NAME
         fi
     fi
 }
