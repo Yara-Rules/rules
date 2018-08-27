@@ -6,13 +6,6 @@
  * AUTHOR:      DHS/NCCIC/ICS-CERT
  */
 
-/* Globally only look at small files. */
-
-private global rule hatman_filesize : hatman {
-    condition:
-        filesize < 100KB
-}
-
 /* Private rules that are used at the end in the public rules. */
 
 private rule hatman_setstatus : hatman {
@@ -90,25 +83,25 @@ private rule hatman_payload_int : hatman {
 
 rule hatman_compiled_python : hatman {
     condition:
-        hatman_nullsub and hatman_setstatus and hatman_dividers
+        filesize < 100KB and hatman_nullsub and hatman_setstatus and hatman_dividers
 }
 rule hatman_injector : hatman {
     condition:
-        hatman_injector_int and not hatman_payload_int
+        filesize < 100KB and hatman_injector_int and not hatman_payload_int
 }
 rule hatman_payload : hatman {
     condition:
-        hatman_payload_int and not hatman_injector_int
+        filesize < 100KB and hatman_payload_int and not hatman_injector_int
 }
 rule hatman_combined : hatman {
     condition:
-        hatman_injector_int and hatman_payload_int and hatman_dividers
+        filesize < 100KB and hatman_injector_int and hatman_payload_int and hatman_dividers
 }
 rule hatman : hatman {
     meta:
         author = "DHS/NCCIC/ICS-CERT"
         description = "Matches the known samples of the HatMan malware."
     condition:
-        hatman_compiled_python or hatman_injector or hatman_payload
+        filesize < 100KB and hatman_compiled_python or hatman_injector or hatman_payload
             or hatman_combined
 }
