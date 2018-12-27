@@ -6037,6 +6037,7 @@ rule Armadillo_v177: PEiD
 
 }
 
+/* False positive - #39
 rule Armadillo_v171: PEiD
 {
     strings:
@@ -6044,7 +6045,7 @@ rule Armadillo_v171: PEiD
     condition:
         $a at pe.entry_point
 
-}
+}*/
 
 rule AsCrypt_v01_SToRM_4: PEiD
 {
@@ -32805,15 +32806,6 @@ rule _PseudoSigner_01_Macromedia_Flash_Projector_60_Anorganix: PEiD
 {
     strings:
         $a = { 90 90 90 90 68 ?? ?? ?? ?? 67 64 FF 36 00 00 67 64 89 26 00 00 F1 90 90 90 90 83 EC 44 56 FF 15 24 81 49 00 8B F0 8A 06 3C 22 75 1C 8A 46 01 46 3C 22 74 0C 84 C0 74 08 8A 46 01 46 3C 22 75 F4 80 3E 22 75 0F 46 EB 0C E9 }
-    condition:
-        $a at pe.entry_point
-
-}
-
-rule Armadillo_v171_additional: PEiD
-{
-    strings:
-        $a = { 55 8B EC 6A FF 68 ?? ?? ?? ?? 68 ?? ?? ?? ?? 64 A1 }
     condition:
         $a at pe.entry_point
 
