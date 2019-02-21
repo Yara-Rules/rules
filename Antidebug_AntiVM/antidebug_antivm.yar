@@ -4,6 +4,12 @@
 
 import "pe"
 
+private rule WindowsPE
+{
+    condition:
+        uint16(0) == 0x5A4D and uint32(uint32(0x3C)) == 0x00004550
+}
+
 rule DebuggerCheck__PEB : AntiDebug DebuggerCheck {
 	meta:
 		weight = 1
@@ -274,6 +280,31 @@ rule DebuggerPattern__SEH_Inits : AntiDebug DebuggerPattern {
 		any of them
 }
 */
+
+rule SEH_Save : Tactic_DefensiveEvasion Technique_AntiDebugging SubTechnique_SEH
+{
+    meta:
+        author = "Malware Utkonos"
+        original_author = "naxonez"
+        source = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
+    strings:
+        $a = { 64 ff 35 00 00 00 00 }
+    condition:
+        WindowsPE and $a
+}
+
+rule SEH_Init : Tactic_DefensiveEvasion Technique_AntiDebugging SubTechnique_SEH
+{
+    meta:
+        author = "Malware Utkonos"
+        original_author = "naxonez"
+        source = "https://github.com/naxonez/yaraRules/blob/master/AntiDebugging.yara"
+    strings:
+        $a = { 64 A3 00 00 00 00 }
+        $b = { 64 89 25 00 00 00 00 }
+    condition:
+        WindowsPE and ($a or $b)
+}
 
 
 rule Check_Dlls
