@@ -32,6 +32,10 @@ Also, you will need [Androguard Module](https://github.com/Koodous/androguard-ya
 
 In this section you will find Yara Rules aimed toward the detection of anti-debug and anti-virtualization techniques used by malware to evade automated analysis.
 
+## Capabilities
+
+In this section you will find Yara rules to detect capabilities that do not fit into any of the other categories.  They are useful to know for analysis but may not be malicious indicators on their own.
+
 ## CVE_Rules
 
 In this section you will find Yara Rules specialised toward the identification of specific Common Vulnerabilities and Exposures (CVEs)
