@@ -6,7 +6,7 @@ before_install:
   - sudo apt-get install jq
 # Yara
 #  - wget $(curl -s https://api.github.com/repos/VirusTotal/yara/releases/latest | jq -r ".tarball_url") -O yara.tar.gz
-  - wget $(curl -s https://api.github.com/repos/VirusTotal/yara/releases/9250110 | jq -r ".tarball_url") -O yara.tar.gz
+  - wget $(wget -O - https://api.github.com/repos/VirusTotal/yara/releases/9250110 | jq -r ".tarball_url") -O yara.tar.gz
   - mkdir yara
   - tar -C yara -xzvf yara.tar.gz --strip-components 1
 # Androguard for Yara
