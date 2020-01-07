@@ -1437,6 +1437,7 @@ rule Chacha_128_constant {
 		author = "spelissier"
 		description = "Look for 128-bit key Chacha stream cipher constant"
 		date = "2019-12"
+		reference = "https://www.ecrypt.eu.org/stream/salsa20pf.html"
 	strings:
 		$c0 = "expand 16-byte k"
 	condition:
@@ -1448,6 +1449,7 @@ rule Chacha_256_constant {
 		author = "spelissier"
 		description = "Look for 256-bit key Chacha stream cipher constant"
 		date = "2019-12"
+		reference = "https://tools.ietf.org/html/rfc8439#page-8"
 	strings:
 		$c0 = "expand 32-byte k"
 	condition:
