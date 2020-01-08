@@ -14,8 +14,6 @@ If you’re interested in sharing your Yara rules with us and the Security Commu
 
 Twitter account: https://twitter.com/yararules
 
-Mailing list : http://list.yararules.com/mailman/listinfo/yararules.com.signatures
-
 # Requirements
 
 Yara **version 3.0** or higher is required for most of our rules to work. This is mainly due to the use of the "pe" module introduced in that version.
@@ -24,7 +22,9 @@ You can check your installed version with `yara -v`
 
 Packages available in Ubuntu 14.04 LTS default repositories are too old.  You can alternatively install from source or use the packages available in the [Remnux repository](https://launchpad.net/~remnux/+archive/ubuntu/stable).
 
-Also, you will need [Androguard Module](https://github.com/Koodous/androguard-yara) if you want to use the rules in the 'mobile_malware' category.
+~~Also, you will need [Androguard Module](https://github.com/Koodous/androguard-yara) if you want to use the rules in the 'mobile_malware' category.~~
+
+We have deprecated mobile_malware rules that depend on Androguard Module because it seems an abandoned project.
 
 # Categories
 
@@ -36,7 +36,7 @@ In this section you will find Yara Rules aimed toward the detection of anti-debu
 
 In this section you will find Yara rules to detect capabilities that do not fit into any of the other categories.  They are useful to know for analysis but may not be malicious indicators on their own.
 
-## CVE_Rules
+## CVE Rules
 
 In this section you will find Yara Rules specialised toward the identification of specific Common Vulnerabilities and Exposures (CVEs)
 
@@ -72,9 +72,9 @@ In this section you will find Yara rules specialised toward the identification o
 
 In this section you will find Yara rules specialised toward the identification of well-known mobile malware.
 
-Many rules in this section use the Androguard module developed by the people over at https://koodous.com/.
+## Deprecated
 
-You can get it, along with installation instructions, at https://github.com/Koodous/androguard-yara
+In this section you will find Yara rules deprecated.
 
 # Contact
 
@@ -82,4 +82,3 @@ Webpage: http://yararules.com
 
 Twitter account: https://twitter.com/yararules
 
-Mail list : http://list.yararules.com/mailman/listinfo/yararules.com.signatures
