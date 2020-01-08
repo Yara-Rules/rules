@@ -3,18 +3,7 @@ sudo: required
 
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install -y \
-    automake \
-    libtool \
-    make \
-    gcc \
-    pkg-config \
-    flex \
-    bison \
-    libjansson-dev \
-    libmagic-dev \
-    libssl-dev \
-    jq
+  - sudo apt-get install -y automake libtool make gcc pkg-config flex bison libjansson-dev libmagic-dev libssl-dev jq
 # Yara
   - wget $(curl -s https://api.github.com/repos/VirusTotal/yara/releases/latest | jq -r ".tarball_url") -O yara.tar.gz
   - mkdir yara
