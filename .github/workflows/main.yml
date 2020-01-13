@@ -1,6 +1,14 @@
 name: CI
 
-on: [push]
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   build:
@@ -8,6 +16,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Generate index
-      run: bash index_gen.sh
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Run gen index
+      run: ./index_gen.sh
+      shell: bash
+
+    - uses: stefanzweifel/git-auto-commit-action@v2.5.0
+      with:
+        commit_message: Index updated
+        branch: ${{ github.head_ref }}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
