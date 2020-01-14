@@ -39,5 +39,4 @@ jobs:
       uses: ad-m/github-push-action@v0.5.0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        repository: ${GITHUB_REPOSITORY}
         branch: ${{ github.head_ref }}
