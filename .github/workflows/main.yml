@@ -24,11 +24,10 @@ jobs:
       run: "./index_gen.sh"
       shell: bash
 
-
-    - uses: stefanzweifel/git-auto-commit-action@v2.5.0
+    - name: push
+      uses: github-actions-x/commit@v2.4
       with:
-        commit_message: Index updated
-        branch: ${{ github.head_ref }}
-        file_pattern:: \*.yar
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        push-branch: ${{ github.head_ref }}
+        commit-message: 'Index updated'
+        files: \*.yar
