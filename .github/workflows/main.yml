@@ -21,8 +21,9 @@ jobs:
         ref: ${{ github.head_ref }}
 
     - name: Run gen index
-      run: ./index_gen.sh
-      shell: bash
+      uses: jcblw/bash@1.0.0
+      args: ["bash ./index_gen.sh"]
+
 
     - uses: stefanzweifel/git-auto-commit-action@v2.5.0
       with:
