@@ -29,5 +29,6 @@ jobs:
       with:
         commit_message: Index updated
         branch: ${{ github.head_ref }}
+        file_pattern:: \*.yar
       env:
-        GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
