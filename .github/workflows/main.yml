@@ -30,4 +30,3 @@ jobs:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         push-branch: ${{ github.head_ref }}
         commit-message: 'Index updated'
-        files: \*.yar
