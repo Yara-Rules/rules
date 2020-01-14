@@ -23,6 +23,10 @@ jobs:
     - name: Run gen index
       run: "./index_gen.sh"
       shell: bash
+      
+    - name: Add new indexes to the working tree
+      run: git add *.yar
+      shell: bash
 
     - name: push
       uses: github-actions-x/commit@v2.4
