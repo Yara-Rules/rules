@@ -28,9 +28,16 @@ jobs:
       run: git add *.yar
       shell: bash
 
-    - name: push
+    - name: Add & Commit
       uses: github-actions-x/commit@v2.4
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
         push-branch: ${{ github.head_ref }}
         commit-message: 'Index updated'
+
+    - name: Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${GITHUB_REPOSITORY}
+        branch: ${{ github.head_ref }}
