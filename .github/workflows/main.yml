@@ -23,19 +23,15 @@ jobs:
     - name: Run gen index
       run: "./index_gen.sh"
       shell: bash
-      
-    - name: Add new indexes to the working tree
-      run: git add *.yar
-      shell: bash
 
     - name: Add & Commit
       uses: github-actions-x/commit@v2.4
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        push-branch: ${{ github.head_ref }}
         commit-message: 'Index updated'
         name: ${{ secrects.GH_USER }}
         email: ${{ secrects.GH_EMAIL }}
+        push-branch: ${{ github.head_ref }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push
       uses: ad-m/github-push-action@v0.5.0
