@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/Yara-Rules/rules.svg)](https://travis-ci.org/Yara-Rules/rules)
+[![Build Status](https://travis-ci.org/Yara-Rules/rules.svg)](https://travis-ci.org/Yara-Rules/rules) <img src="http://img.shields.io/liberapay/patrons/yararules.svg?logo=liberapay">
+
 
 # Project
 
