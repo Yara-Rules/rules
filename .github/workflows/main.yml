@@ -28,8 +28,8 @@ jobs:
       uses: github-actions-x/commit@v2.4
       with:
         commit-message: 'Index updated'
-        name: ${{ secrects.GH_USER }}
-        email: ${{ secrects.GH_EMAIL }}
+        name: '${{ secrets.GH_USER }}'
+        email: '${{ secrets.GH_EMAIL }}'
         push-branch: ${{ github.head_ref }}
         github-token: ${{ secrets.GITHUB_TOKEN }}
 
