@@ -378,6 +378,26 @@ rule SHA512_Constants {
 		5 of them
 }
 
+rule SHA2_BLAKE2_IVs {
+	meta:
+		author = "spelissier"
+		description = "Look for SHA2/BLAKE2/Argon2 IVs"
+		date = "2019-12"
+		version = "0.1"
+	strings:
+		$c0 = { 67 E6 09 6A }
+		$c1 = { 85 AE 67 BB }
+        $c2 = { 72 F3 6E 3C }
+        $c3 = { 3A F5 4F A5 }
+        $c4 = { 7F 52 0E 51 }
+        $c5 = { 8C 68 05 9B }
+        $c6 = { AB D9 83 1F }
+        $c7 = { 19 CD E0 5B }
+
+	condition:
+		all of them
+}
+
 rule TEAN {
 	meta:
 		author = "_pusher_"
@@ -1430,4 +1450,28 @@ rule DCP_DES_EncryptECB {
 		$c0 = { 53 80 78 ?? 00 75 16 B9 ?? ?? ?? 00 B2 01 A1 ?? ?? ?? 00 E8 ?? ?? ?? FF E8 ?? ?? ?? FF 8D 58 ?? 53 E8 ?? ?? FF FF 5B C3 }
 	condition:
 		any of them
+}
+
+rule Chacha_128_constant {
+    meta:
+		author = "spelissier"
+		description = "Look for 128-bit key Chacha stream cipher constant"
+		date = "2019-12"
+		reference = "https://www.ecrypt.eu.org/stream/salsa20pf.html"
+	strings:
+		$c0 = "expand 16-byte k"
+	condition:
+		$c0
+}
+
+rule Chacha_256_constant {
+    meta:
+		author = "spelissier"
+		description = "Look for 256-bit key Chacha stream cipher constant"
+		date = "2019-12"
+		reference = "https://tools.ietf.org/html/rfc8439#page-8"
+	strings:
+		$c0 = "expand 32-byte k"
+	condition:
+		$c0
 }
