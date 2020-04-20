@@ -1,0 +1,40 @@
+name: CI
+
+on:
+  # Trigger the workflow on push or pull request,
+  # but only for the master branch
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+
+    - name: Run gen index
+      run: "./index_gen.sh"
+      shell: bash
+
+    - name: Add & Commit
+      uses: github-actions-x/commit@v2.4
+      with:
+        commit-message: 'Index updated'
+        name: '${{ secrets.GH_USER }}'
+        email: '${{ secrets.GH_EMAIL }}'
+        push-branch: ${{ github.head_ref }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Push
+      uses: ad-m/github-push-action@v0.5.0
+      with:
+        github_token: ${{ secrets.GH_TOKEN }}
+        branch: ${{ github.head_ref }}

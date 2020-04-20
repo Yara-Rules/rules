@@ -813,3 +813,102 @@ rule win_files_operation {
     condition:
         $f1 and 3 of ($c*)
 }
+
+
+rule Str_Win32_Winsock2_Library
+{
+    meta:
+        author = "@adricnet"
+        description = "Match Winsock 2 API library declaration"
+        method = "String match"
+        reference = "https://github.com/dfirnotes/rules"
+
+    strings:
+        $ws2_lib = "Ws2_32.dll" nocase
+        $wsock2_lib = "WSock32.dll" nocase
+
+    condition:
+        (any of ($ws2_lib, $wsock2_lib))
+}
+
+rule Str_Win32_Wininet_Library
+{
+
+    meta:
+        author = "@adricnet"
+        description = "Match Windows Inet API library declaration"
+        method = "String match"
+        reference = "https://github.com/dfirnotes/rules"
+
+    strings:
+        $wininet_lib = "WININET.dll" nocase
+
+    condition:
+        (all of ($wininet*))
+}
+
+rule Str_Win32_Internet_API
+{
+
+    meta:
+        author = "@adricnet"
+        description = "Match Windows Inet API call"
+        method = "String match, trim the As"
+        reference = "https://github.com/dfirnotes/rules"
+
+    strings:
+        $wininet_call_closeh = "InternetCloseHandle"
+        $wininet_call_readf = "InternetReadFile"
+        $wininet_call_connect = "InternetConnect"
+        $wininet_call_open = "InternetOpen"
+
+    condition:
+        (any of ($wininet_call*))
+}
+
+rule Str_Win32_Http_API
+{
+    meta:
+        author = "@adricnet"
+        description = "Match Windows Http API call"
+        method = "String match, trim the As"
+        reference = "https://github.com/dfirnotes/rules"
+
+    strings:
+        $wininet_call_httpr = "HttpSendRequest"
+        $wininet_call_httpq = "HttpQueryInfo"
+        $wininet_call_httpo = "HttpOpenRequest"
+
+     condition:
+        (any of ($wininet_call_http*))
+}
+
+
+rule ldpreload
+{
+        meta:
+                author="xorseed"
+                reference= "https://stuff.rop.io/"
+	strings:
+		$a = "dlopen" nocase ascii wide
+		$b = "dlsym" nocase ascii wide
+		$c = "fopen" nocase ascii wide
+		$d = "fopen64" nocase ascii wide
+		$e = "__fxstat" nocase ascii wide
+		$f = "__fxstat64" nocase ascii wide
+		$g = "accept" nocase ascii wide
+		$h = "__lxstat" nocase ascii wide
+		$i = "__lxstat64" nocase ascii wide
+		$j = "open" nocase ascii wide
+		$k = "rmdir" nocase ascii wide
+		$l = "__xstat" nocase ascii wide
+		$m = "__xstat64" nocase ascii wide
+		$n = "unlink" nocase ascii wide
+		$o = "unlikat" nocase ascii wide
+		$p = "fdopendir" nocase ascii wide
+		$q = "opendir" nocase ascii wide
+		$r = "readdir" nocase ascii wide
+		$s = "readdir64" nocase ascii wide
+	condition:
+		($a or $b) and 5 of them
+}
