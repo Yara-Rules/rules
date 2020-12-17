@@ -1057,6 +1057,18 @@ rule RijnDael_AES_CHAR
 		$c0
 }
 
+rule ARIA_SB2
+{	meta:
+		author = "spelissier"
+		description = "Aria SBox 2"
+		date = "2020-12"
+		reference="http://210.104.33.10/ARIA/doc/ARIA-specification-e.pdf#page=7"
+	strings:
+		$c0 = { E2 4E 54 FC 94 C2 4A CC 62 0D 6A 46 3C 4D 8B D1 5E FA 64 CB B4 97 BE 2B BC 77 2E 03 D3 19 59 C1 }
+	condition:
+		$c0
+}
+
 rule RijnDael_AES_CHAR_inv
 {	meta:
 		author = "_pusher_"
@@ -1065,17 +1077,6 @@ rule RijnDael_AES_CHAR_inv
 		date = "2016-07"
 	strings:
 		$c0 = { 48 38 47 00 88 17 33 D2 8A 56 0D 8A 92 48 38 47 00 88 57 01 33 D2 8A 56 0A 8A 92 48 38 47 00 88 57 02 33 D2 8A 56 07 8A 92 48 38 47 00 88 57 03 33 D2 8A 56 04 8A 92 }
-	condition:
-		$c0
-}
-
-rule RijnDael_AES_LONG
-{	meta:
-		author = "_pusher_"
-		description = "RijnDael AES"
-		date = "2016-06"
-	strings:
-		$c0 = { 63 7C 77 7B F2 6B 6F C5 30 01 67 2B FE D7 AB 76 CA 82 C9 7D FA 59 47 F0 AD D4 A2 AF 9C A4 72 C0 }
 	condition:
 		$c0
 }
@@ -1472,8 +1473,10 @@ rule Chacha_256_constant {
 		reference = "https://tools.ietf.org/html/rfc8439#page-8"
 	strings:
 		$c0 = "expand 32-byte k"
+		$split1 = "expand 3"
+		$split2 = "2-byte k"
 	condition:
-		$c0
+		$c0 or ( $split1 and $split2 )
 }
 
 rule ecc_order {
@@ -1558,4 +1561,19 @@ rule SHA3_interleaved {
 		$c21 = { 0100000081000080 }
 	condition:
 		10 of them
+}
+
+rule SipHash_big_endian_constants {
+    meta:
+		author = "spelissier"
+		description = "Look for SipHash constants in big endian"
+		date = "2020-07"
+		reference = "https://131002.net/siphash/siphash.pdf#page=6"
+	strings:
+		$c0 = "uespemos"
+		$c1 = "modnarod"
+		$c2 = "arenegyl"
+		$c3 = "setybdet"
+	condition:
+		2 of them
 }
