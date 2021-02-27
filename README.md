@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Yara-Rules/rules.svg)](https://travis-ci.org/Yara-Rules/rules) <img src="http://img.shields.io/liberapay/patrons/yararules.svg?logo=liberapay">
+[![Build Status](https://travis-ci.org/Yara-Rules/rules.svg?branch=master)](https://travis-ci.org/Yara-Rules/rules) <img src="http://img.shields.io/liberapay/patrons/yararules.svg?logo=liberapay">
 
 
 # Project
@@ -79,7 +79,7 @@ In this section you will find Yara rules deprecated.
 
 # Contact
 
-Webpage: http://yararules.com
+Webpage: https://yara-rules.github.io/blog/
 
 Twitter account: https://twitter.com/yararules
 
