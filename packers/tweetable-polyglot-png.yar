@@ -1,4 +1,4 @@
-rule TweetablePolygonPng {
+rule TweetablePolyglotPng {
   meta:
     description = "tweetable-polyglot-png: https://github.com/DavidBuchanan314/tweetable-polyglot-png"
     author = "Manfred Kaiser"
