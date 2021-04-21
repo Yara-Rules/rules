@@ -17179,6 +17179,8 @@ condition:
 }
 
 
+/* false positive - https://www.zscaler.com/blogs/research/your-windows-8-packed
+
 rule Armadillov1xxv2xx
 {
       meta:
@@ -17188,7 +17190,7 @@ strings:
 
 condition:
 		$a0 at pe.entry_point
-}
+}*/
 
 
 rule HACKSTOPv111c
