@@ -5928,6 +5928,7 @@ rule Armadillo_v310: PEiD
 
 }
 
+/* false positive - https://www.zscaler.com/blogs/research/your-windows-8-packed
 rule Armadillo_v1xx_v2xx_additional: PEiD
 {
     strings:
@@ -5935,7 +5936,7 @@ rule Armadillo_v1xx_v2xx_additional: PEiD
     condition:
         $a at pe.entry_point
 
-}
+}*/
 
 rule DOS32_v33_DOS_Extender_and_Loader_Hint_DOS_EP: PEiD
 {
@@ -39949,6 +39950,7 @@ rule MCLOCK_13: PEiD
 
 }
 
+/* false positive - https://www.zscaler.com/blogs/research/your-windows-8-packed
 rule Armadillo_v1xx_v2xx: PEiD
 {
     strings:
@@ -39956,7 +39958,7 @@ rule Armadillo_v1xx_v2xx: PEiD
     condition:
         $a at pe.entry_point
 
-}
+}*/
 
 rule Lattice_C_v101: PEiD
 {
