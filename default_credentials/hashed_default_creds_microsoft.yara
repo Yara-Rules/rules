@@ -1,0 +1,535 @@
+/*This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.*/
+
+rule md5_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="7b7bc2512ee1fedcd76bdc68926d4f7b"
+    $a1="7b7bc2512ee1fedcd76bdc68926d4f7b"
+    $a2="7b7bc2512ee1fedcd76bdc68926d4f7b"
+    $a3="d41d8cd98f00b204e9800998ecf8427e"
+    $a4="d41d8cd98f00b204e9800998ecf8427e"
+    $a5="21232f297a57a5a743894a0e4a801fc3"
+    $a6="d41d8cd98f00b204e9800998ecf8427e"
+    $a7="d41d8cd98f00b204e9800998ecf8427e"
+    $a8="d41d8cd98f00b204e9800998ecf8427e"
+    $a9="c12e01f2a13ff5587e1e9e4aedb8242d"
+    $a10="adb831a7fdd83dd1e2a309ce7591dff8"
+    $a11="d41d8cd98f00b204e9800998ecf8427e"
+    $a12="adb831a7fdd83dd1e2a309ce7591dff8"
+    $a13="adb831a7fdd83dd1e2a309ce7591dff8"
+    $a14="34e0191c2017290f555a5d9df88e678c"
+    $a15="34e0191c2017290f555a5d9df88e678c"
+    $a16="95d702b3326babf519dcff7cb920af47"
+    $a17="c802b2915a2b522195f0af53803f2b1b"
+    $a18="b61860bc26a41b5ead3ba2b406819c36"
+    $a19="d41d8cd98f00b204e9800998ecf8427e"
+    $a20="17b4e8af939f5d36a56d0a3fb3fd4ad6"
+    $a21="d41d8cd98f00b204e9800998ecf8427e"
+    $a22="3dc26fe31c029961d36811193e69c919"
+    $a23="3dc26fe31c029961d36811193e69c919"
+    $a24="c12e01f2a13ff5587e1e9e4aedb8242d"
+    $a25="d41d8cd98f00b204e9800998ecf8427e"
+    $a26="8f9bfe9d1345237cb3b2b205864da075"
+    $a27="8f9bfe9d1345237cb3b2b205864da075"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha1_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="1eda23758be9e36e5e0d2a6a87de584aaca0193f"
+    $a1="1eda23758be9e36e5e0d2a6a87de584aaca0193f"
+    $a2="1eda23758be9e36e5e0d2a6a87de584aaca0193f"
+    $a3="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a4="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a5="d033e22ae348aeb5660fc2140aec35850c4da997"
+    $a6="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a7="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a8="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a9="3608a6d1a05aba23ea390e5f3b48203dbb7241f7"
+    $a10="face83ee3014bdc8f98203cc94e2e89222452e90"
+    $a11="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a12="face83ee3014bdc8f98203cc94e2e89222452e90"
+    $a13="face83ee3014bdc8f98203cc94e2e89222452e90"
+    $a14="2cce8164cf94147260010b3b9161413582cca9c3"
+    $a15="2cce8164cf94147260010b3b9161413582cca9c3"
+    $a16="fea08ffc8d46ad120341a48d38f595d92d6be516"
+    $a17="8eb66215978d93f58b4db7015fb6e981f1866e3f"
+    $a18="74271d9d1857fe4239e7f5d0a280a18a655d74ab"
+    $a19="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a20="dccc5340be4be084b775a726946f3a9a3ced426b"
+    $a21="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a22="fe594b89f278646cc3ce5992bc884518c113e29e"
+    $a23="fe594b89f278646cc3ce5992bc884518c113e29e"
+    $a24="3608a6d1a05aba23ea390e5f3b48203dbb7241f7"
+    $a25="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a26="9f8a2389a20ca0752aa9e95093515517e90e194c"
+    $a27="9f8a2389a20ca0752aa9e95093515517e90e194c"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha384_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="cb5d13481d7585712e60785bb95b43ce5a00a4c6380ce30785be8b69c0ab257195d89b9606b266ba5774c5e5ef045a10"
+    $a1="cb5d13481d7585712e60785bb95b43ce5a00a4c6380ce30785be8b69c0ab257195d89b9606b266ba5774c5e5ef045a10"
+    $a2="cb5d13481d7585712e60785bb95b43ce5a00a4c6380ce30785be8b69c0ab257195d89b9606b266ba5774c5e5ef045a10"
+    $a3="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a4="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a5="9ca694a90285c034432c9550421b7b9dbd5c0f4b6673f05f6dbce58052ba20e4248041956ee8c9a2ec9f10290cdc0782"
+    $a6="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a7="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a8="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a9="4b7d79fd9e55caac33d50b5d5337899adc8be5e7a1c55446f514104a427cf9859c47284a663af817bd3b2478a578ea4e"
+    $a10="4477d2e5351a588186edc3371e30f1cfb64ad5f01aac0c504340342e70dafc3343c0b3e878327a8263e11ecf8dd33b30"
+    $a11="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a12="4477d2e5351a588186edc3371e30f1cfb64ad5f01aac0c504340342e70dafc3343c0b3e878327a8263e11ecf8dd33b30"
+    $a13="4477d2e5351a588186edc3371e30f1cfb64ad5f01aac0c504340342e70dafc3343c0b3e878327a8263e11ecf8dd33b30"
+    $a14="d0f2bab80e7001a42d089c4c154253e8cb6032c8d41cf2b98c3877746d2257ad5f5263b6e220042654f673703330dcc7"
+    $a15="d0f2bab80e7001a42d089c4c154253e8cb6032c8d41cf2b98c3877746d2257ad5f5263b6e220042654f673703330dcc7"
+    $a16="014b8471ea2d98f7a19b1163cedf51d8a1c870cd09fa9fa6fb02b7aab25e2d9e8261f12edd43b8b8df892c93a4829dfd"
+    $a17="691e16b9e4df16b70819d1f6cd9fc1774b62662dfb6b84bcbd7765445ceb74d1e3e325384276aaf6f822bddede03505a"
+    $a18="e66333b5bc11d7b794daaa6acbc90059272621e04bd623046a5eb19b9fe129334649c51b266e8677f2e9a094deb9c9d0"
+    $a19="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a20="d88dc52a7bc308412a36af9cf9922e28ecf75f2479873e5d177ff03cf281d3aecb1f8c78492bc58502699458c0d1906d"
+    $a21="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a22="5c24134fe6a8a72a061c157f7191dcb3dc02d203cb69ae5d1ea418adb64746fb6a4378ac307cf45978a1f3d536ad8a29"
+    $a23="5c24134fe6a8a72a061c157f7191dcb3dc02d203cb69ae5d1ea418adb64746fb6a4378ac307cf45978a1f3d536ad8a29"
+    $a24="4b7d79fd9e55caac33d50b5d5337899adc8be5e7a1c55446f514104a427cf9859c47284a663af817bd3b2478a578ea4e"
+    $a25="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a26="04b222c4ef00cc3fd8454ca1c212782c850da027609a4ad5633e6de52112e0d73299eb8d7357a376a8bc05035326b238"
+    $a27="04b222c4ef00cc3fd8454ca1c212782c850da027609a4ad5633e6de52112e0d73299eb8d7357a376a8bc05035326b238"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha224_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="6f4a35b825e20e94b581661916d82a96d4259b95cdf26f5dc3dec913"
+    $a1="6f4a35b825e20e94b581661916d82a96d4259b95cdf26f5dc3dec913"
+    $a2="6f4a35b825e20e94b581661916d82a96d4259b95cdf26f5dc3dec913"
+    $a3="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a4="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a5="58acb7acccce58ffa8b953b12b5a7702bd42dae441c1ad85057fa70b"
+    $a6="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a7="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a8="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a9="ba6ac6f77ccef0e3e048657cedd65a4089ecb6db72ff6957e1f69091"
+    $a10="1c95d70b4960a674e2c8a0e86c3a2ada419b9b7534912790666ed9bb"
+    $a11="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a12="1c95d70b4960a674e2c8a0e86c3a2ada419b9b7534912790666ed9bb"
+    $a13="1c95d70b4960a674e2c8a0e86c3a2ada419b9b7534912790666ed9bb"
+    $a14="4cf7c11763549176ffee1d55608d7eb9d0b1166d96bf656863180349"
+    $a15="4cf7c11763549176ffee1d55608d7eb9d0b1166d96bf656863180349"
+    $a16="c7dd2cfe31cb55b8e77585868c1e67d35b07bd5dfaddc29eb9a6e5c7"
+    $a17="b87945fdb5d23cc40c1561895cc904d1a47815dd6b57fe76c418a21c"
+    $a18="511e8062a69877d71444511783e40cf244402740e1b1c423abf4fa6b"
+    $a19="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a20="ef08de1798ceecc440ca54f8d5943a2870513a7bda86110be81c0fac"
+    $a21="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a22="1386e45ec7d12980a14ade12e3319d62e19aa056b522b1471abe899f"
+    $a23="1386e45ec7d12980a14ade12e3319d62e19aa056b522b1471abe899f"
+    $a24="ba6ac6f77ccef0e3e048657cedd65a4089ecb6db72ff6957e1f69091"
+    $a25="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a26="b814433fc0d4e2cf39757c3711c8af9522f2e760730f929255a9848b"
+    $a27="b814433fc0d4e2cf39757c3711c8af9522f2e760730f929255a9848b"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha512_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="df09aec85d056853f2d9da9c8627db3507f39820594efe303980ac45339f80e2e1430f0f7e639635e7f6b12d185367a3938eaa7b0f2f84cbd857a7375617affc"
+    $a1="df09aec85d056853f2d9da9c8627db3507f39820594efe303980ac45339f80e2e1430f0f7e639635e7f6b12d185367a3938eaa7b0f2f84cbd857a7375617affc"
+    $a2="df09aec85d056853f2d9da9c8627db3507f39820594efe303980ac45339f80e2e1430f0f7e639635e7f6b12d185367a3938eaa7b0f2f84cbd857a7375617affc"
+    $a3="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a4="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a5="c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec"
+    $a6="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a7="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a8="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a9="30a76625d5fc75e3ab6793b19819935e65e43cf3745832061cb432a5de7fdc17d66ede77973d5aed065bc7e3e0536ebcc5129506955574e230b92b71bd2cb1c7"
+    $a10="cc5ec2b61fbbdd18d85dd14ab60db397b21b5548999a6afd3ce9557b19c300494a5fd29987e03a6f06677c209b88de47684388de8250671cdd778799eecd018a"
+    $a11="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a12="cc5ec2b61fbbdd18d85dd14ab60db397b21b5548999a6afd3ce9557b19c300494a5fd29987e03a6f06677c209b88de47684388de8250671cdd778799eecd018a"
+    $a13="cc5ec2b61fbbdd18d85dd14ab60db397b21b5548999a6afd3ce9557b19c300494a5fd29987e03a6f06677c209b88de47684388de8250671cdd778799eecd018a"
+    $a14="b1a5ba82f1c803ab4d3bd2709b81a51c81c90e55bdede64d6c4f66a9d5336dc9237c34c2e52184f8091fe96b5fbedb541b48a3f0861fe74ee671acc7c6c93e6b"
+    $a15="b1a5ba82f1c803ab4d3bd2709b81a51c81c90e55bdede64d6c4f66a9d5336dc9237c34c2e52184f8091fe96b5fbedb541b48a3f0861fe74ee671acc7c6c93e6b"
+    $a16="92f3959e62fd73ae608d9b856c0f050ef9f742fdc24a472350c879def5251ac43bbdd6c2f7092a0c6e95f0f1ea0fc6e2704b5e764559f406177521b504618b5f"
+    $a17="d098688148ccecc39ec1e57d291d29cdb58666259953d2e06f9afc091a4bdcd8bcdeae524401e68fb62f821763c70e075de83107d1cf7aae60ec8d79ae49d33b"
+    $a18="18ace13b32c691dba25b5edfafe735f2c8c8dec6740fa56fe5e1aadf18737b1239551742a650a5e34bd36808f9b68c8e6d8c7255012beabb429708ebe1b26e90"
+    $a19="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a20="f6e47986b31ff7eb0cbc4b48ea89a8705fe75e938473660507093a1416f8870e02f3bdcfbe015b750bc6ad090bb2fd43c4f0113c0f3f10c5d2ee0d7fa4f7f045"
+    $a21="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a22="0619e15727bb9b77c6af3cc7c1431a346ae1450a174dc0d375bc6a816a0690c966531084db4e31266fb26535751ce0b9c16b59ec719e8f5af96f099ab80c6796"
+    $a23="0619e15727bb9b77c6af3cc7c1431a346ae1450a174dc0d375bc6a816a0690c966531084db4e31266fb26535751ce0b9c16b59ec719e8f5af96f099ab80c6796"
+    $a24="30a76625d5fc75e3ab6793b19819935e65e43cf3745832061cb432a5de7fdc17d66ede77973d5aed065bc7e3e0536ebcc5129506955574e230b92b71bd2cb1c7"
+    $a25="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a26="1304483a68eea9166fb01a6d68ba76aedf956217153fc8a9f323f6376b57e205934062a1c9d03fc9a56f9abf8dd1ec96d4eb0977c6675e9b506f902fb5473776"
+    $a27="1304483a68eea9166fb01a6d68ba76aedf956217153fc8a9f323f6376b57e205934062a1c9d03fc9a56f9abf8dd1ec96d4eb0977c6675e9b506f902fb5473776"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha256_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b"
+    $a1="e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b"
+    $a2="e7d3e769f3f593dadcb8634cc5b09fc90dd3a61c4a06a79cb0923662fe6fae6b"
+    $a3="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a4="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a5="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+    $a6="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a7="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a8="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a9="4cf6829aa93728e8f3c97df913fb1bfa95fe5810e2933a05943f8312a98d9cf2"
+    $a10="5ed8944a85a9763fd315852f448cb7de36c5e928e13b3be427f98f7dc455f141"
+    $a11="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a12="5ed8944a85a9763fd315852f448cb7de36c5e928e13b3be427f98f7dc455f141"
+    $a13="5ed8944a85a9763fd315852f448cb7de36c5e928e13b3be427f98f7dc455f141"
+    $a14="2f0860b3cc6d396499ef3be04866af3b885f4c1934e77c346f0ce2443ff0f640"
+    $a15="2f0860b3cc6d396499ef3be04866af3b885f4c1934e77c346f0ce2443ff0f640"
+    $a16="cef54334edb669f337fd35144f5832c25e9adb716a7f3f57ee016d6212300c26"
+    $a17="a4fbcda21d33b11f38ee0f50d2b21ba3c56fd9fccd5444846a46fc7d16fb63d1"
+    $a18="ce799c189f3cc3f8d137e3c57260d44b774c4d054f09a090453dfa8248653fbe"
+    $a19="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a20="c15d4ddc66ab7dd1314a0ed23f9bdf59d14c1f1813f3cf0dfe539843384c0f86"
+    $a21="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a22="f072c365ed726ea6c0e1749227c422b9b2bd63ac130644021d82515afa9ed9be"
+    $a23="f072c365ed726ea6c0e1749227c422b9b2bd63ac130644021d82515afa9ed9be"
+    $a24="4cf6829aa93728e8f3c97df913fb1bfa95fe5810e2933a05943f8312a98d9cf2"
+    $a25="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a26="b512d97e7cbf97c273e4db073bbb547aa65a84589227f8f3d9e4a72b9372a24d"
+    $a27="b512d97e7cbf97c273e4db073bbb547aa65a84589227f8f3d9e4a72b9372a24d"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule blake2b_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="715f92db3d0bb9b61f5d9e600203a54868f6e57d007ef72b02ddfcb1f35959dd8b90100815818584bbae097249f52fb298b5de87f3487ec010d793e1448c8838"
+    $a1="715f92db3d0bb9b61f5d9e600203a54868f6e57d007ef72b02ddfcb1f35959dd8b90100815818584bbae097249f52fb298b5de87f3487ec010d793e1448c8838"
+    $a2="715f92db3d0bb9b61f5d9e600203a54868f6e57d007ef72b02ddfcb1f35959dd8b90100815818584bbae097249f52fb298b5de87f3487ec010d793e1448c8838"
+    $a3="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a4="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a5="bfcce2c19c8563fd4aa66f6ec607341ff25e5f6fe7fa520d7d1242d871385f23a3e8e80093120b4877d79535e10b182ae2ec8937d1f72f091e7178c9e4ff0f11"
+    $a6="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a7="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a8="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a9="fb9aa7f66bb022cbf27109b47727f1630ea82c4ce192d58c3858464ac6a1a853cc475f8b3bd328867273c30b9ba85bf7fa1000d0ece4fd7d1f597e2650e67213"
+    $a10="0b38c93bb2e46b2037c88ddccad59cbe1092f2ee7eb24ece6381de92d02f323865d52ac3d5a2a7da513661224b910c258184a1bbe405c9ebe1eabd83633f1e5d"
+    $a11="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a12="0b38c93bb2e46b2037c88ddccad59cbe1092f2ee7eb24ece6381de92d02f323865d52ac3d5a2a7da513661224b910c258184a1bbe405c9ebe1eabd83633f1e5d"
+    $a13="0b38c93bb2e46b2037c88ddccad59cbe1092f2ee7eb24ece6381de92d02f323865d52ac3d5a2a7da513661224b910c258184a1bbe405c9ebe1eabd83633f1e5d"
+    $a14="f0b40c1781fad318fd2652c22647cd21de1e330da1f5bd6a8c20dcdfd0bc80c800fbe0871779cc76139c8842759dceac6611931e7c29785f373c145f7bd73daa"
+    $a15="f0b40c1781fad318fd2652c22647cd21de1e330da1f5bd6a8c20dcdfd0bc80c800fbe0871779cc76139c8842759dceac6611931e7c29785f373c145f7bd73daa"
+    $a16="34a3cfd9057a121849a9d9c913311797b99da25ec2d0dacfa802e70236e114cad366f5758a3c4f2eab7d650ff844c641760e454d370354b4429fb93875f1bdbe"
+    $a17="4f3141d8bd698bc32c08c9f3b6b2c5ec101247cc4f2b4f16f34addeb34a3301f040e0f90d2dd7641345edc262b2565da2ad0a91822ff4439e9bdbac84eec1e8b"
+    $a18="f6d99fb12c8f8a6f3b7ffc0c14db5a8220ad0f11d8ade6bcf6b6bd80ce10b2d19f39c825786e6591ef69888fb577a365ce4eeec804fb15522b0b17ffb95b636e"
+    $a19="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a20="914d1af9b0da90a09147f0c2669ddc6f4effcb930f9dada57fed230f850051ee0a7bff12050e6f8070585ac39da1cac1e5f8a157f8c580a5ed26b6084e55f5ef"
+    $a21="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a22="480144aeed08c6159371cdc11e1521fca92ef8ff3d1dd00e5dbd09912a5387156fe78ae101aefd5a886e24d8d6135b4053a702947735f326a2577681eb450ebd"
+    $a23="480144aeed08c6159371cdc11e1521fca92ef8ff3d1dd00e5dbd09912a5387156fe78ae101aefd5a886e24d8d6135b4053a702947735f326a2577681eb450ebd"
+    $a24="fb9aa7f66bb022cbf27109b47727f1630ea82c4ce192d58c3858464ac6a1a853cc475f8b3bd328867273c30b9ba85bf7fa1000d0ece4fd7d1f597e2650e67213"
+    $a25="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a26="ffbd009a16b4af1cdc094f01aa869986899a938bb64792a133952bee291df72556d2e2e0f65961cf92a5dd137929df475303e58cb4525b9fd287387931057159"
+    $a27="ffbd009a16b4af1cdc094f01aa869986899a938bb64792a133952bee291df72556d2e2e0f65961cf92a5dd137929df475303e58cb4525b9fd287387931057159"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule blake2s_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="24b5bbb10338d280366de1bbbe705e639f239c1ec6fb291b27c96c7e9a75d176"
+    $a1="24b5bbb10338d280366de1bbbe705e639f239c1ec6fb291b27c96c7e9a75d176"
+    $a2="24b5bbb10338d280366de1bbbe705e639f239c1ec6fb291b27c96c7e9a75d176"
+    $a3="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a4="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a5="327e7e3821f5f6d33c090137f979bf48ee62e9051c1610e1d6468ecb3c67a124"
+    $a6="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a7="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a8="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a9="a08ae1b0def7ea98c217ccc1140f411909bc545e808e6629ee4511c72db5243a"
+    $a10="df4738b4ed2274b73722607a4d1cc2158eb209ef16b350087d867393f98db685"
+    $a11="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a12="df4738b4ed2274b73722607a4d1cc2158eb209ef16b350087d867393f98db685"
+    $a13="df4738b4ed2274b73722607a4d1cc2158eb209ef16b350087d867393f98db685"
+    $a14="2e165bc4791c525b47a7e8df1a45ef56530cded9097fb532c464204c7ed1ef9b"
+    $a15="2e165bc4791c525b47a7e8df1a45ef56530cded9097fb532c464204c7ed1ef9b"
+    $a16="cae9c5f376efeb3dd5890f146db55c4cb6c4a3779cce7ff9f4ba4e78881f14d1"
+    $a17="03c74c30e1bf2e1dea38c9dfebc00cdfd95006e79b56e209adc951f0e9fc9b5f"
+    $a18="ce82830e0759f85876c58edeae5c4dff1e47cb47e74287d0f8c1a666a01d6905"
+    $a19="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a20="7ef2e6dd3c504d512636255d043e5f55bd455116fd3c01d001328b3d34323f3d"
+    $a21="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a22="257c4331c9533c5caece6e4705ba2215ee64029fe71e471736b1337197498d8b"
+    $a23="257c4331c9533c5caece6e4705ba2215ee64029fe71e471736b1337197498d8b"
+    $a24="a08ae1b0def7ea98c217ccc1140f411909bc545e808e6629ee4511c72db5243a"
+    $a25="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a26="266486ffaaf21e92ff887377539a51996333d2faeecdaf6cc49bd8ef7cb3ae8a"
+    $a27="266486ffaaf21e92ff887377539a51996333d2faeecdaf6cc49bd8ef7cb3ae8a"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha3_224_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="a3c540c56f53058e38a1a05d992c0196ccda6c35e47dfc695c453a3c"
+    $a1="a3c540c56f53058e38a1a05d992c0196ccda6c35e47dfc695c453a3c"
+    $a2="a3c540c56f53058e38a1a05d992c0196ccda6c35e47dfc695c453a3c"
+    $a3="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a4="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a5="a53fff8dd075bed169e164743231ff533d8b9260b0b8073f0a4c1d20"
+    $a6="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a7="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a8="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a9="cc8755b6c72eebaea22058348aadcbbf6b0c72deade2f1523875df71"
+    $a10="e810597249305f414f75eb5a9d2644820de439bc4647bbbdd90f702d"
+    $a11="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a12="e810597249305f414f75eb5a9d2644820de439bc4647bbbdd90f702d"
+    $a13="e810597249305f414f75eb5a9d2644820de439bc4647bbbdd90f702d"
+    $a14="9b50c41c3d8dbc5749eea69cf13855e34c3a42601a53c6189cd80219"
+    $a15="9b50c41c3d8dbc5749eea69cf13855e34c3a42601a53c6189cd80219"
+    $a16="d3dec77e80bb6f533414323b4dfd739941d4438cb099509b25e56ecd"
+    $a17="dd2ca5875d0b78d22778a554da348e9573c5d766eb758ac2caa4e9fc"
+    $a18="d90b98437f076d944e7f32e22501f239ee0e882c57469a4b70ae31a1"
+    $a19="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a20="a1f5362b0ed809696af534b4683a58bb30edd2dea5f1f12398d02ab2"
+    $a21="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a22="901a6bbc8420c582476a5e532991e8ad2a6eb47f257e46e7ebce397b"
+    $a23="901a6bbc8420c582476a5e532991e8ad2a6eb47f257e46e7ebce397b"
+    $a24="cc8755b6c72eebaea22058348aadcbbf6b0c72deade2f1523875df71"
+    $a25="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a26="a2fcd96462d82e1cd53d6b2dba8fc00c31d68b15f50b0aebb5c99b13"
+    $a27="a2fcd96462d82e1cd53d6b2dba8fc00c31d68b15f50b0aebb5c99b13"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha3_256_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="8e15d20bdb7674d97f6d9ac31cf74f9c5bc38b3fe9ecf54641ab08044ce207ee"
+    $a1="8e15d20bdb7674d97f6d9ac31cf74f9c5bc38b3fe9ecf54641ab08044ce207ee"
+    $a2="8e15d20bdb7674d97f6d9ac31cf74f9c5bc38b3fe9ecf54641ab08044ce207ee"
+    $a3="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a4="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a5="fb001dfcffd1c899f3297871406242f097aecf1a5342ccf3ebcd116146188e4b"
+    $a6="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a7="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a8="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a9="665b3f32dcb321aa06ce5010ad9e9abb83d265e7e6dbc33b2fbbbfdbca0b8359"
+    $a10="2848f07d55acfdd67caf77f276e1f0a529e4026f1708356d77b1ced98326836e"
+    $a11="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a12="2848f07d55acfdd67caf77f276e1f0a529e4026f1708356d77b1ced98326836e"
+    $a13="2848f07d55acfdd67caf77f276e1f0a529e4026f1708356d77b1ced98326836e"
+    $a14="cbf1f151f6c9c7a0d5d9b326167853fb6e7d2331d99256b50babab5e154eb6b2"
+    $a15="cbf1f151f6c9c7a0d5d9b326167853fb6e7d2331d99256b50babab5e154eb6b2"
+    $a16="cd961d181710c60c2a168bb3e999dc30db7ff17f23bb7374edc2e529c9ecd1d9"
+    $a17="8c9d71e8d10351d0543301acf51f98a6a5810b16ca66011a7e2f30c804c7ea94"
+    $a18="5a86be99a12d1604c9d2e445815ef7c15ea5250f12f7f07cc57f168896f632cd"
+    $a19="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a20="0b600e49870b73b830e655f4c201dbdc2a4851faad5fb13e4cdb1e00f009316e"
+    $a21="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a22="576c21871d58fe2264f6a583c33d0c35ea41bc24a1ec998efde9551886b91ef8"
+    $a23="576c21871d58fe2264f6a583c33d0c35ea41bc24a1ec998efde9551886b91ef8"
+    $a24="665b3f32dcb321aa06ce5010ad9e9abb83d265e7e6dbc33b2fbbbfdbca0b8359"
+    $a25="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a26="144b335042c98cdeffb44e61d31c20f2773d2a97455a6ba4183e426fb858b64a"
+    $a27="144b335042c98cdeffb44e61d31c20f2773d2a97455a6ba4183e426fb858b64a"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha3_384_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="40d3f0f3b63e86d851c20b0dcbef911cb31a56e65f2a59f5b97dd3d47658b713211c76c7ca838342ff78b1bdd3fbdf89"
+    $a1="40d3f0f3b63e86d851c20b0dcbef911cb31a56e65f2a59f5b97dd3d47658b713211c76c7ca838342ff78b1bdd3fbdf89"
+    $a2="40d3f0f3b63e86d851c20b0dcbef911cb31a56e65f2a59f5b97dd3d47658b713211c76c7ca838342ff78b1bdd3fbdf89"
+    $a3="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a4="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a5="9765a57f2010506383de91052915ce8bafbdb39f3e5a8c1a1693a0076365d37abbfd3305881ea3b5fa1426316afd7df3"
+    $a6="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a7="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a8="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a9="be66f54d071afe509f093ce39a02f1a7611035d17014ea0e01dc82a4c41997cbde86c2b667e08c34383508ce96a7289f"
+    $a10="6d2bddea82451f8471ec7642ce69af08a2be6845ab02b2d5094fd89640037515a544044c7fbe733a7d26d6758892e60a"
+    $a11="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a12="6d2bddea82451f8471ec7642ce69af08a2be6845ab02b2d5094fd89640037515a544044c7fbe733a7d26d6758892e60a"
+    $a13="6d2bddea82451f8471ec7642ce69af08a2be6845ab02b2d5094fd89640037515a544044c7fbe733a7d26d6758892e60a"
+    $a14="5ae3f7721d1cb33db42fad05994b030c8623d75b247f659554457887d93c3f7d05fcd9c1060fff397709331233e7d729"
+    $a15="5ae3f7721d1cb33db42fad05994b030c8623d75b247f659554457887d93c3f7d05fcd9c1060fff397709331233e7d729"
+    $a16="a0e05ee90a719226b05e3439b3b70d9f1d1c36832f075aff5bf6f1dc1232de34277454dd278c58c05eaaebc589600f6b"
+    $a17="7cca4bbb98ea5cb8e55c6b10b33d2d07fabeebd47102dbac0c02e5f7fe0cba8d46c54c93da1aecdc932319bf1b55dceb"
+    $a18="d19fdd65bf568420a569a3e1a53f15f2c49f61fc99fe6b1571a582cab88455a0d552b8fd8c944d1d8a0a636f8043b96a"
+    $a19="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a20="10ff20b9a7137df1e7f755e5199489180eb4e68b313fabac4f02120284966b388b8ef5030ee7fc25607d8c706afdb11e"
+    $a21="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a22="e1176aaee5357fe006f136949a6529e05074bad4caff8cc89bafba2c6eb5637089f87f4eb21861d473e104d26135836e"
+    $a23="e1176aaee5357fe006f136949a6529e05074bad4caff8cc89bafba2c6eb5637089f87f4eb21861d473e104d26135836e"
+    $a24="be66f54d071afe509f093ce39a02f1a7611035d17014ea0e01dc82a4c41997cbde86c2b667e08c34383508ce96a7289f"
+    $a25="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a26="48aec81479e24dbbff7f77d0f52829852722af06b1508de71d51b5d275c5a8681651416b0615ec2a1cc1a421067a378b"
+    $a27="48aec81479e24dbbff7f77d0f52829852722af06b1508de71d51b5d275c5a8681651416b0615ec2a1cc1a421067a378b"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule sha3_512_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="e34c71a03ea90304be4cc0b3c6356d5b6ef1596f97ee116ab205f616b70d1c6ee23a2d0276af6625ba658176e9ae9c92c3fef6686933dfde0efffd8d64a30494"
+    $a1="e34c71a03ea90304be4cc0b3c6356d5b6ef1596f97ee116ab205f616b70d1c6ee23a2d0276af6625ba658176e9ae9c92c3fef6686933dfde0efffd8d64a30494"
+    $a2="e34c71a03ea90304be4cc0b3c6356d5b6ef1596f97ee116ab205f616b70d1c6ee23a2d0276af6625ba658176e9ae9c92c3fef6686933dfde0efffd8d64a30494"
+    $a3="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a4="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a5="5a38afb1a18d408e6cd367f9db91e2ab9bce834cdad3da24183cc174956c20ce35dd39c2bd36aae907111ae3d6ada353f7697a5f1a8fc567aae9e4ca41a9d19d"
+    $a6="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a7="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a8="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a9="3dd4af76058f55af859b1f5855ead73f2aca7709359789d82ff8635109aa22aca95e43f76c7aa93e75922de22e2a203bc31856dab6e448be8490f052248186fe"
+    $a10="90f2e09d2bbcaec0bf162a060461aa3f49647fec9cd87f0df9ea028e723ce3723fd47026b152f9fadf7af211cec81c285b8223199bce57ceb7aeafa60752a100"
+    $a11="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a12="90f2e09d2bbcaec0bf162a060461aa3f49647fec9cd87f0df9ea028e723ce3723fd47026b152f9fadf7af211cec81c285b8223199bce57ceb7aeafa60752a100"
+    $a13="90f2e09d2bbcaec0bf162a060461aa3f49647fec9cd87f0df9ea028e723ce3723fd47026b152f9fadf7af211cec81c285b8223199bce57ceb7aeafa60752a100"
+    $a14="c567ae1d0f91e297efac5db0f1e4a62bbd0d56f5320ed11026dd6139676bf2853879e79b910de9677f1fc04648cdc330a98a655737e988c84885355553ec2d8e"
+    $a15="c567ae1d0f91e297efac5db0f1e4a62bbd0d56f5320ed11026dd6139676bf2853879e79b910de9677f1fc04648cdc330a98a655737e988c84885355553ec2d8e"
+    $a16="2ad63f903f67c567ad52883679de1fa02a3affafef58cde990c4da8f2cd87e920664fa0563879a4a64e8a8373396c3a7b0151ae0d083b682c6089a3e1c57b95b"
+    $a17="22e4ff124422f8de091bee72e2ec8c637ba473a4ee52bb7111eb4d2de258f41572debee13be0304c297baf04beed302f9579c9b417b4240c287c74551796f52c"
+    $a18="987a707fbc06c29194f73f4f1be23700f997c58e2e33729897f9817bbe818cf887be9c6e00ef368deddf01589f84f603733e5b9290188a56a0fb51a8d46036eb"
+    $a19="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a20="75376a7126a7657e349802b719dc4fd8211a747fab3bd032262ae555e7f071afe9515a68f3baf620d28b253c02a013e10bb6ac99a6918f20ae41ef1f3b7deb0c"
+    $a21="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a22="5232a44326f1d6742587f77adca5b26be8dfe0dc334d1e14e8a75af5d0127c4405c1fe88f6183672493cb088be76fcb1e2cd04c58e6e66e1cec50c3b94cda7d8"
+    $a23="5232a44326f1d6742587f77adca5b26be8dfe0dc334d1e14e8a75af5d0127c4405c1fe88f6183672493cb088be76fcb1e2cd04c58e6e66e1cec50c3b94cda7d8"
+    $a24="3dd4af76058f55af859b1f5855ead73f2aca7709359789d82ff8635109aa22aca95e43f76c7aa93e75922de22e2a203bc31856dab6e448be8490f052248186fe"
+    $a25="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a26="3b7defece3923499d88cca58e00c953fff15b87eb865fb82a5a44fd952efae8b7d0b82b53e380d941ae357e4e5d0a52069dd0d78f585009ee13cb074ba50c78d"
+    $a27="3b7defece3923499d88cca58e00c953fff15b87eb865fb82a5a44fd952efae8b7d0b82b53e380d941ae357e4e5d0a52069dd0d78f585009ee13cb074ba50c78d"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
+rule base64_hashed_default_creds_microsoft
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for microsoft. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="QWRtaW5pc3RyYXRvcg=="
+    $a1="QWRtaW5pc3RyYXRvcg=="
+    $a2="QWRtaW5pc3RyYXRvcg=="
+    $a3="===="
+    $a4="===="
+    $a5="YWRtaW4="
+    $a6="===="
+    $a7="===="
+    $a8="===="
+    $a9="c2E="
+    $a10="R3Vlc3Q="
+    $a11="===="
+    $a12="R3Vlc3Q="
+    $a13="R3Vlc3Q="
+    $a14="SVNfJGhvc3RuYW1l"
+    $a15="SVNfJGhvc3RuYW1l"
+    $a16="TERBUF9Bbm9ueW1vdXM="
+    $a17="TGRhcFBhc3N3b3JkXzE="
+    $a18="TGVzc29uVXNlcjE="
+    $a19="===="
+    $a20="TGVzc29uVXNlcjI="
+    $a21="===="
+    $a22="TVNIT01F"
+    $a23="TVNIT01F"
+    $a24="c2E="
+    $a25="===="
+    $a26="VXNlcg=="
+    $a27="VXNlcg=="
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5) or ($a6 and $a7) or ($a8 and $a9) or ($a10 and $a11) or ($a12 and $a13) or ($a14 and $a15) or ($a16 and $a17) or ($a18 and $a19) or ($a20 and $a21) or ($a22 and $a23) or ($a24 and $a25) or ($a26 and $a27)
+}
+
