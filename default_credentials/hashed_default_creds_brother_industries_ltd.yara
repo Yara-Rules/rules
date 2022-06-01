@@ -1,0 +1,249 @@
+/*This Yara ruleset is under the GNU-GPLv2 license (http://www.gnu.org/licenses/gpl-2.0.html) and open to any user or organization, as long as you use it under this license.*/
+
+rule md5_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="21232f297a57a5a743894a0e4a801fc3"
+    $a1="9df3b01c60df20d13843841ff0d4482c"
+    $a2="d41d8cd98f00b204e9800998ecf8427e"
+    $a3="dd4b21e9ef71e1291183a46b913ae6f2"
+    $a4="d41d8cd98f00b204e9800998ecf8427e"
+    $a5="25d55ad283aa400af464c76d713c07ad"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha1_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="d033e22ae348aeb5660fc2140aec35850c4da997"
+    $a1="0f12541afcce175fb34bb05a79c95b76e765488b"
+    $a2="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a3="70352f41061eda4ff3c322094af068ba70c3b38b"
+    $a4="da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    $a5="7c222fb2927d828af22f592134e8932480637c0d"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha384_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="9ca694a90285c034432c9550421b7b9dbd5c0f4b6673f05f6dbce58052ba20e4248041956ee8c9a2ec9f10290cdc0782"
+    $a1="49e18e684812e9034a6c1eef90b337cbc9ee8de6383e57b79f4bc255393417ab33def30f0f3398c5489c00faab52a619"
+    $a2="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a3="594f577a573d9517133e09ed29eeb0cbed14ea1b36bd060d13501caa03f0bb2049e6a06b9c919d007afc8e44064d6217"
+    $a4="38b060a751ac96384cd9327eb1b1e36a21fdb71114be07434c0cc7bf63f6e1da274edebfe76f65fbd51ad2f14898b95b"
+    $a5="8cafed2235386cc5855e75f0d34f103ccc183912e5f02446b77c66539f776e4bf2bf87339b4518a7cb1c2441c568b0f8"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha224_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="58acb7acccce58ffa8b953b12b5a7702bd42dae441c1ad85057fa70b"
+    $a1="24289a24be5d6ee8df8f3cedf9b538b4cb69fbaf8abca98797b328ac"
+    $a2="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a3="3876dd6e14a7097c1c732a8777c26757b5eceb87111cac26a1f4f5c4"
+    $a4="d14a028c2a3a2bc9476102bb288234c415a2b01f828ea62ac5b3e42f"
+    $a5="7e6a4309ddf6e8866679f61ace4f621b0e3455ebac2e831a60f13cd1"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha512_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec"
+    $a1="932778fa1dd9a15dac1f6d7690b29b70e9c205a8d2b4a437f007bf6df4fe3c5200520078f95184bd37ce6ed67f362a42b4263ed4c8ba6d777b0166f9af879897"
+    $a2="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a3="ce2a429a1c79d4068c0c7e54f5500ce16285d85730cb9ec0b61240f88ef9c870292200a1c069bd57d5e092874567058c91782513763bc30d86fedca63820c482"
+    $a4="cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e"
+    $a5="fa585d89c851dd338a70dcf535aa2a92fee7836dd6aff1226583e88e0996293f16bc009c652826e0fc5c706695a03cddce372f139eff4d13959da6f1f5d3eabe"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha256_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918"
+    $a1="a0561fd649cdb6baa784055f051bad796ea0afef17fca38219549deeba4e8c1a"
+    $a2="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a3="7e071fd9b023ed8f18458a73613a0834f6220bd5cc50357ba3493c6040a9ea8c"
+    $a4="e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    $a5="ef797c8118f02dfb649607dd5d3f8c7623048c9c063d532cc95c5ed7a898a64f"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule blake2b_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="bfcce2c19c8563fd4aa66f6ec607341ff25e5f6fe7fa520d7d1242d871385f23a3e8e80093120b4877d79535e10b182ae2ec8937d1f72f091e7178c9e4ff0f11"
+    $a1="3668a081b0929274a97abf15209dab17ae30a35a7751a62e5515262524cb38b5216cff0ed604cf6a8f5f5b573aa0573735764a99a6028f22e0d2ea1eaaac810c"
+    $a2="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a3="997640bbacba6ece9c0412e7da8646458d1f11202c0a8f162b6a90a962b558ff9ce5ac7721a75b6205338647d6d83ebb9e7514e027917a565445bdedbea9c081"
+    $a4="786a02f742015903c6c6fd852552d272912f4740e15847618a86e217f71f5419d25e1031afee585313896444934eb04b903a685b1448b755d56f701afe9be2ce"
+    $a5="f5560c3296de4e0ef868574bf96fc778bc580931a8cae2d2631de27ba055db1be2afd769d658c684d8bc5ee0c1b2a7583ec862d5e994b806c6fa2ab4d54cd7f4"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule blake2s_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="327e7e3821f5f6d33c090137f979bf48ee62e9051c1610e1d6468ecb3c67a124"
+    $a1="13ed751afcecd936bcbe496a38545e63d2fb97f2ad8fc5b72f17d29784c34db5"
+    $a2="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a3="cd47e74fbcd689a3a1a85c0bd38cbd1fa05afe4c8f570cc254bfe2b21a19e1b1"
+    $a4="69217a3079908094e11121d042354a7c1f55b6482ca1a51e1b250dfd1ed0eef9"
+    $a5="93f9b0b205276f1c3b03464d5e890d6c99e7e22eb4d7530e53ba2e3a8066d103"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha3_224_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="a53fff8dd075bed169e164743231ff533d8b9260b0b8073f0a4c1d20"
+    $a1="a86118aed12772c63e1641003f22dadc2be7ee74d4cb33aeb0b3466d"
+    $a2="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a3="225dedff3d385fb473af2f34ceed57657b24ee8a23b3107fbf8c4557"
+    $a4="6b4e03423667dbb73b6e15454f0eb1abd4597f9a1b078e3f5b5a6bc7"
+    $a5="64f977868a7a63bb65ddcd10c587b50ad21fe885fe667c99acc5d6f1"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha3_256_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="fb001dfcffd1c899f3297871406242f097aecf1a5342ccf3ebcd116146188e4b"
+    $a1="1037f1f67277cd916301c10e5417b95c117abbd8daf2b794c30a90ee67898b53"
+    $a2="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a3="c571dd2139e469c5fe159e58bde1bca4a62e9a843f559c149ec8f69784719635"
+    $a4="a7ffc6f8bf1ed76651c14756a061d662f580ff4de43b49fa82d80a4b80f8434a"
+    $a5="39d1da1f4f9fda75ac2c0b29b76c2149fe57256e3240ce35e1e74d6b6d898222"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha3_384_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="9765a57f2010506383de91052915ce8bafbdb39f3e5a8c1a1693a0076365d37abbfd3305881ea3b5fa1426316afd7df3"
+    $a1="8515c138c59d8d72b3d9ec1bb64c0ee8f1d8e270d29c1eb632b0ae048661bf0121c24c7749166760a022f8c2d48fab62"
+    $a2="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a3="748e6ba10d65d46666cdf2980381614d19c05b6691c45900f68841a10eeff3bea0bbcefd7dd6cbd99a067c7942ce9068"
+    $a4="0c63a75b845e4f7d01107d852e4c2485c51a50aaaa94fc61995e71bbee983a2ac3713831264adb47fb6bd1e058d5f004"
+    $a5="9144284a23a97899c1031a1f4f6c1b4c86b156ef015ccf8704c2a54496c364dfab9fc02750617c354aa25cb60c035b4e"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule sha3_512_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="5a38afb1a18d408e6cd367f9db91e2ab9bce834cdad3da24183cc174956c20ce35dd39c2bd36aae907111ae3d6ada353f7697a5f1a8fc567aae9e4ca41a9d19d"
+    $a1="2ccefc4001cc12acc9512f44784c55dff5086894fd436dfcb30f64a2c5a55dbae984b86c749d29e10254c770f3b21ca6fc11d84ddd9077db29c6e6bcb4c48f24"
+    $a2="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a3="17ea18adaf471a26e57a5091f0a51eba3d04a6b7d52331171bf33f2ea6ecd5437edf71c62e15b5f1cdbc3252c12ed57e296011f2af8b58631dbacbe166ff0b74"
+    $a4="a69f73cca23a9ac5c8b567dc185a756e97c982164fe25859e0d1dcc1475c80a615b2123af1f5f94c11e3e9402c3ac558f500199d95b6d3e301758586281dcd26"
+    $a5="8a56bac869374c669443a1626ff0967af258123f83faf6b55e31dd541e6bbd90308a3385713294bf2e8861bc8cf8f8feda41f9c4db19d5811a6b5de85eac9870"
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
+rule base64_hashed_default_creds_brother_industries_ltd
+{
+meta:
+    Version="0.1"
+    Author="Alaa Jubakhanji"
+    Notes="https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/tree/main/yara_rules"
+    Organization="ndaal Gesellschaft für Sicherheit in der Informationstechnik mbH & Co KG, Mathias-Brüggen-Str. 160, D 50829 Cologne, Germany, www.ndaal.eu"
+    Description="Hashed values of default credentials for brother_industries_ltd. Credentials available on https://gitlab.com/ndaal_open_source/ndaal_yara_passwords_default/-/blob/main/DefaultCreds-Cheat-Sheet.csv"
+strings:
+    $a0="YWRtaW4="
+    $a1="YWNjZXNz"
+    $a2="===="
+    $a3="MDAwMDAwMDA="
+    $a4="===="
+    $a5="MTIzNDU2Nzg="
+condition:
+    ($a0 and $a1) or ($a2 and $a3) or ($a4 and $a5)
+}
+
