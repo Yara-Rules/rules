@@ -1578,3 +1578,15 @@ rule SipHash_big_endian_constants {
 	condition:
 		2 of them
 }
+
+rule ed25519 {
+	meta:
+		author = "tobhe"
+		description = "ge25519 base point coordinates"
+		date = "2023-05"
+	strings:
+		$c0 = { 1A D5 25 8F 60 2D 56 C9 B2 A7 25 95 60 C7 2C 69 5C DC D6 FD 31 E2 A4 C0 FE 53 6E CD D3 36 69 21 }
+		$c1 = { 5c dc d6 fd 31 e2 a4 c0 fe 53 6e cd d3 36 69 21}
+	condition:
+		any of them
+}
