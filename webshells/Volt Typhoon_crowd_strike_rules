@@ -1,0 +1,78 @@
+rule EncryptJSP {
+    strings:
+        $s1 = "AEScrypt"
+        $s2 = "AES/CBC/PKCS5Padding"
+        $s3 = "SecretKeySpec"
+        $s4 = "FileOutputStream"
+        $s5 = "getParameter"
+        $s6 = "new ProcessBuilder"
+        $s7 = "new BufferedReader"
+        $s8 = "readLine()"
+    condition:
+        filesize < 50KB and 6 of them
+}
+CrowdStrike Intelligence YARA rules:
+
+rule CrowdStrike_VANGUARD_PANDA_timewarp_webshell : webshell vanguard_panda 
+{
+    meta:
+        copyright = "(c) 2023 CrowdStrike Inc."
+        description = "Timewarp Java webshell in malicious Tomcat module"
+        version = "202306131008"
+        last_modified = "2023-06-13"
+        actor = "VANGUARD PANDA"
+    strings:
+        $ = "setKey"
+        $ = "ProcessBuilder"
+        $ = "AES/ECB/PKCS5Padding"
+        $ = "tmp.log"
+        $ = "byteKey"
+        $ = "method0"
+        $ = "failed to read output from process"
+    condition:
+        filesize<50KB and 4 of them
+}
+
+rule CrowdStrike_VANGUARD_PANDA_timewarp_webshell_jar : java vanguard_panda 
+{
+    meta:
+        copyright = "(c) 2023 CrowdStrike Inc."
+        description = "JAR file containing Timewarp webshell"
+        version = "202306131011"
+        last_modified = "2023-06-13"
+        actor = "VANGUARD PANDA"
+    strings:
+        $WsSci = "/WsSci.class"
+        $abc1 = "/A.class"
+        $abc2 = "/B.class"
+        $abc3 = "/C.class"
+        $timewarp1 = "/Timewarp.class"
+        $timewarp2 = "/Timewarp2.class"
+        $timewarp3 = "/Timewarp3.class"
+    condition:
+        uint16(0)==0x4b50 and filesize<1MB and $WsSci and (all of ($abc*) or all of ($timewarp*))
+}
+
+rule CrowdStrike_VANGUARD_PANDA_webshell_installer : java vanguard_panda
+{
+    meta:
+        copyright = "(c) 2023 CrowdStrike Inc."
+        description = "ClassLoader - Java webshell install and execute script"
+        version = "202306131012"
+        last_modified = "2023-06-13"
+        actor = "VANGUARD PANDA"
+    strings:
+        $ = "<title>class loader</title>"
+        $ = "customEndpoint1"
+        $ = "move true <br>"
+        $ = "inject true <br>"
+        $ = "ListName_jsp"
+        $ = "photohelp_jsp"
+        $ = "photoparse_jsp"
+        $ = "Timewarp.class"
+        $ = "WsSci.class"
+        $ = "/A.class"
+        $ = "srcZipfs.getPath"
+    condition:
+        filesize<50KB and 4 of them
+}
