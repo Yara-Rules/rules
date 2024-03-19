@@ -315,23 +315,19 @@ rule RC6_Constants {
 
 rule RIPEMD160_Constants {
 	meta:
-		author = "phoul (@phoul)"
-		description = "Look for RIPEMD-160 constants"
-		date = "2014-01"
-		version = "0.1"
+		author = "Ek0n (@Ek0n)"
+		description = "Look for RIPEMD-160 round constants"
+		date = "2024-03"
+		reference = "https://git.openssl.org/?p=openssl.git;a=blob;f=crypto/ripemd/rmdconst.h"
+		version = "0.2"
 	strings:
-		$c0 = { 67452301 }
-		$c1 = { EFCDAB89 }
-		$c2 = { 98BADCFE }
-		$c3 = { 10325476 }
-		$c4 = { C3D2E1F0 }
-		$c5 = { 01234567 }
-		$c6 = { 89ABCDEF }
-		$c7 = { FEDCBA98 }
-		$c8 = { 76543210 }
-		$c9 = { F0E1D2C3 }
+		$KR0 = { E68BA250 }
+		$KR1 = { 24D14D5C }
+		$KR2 = { F33E706D }
+		$KR3 = { E9766D7A }
+
 	condition:
-		5 of them
+		any of them
 }
 
 rule SHA1_Constants {
