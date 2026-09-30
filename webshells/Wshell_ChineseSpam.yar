@@ -14,7 +14,7 @@ rule chinese_spam_spreader : webshell
     strings:
         $a = "User-Agent: aQ0O010O"
         $b = "<font color='red'><b>Connection Error!</b></font>"
-        $c = /if ?\(\$_POST\[Submit\]\) ?{/
+        $c = /if ?\(\$_POST\[Submit\]\) ?\{/
     condition:
         all of them
 }
